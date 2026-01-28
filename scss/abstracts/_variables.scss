@@ -1,0 +1,144 @@
+// Spacing variables
+$spacers: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 3rem,
+  6: 4.5rem,
+  7: 6rem,
+  8: 7.5rem,
+  9: 9rem,
+  10: 10.5rem
+);
+
+// Enable container classes variables
+$enable-container-classes: true;
+
+// Grid variables
+$grid-columns: 12 !default;
+$gutter: 15px !default;
+
+// Breakpoints variables
+$breakpoints: (
+  null: null,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1560px
+);
+
+// Container max-widths variables
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1560px
+);
+
+// Font family variables
+$font-family: 'Noto Sans Thai', sans-serif;
+
+// Heading font sizes variables
+$font-sizes-heading: (
+  h1: (default: 60, xl: 48),
+  h2: (default: 48, xl: 40),
+  h3: (default: 40, xl: 32),
+  h4: (default: 32, xl: 28),
+  h5: (default: 24, xl: 24),
+  h6: (default: 20, xl: 20)
+);
+
+// Display font sizes variables
+$font-sizes-display: (
+    display-1: (default: 80, xl: 72),
+    display-2: (default: 72, xl: 64),
+    display-3: (default: 64, xl: 56),
+    display-4: (default: 56, xl: 48),
+    display-5: (default: 48, xl: 40),
+    display-6: (default: 40, xl: 32)
+);
+
+// Text font sizes variables
+$font-sizes-text: (
+  body: (default: 20, md: 18, xl: 20),
+  lead: (default: 18, lg: 20),
+  small: (default: 16),
+  big: (default: 48, md: 40)
+);
+
+$font-size-base: 1rem;
+$line-height-base: 1.6;
+
+// Line-heights variables
+$line-heights: (
+  h1: 1.4, h2: 1.4, h3: 1.4, h4: 1.4, h5: 1.4, h6: 1.4,
+  display-1: 1.2, display-2: 1.2, display-3: 1.2, display-4: 1.2, display-5: 1.2, display-6: 1.2,
+  body: 1.6, lead: 1.6, small: 1.6, big: 1.6
+);
+
+// Color variables
+$blue: #00A8E9;
+$red: #E82631;
+$yellow: #FED322;
+$green: #009D50;
+$gray: #959595;
+$light-gray: #d5d5d5;
+$space-gray: #333A40;
+$space-blue: #051C39;
+
+$colors: (
+    "blue": (
+        base: #00A8E9,
+        //10: #42bae5
+    ),
+    "red": (
+        base: #E82631,
+    ),
+    "yellow": (
+        base: #FED322,
+    ),
+    "green": (
+        base: #009D50,
+    ),
+    "white": (
+        base: #fff,
+    ),
+    "black": (
+        base: #000,
+    ),
+    "gray": (
+        base: #616161,
+    ),
+    "light-gray": (
+        base: #b5b5b5,
+    ),
+    "space-gray": (
+        base: #333A40,
+    ),
+    "space-blue": (
+        base: #051C39,
+    ),
+);
+
+// Border variables
+$border-sides: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right
+);
+
+// Card variables
+$card-columns: 1, 2, 3, 4, 5, 6;
+$card-gap: 30px;
+$card-margin: calc($card-gap / 2);
+
+// prefix for card-deck--cards-md-3
+$card-deck-prefix: "card-deck--cards";
+
+// Number of cards per row to be supported
+$card-counts: 1 2 3 4 5 6;

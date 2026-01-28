@@ -1,0 +1,128 @@
+@use 'variables' as vars;
+@use 'functions' as fn;
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin button-size($padding-y, $padding-x, $font-size) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+}
+
+@mixin make-container() {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@mixin media-breakpoint-up($breakpoint) {
+    $min: map-get(vars.$breakpoints, $breakpoint);
+
+    @if $min != null {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Breakpoint '#{$breakpoint}' not found.";
+    }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+    $keys: map-keys(vars.$breakpoints);
+    $index: index($keys, $breakpoint);
+
+    @if $index != null and $index < length($keys) {
+        $next-key: nth($keys, $index + 1);
+        $max: map-get(vars.$breakpoints, $next-key);
+        $max: calc(#{$max} - 0.02px);
+
+        @media (max-width: $max) {
+            @content;
+        }
+    }
+    @else if $index == length($keys) {
+        @warn "No breakpoint above '#{$breakpoint}' for media-breakpoint-down.";
+    }
+    @else {
+        @warn "Breakpoint '#{$breakpoint}' not found.";
+    }
+}
+
+@mixin media-breakpoint-between($lower, $upper) {
+    $min: map-get(vars.$breakpoints, $lower);
+    $max: map-get(vars.$breakpoints, $upper);
+
+    @if $min != null and $max != null {
+        $max: calc(#{$max} - 0.02px);
+
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Invalid breakpoints '#{$lower}' or '#{$upper}'";
+    }
+}
+
+@mixin media-up($breakpoint) {
+    @include media-breakpoint-up($breakpoint) {
+        @content;
+    }
+}
+
+@mixin media-down($breakpoint) {
+    @include media-breakpoint-down($breakpoint) {
+        @content;
+    }
+}
+
+@mixin media-between($lower, $upper) {
+    @include media-breakpoint-between($lower, $upper) {
+        @content;
+    }
+}
+
+@mixin generate-typography(
+  $selector,
+  $sizes,
+  $line-height,
+  $font-family,
+  $font-weight,
+  $breakpoints,
+  $media-mode: min // min or max
+) {
+  #{$selector}, .#{$selector} {
+    font-family: $font-family;
+    font-weight: $font-weight;
+
+    @each $breakpoint, $size in $sizes {
+      $rem-size: fn.px-to-rem($size);
+
+      @if $breakpoint == default {
+        font-size: $rem-size;
+      } @else if map-has-key($breakpoints, $breakpoint) {
+        // setting px
+        $value: map-get($breakpoints, $breakpoint);
+
+        // if max - 0.02px
+        @if $media-mode == max {
+          $value: $value - 0.02px;
+        }
+
+        @media (#{$media-mode}-width: $value) {
+          font-size: $rem-size;
+        }
+      }
+    }
+
+    line-height: $line-height;
+  }
+}

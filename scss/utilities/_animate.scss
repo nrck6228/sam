@@ -1,0 +1,167 @@
+﻿@keyframes slideLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes Slick-ImageOut {
+    from {
+        opacity: 0.5;
+        transform: scale(1.0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes Slick-ImageIn {
+    from {
+        opacity: 0.5;
+        transform: scale(1.02);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.0);
+    }
+}
+
+@keyframes Slick-FastSwipeIn {
+    0% {
+        transform: rotate3d(0,1,0,150deg) scale(0) perspective(400px);
+    }
+
+    100% {
+        transform: rotate3d(0,1,0,0deg) scale(1) perspective(400px);
+    }
+}
+
+@keyframes zoom {
+    0% {
+        width: auto;
+        height: 80px;
+    }
+
+    25% {
+        width: auto;
+        height: 90px;
+    }
+
+    50% {
+        width: auto;
+        height: 100px;
+    }
+
+    75% {
+        width: auto;
+        height: 110px;
+    }
+
+    100% {
+        width: auto;
+        height: 120px;
+    }
+}
+
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* สร้างอนิเมชั่นการหมุน */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shimmer {
+    to {
+        background-position-x: -200%;
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    50% {
+        transform: translateX(6px);
+    }
+
+    75% {
+        transform: translateX(-6px);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes highlightUpdate {
+    0% {
+        background-color: #f8f9fa;
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}

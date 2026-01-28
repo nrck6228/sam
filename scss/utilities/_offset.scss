@@ -1,0 +1,21 @@
+﻿@use "../abstracts/variables" as vars;
+
+@mixin generate-offset($suffix: "") {
+    @for $i from 1 through 11 {
+        .offset#{$suffix}-#{$i} {
+            margin-left: #{percentage($i / 12)};
+        }
+    }
+}
+
+@mixin render-offsets() {
+    @include generate-offset(); // base
+
+    @each $bp, $val in vars.$breakpoints {
+        @if $val != null {
+            @media (min-width: #{$val}) {
+                @include generate-offset("-#{$bp}");
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+﻿@use "../abstracts/variables" as vars;
+
+@mixin generate-border-utilities() {
+    @each $color-name, $color-map in vars.$colors {
+        // ดึงค่า base จาก map
+        $color-value: map-get($color-map, base);
+
+        @each $short, $long in vars.$border-sides {
+            .border-#{$short}-#{$color-name} {
+                border-#{$long}: 1px solid #{$color-value} !important;
+            }
+        }
+    }
+    // Optional: Generic border-radius utility
+    .border-radius {
+        border-radius: 0.5rem !important;
+    }
+}
+
+@include generate-border-utilities();
+
+@mixin generate-hr-color-utilities() {
+    @each $color-name, $color-map in vars.$colors {
+        $color-value: map-get($color-map, base);
+
+        .hr-#{$color-name} {
+            border-top: 1px solid #{$color-value};
+        }
+    }
+}
+
+@include generate-hr-color-utilities();

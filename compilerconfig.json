@@ -1,0 +1,16 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/main.css",
+    "inputFile": "scss/main.scss",
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFile": "wwwroot/css/vendor.css",
+    "inputFile": "scss/vendor.scss",
+    "minify": {
+      "enabled": true
+    }
+  }
+]

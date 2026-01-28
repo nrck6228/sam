@@ -1,0 +1,247 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+/* Block: Footer */
+.footer {
+    width: 100%;
+
+    &__container {
+        display: flex;
+        height: 100vh;
+    }
+    /* Section (Elements) */
+    &__section {
+        /* ใช้ flex: 1 เพื่อให้ทั้งสองฝั่งแบ่งพื้นที่ที่เหลือเท่ากันเสมอ */
+        flex: 1;
+        /* หรือใช้ flex: 0 0 50%; เพื่อล็อคไว้ที่ 50% เป๊ะๆ */
+
+        min-width: 0; /* ป้องกันเนื้อหาข้างใน (เช่น text ยาวๆ) ดันจน Flex พัง */
+        display: flex;
+        flex-direction: column;
+
+        &--left {
+            padding: 3rem;
+            background-color: #F9F9F9;
+            justify-content: flex-start;
+        }
+
+        &--right {
+            position: relative;
+            justify-content: flex-end; /* ให้เนื้อหาไปกองด้านล่าง */
+            padding: 0; /* เคลียร์ padding เพื่อให้แถบสีชมพูชิดขอบ */
+        }
+    }
+    /* Left Side Elements */
+    &__actions {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 5rem;
+    }
+
+    &__contact {
+        margin-bottom: 5rem;
+
+        &-label {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+
+        &-phone {
+            font-size: 6rem;
+            line-height: 6rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--black);
+        }
+    }
+    /*&__phone {
+        font-size: 6rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--black);
+    }*/
+
+    &__socials {
+        display: flex;
+        gap: 15px;
+        margin-bottom: auto; /* ดันโลโก้ลงไปข้างล่างสุด */
+    }
+
+    &__social-link {
+        font-size: 2rem;
+        color: var(--black);
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &__logo {
+        /*max-width: 400px;*/
+
+        &-img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__banner {
+        width: 100%;
+        height: 100%;
+
+        &-img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    /* Right Side Elements */
+    &__apps-box {
+        /* กล่องกระจกเบลอๆ ตรงกลางรูป */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, var(--opacity-soft));
+        backdrop-filter: blur(10px);
+        width: max-content;
+        padding: 6rem;
+        border-radius: var(--radius-sm);
+        text-align: center;
+        color: white;
+    }
+
+    &__app-label {
+        font-size: 1.5rem;
+        color: var(--white);
+    }
+
+    &__app-link {
+        display: inline-block;
+        margin: 0 8px;
+    }
+
+    &__nav {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: var(--color-accent-pink);
+        padding: 1.5rem;
+        width: 100%;
+        color: var(--white);
+        text-align: right;
+    }
+
+    &__nav-group {
+        margin-bottom: 10px;
+    }
+
+    &__nav-link {
+        color: inherit;
+        text-decoration: none;
+        font-size: 1rem;
+        margin-left: 15px;
+        border-right: 1px solid rgba(255, 255, 255, 0.5);
+        padding-right: 15px;
+
+        &:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+    }
+
+    &__copyright {
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) { /* สำหรับ Tablet และ Mobile */
+
+    .footer {
+        &__container {
+            flex-direction: column; /* เปลี่ยนจากแถวเป็นคอลัมน์ */
+        }
+
+        &__section {
+            padding: 40px 20px; /* ลด Padding ลงเพื่อให้เข้ากับหน้าจอมือถือ */
+
+            &--left {
+                order: 1; /* กำหนดลำดับการแสดงผล */
+            }
+
+            &--right {
+                order: 2;
+            }
+        }
+        /* ปรับขนาดตัวเลขสายด่วนให้เล็กลงเล็กน้อย */
+        &__phone {
+            font-size: 2.8rem;
+        }
+        /* ปรับกล่อง App Store ให้เล็กลงและพอดีหน้าจอ */
+        &__apps-box {
+            padding: 20px;
+        }
+        /* ปรับแถบเมนูสีชมพูด้านล่าง */
+        &__nav {
+            position: relative;
+            text-align: center; /* เปลี่ยนเป็นกึ่งกลางเพื่อให้กดง่ายบนมือถือ */
+            padding: 20px;
+        }
+
+        &__nav-link {
+            display: inline-block;
+            margin: 5px 10px;
+            border-right: none; /* เอาเส้นคั่นออกเพื่อให้เรียงตัวแบบไหล (Flow) */
+            padding-right: 0;
+        }
+    }
+
+    /* ปรับปุ่มให้ยืดเต็มความกว้างในกรณีที่ต้องการ (Optional) */
+    .footer__actions {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* สำหรับมือถือขนาดเล็กมาก */
+@media (max-width: 576px) {
+    .footer__phone {
+        font-size: 2.2rem;
+    }
+
+    .footer__logo {
+        max-width: 100%; /* โลโก้ SAM ปรับตามความกว้างจอ */
+    }
+}
+
+.consent--container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    background-color: #ebf8fd;
+    z-index: 19;
+
+    .consent__text {
+        color: black;
+        font-weight: 300;
+        font-size: 1rem;
+        line-height: 1.5rem;
+
+        a {
+            color: vars.$blue;
+            text-decoration: none;
+            transition: all 0.4s ease-in-out 0s;
+
+            &:hover {
+                color: vars.$space-blue;
+            }
+        }
+    }
+}

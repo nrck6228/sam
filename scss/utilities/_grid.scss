@@ -1,0 +1,115 @@
+﻿@use "../abstracts/variables" as vars;
+
+@mixin generate-grid-system($max-cols: 12) {
+    // Base .row
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        // margin-left: -#{vars.$gutter};
+        // margin-right: -#{vars.$gutter};
+    }
+    // .no-gutters
+    .no-gutters {
+        margin-left: 0;
+        margin-right: 0;
+
+        > .col,
+        > [class*="col-"] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    // Loop through breakpoints
+    @each $breakpoint, $min-width in vars.$breakpoints {
+        $infix: if($breakpoint == null, "", "-#{$breakpoint}");
+
+        @if $min-width != null {
+            @media (min-width: #{$min-width}) {
+                @include generate-grid-utilities($infix, $max-cols);
+            }
+        }
+        @else {
+            @include generate-grid-utilities($infix, $max-cols);
+        }
+    }
+}
+
+// Sub mixin สำหรับสร้าง utility ทั้งหมดของ col, offset, order, row-cols
+@mixin generate-grid-utilities($infix, $max-cols) {
+    // .col
+    .col#{$infix} {
+        flex-grow: 1;
+        flex-basis: 0;
+        max-width: 100%;
+    }
+    // .col-auto
+    .col#{$infix}-auto {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
+    }
+    // .col-{n}
+    @for $i from 1 through $max-cols {
+        $percent: percentage($i / $max-cols);
+
+        .col#{$infix}-#{$i} {
+            flex: 0 0 $percent;
+            max-width: $percent;
+        }
+    }
+    // .offset-{n}
+    @for $i from 1 through ($max-cols - 1) {
+        $percent: percentage($i / $max-cols);
+
+        .offset#{$infix}-#{$i} {
+            margin-left: $percent;
+        }
+    }
+    // .order-{n}
+    @for $i from 0 through $max-cols {
+        .order#{$infix}-#{$i} {
+            order: $i;
+        }
+    }
+    // .order-first / .order-last
+    .order#{$infix}-first {
+        order: -1;
+    }
+
+    .order#{$infix}-last {
+        order: 999;
+    }
+    // .row-cols-{n}
+    @for $i from 1 through $max-cols {
+        $percent: percentage(1 / $i);
+
+        .row-cols#{$infix}-#{$i} > * {
+            flex: 0 0 $percent;
+            max-width: $percent;
+        }
+    }
+    // Column padding (col spacing)
+    @for $i from 1 through $max-cols {
+        .col#{$infix}-#{$i} {
+            position: relative;
+            width: 100%;
+            // padding-left: vars.$gutter;
+            // padding-right: vars.$gutter;
+        }
+    }
+
+    .col#{$infix},
+    .col#{$infix}-auto {
+        position: relative;
+        width: 100%;
+        // padding-left: vars.$gutter;
+        // padding-right: vars.$gutter;
+    }
+}
+
+// Generate grid system for 12 columns
+@include generate-grid-system(12);
+
+[v-cloak] {
+    display: none
+}

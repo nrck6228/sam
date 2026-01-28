@@ -1,0 +1,54 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+.auth--returns {
+    min-height: calc(100vh - 127px);
+    margin-bottom: 0;
+}
+
+.track-lookup {
+    width: 100%;
+    min-height: 450px;
+    padding: 2.5rem;
+    border-radius: 4px;
+    border: 1px solid #000;
+    background-color: #fff;
+
+    &__title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        /*letter-spacing: 2px;*/
+        margin-bottom: 5px;
+    }
+
+    &__subtitle {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+    /* Input สไตล์ Minimal */
+    .custom-input {
+        border: none;
+        border-bottom: 1px solid #ddd; /* เส้นพื้นหลังสีเทาอ่อน */
+        border-radius: 0;
+        padding: 12px 0;
+        background: transparent;
+        transition: all 0.3s ease;
+        width: 100%;
+
+        &::placeholder {
+            color: #aaa;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            background: transparent;
+        }
+    }
+}

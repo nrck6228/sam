@@ -1,0 +1,32 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as fn;
+
+@if vars.$enable-container-classes {
+    .container,
+    .container-fluid {
+        @include make-container();
+    }
+
+    @each $breakpoint, $container-max-width in vars.$container-max-widths {
+        .container-#{$breakpoint} {
+            @extend .container-fluid;
+        }
+
+        @include media-breakpoint-up($breakpoint) {
+            $extend-breakpoint: true;
+
+            @each $name, $width in vars.$breakpoints {
+                @if ($extend-breakpoint) {
+                    .container#{fn.breakpoint-infix($name, vars.$breakpoints)} {
+                        max-width: $container-max-width;
+                    }
+
+                    @if ($breakpoint == $name) {
+                        $extend-breakpoint: false;
+                    }
+                }
+            }
+        }
+    }
+}

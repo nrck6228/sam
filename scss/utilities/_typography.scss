@@ -1,0 +1,52 @@
+﻿@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mixin;
+
+// Headings (h1–h6)
+@each $name, $sizes in vars.$font-sizes-heading {
+  $lh: map-get(vars.$line-heights, $name);
+  @include mixin.generate-typography(
+    $name,
+    $sizes,
+    $lh,
+    vars.$font-family,
+    700,
+    vars.$breakpoints,
+    max
+  );
+}
+
+// Display styles
+@each $name, $sizes in vars.$font-sizes-display {
+  $lh: map-get(vars.$line-heights, $name);
+  @include mixin.generate-typography(
+    $name,
+    $sizes,
+    $lh,
+    vars.$font-family,
+    700,
+    vars.$breakpoints,
+    max
+  );
+}
+
+// Text utilities (.text-body, .text-lead, ...)
+@each $name, $sizes in vars.$font-sizes-text {
+  $lh: map-get(vars.$line-heights, $name);
+  @include mixin.generate-typography(
+    'text-#{$name}',
+    $sizes,
+    $lh,
+    vars.$font-family,
+    400,
+    vars.$breakpoints,
+    max
+  );
+}
+
+.font-weight-bold {
+    font-weight: 700 !important;
+}
+
+.font-weight-normal{
+    font-weight: 400 !important;
+}

@@ -1,0 +1,59 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;/* เอฟเฟกต์แสงวิ่งผ่าน */
+
+.section--news {
+    display: block;
+}
+
+.section--news-detail {
+    padding-top: 50px;
+    padding-bottom: 80px;
+}
+
+.news--detail {
+    display: block;
+
+    &__title {
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        color: black;
+    }
+
+    &__date {
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 1.5rem;
+        color: vars.$gray;
+    }
+
+    &__share {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+
+        .share-btn {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #eee;
+            border-radius: 50%;
+            color: #000;
+            transition: all 0.3s;
+
+            &:hover {
+                background: #000;
+                color: #fff;
+            }
+        }
+    }
+
+    &__content {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}

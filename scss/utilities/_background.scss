@@ -1,0 +1,48 @@
+﻿@use "../abstracts/variables" as vars;
+
+@mixin generate-background-color-utilities() {
+    @each $name, $shades in vars.$colors {
+        // Base
+        @if map-has-key($shades, base) {
+            .bg-#{$name} {
+                background-color: map-get($shades, base) !important;
+            }
+        }
+        // shades color 10, 20, ...
+        @each $shade, $value in $shades {
+            @if $shade != base {
+                .bg-#{$name}-#{$shade} {
+                    background-color: $value !important;
+                }
+            }
+        }
+    }
+}
+
+@include generate-background-color-utilities();
+
+.bg-fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat
+}
+
+.bg-attachment-fixed {
+    background-attachment: fixed;
+    background-size: cover
+}
+
+.bg-overlay-black {
+    background: rgba(0,0,0,var(--opacity-medium));
+}
+
+.bg-overlay-black-blur {
+    background: rgba(0,0,0,var(--opacity-medium));
+    backdrop-filter: blur(var(--blur-intensity));
+    -webkit-backdrop-filter: blur(var(--blur-intensity)); /* รองรับ Safari */
+}

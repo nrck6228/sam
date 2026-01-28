@@ -1,0 +1,28 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+.dropdown {
+    .dropdown-menu {
+        width: 100%;
+    }
+}
+
+.dropdown-menu {
+    /*max-height: 30rem;
+    overflow-y: auto;*/
+
+    .dropdown-item {
+        padding: 0.5rem 1rem;
+        white-space: normal;
+
+        &:active {
+            color: black;
+            background-color: transparent;
+        }
+    }
+}
+
+.btn--dropdown + .dropdown-menu {
+    max-height: 30rem;
+    overflow-y: auto;
+}

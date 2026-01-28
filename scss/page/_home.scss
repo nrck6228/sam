@@ -1,0 +1,13 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+.features {
+    padding: 3.5rem 0;
+    background-color: rgba(245, 245, 245, 1);
+}
+
+.brands {
+    padding: 3.5rem 0;
+    background-color: #f5f5f5;
+    mask-image: linear-gradient( to right, transparent 0%, white 5%, white 95%, transparent 100% );
+}

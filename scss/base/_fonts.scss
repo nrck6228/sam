@@ -1,0 +1,19 @@
+﻿@use '../abstracts/variables' as vars;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: vars.$font-family;
+    font-size: vars.$font-size-base;
+    line-height: vars.$line-height-base;
+    color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: black;
+}

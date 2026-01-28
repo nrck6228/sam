@@ -1,0 +1,353 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+//Hero Slide
+.hero--slide {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    padding: 0;
+    margin: 0 auto;
+    overflow: hidden;
+
+    &__picture {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .3s ease-in-out;
+    }
+
+    &__text-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        pointer-events: none;
+
+        @include media.media-up(md) {
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+    }
+
+    &__text {
+        position: relative;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 57.6rem;
+        word-wrap: break-word;
+
+        &-heading {
+            margin-bottom: 0;
+            font-weight: 700;
+            font-size: 2rem;
+            line-height: 2rem;
+            color: white;
+        }
+
+        &-button {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 45rem;
+            margin-top: 1rem;
+            word-break: break-word;
+
+            a {
+                display: block;
+                pointer-events: auto;
+            }
+        }
+
+        @include media.media-down(sm) {
+            margin-bottom: 60px;
+        }
+    }
+
+    &__pagination {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+        width: auto !important;
+
+        .swiper-pagination-bullet {
+            position: relative;
+            width: 22px;
+            height: 3px;
+            border-radius: 0;
+            background-color: white;
+            transition: all .2s ease-in-out;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: rgba(black, .35);
+        }
+    }
+}
+
+.hero--slide__controls {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 10;
+    pointer-events: none; /* กันไม่ให้บัง swipe */
+
+    @include media.media-up(md) {
+        left: auto;
+        right: 15px;
+    }
+}
+
+/* enable click */
+.hero--slide__controls > * {
+    pointer-events: auto;
+}
+
+/* arrows */
+.hero--slide__arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: 0;
+    background: rgba(black, 0.6);
+    cursor: pointer;
+    position: relative;
+
+    &:hover{
+        background-color: black;
+    }
+}
+
+.hero--slide__arrow::before {
+    display: none;
+}
+
+.hero--slide__prev svg {
+    transform: rotate(-180deg);
+}
+
+//Brands Slide
+.brands--slide {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
+    overflow: hidden;
+
+    &__pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        margin-top: 1rem;
+
+        .swiper-pagination-bullet {
+            position: relative;
+            width: 12px;
+            height: 12px;
+            border-radius: 6px;
+            background-color: black;
+            transition: all .2s ease-in-out;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 60px;
+        }
+    }
+}
+
+//Arrivals Slide
+.arrivals--slide {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
+    overflow: hidden;
+
+    &__pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        margin-top: 1rem;
+
+        .swiper-pagination-bullet {
+            position: relative;
+            width: 12px;
+            height: 12px;
+            border-radius: 6px;
+            background-color: black;
+            transition: all .2s ease-in-out;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 60px;
+        }
+    }
+
+    .drag-cursor {
+        /*position: fixed;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(20px);
+        pointer-events: none;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+        transition: opacity .15s ease, transform .15s ease;
+        z-index: 9999;*/
+
+        position: fixed; /* ต้องเป็น fixed เพื่อให้อ้างอิงตามหน้าจอ */
+        top: 0; /* เซ็ตตำแหน่งเริ่มต้นไว้ที่มุมบนซ้าย */
+        left: 0;
+        pointer-events: none; /* สำคัญ: เพื่อไม่ให้ไอคอนบังการคลิกของเมาส์ */
+        z-index: 9999;
+        display: none; /* ซ่อนไว้ก่อน */
+        /* สไตล์อื่นๆ ของคุณ (เช่น ขนาด, สี, พื้นหลัง) */
+        width: 80px;
+        height: 80px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+    }
+    /* hover หรือ drag */
+    .drag-cursor.is-visible {
+        /*opacity: 1;*/
+        display: flex; /* หรือ block ตามที่ออกแบบไว้ */
+        align-items: center;
+        justify-content: center;
+    }
+    /* ตอนลาก เพิ่มความรู้สึกจับ */
+    .drag-cursor.is-dragging {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    /* ปิดบน touch */
+    @media (hover: none) {
+        .drag-cursor {
+            display: none;
+        }
+    }
+}
+
+//Product Slide
+.product--slide {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
+    overflow: hidden;
+
+    &__picture {
+        /*position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;*/
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .3s ease-in-out;
+    }
+}
+
+//Product Thumbnail Slide
+.product--thumbnail {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0 32px !important;
+    margin: 20px auto auto;
+    overflow: hidden;
+
+    &__picture {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .3s ease-in-out;
+    }
+
+    .swiper-slide {
+        width: calc((100% - (6 * 10px)) / 7) !important;
+    }
+}
+
+.product--thumbnail__controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    z-index: 10;
+    pointer-events: none; /* กันไม่ให้บัง swipe */
+}
+
+/* enable click */
+.product--thumbnail__controls > * {
+    pointer-events: auto;
+}
+
+/* arrows */
+.product--thumbnail__arrow {
+    width: 24px;
+    height: 100%;
+    /*border-radius: 4px;*/
+    font-size: 1.5rem;
+    color: rgba(133, 133, 133, 1);
+    border: 0;
+    background-color: rgba(245, 245, 245, 1);
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+        color: black;
+        background-color: rgba(245, 245, 245, 1);
+    }
+}
+
+.product--thumbnail__arrow::before {
+    display: none;
+}
+

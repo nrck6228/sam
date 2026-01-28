@@ -1,0 +1,104 @@
+@use "../abstracts/variables" as vars;
+
+$properties: (
+  m: margin,
+  mt: margin-top,
+  mb: margin-bottom,
+  ml: margin-left,
+  mr: margin-right,
+  mx: (margin-left, margin-right),
+  my: (margin-top, margin-bottom),
+  p: padding,
+  pt: padding-top,
+  pb: padding-bottom,
+  pl: padding-left,
+  pr: padding-right,
+  px: (padding-left, padding-right),
+  py: (padding-top, padding-bottom)
+);
+
+@mixin generate-utilities($suffix) {
+    // === Positive Margin Utilities ===
+    @include render-grouped-spacing("m", $suffix, false);
+    // === Positive Padding Utilities ===
+    @include render-grouped-spacing("p", $suffix, false);
+    // === Auto (margin)
+    @each $abbr, $props in $properties {
+        @if str-index($abbr, "m") == 1 {
+            $class: ".#{$abbr}#{$suffix}-auto";
+
+            #{$class} {
+                @if type-of($props) == "list" {
+                    @each $prop in $props {
+                        #{$prop}: auto !important;
+                    }
+                }
+                @else {
+                    #{$props}: auto !important;
+                }
+            }
+        }
+    }
+    // === Negative Margin Utilities ===
+    @include render-grouped-spacing("m", $suffix, true);
+
+    // === Print-specific overrides for padding-top/bottom ===
+    @media print {
+        [class*="pt#{$suffix}-"],
+        [class*="pb#{$suffix}-"],
+        [class*="py#{$suffix}-"] {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+    }
+}
+
+@mixin render-grouped-spacing($group-prefix, $suffix, $is-negative) {
+    @each $key, $space in vars.$spacers {
+        // except .m-n0
+        @if $is-negative and $key == 0 {
+            // except .m-n0
+        }
+        // except .m-n0
+        @else {
+            $value: if($is-negative, -$space, $space);
+            @include render-spacing($key, $value, $suffix, $is-negative, $group-prefix);
+        }
+    }
+}
+
+@mixin render-spacing($key, $value, $suffix, $is-negative, $group) {
+    $selector-map: ();
+
+    @each $abbr, $props in $properties {
+        @if str-index($abbr, $group) == 1 {
+            $class-name: if($is-negative, "#{$abbr}#{$suffix}-n#{$key}", "#{$abbr}#{$suffix}-#{$key}");
+
+            @each $prop in (if(type-of($props) == "list", $props, ($props))) {
+                $selectors: map-get($selector-map, $prop);
+                $selectors: if($selectors == null, (), $selectors);
+                $selectors: append($selectors, ".#{$class-name}", comma);
+                $selector-map: map-merge($selector-map, ($prop: $selectors));
+            }
+        }
+    }
+    // Render all grouped selectors
+    @each $prop, $selectors in $selector-map {
+        #{join($selectors, ", ")} {
+            #{$prop}: $value !important;
+        }
+    }
+}
+
+// Default (no suffix)
+@include generate-utilities("");
+
+// Responsive (with suffix)
+@each $breakpoint, $bp-width in vars.$breakpoints {
+    @if $breakpoint != null and $bp-width != null {
+        @media (min-width: #{$bp-width}) {
+            $suffix: "-#{$breakpoint}";
+            @include generate-utilities($suffix);
+        }
+    }
+}

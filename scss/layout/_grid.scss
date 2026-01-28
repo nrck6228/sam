@@ -1,0 +1,96 @@
+@use "../abstracts/variables" as vars;
+
+/* ====== Core Grid Classes ====== */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -#{vars.$gutter};
+  margin-left: -#{vars.$gutter};
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.col {
+  position: relative;
+  width: 100%;
+  padding-right: vars.$gutter;
+  padding-left: vars.$gutter;
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+/* ====== Utility Mixins ====== */
+@mixin generate-grid($suffix: "") {
+  // .col-{n}
+  @for $i from 1 through 12 {
+    .col#{$suffix}-#{$i} {
+      flex: 0 0 #{percentage($i / 12)};
+      max-width: #{percentage($i / 12)};
+    }
+
+    .offset#{$suffix}-#{$i} {
+      margin-left: #{percentage($i / 12)};
+    }
+  }
+
+  // .col-auto
+  .col#{$suffix}-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  // .col (full width auto grow)
+  .col#{$suffix} {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+  // .order-{n}
+  @for $i from 0 through 12 {
+    .order#{$suffix}-#{$i} {
+      order: $i;
+    }
+  }
+
+  .order#{$suffix}-first {
+    order: -1;
+  }
+
+  .order#{$suffix}-last {
+    order: 9999;
+  }
+}
+
+@mixin generate-row-cols($suffix: "") {
+  @for $i from 1 through 6 {
+    .row-cols#{$suffix}-#{$i} > * {
+      flex: 0 0 #{percentage(1 / $i)};
+      max-width: #{percentage(1 / $i)};
+    }
+  }
+}
+
+/* ====== Generate Grid Classes by Breakpoint ====== */
+@include generate-grid(); // base
+@include generate-row-cols();
+
+@each $breakpoint, $value in vars.$breakpoints {
+  @if $value != null {
+    @media (min-width: #{$value}) {
+      @include generate-grid("-#{$breakpoint}");
+      @include generate-row-cols("-#{$breakpoint}");
+    }
+  }
+}

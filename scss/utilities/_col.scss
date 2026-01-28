@@ -1,0 +1,34 @@
+﻿@use "../abstracts/variables" as vars;
+
+$all-cols: ();
+
+@mixin generate-cols($suffix: "") {
+    // Generate .col-{n}
+    @for $i from 1 through 12 {
+        $cls: ".col#{$suffix}-#{$i}";
+        $all-cols: append($all-cols, $cls, comma);
+
+        #{$cls} {
+            flex: 0 0 #{percentage($i / 12)};
+            max-width: #{percentage($i / 12)};
+        }
+    }
+    // .col-{breakpoint}-auto
+    $auto: ".col#{$suffix}-auto";
+    $all-cols: append($all-cols, $auto, comma);
+
+    #{$auto} {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
+    }
+    // .col-{breakpoint}
+    $base: ".col#{$suffix}";
+    $all-cols: append($all-cols, $base, comma);
+
+    #{$base} {
+        flex-grow: 1;
+        flex-basis: 0;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,25 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+.contact, .contact-form {
+    position: relative;
+}
+
+.contact-form {
+    .contact-direct {
+        .info-label {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1rem;
+            color: black;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 0.875rem;
+            color: black;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+    }
+}

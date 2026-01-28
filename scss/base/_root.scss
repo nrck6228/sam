@@ -1,0 +1,75 @@
+﻿@use '../abstracts/variables' as vars;
+
+
+:root {
+    /* --- PRIMARY GREEN --- */
+    --color-primary-dark: #286140; /* เขียวเข้ม */
+    --color-primary: #429f69; /* เขียวสด */
+    /* --- ACCENT PINK --- */
+    --color-accent-pink: #df9faa; /* ชมพูหลัก */
+    --color-accent-pink-light: #f3dce0; /* ชมพูอ่อน */
+    /* --- ACCENT YELLOW --- */
+    --color-accent-yellow: #fce780; /* เหลืองทอง */
+    --color-accent-yellow-light: #fef9e3; /* เหลืองอ่อน */
+    /* --- NATURE GREEN --- */
+    --color-nature-green: #adbf8f; /* เขียวขี้ม้า */
+    --color-nature-green-light: #e5ebdc; /* เขียวอ่อนพาสเทล */
+    /* --- NEUTRALS --- */
+    --color-neutral-cool: #ebebeb; /* เทาอมฟ้า */
+    --color-neutral-base: #f8f8f8; /* เทาอ่อนมาก */
+    /* --- GRAY --- */
+    --color-accent-gray: #c2c2c2; /* เทาอมฟ้า */
+    --color-neutral-gray-light: #ececec; /* เทาอ่อนมาก */
+    /* --- BASIC COLOR --- */
+    --white: #ffffff;
+    --black: #000000;
+    /* --- GRADIENTS --- */
+    --grad-green: linear-gradient(120deg, var(--color-primary-dark), var(--color-primary), var(--color-primary), var(--color-primary-dark) );
+    --grad-pink: linear-gradient(120deg, var(--color-accent-pink), var(--color-accent-pink-light), var(--color-accent-pink-light), var(--color-accent-pink) );
+    --grad-yellow: linear-gradient(120deg, var(--color-accent-yellow), var(--color-accent-yellow-light), var(--color-accent-yellow-light), var(--color-accent-yellow) );
+    --grad-nature: linear-gradient(120deg, var(--color-nature-green), var(--color-nature-green-light), var(--color-nature-green-light), var(--color-nature-green) );
+    --grad-gray: linear-gradient(120deg, var(--color-accent-gray), var(--color-neutral-gray-light), var(--color-neutral-gray-light), var(--color-accent-gray) );
+    /* --- SHADOWS --- */
+    --shadow-sm: 0 3px 10px rgba(0, 0, 0, .2);
+    --shadow-md: 0 3px 10px rgba(0, 0, 0, .8);
+    /* --- OPACITY --- */
+    --opacity-soft: 0.24;
+    --opacity-medium: 0.48;
+    --opacity-heavy: 0.80;
+    /* --- BLUR --- */
+    --blur-intensity: 16px;
+    /* --- BORDER RADIUS --- */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 50%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: vars.$font-family;
+    font-size: vars.$font-size-base;
+    line-height: vars.$line-height-base;
+    color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: black;
+}
+
+a, a:hover {
+    text-decoration: none;
+}

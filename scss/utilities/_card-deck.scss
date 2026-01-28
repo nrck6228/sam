@@ -1,0 +1,50 @@
+﻿@use '../abstracts/variables' as vars;
+@use '../abstracts/functions' as fn;
+
+.card {
+    position: relative;
+    border: 0;
+    border-radius: 0;
+}
+
+.card, .card__figure {
+    overflow: hidden;
+}
+
+.card .card__zoom-in {
+    overflow: hidden;
+    transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
+}
+
+.card:hover .card__zoom-in {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+}
+
+@each $bp-name, $bp-value in vars.$breakpoints {
+    @if $bp-value != null {
+        @media (min-width: #{$bp-value}) {
+            @each $count in vars.$card-counts {
+                .#{"#{vars.$card-deck-prefix}-#{$bp-name}-#{$count}"} {
+                    display: grid;
+                    grid-template-columns: repeat(#{$count}, 1fr);
+                    gap: 30px;
+                }
+            }
+        }
+    }
+    @else {
+        // $bp-name = null
+        @each $count in vars.$card-counts {
+            .#{"#{vars.$card-deck-prefix}-#{$count}"} {
+                display: grid;
+                grid-template-columns: repeat(#{$count}, 1fr);
+                gap: 30px;
+            }
+        }
+    }
+}
+
+.card-deck .card {
+    margin-bottom: 45px;
+}

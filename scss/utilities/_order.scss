@@ -1,0 +1,29 @@
+﻿@use "../abstracts/variables" as vars;
+
+@mixin generate-orders($suffix: "") {
+    @for $i from 0 through 12 {
+        .order#{$suffix}-#{$i} {
+            order: $i;
+        }
+    }
+
+    .order#{$suffix}-first {
+        order: -1;
+    }
+
+    .order#{$suffix}-last {
+        order: 9999;
+    }
+}
+
+@mixin render-orders() {
+    @include generate-orders(); // base
+
+    @each $bp, $val in vars.$breakpoints {
+        @if $val != null {
+            @media (min-width: #{$val}) {
+                @include generate-orders("-#{$bp}");
+            }
+        }
+    }
+}

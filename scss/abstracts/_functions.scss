@@ -1,0 +1,30 @@
+@use 'variables' as vars;
+
+@function px-to-rem($px) {
+    @return #{$px / 16}rem;
+}
+
+@function contrast-color($color) {
+  @if (lightness($color) > 60) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}
+
+// Function to generate a breakpoint infix for responsive utilities
+@function breakpoint-infix($breakpoint, $breakpoints) {
+    $first: nth(map-keys($breakpoints), 1);
+
+    @if $breakpoint == $first {
+        @return "";
+    }
+
+    @return "-#{$breakpoint}";
+}
+
+// Function to calculate the width of a card based on the number of columns
+@function card-width($cols) {
+    $percent: 100% / $cols;
+    @return calc(#{$percent} - #{vars.$card-gap});
+}

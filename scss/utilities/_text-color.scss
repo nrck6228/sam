@@ -1,0 +1,23 @@
+﻿@use "../abstracts/variables" as vars;
+
+@mixin generate-text-color-utilities() {
+    @each $name, $shades in vars.$colors {
+        // Base
+        @if map-has-key($shades, base) {
+            .text-#{$name} {
+                color: map-get($shades, base) !important;
+            }
+        }
+        // shades color 10, 20, ...
+        @each $shade, $value in $shades {
+            @if $shade != base {
+                .text-#{$name}-#{$shade} {
+                    color: $value !important;
+                }
+            }
+        }
+    }
+}
+
+// Generate text color utilities
+@include generate-text-color-utilities();
