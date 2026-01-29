@@ -23,6 +23,9 @@
     /* --- BASIC COLOR --- */
     --white: #ffffff;
     --black: #000000;
+    /* --- TEXT COLOR --- */
+    --text-main: #363636;
+    --text-muted: #656565;
     /* --- GRADIENTS --- */
     --grad-green: linear-gradient(120deg, var(--color-primary-dark), var(--color-primary), var(--color-primary), var(--color-primary-dark) );
     --grad-pink: linear-gradient(120deg, var(--color-accent-pink), var(--color-accent-pink-light), var(--color-accent-pink-light), var(--color-accent-pink) );

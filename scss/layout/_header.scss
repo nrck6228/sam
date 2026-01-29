@@ -141,7 +141,7 @@
                 display: flex;
                 align-items: center;
                 height: 60px;
-                padding: 8px 12px;
+                padding: 0.5rem 1rem;
                 text-decoration: none;
                 color: var(--white);
             }
@@ -231,19 +231,19 @@
         &__wrapper {
             display: flex;
             max-width: 1200px;
-            padding: 1.5rem;
+            padding: 1rem;
             margin: 0 auto;
         }
 
         &__sidebar {
             width: 300px;
-            padding-right: 1.5rem;
+            padding-right: 1rem;
             border-right: 1px solid rgba(255, 255, 255, 1);
         }
 
         &__main {
             flex: 1;
-            padding-left: 1.5rem;
+            padding-left: 1rem;
             position: relative;
             will-change: transform; /* บอก Browser ให้เตรียมพร้อมสำหรับ Animation */
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);

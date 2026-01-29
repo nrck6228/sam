@@ -1,13 +1,593 @@
 ﻿@use "../abstracts/variables" as vars;
 @use "../abstracts/mixins" as media;
 
-.features {
-    padding: 3.5rem 0;
-    background-color: rgba(245, 245, 245, 1);
+.home-search {
+    position: relative;
+
+    .scroll-animation {
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+        bottom: 0;
+        z-index: 2;
+        padding: 10px 10px 110px;
+        color: #fff;
+        line-height: 1;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-decoration: none;
+        writing-mode: vertical-lr;
+        transition: 0.2s;
+        overflow: hidden;
+
+        &:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            height: 100px;
+            background: #fff;
+            height: 30px;
+            animation: scroll 1.5s ease infinite;
+        }
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateY(-70px);
+        }
+
+        50%, 100% {
+            transform: translateY(30px);
+        }
+    }
 }
 
-.brands {
-    padding: 3.5rem 0;
-    background-color: #f5f5f5;
-    mask-image: linear-gradient( to right, transparent 0%, white 5%, white 95%, transparent 100% );
+.search-panel {
+    position: absolute;
+    left: 50%;
+    bottom: 142px;
+    width: 900px;
+    transform: translateX(-50%);
+    z-index: 9;
+
+    &__tabs.nav-pills {
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    /* Override nav-link ภายในโครงการเราเท่านั้น */
+    &__tab-link.nav-link {
+        color: var(--white);
+        border-radius: 0.5rem;
+        backdrop-filter: blur(var(--blur-intensity));
+        -webkit-backdrop-filter: blur(var(--blur-intensity));
+        background-color: rgba(0, 0, 0, var(--opacity-medium));
+
+        &.active {
+            color: var(--black);
+            background-color: var(--white); /* สีเขียว SAM */
+        }
+    }
+
+    &__content {
+        position: relative;
+        padding: 2rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        backdrop-filter: blur(var(--blur-intensity));
+        -webkit-backdrop-filter: blur(var(--blur-intensity));
+        background-color: rgba(0, 0, 0, var(--opacity-medium));
+        z-index: 1050;
+    }
+    /* Style สำหรับ Input */
+    &__input-group {
+        border-bottom: 1px solid var(--white);
+    }
+
+    &__input.form-control {
+        width: auto;
+        height: 45px;
+        color: var(--white);
+        border: 0;
+        border-radius: 0;
+        background-color: transparent;
+
+        &::placeholder {
+            color: var(--white);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    &__select-group {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--white);
+
+        &.show {
+            z-index: 1050;
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 8px !important;
+            padding: 8px;
+        }
+
+        .dropdown-item {
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+        /* หมุนไอคอน */
+        .transition-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .show .transition-icon {
+            transform: rotate(180deg);
+        }
+
+        .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+            color: var(--white);
+            box-shadow: none;
+        }
+    }
+
+    &__custom-select {
+        background: transparent;
+        border: none;
+        color: var(--white);
+        padding: 10px 0;
+        border-radius: 0;
+
+        &:active {
+            color: var(--white);
+            box-shadow: none;
+        }
+
+        &:focus, &:focus-visible {
+            color: var(--white);
+            box-shadow: none;
+        }
+
+        &:hover {
+            color: var(--white);
+            box-shadow: none;
+        }
+
+        &.show {
+            color: var(--white);
+            box-shadow: none;
+        }
+    }
+
+    &__select-icon {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /*&__select.form-select {
+        position: relative;
+        width: auto;
+        height: 45px;
+        color: var(--white);
+        border: 0;
+        border-radius: 0;
+        background-color: transparent;
+        background-image: none;
+        flex: 1 1 auto;
+        width: 1%;
+        min-width: 0;
+
+        &::placeholder {
+            color: var(--white);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }*/
+
+    &__btn {
+        min-width: 1px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+        color: var(--white);
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: var(--white);
+            outline: none;
+            box-shadow: none;
+            opacity: var(--opacity-medium);
+        }
+
+        &-slide {
+            min-width: 1px;
+            width: 45px;
+            height: 45px;
+            font-size: 1.5rem;
+            color: var(--black);
+            background-color: var(--white);
+            border-radius: 0.5rem;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, var(--opacity-medium));
+            }
+
+            &:active, &:focus, &:focus-visible {
+                background-color: var(--white);
+                outline: none;
+                box-shadow: none;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, var(--opacity-medium));
+                }
+            }
+        }
+    }
+    /* Modifier */
+    .ai-input-wrapper {
+    }
+    /* Style สำหรับ Tags */
+    &__tags {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: white;
+    }
+
+    &__tag-cloud {
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__tag {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        height: 40px;
+        padding: 0.5rem 1rem;
+        color: var(--text-main);
+        border-radius: 20px;
+        backdrop-filter: blur(var(--blur-intensity));
+        -webkit-backdrop-filter: blur(var(--blur-intensity));
+        background-color: rgba(255, 255, 255, var(--opacity-medium));
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, var(--opacity-soft));
+        }
+    }
 }
+
+.offcanvas-search {
+    backdrop-filter: blur(var(--blur-intensity));
+    -webkit-backdrop-filter: blur(var(--blur-intensity));
+    background-color: rgba(0, 0, 0, var(--opacity-medium));
+
+    &__title {
+        font-weight: 600;
+        font-size: 2rem;
+        color: var(--white);
+    }
+
+    &__close {
+        border: 0;
+        background-color: transparent;
+        font-size: 1.5rem;
+        color: var(--white);
+    }
+
+    &__input {
+        width: 100%;
+        height: 45px;
+        color: var(--white);
+        border: 0;
+        border-bottom: 1px solid var(--white);
+        border-radius: 0;
+        background-color: transparent;
+
+        &::placeholder {
+            color: var(--white);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            background-color: transparent;
+        }
+    }
+
+    &__input.form-control {
+        width: 100%;
+        height: 45px;
+        color: var(--white);
+        border: 0;
+        border-bottom: 1px solid var(--white);
+        border-radius: 0;
+        background-color: transparent;
+
+        &::placeholder {
+            color: var(--white);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    &__check-group {
+        flex: 1 1 auto;
+        display: flex;
+        grid-gap: 12px;
+        gap: 12px;
+
+        .btn {
+            width: 100%;
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 1);
+            background-color: rgba(255, 255, 255, 0);
+
+            &:hover {
+                color: var(--color-accent-pink);
+                border-color: var(--color-accent-pink);
+                background-color: rgba(255, 255, 255, 0);
+            }
+        }
+
+        .btn-check:checked + .btn {
+            background-color: var(--color-accent-pink);
+        }
+    }
+
+    &__select-group {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--white);
+
+        &.show {
+            z-index: 1050;
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 8px !important;
+            padding: 8px;
+        }
+
+        .dropdown-item {
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+        /* หมุนไอคอน */
+        .transition-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .show .transition-icon {
+            transform: rotate(180deg);
+        }
+
+        .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+            color: var(--white);
+            box-shadow: none;
+        }
+    }
+
+    &__custom-select {
+        background: transparent;
+        border: none;
+        color: var(--white);
+        padding: 10px 0;
+        border-radius: 0;
+
+        &:active {
+            color: var(--white);
+            box-shadow: none;
+        }
+
+        &:focus, &:focus-visible {
+            color: var(--white);
+            box-shadow: none;
+        }
+
+        &:hover {
+            color: var(--white);
+            box-shadow: none;
+        }
+
+        &.show {
+            color: var(--white);
+            box-shadow: none;
+        }
+    }
+
+    &__select-icon {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn--check {
+        color: var(--white);
+        border-color: rgba(255, 255, 255, 1);
+        background-color: rgba(255, 255, 255, 0);
+
+        &:hover {
+            color: var(--color-accent-pink);
+            border-color: var(--color-accent-pink);
+            background-color: rgba(255, 255, 255, 0);
+        }
+    }
+
+    .btn-check:checked + .btn--check {
+        background-color: var(--color-accent-pink);
+    }
+
+    &.offcanvas-start {
+        width: 520px;
+
+        .offcanvas-header {
+            justify-content: space-between;
+        }
+
+        .offcanvas-body {
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+
+            &::-webkit-scrollbar {
+                width: 0.5rem;
+                background-color: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: var(--white);
+                border: 2px solid var(--white);
+            }
+        }
+
+        .offcanvas-footer {
+            background-color: transparent !important;
+            padding: 20px;
+        }
+
+        .form-label {
+            color: var(--white);
+        }
+    }
+
+    .property-range-slider {
+        padding: 10px 0;
+    }
+
+    .range-slider-container {
+        position: relative;
+        width: 100%;
+        height: 5px; /* ความหนาของเส้น */
+    }
+    /* เส้นพื้นหลัง */
+    .slider-track {
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.3); /* สีขาวจางๆ แบบในรูป */
+        border-radius: 5px;
+    }
+    /* ตั้งค่าพื้นฐานสำหรับ Input Range ทั้งคู่ */
+    input[type="range"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        outline: none;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        background-color: transparent;
+        pointer-events: none; /* เพื่อให้คลิกทะลุไปตัวที่อยู่ข้างหลังได้ */
+    }
+    /* ปุ่มวงกลม (Thumb) */
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 18px;
+        width: 18px;
+        background-color: #ffffff; /* สีขาวตามรูป */
+        border-radius: 50%;
+        cursor: pointer;
+        pointer-events: auto; /* กลับมาให้รับคลิกได้เฉพาะที่ตัวปุ่ม */
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    /* สำหรับ Firefox */
+    input[type="range"]::-moz-range-thumb {
+        height: 18px;
+        width: 18px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    .input-group {
+        border-bottom: 1px solid var(--white);
+    }
+
+    .price-input {
+        color: var(--white);
+        border: 0;
+        border-bottom: 1px solid var(--white);
+        border-radius: 0;
+        background-color: transparent;
+
+        &::placeholder {
+            color: var(--white);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .input-group-text {
+        color: var(--white);
+        border: 0;
+        border-bottom: 1px solid var(--white);
+        border-radius: 0;
+        background-color: transparent;
+    }
+}
+
+/*.search-panel__select:focus + .search-panel__select-icon {
+    transform: translateY(-50%) rotate(180deg);
+}*/

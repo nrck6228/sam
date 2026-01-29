@@ -66,22 +66,7 @@
         justify-content: center;
 
         i {
-            position: absolute;
-            font-size: 1.5rem;
-            transition: all 0.4s ease-in-out;
-            transform: rotate(45deg);
-        }
-
-        .icon-1 {
-            top: -5px;
-            left: 0;
-            opacity: 1;
-        }
-
-        .icon-2 {
-            top: 20px;
-            left: -20px;
-            opacity: 0;
+            font-size: 1rem;
         }
     }
 
@@ -91,20 +76,6 @@
         background-color: transparent;
         border-color: transparent;
         box-shadow: none;
-    }
-
-    &:hover {
-        .icon-1 {
-            top: -25px;
-            left: 20px;
-            opacity: 0;
-        }
-
-        .icon-2 {
-            top: -5px;
-            left: 0;
-            opacity: 1;
-        }
     }
 }
 
@@ -119,12 +90,12 @@
 }
 
 .btn--pink {
-    color: black;
+    color: var(--white);
     background-image: var(--grad-pink);
     box-shadow: var(--shadow-sm);
 
     &:hover {
-        color: black;
+        color: var(--white);
     }
 }
 
@@ -138,6 +109,15 @@
     }
 }
 
+.btn--ai {
+    color: var(--white);
+    background-image: linear-gradient(120deg, #6366f1, #a855f7, #a855f7, #6366f1);
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+        color: var(--white);
+    }
+}
 
 
 .btn--hover {
@@ -146,12 +126,26 @@
     transition: all 0.3s ease-out;
     overflow: hidden;
 
+    .btn__icon {
+        position: relative;
+        width: 25px; /* กำหนดขนาดพื้นที่ไอคอน */
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            position: absolute;
+            font-size: 1.5rem;
+            transition: all 0.4s ease-in-out;
+            transform: rotate(45deg);
+        }
+    }
+
     &:hover {
         background-position: right center;
     }
 }
-
-
 
 .btn--white {
     background-color: white;
