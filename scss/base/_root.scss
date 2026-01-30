@@ -23,9 +23,11 @@
     /* --- BASIC COLOR --- */
     --white: #ffffff;
     --black: #000000;
+    --light: #959595;
     /* --- TEXT COLOR --- */
     --text-main: #363636;
     --text-muted: #656565;
+    --text-light: #959595;
     /* --- GRADIENTS --- */
     --grad-green: linear-gradient(120deg, var(--color-primary-dark), var(--color-primary), var(--color-primary), var(--color-primary-dark) );
     --grad-pink: linear-gradient(120deg, var(--color-accent-pink), var(--color-accent-pink-light), var(--color-accent-pink-light), var(--color-accent-pink) );
@@ -36,15 +38,26 @@
     --shadow-sm: 0 3px 10px rgba(0, 0, 0, .2);
     --shadow-md: 0 3px 10px rgba(0, 0, 0, .8);
     /* --- OPACITY --- */
-    --opacity-soft: 0.24;
+    --opacity-light: 0.24;
     --opacity-medium: 0.48;
-    --opacity-heavy: 0.80;
+    --opacity-dark: 0.80;
     /* --- BLUR --- */
     --blur-intensity: 16px;
     /* --- BORDER RADIUS --- */
     --radius-sm: 8px;
     --radius-md: 16px;
     --radius-lg: 50%;
+    /* --- TITLE FONT SIZE --- */
+    /* 1. Size 196px (Hero / Display) -> มือถือลดเหลือ 64px */
+    --fs-display: clamp(4rem, 1.357rem + 13.21vw, 12.25rem);
+    /* 2. Size 96px (Heading 1) -> มือถือลดเหลือ 40px */
+    --fs-h1: clamp(2.5rem, 1.429rem + 5.36vw, 6rem);
+    /* 3. Size 48px (Heading 2) -> มือถือลดเหลือ 32px */
+    --fs-h2: clamp(2rem, 1.571rem + 2.14vw, 3rem);
+    /* 4. Size 24px (Content / Large Text) -> มือถือลดเหลือ 18px */
+    --fs-content-lg: clamp(1.125rem, 0.946rem + 0.89vw, 1.5rem);
+    /* Padding Scale */
+    --pd-large: clamp(3rem, 2.143rem + 4.29vw, 6rem);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');

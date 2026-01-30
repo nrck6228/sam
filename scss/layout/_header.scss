@@ -16,38 +16,7 @@
         /*inset: 0% 0% auto;*/
         padding: 1.5rem 15px;
 
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            height: 40px;
-            padding: 10px 16px;
-            border-radius: var(--radius-sm);
-
-            &__link {
-                color: var(--white);
-            }
-        }
-
-        .language-switcher {
-            border-left: 1px solid var(--white);
-
-            .dropdown-toggle {
-                min-width: 1px;
-                height: 24px;
-                padding-left: 10px;
-                font-weight: 300;
-                font-size: 1rem;
-                line-height: 1.25rem;
-                border-radius: 0;
-                border: 0;
-                background-color: transparent;
-
-                &:after {
-                    display: none;
-                }
-            }
-
+        .member-panel {
             .dropdown-item.active,
             .dropdown-item:active {
                 background-color: transparent;
@@ -77,8 +46,93 @@
             }
         }
 
+        .nav-switch {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            height: 40px;
+            padding: 0;
+            border-radius: var(--radius-sm);
+
+            &__link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 40px;
+                height: 40px;
+                padding: 0 16px;
+                color: var(--white);
+            }
+
+            .language {
+                position: relative;
+
+                &:before {
+                    content: '';
+                    width: 1px;
+                    height: 16px;
+                    position: absolute;
+                    left: 0;
+                    top: 12px;
+                    background-color: var(--white);
+                }
+
+                .dropdown-toggle {
+                    min-width: 40px;
+                    height: 40px;
+                    padding: 0 16px;
+                    font-weight: 300;
+                    font-size: 1rem;
+                    line-height: 1.25rem;
+                    border-radius: 0;
+                    border: 0;
+                    background-color: transparent;
+
+                    &:after {
+                        display: none;
+                    }
+                }
+
+                .dropdown-item.active,
+                .dropdown-item:active {
+                    background-color: transparent;
+                    color: inherit;
+                    position: relative;
+                    font-weight: 500;
+                }
+
+                .dropdown-item.active::after {
+                    content: "\F26E";
+                    font-family: "Bootstrap-icons";
+                    position: absolute;
+                    right: 1rem;
+                    top: 50%;
+                    font-size: 1.25rem;
+                    transform: translateY(-50%);
+                }
+
+                .dropdown-item.active::after {
+                    opacity: 1;
+                    transition: opacity .2s ease, transform .2s ease;
+                }
+
+                .dropdown-item::after {
+                    opacity: 0;
+                    transform: translateY(-50%) scale(0.8);
+                }
+            }
+        }
+
+        &.is-sticky {
+            background-color: rgba(255, 255, 255, var(--opacity-dark));
+        }
+
         @include media.media-down(lg) {
-            background-color: var(--white);
+            position: fixed;
+
+            &.active {
+                background-color: var(--white);
+            }
 
             .logo-container {
                 height: 40px;
@@ -88,6 +142,10 @@
                     width: auto;
                 }
             }
+        }
+
+        @include media.media-down(md) {
+            z-index: 902;
         }
     }
     /* Navbar & Z-index layers */
@@ -103,6 +161,17 @@
         position: fixed;
         /*inset: 1.5rem 0% auto 20%;*/ // กำหนดตำแหน่งจัดกลาง
         inset: 1.5rem 0% auto 20%;
+        /* ค่าเริ่มต้น */
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        /*@include media.media-down(md) {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }*/
     }
 
     .nav-container {

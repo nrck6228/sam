@@ -11,76 +11,31 @@
     overflow: hidden;
 
     &__picture {
-        position: absolute;
-        left: 0;
-        top: 0;
+        position: relative;
         width: 100%;
-        height: 100%;
+        /* กำหนดสัดส่วนตามรูป Banner ของคุณ เช่น 16/9 หรือ 21/9 */
+        aspect-ratio: 16 / 9;
+        background-color: #f0f0f0; /* สีรองพื้นระหว่างรอรูป */
     }
 
     &__image {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: cover; /* ให้รูปเต็มพื้นที่โดยไม่เบี้ยว */
+        display: block;
         transition: all .3s ease-in-out;
     }
 
-    &__text-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        padding: 15px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-end;
-        pointer-events: none;
-
-        @include media.media-up(md) {
-            justify-content: flex-start;
-            align-items: flex-end;
-        }
-    }
-
-    &__text {
-        position: relative;
-        height: fit-content;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        max-width: 57.6rem;
-        word-wrap: break-word;
-
-        &-heading {
-            margin-bottom: 0;
-            font-weight: 700;
-            font-size: 2rem;
-            line-height: 2rem;
-            color: white;
-        }
-
-        &-button {
-            display: inline-flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            max-width: 45rem;
-            margin-top: 1rem;
-            word-break: break-word;
-
-            a {
-                display: block;
-                pointer-events: auto;
-            }
-        }
-
-        @include media.media-down(sm) {
-            margin-bottom: 60px;
+    @media (max-width: 991px) {
+        .hero-slide__picture {
+            aspect-ratio: 4 / 5; /* ตัวอย่างสัดส่วนแนวตั้งสำหรับมือถือ */
         }
     }
 
     &__pagination {
         display: flex;
+        justify-content: center;
         align-items: center;
-        flex-direction: column;
         gap: 0.5rem;
         width: auto !important;
 
@@ -96,8 +51,17 @@
         }
 
         .swiper-pagination-bullet-active {
-            width: 16px;
-            height: 64px;
+            width: 32px;
+            height: 16px;
+        }
+
+        @include media.media-up(md) {
+            flex-direction: column;
+
+            .swiper-pagination-bullet-active {
+                width: 16px;
+                height: 64px;
+            }
         }
     }
 }

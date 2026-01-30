@@ -1,0 +1,7 @@
+C:\Work\asp.net\sam\obj\Release\net9.0\PubTmp\Out\sam.exe
+C:\Work\asp.net\sam\obj\Release\net9.0\PubTmp\Out\appsettings.Development.json
+C:\Work\asp.net\sam\obj\Release\net9.0\PubTmp\Out\appsettings.json
+C:\Work\asp.net\sam\obj\Release\net9.0\PubTmp\Out\sam.dll
+C:\Work\asp.net\sam\obj\Release\net9.0\PubTmp\Out\sam.deps.json
+C:\Work\asp.net\sam\obj\Release\net9.0\PubTmp\Out\sam.runtimeconfig.json
+C:\Work\asp.net\sam\obj\Release\net9.0\PubTmp\Out\sam.pdb

@@ -96,31 +96,52 @@
             width: 100%;
             height: 100%;
         }
+
+        @include media.media-down(md) {
+            display: none;
+        }
     }
     /* Right Side Elements */
     &__apps-box {
-        /* กล่องกระจกเบลอๆ ตรงกลางรูป */
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0, 0, 0, var(--opacity-soft));
-        backdrop-filter: blur(10px);
-        width: max-content;
-        padding: 6rem;
+        width: 100%;
+        padding: 1rem;
         border-radius: var(--radius-sm);
         text-align: center;
         color: white;
+        margin-bottom: 20px;
+
+        @include media.media-up(md) {
+            /* กล่องกระจกเบลอๆ ตรงกลางรูป */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: max-content;
+            padding: 6rem;
+            background: rgba(0, 0, 0, var(--opacity-light));
+            backdrop-filter: blur(10px);
+        }
     }
 
     &__app-label {
         font-size: 1.5rem;
         color: var(--white);
+
+        @include media.media-down(md) {
+            color: var(--black);
+        }
     }
 
     &__app-link {
         display: inline-block;
         margin: 0 8px;
+    }
+
+    &__app-img {
+        @include media.media-down(md) {
+            width: auto;
+            height: 45px;
+        }
     }
 
     &__nav {
@@ -160,14 +181,13 @@
 
 /* Mobile Responsive */
 @media (max-width: 992px) { /* สำหรับ Tablet และ Mobile */
-
     .footer {
         &__container {
             flex-direction: column; /* เปลี่ยนจากแถวเป็นคอลัมน์ */
         }
 
         &__section {
-            padding: 40px 20px; /* ลด Padding ลงเพื่อให้เข้ากับหน้าจอมือถือ */
+            padding: 20px; /* ลด Padding ลงเพื่อให้เข้ากับหน้าจอมือถือ */
 
             &--left {
                 order: 1; /* กำหนดลำดับการแสดงผล */
@@ -180,10 +200,6 @@
         /* ปรับขนาดตัวเลขสายด่วนให้เล็กลงเล็กน้อย */
         &__phone {
             font-size: 2.8rem;
-        }
-        /* ปรับกล่อง App Store ให้เล็กลงและพอดีหน้าจอ */
-        &__apps-box {
-            padding: 20px;
         }
         /* ปรับแถบเมนูสีชมพูด้านล่าง */
         &__nav {

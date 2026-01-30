@@ -9,6 +9,7 @@ wwwroot\css\main.min.css
 wwwroot\css\vendor.css
 wwwroot\css\vendor.min.css
 wwwroot\favicon.ico
+wwwroot\js\home.js
 wwwroot\js\jquery.js
 wwwroot\js\jquery.min.js
 wwwroot\js\jquery.min.map
@@ -78,6 +79,10 @@ wwwroot\media\images\bg-body.jpg
 wwwroot\media\images\btn-appstore.webp
 wwwroot\media\images\btn-playstore.webp
 wwwroot\media\images\footer-banner.webp
+wwwroot\media\images\hero\demo-banner-1.webp
+wwwroot\media\images\hero\demo-banner-2.webp
+wwwroot\media\images\hero\demo-banner-mobile-1.webp
+wwwroot\media\images\hero\demo-banner-mobile-2.webp
 wwwroot\media\images\logo\logo-main.webp
 wwwroot\media\images\logo\logo-xl.svg
 wwwroot\vendors\slick\ajax-loader.gif
@@ -118,11 +123,10 @@ wwwroot\vendors\swiper\swiper-bundle.min.js.map
 C:\Work\asp.net\sam\wwwroot\css\bootstrap-icons.css
 C:\Work\asp.net\sam\wwwroot\css\bootstrap-icons.json
 C:\Work\asp.net\sam\wwwroot\css\bootstrap-icons.min.css
-C:\Work\asp.net\sam\wwwroot\css\main.css
-C:\Work\asp.net\sam\wwwroot\css\main.min.css
 C:\Work\asp.net\sam\wwwroot\css\vendor.css
 C:\Work\asp.net\sam\wwwroot\css\vendor.min.css
 C:\Work\asp.net\sam\wwwroot\favicon.ico
+C:\Work\asp.net\sam\wwwroot\js\home.js
 C:\Work\asp.net\sam\wwwroot\js\jquery.js
 C:\Work\asp.net\sam\wwwroot\js\jquery.min.js
 C:\Work\asp.net\sam\wwwroot\js\jquery.min.map
@@ -213,3 +217,5 @@ C:\Work\asp.net\sam\wwwroot\vendors\spotlight\spotlight.min.js
 C:\Work\asp.net\sam\wwwroot\vendors\swiper\swiper-bundle.min.css
 C:\Work\asp.net\sam\wwwroot\vendors\swiper\swiper-bundle.min.js
 C:\Work\asp.net\sam\wwwroot\vendors\swiper\swiper-bundle.min.js.map
+C:\Work\asp.net\sam\wwwroot\css\main.css
+C:\Work\asp.net\sam\wwwroot\css\main.min.css
