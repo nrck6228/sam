@@ -1,5 +1,5 @@
 ﻿// Import Data
-import { serviceData, heroBannerData } from './data.js';
+import { serviceData, heroBannerData, assetListData, allAssetTypeData } from './data.js';
 
 function initHomeSliders() {
     // เช็คว่ามี element ก่อนรันเพื่อป้องกัน error
@@ -175,6 +175,117 @@ const initRollingNumbers = () => {
     });
 };
 
+const getStatusBadge = (status) => {
+    let badgeClass = '';
+
+    switch (status) {
+        case 'ซื้อตรง':
+            badgeClass = 'badge--direct'; // สีเขียว
+            break;
+        case 'ประมูล':
+            badgeClass = 'badge--auction'; // สีน้ำเงิน/แดง
+            break;
+        case 'รอประกาศราคา':
+            badgeClass = 'badge--waiting'; // สีเทา
+            break;
+        default:
+            badgeClass = 'badge--default';
+    }
+
+    return `<div class="card__badge ${badgeClass}">${status}</div>`;
+};
+
+const getAssetIcon = (type) => {
+    const iconMap = {
+        'อาคารชุด': 'bi-building',           // หรือ 'ห้องชุดพักอาศัย'
+        'บ้านเดี่ยว': 'bi-house-door',
+        'ทาวน์เฮาส์': 'bi-house-fill',
+        'อาคารพาณิชย์': 'bi-shop',
+        'ที่ดินเปล่า': 'bi-layers-half',     // ไอคอนเลเยอร์ที่ดิน
+        'อพาร์ทเมนท์': 'bi-buildings'
+    };
+
+    // คืนค่าไอคอนตามประเภท ถ้าไม่เจอให้ใช้ไอคอนหมุดแผนที่มาตรฐาน
+    const iconClass = iconMap[type] || 'bi-geo-alt';
+    return `<i class="${iconClass}"></i>`;
+};
+
+const renderAssets = (province) => {
+    const assetList = document.getElementById('asset-list');
+    const filteredData = assetListData.filter(item => item.location.includes(province));
+
+    if (filteredData.length === 0) {
+        assetList.innerHTML = `<div class="text-center py-5 w-100">ไม่พบข้อมูลในจังหวัด${province}</div>`;
+        return;
+    }
+
+    const html = filteredData.map(asset => {
+        // กำหนดข้อความที่จะแสดงในส่วนราคา
+        let priceDisplay = '';
+
+        if (asset.saleStatus === 'รอประกาศราคา') {
+            // กรณีสถานะคือรอประกาศราคา ให้แสดงติดต่อเจ้าหน้าที่ตามที่ทีมต้องการ
+            priceDisplay = `ติดต่อเจ้าหน้าที่`;
+        } else {
+            // กรณีอื่นๆ (ซื้อตรง, ประมูล) ให้แสดงราคาปกติ
+            priceDisplay = `${Number(asset.totalPrice).toLocaleString()} บาท`;
+        }
+
+        return `
+        <a href="/" title="${asset.alt}" class="card card--asset">
+            <div class="card__figure">
+                <img src="${asset.img}" alt="${asset.alt}" class="card__image" />
+                ${getStatusBadge(asset.saleStatus)}
+            </div>
+            <div class="card__body">
+                <div class="card__location">
+                    <span class="card__location-icon">${getAssetIcon(asset.assetType)}</span>
+                    <span class="card__location-text">${asset.location}</span>
+                </div>
+                <div class="card__price">
+                    ${priceDisplay}
+                </div>
+            </div>
+        </a>
+    `;
+    }).join('');
+
+    assetList.innerHTML = html;
+};
+
+const renderAssetShowcase = () => {
+    const typeContainer = document.getElementById('asset-type');
+    const tagsContainer = document.getElementById('asset-tag');
+
+    // 1. Render 4 รายการหลัก
+    const featuredAssets = allAssetTypeData.slice(0, 4);
+    typeContainer.innerHTML = featuredAssets.map(asset => `
+        <a href="/" title="${asset.typeName}" class="card card--asset-type">
+            <div class="card__figure">
+                <svg><use xlink:href="sprite.svg#${asset.icon}"></use></svg>
+                <div class="card__type">${asset.typeName}</div>
+            </div>
+            <div class="card__body">
+                <div class="card__count">
+                    ${asset.count.toLocaleString()}
+                </div>
+                <div class="card__unit">
+                    ${asset.unit}
+                </div>
+            </div>
+        </a>
+    `).join('');
+
+    // 2. Render รายการย่อยที่เหลือ
+    const otherAssets = allAssetTypeData.slice(4);
+    tagsContainer.innerHTML = otherAssets.map(asset => `
+        <div class="asset-badge">
+            <svg class="asset-badge__icon"><use xlink:href="sprite.svg#${asset.icon}"></use></svg>
+            <span>${asset.typeName}</span>
+        </div>
+    `).join('');
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // รัน Slider
     renderHeroSliders(heroBannerData);
@@ -184,6 +295,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // รันตัวเลข Stats
     initRollingNumbers();
+
+    initScrollReveal('.stats-board .card-deck');
+
+    // Render ครั้งแรก (กรุงเทพฯ)
+    renderAssets('กรุงเทพมหานคร');
+
+    const tabLinks = document.querySelectorAll('.sam-tabs__link');
+    tabLinks.forEach(link => {
+        link.addEventListener('shown.bs.tab', (e) => {
+            const province = e.target.getAttribute('data-province');
+            renderAssets(province);
+        });
+    });
+
+    renderAssetShowcase(allAssetTypeData);
 
     // ระบบคลิก Tag และอื่นๆ
     const tags = document.querySelectorAll('.popular-tag');

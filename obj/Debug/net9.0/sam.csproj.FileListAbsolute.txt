@@ -123,9 +123,6 @@ C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\3t9x08s0os-4094rpi4f9.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\fq7g68igvi-4auj6r7g7o.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\swojz3gsq2-wopsamlasg.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\i2mo0fpocg-79l73tsp3y.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\a5pg08d4og-yema4kar7o.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-huew4zk96v.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-gip9gayhgt.gz
 C:\Work\asp.net\sam\bin\Debug\net9.0\appsettings.Development.json
 C:\Work\asp.net\sam\bin\Debug\net9.0\appsettings.json
 C:\Work\asp.net\sam\bin\Debug\net9.0\sam.staticwebassets.runtime.json
@@ -257,3 +254,10 @@ C:\Work\asp.net\sam\obj\Debug\net9.0\compressed\vrw03gdoom-rvu4br08p7.gz
 C:\Work\asp.net\sam\obj\Debug\net9.0\compressed\a5pg08d4og-xxlrsvpge0.gz
 C:\Work\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-dgvky1r1w7.gz
 C:\Work\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-twc7dyublk.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\sam.sourcelink.json
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-tcrcpg07ms.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-69i10xgwnn.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kmeabb3ahe-4bthnfv1m6.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\vrw03gdoom-ch7gjpya3c.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\a5pg08d4og-w9wcowi63d.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\zdoapufoef-dob9afoaeq.gz

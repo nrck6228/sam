@@ -40,7 +40,7 @@
     /* --- OPACITY --- */
     --opacity-light: 0.24;
     --opacity-medium: 0.48;
-    --opacity-dark: 0.80;
+    --opacity-dark: 0.64;
     /* --- BLUR --- */
     --blur-intensity: 16px;
     /* --- BORDER RADIUS --- */
@@ -54,8 +54,10 @@
     --fs-h1: clamp(2.5rem, 1.429rem + 5.36vw, 6rem);
     /* 3. Size 48px (Heading 2) -> มือถือลดเหลือ 32px */
     --fs-h2: clamp(2rem, 1.571rem + 2.14vw, 3rem);
+    --fs-h3: clamp(1.5rem, 1.2143rem + 0.9091vw, 2rem);
     /* 4. Size 24px (Content / Large Text) -> มือถือลดเหลือ 18px */
     --fs-content-lg: clamp(1.125rem, 0.946rem + 0.89vw, 1.5rem);
+    --fs-content-md: 1.25rem;
     /* Padding Scale */
     --pd-large: clamp(3rem, 2.143rem + 4.29vw, 6rem);
 }

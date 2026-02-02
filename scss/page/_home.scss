@@ -1,82 +1,20 @@
 ﻿@use "../abstracts/variables" as vars;
 @use "../abstracts/mixins" as media;
 
-.home-search {
+.hero-banner {
     position: relative;
 
     .home-slide {
         overflow: hidden;
         position: relative;
     }
-
-    .scroll-animation {
-        display: inline-block;
-        position: absolute;
-        right: 10px;
-        bottom: 0;
-        z-index: 2;
-        padding: 10px 10px 110px;
-        color: var(--white);
-        line-height: 1;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        text-decoration: none;
-        writing-mode: vertical-lr;
-        transition: 0.3s;
-        overflow: hidden;
-
-        &:before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 1px;
-            height: 100px;
-            background: rgba(255, 255, 255, var(--opacity-light));
-        }
-
-        &:after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 1px;
-            height: 100px;
-            background-color: var(--white);
-            height: 30px;
-            animation: scroll 1.5s ease infinite;
-        }
-
-        @include media.media-up(md) {
-            bottom: 43px;
-        }
-
-        @include media.media-up(lg) {
-            bottom: 66px;
-        }
-    }
-
-    @keyframes scroll {
-        0% {
-            transform: translateY(-70px);
-        }
-
-        50%, 100% {
-            transform: translateY(30px);
-        }
-    }
 }
 
 .home-wrapper {
     position: relative;
-    padding-top: var(--pd-large);
-    padding-bottom: var(--pd-large);
 
     .quick-links {
         width: 100%;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease-out;
 
         &__grid {
             display: grid;
@@ -131,15 +69,6 @@
             transform: rotate(45deg);
         }
 
-        &.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        &.is-visible .quick-links__item {
-            animation: fadeInUp 0.8s forwards;
-        }
-
         @include media.media-up(md) {
             &__grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -156,16 +85,19 @@
     }
 
     .stats-board {
+        position: relative;
+
         &__grid {
             position: relative;
             width: 100%;
-            aspect-ratio: 16 / 10; // รักษาอัตราส่วนพื้นที่รวมให้ใกล้เคียงรูป
+            min-height: 100vh;
+            aspect-ratio: 16 / 10;
             margin: 0 auto;
         }
 
         &__card {
             position: absolute;
-            width: 39.75%; // ขนาดการ์ดโดยประมาณเทียบกับพื้นที่รวม
+            width: 39.75%; // ความกว้างโดยประมาณเทียบกับพื้นที่รวม
             // การ์ดที่ 1: สีเขียวเข้ม (บนซ้าย - หลังสุด)
             &:nth-child(1) {
                 top: 0;
@@ -193,6 +125,10 @@
                 left: 30%;
                 z-index: 3;
 
+                .stats-board__number, .stats-board__desc {
+                    color: #4B3621;
+                }
+
                 .stats-board__content:before {
                     background-image: linear-gradient(120deg, var(--color-accent-yellow), var(--color-accent-yellow-light), var(--color-accent-yellow-light), var(--color-accent-yellow) );
                 }
@@ -204,6 +140,10 @@
                 left: 30%;
                 z-index: 4;
 
+                .stats-board__number, .stats-board__desc {
+                    color: #4a4a4a;
+                }
+
                 .stats-board__content:before {
                     background-image: linear-gradient(120deg, var(--color-accent-gray), var(--color-neutral-gray-light), var(--color-neutral-gray-light), var(--color-accent-gray) );
                 }
@@ -214,6 +154,10 @@
                 right: 0;
                 z-index: 5;
 
+                .stats-board__number, .stats-board__desc {
+                    color: var(--color-primary-dark);
+                }
+
                 .stats-board__content:before {
                     background-image: linear-gradient(120deg, var(--color-nature-green), var(--color-nature-green-light), var(--color-nature-green-light), var(--color-nature-green) );
                 }
@@ -222,7 +166,9 @@
 
         &__content {
             position: relative;
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: var(--shadow-sm);
             transition: all 0.3s ease-in-out;
 
             &:before {
@@ -255,9 +201,10 @@
 
         &__number {
             font-size: var(--fs-h1);
-            font-weight: bold;
+            font-weight: 800;
             margin-bottom: 1rem;
             color: var(--white);
+            line-height: 1.1;
         }
 
         &__counter {
@@ -269,6 +216,7 @@
         }
 
         &__desc {
+            font-weight: 400;
             font-size: var(--fs-content-lg);
             color: var(--white);
         }
@@ -281,7 +229,8 @@
             text-align: center;
         }
 
-        .digit-col span, .digit-static {
+        .digit-col span,
+        .digit-static {
             height: 1.2em;
             display: flex;
             justify-content: center;
@@ -291,6 +240,63 @@
         .digit-static {
             width: auto;
             padding: 0 2px;
+        }
+
+        @include media.media-down(lg) {
+            &__grid {
+                aspect-ratio: auto;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                /* Optional: Add a gap between columns and rows */
+                gap: 10px;
+            }
+
+            &__card {
+                position: static;
+                width: auto;
+            }
+
+            &__text {
+                height: 360px;
+            }
+        }
+    }
+
+    .asset-panel {
+        .asset-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 10px;
+
+            .asset-badge {
+                display: flex;
+                align-items: center;
+                background: white;
+                padding: 6px 16px;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                color: var(--black);
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+
+                &:hover {
+                    background: var(--color-primary-dark);
+                    color: white;
+
+                    .asset-badge__icon {
+                        fill: white;
+                    }
+                }
+            }
+
+            .asset-badge__icon {
+                width: 16px;
+                height: 16px;
+                margin-right: 8px;
+                fill: var(--color-primary-dark);
+            }
         }
     }
 }
@@ -848,5 +854,62 @@
             width: auto;
             margin-bottom: 0;
         }
+    }
+}
+
+.scroll-animation {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    z-index: 2;
+    padding: 10px 10px 110px;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    writing-mode: vertical-lr;
+    transition: 0.3s;
+    overflow: hidden;
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        height: 100px;
+        background: rgba(255, 255, 255, var(--opacity-light));
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        height: 100px;
+        background-color: var(--white);
+        height: 30px;
+        animation: scroll 1.5s ease infinite;
+    }
+
+    @include media.media-up(md) {
+        bottom: 43px;
+    }
+
+    @include media.media-up(lg) {
+        bottom: 66px;
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateY(-70px);
+    }
+
+    50%, 100% {
+        transform: translateY(30px);
     }
 }

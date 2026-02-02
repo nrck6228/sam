@@ -1,4 +1,5 @@
 ﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
 
 @mixin generate-background-color-utilities() {
     @each $name, $shades in vars.$colors {
@@ -37,6 +38,45 @@
     background-size: cover
 }
 
+.bg-symbol {
+    position: relative;
+    overflow: hidden; /* ป้องกันสัญลักษณ์ล้นออกนอก Section */
+
+    &:before {
+        /* ดึงค่าจาก data-symbol มาแสดง */
+        content: attr(data-symbol);
+        /* การจัดวางตำแหน่ง */
+        position: absolute;
+        width: auto;
+        height: 100%;
+        right: -2.5%;
+        bottom: 0;
+        display: flex;
+        align-items: flex-end;
+        /* สไตล์ของตัวอักษรสัญลักษณ์ */
+        font-size: 90rem; /* ปรับขนาดตามความต้องการ */
+        font-weight: 900;
+        line-height: 0.6;
+        color: var(--white);
+        /* ปรับความจางให้เป็นพื้นหลัง */
+        opacity: 0.16;
+        z-index: 0;
+        pointer-events: none; /* เพื่อให้คลิกทะลุไปหาปุ่มหรือลิงก์ด้านล่างได้ */
+    }
+
+    > * {
+        position: relative; /* เพื่อให้เนื้อหาด้านในอยู่เหนือสัญลักษณ์ */
+        z-index: 1;
+    }
+
+    @include media.media-down(lg) {
+        &:before {
+            font-size: 10rem;
+            right: -5%; /* ให้หลุดขอบไปนิดหน่อยจะดูมีมิติขึ้น */
+        }
+    }
+}
+
 .bg-overlay-black {
     background: rgba(0,0,0,var(--opacity-medium));
 }
@@ -46,3 +86,8 @@
     backdrop-filter: blur(var(--blur-intensity));
     -webkit-backdrop-filter: blur(var(--blur-intensity)); /* รองรับ Safari */
 }
+
+.bg-gardient-yellow {
+    background-image: linear-gradient(to bottom, #F3DB67, #FCE781);
+}
+

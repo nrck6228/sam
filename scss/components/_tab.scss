@@ -54,3 +54,23 @@
         background-color: white;
     }
 }
+
+.sam-tabs {
+    &.nav-pills {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__link.nav-link {
+        color: var(--white);
+        border-radius: 0.5rem;
+        backdrop-filter: blur(var(--blur-intensity));
+        -webkit-backdrop-filter: blur(var(--blur-intensity));
+        background-color: rgba(0, 0, 0, var(--opacity-medium));
+
+        &.active {
+            color: var(--black);
+            background-color: var(--white); /* สีเขียว SAM */
+        }
+    }
+}
