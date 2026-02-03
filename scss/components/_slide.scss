@@ -15,21 +15,14 @@
         width: 100%;
         /* กำหนดสัดส่วนตามรูป Banner ของคุณ เช่น 16/9 หรือ 21/9 */
         aspect-ratio: 16 / 9;
-        background-color: #f0f0f0; /* สีรองพื้นระหว่างรอรูป */
+        background-color: transparent; /* สีรองพื้นระหว่างรอรูป */
     }
 
     &__image {
         width: 100%;
-        height: 100%;
-        object-fit: cover; /* ให้รูปเต็มพื้นที่โดยไม่เบี้ยว */
-        display: block;
+        height: 100%; /* ต้องใส่เพื่อให้รูปปรับสัดส่วนตาม Source ใหม่ */
+        object-fit: cover;
         transition: all .3s ease-in-out;
-    }
-
-    @media (max-width: 991px) {
-        .hero-slide__picture {
-            aspect-ratio: 4 / 5; /* ตัวอย่างสัดส่วนแนวตั้งสำหรับมือถือ */
-        }
     }
 
     &__pagination {
@@ -62,6 +55,16 @@
                 width: 16px;
                 height: 64px;
             }
+        }
+    }
+
+    @include media.media-down(lg) {
+        height: 75vh;
+
+        .hero-slide__picture {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 4 / 5; /* ตัวอย่างสัดส่วนแนวตั้งสำหรับมือถือ */
         }
     }
 }

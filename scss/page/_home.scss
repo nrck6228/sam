@@ -260,6 +260,22 @@
                 height: 360px;
             }
         }
+
+        @include media.media-down(md) {
+            &__grid {
+                display: block;
+            }
+
+            &__card {
+                position: static;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            &__text {
+                height: 240px;
+            }
+        }
     }
 
     .asset-panel {
@@ -296,6 +312,71 @@
                 height: 16px;
                 margin-right: 8px;
                 fill: var(--color-primary-dark);
+            }
+        }
+    }
+
+    .asset-area {
+        &__title {
+            font-size: var(--fs-h2);
+            font-weight: 600;
+        }
+
+        &__list {
+            list-style: none;
+            padding: 0;
+
+            li {
+                border-top: 1px solid var(--light);
+            }
+        }
+
+        &__link {
+            display: block;
+            padding: 12px 0;
+            font-size: var(--fs-content-lg);
+            color: var(--black);
+            text-decoration: none;
+            transition: padding-left 0.2s ease-in-out;
+
+            &:hover {
+                padding-left: 10px;
+                color: var(--color-primary-dark);
+            }
+        }
+    }
+
+    .about-panel {
+        background-color: var(--white);
+        overflow: hidden;
+
+        &__content {
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        &__desc {
+            margin-bottom: 2rem;
+            font-size: var(--fs-h3);
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .title {
+            width: max-content; /* ขยายกว้างเท่ากับเนื้อหาภายใน */
+            flex-shrink: 0; /* สำคัญมาก: ป้องกันไม่ให้โดนฝั่งขวา (desc) ดันจนหด */
+        }
+
+        @include media.media-up(lg) {
+            &__content {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            &__desc {
+                padding-left: 2rem;
+                border-left: 2px solid var(--light);
             }
         }
     }

@@ -48,16 +48,19 @@
     --radius-md: 16px;
     --radius-lg: 50%;
     /* --- TITLE FONT SIZE --- */
-    /* 1. Size 196px (Hero / Display) -> มือถือลดเหลือ 64px */
-    --fs-display: clamp(4rem, 1.357rem + 13.21vw, 12.25rem);
-    /* 2. Size 96px (Heading 1) -> มือถือลดเหลือ 40px */
-    --fs-h1: clamp(2.5rem, 1.429rem + 5.36vw, 6rem);
-    /* 3. Size 48px (Heading 2) -> มือถือลดเหลือ 32px */
-    --fs-h2: clamp(2rem, 1.571rem + 2.14vw, 3rem);
-    --fs-h3: clamp(1.5rem, 1.2143rem + 0.9091vw, 2rem);
-    /* 4. Size 24px (Content / Large Text) -> มือถือลดเหลือ 18px */
-    --fs-content-lg: clamp(1.125rem, 0.946rem + 0.89vw, 1.5rem);
-    --fs-content-md: 1.25rem;
+    /* 1. Size 196px (Hero) -> มือถือ 56px ปรับ Slope ให้ Tablet (768px) อยู่ที่ประมาณ 110px (เดิมจะเกือบ 150px) */
+    --fs-display: clamp(3.5rem, 0.413rem + 13.15vw, 12.25rem);
+    /* 2. Size 96px (H1) -> มือถือ 40px 
+       ลดความชันเพื่อให้ Tablet ดูโปร่งขึ้น */
+    --fs-h1: clamp(2.5rem, 1.25rem + 5.3vw, 6rem);
+    /* 3. Size 48px (H2) -> มือถือ 32px */
+    --fs-h2: clamp(2rem, 1.65rem + 1.5vw, 3rem);
+    /* Size 32px (H3) -> มือถือ 24px */
+    --fs-h3: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+    /* 4. Size 24px (Content Large) -> มือถือ 18px */
+    --fs-content-lg: clamp(1.125rem, 0.99rem + 0.56vw, 1.5rem);
+    /* 5. Size 20px (Content Medium) -> มือถือ 16px */
+    --fs-content-md: clamp(1rem, 0.89rem + 0.45vw, 1.25rem);
     /* Padding Scale */
     --pd-large: clamp(3rem, 2.143rem + 4.29vw, 6rem);
 }

@@ -47,16 +47,19 @@
   --radius-md: 16px;
   --radius-lg: 50%;
   /* --- TITLE FONT SIZE --- */
-  /* 1. Size 196px (Hero / Display) -> มือถือลดเหลือ 64px */
-  --fs-display: clamp(4rem, 1.357rem + 13.21vw, 12.25rem);
-  /* 2. Size 96px (Heading 1) -> มือถือลดเหลือ 40px */
-  --fs-h1: clamp(2.5rem, 1.429rem + 5.36vw, 6rem);
-  /* 3. Size 48px (Heading 2) -> มือถือลดเหลือ 32px */
-  --fs-h2: clamp(2rem, 1.571rem + 2.14vw, 3rem);
-  --fs-h3: clamp(1.5rem, 1.2143rem + 0.9091vw, 2rem);
-  /* 4. Size 24px (Content / Large Text) -> มือถือลดเหลือ 18px */
-  --fs-content-lg: clamp(1.125rem, 0.946rem + 0.89vw, 1.5rem);
-  --fs-content-md: 1.25rem;
+  /* 1. Size 196px (Hero) -> มือถือ 56px ปรับ Slope ให้ Tablet (768px) อยู่ที่ประมาณ 110px (เดิมจะเกือบ 150px) */
+  --fs-display: clamp(3.5rem, 0.413rem + 13.15vw, 12.25rem);
+  /* 2. Size 96px (H1) -> มือถือ 40px 
+     ลดความชันเพื่อให้ Tablet ดูโปร่งขึ้น */
+  --fs-h1: clamp(2.5rem, 1.25rem + 5.3vw, 6rem);
+  /* 3. Size 48px (H2) -> มือถือ 32px */
+  --fs-h2: clamp(2rem, 1.65rem + 1.5vw, 3rem);
+  /* Size 32px (H3) -> มือถือ 24px */
+  --fs-h3: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+  /* 4. Size 24px (Content Large) -> มือถือ 18px */
+  --fs-content-lg: clamp(1.125rem, 0.99rem + 0.56vw, 1.5rem);
+  /* 5. Size 20px (Content Medium) -> มือถือ 16px */
+  --fs-content-md: clamp(1rem, 0.89rem + 0.45vw, 1.25rem);
   /* Padding Scale */
   --pd-large: clamp(3rem, 2.143rem + 4.29vw, 6rem);
 }
@@ -3332,90 +3335,6 @@ a, a:hover {
     padding-bottom: 0 !important;
   }
 }
-.container,
-.container-fluid,
-.container-xxl,
-.container-xl,
-.container-lg,
-.container-md,
-.container-sm {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-  .container-sm {
-    max-width: 540px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-  .container-sm {
-    max-width: 720px;
-  }
-  .container-md {
-    max-width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-  .container-sm {
-    max-width: 960px;
-  }
-  .container-md {
-    max-width: 960px;
-  }
-  .container-lg {
-    max-width: 960px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-  .container-sm {
-    max-width: 1140px;
-  }
-  .container-md {
-    max-width: 1140px;
-  }
-  .container-lg {
-    max-width: 1140px;
-  }
-  .container-xl {
-    max-width: 1140px;
-  }
-}
-@media (min-width: 1560px) {
-  .container {
-    max-width: 1560px;
-  }
-  .container-sm {
-    max-width: 1560px;
-  }
-  .container-md {
-    max-width: 1560px;
-  }
-  .container-lg {
-    max-width: 1560px;
-  }
-  .container-xl {
-    max-width: 1560px;
-  }
-  .container-xxl {
-    max-width: 1560px;
-  }
-}
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -5162,6 +5081,12 @@ text-big, .text-big {
   font-weight: 400; /* Content มักจะใช้ความหนาปกติ */
 }
 
+.title--content-md {
+  font-size: var(--fs-content-md);
+  line-height: 1.5;
+  font-weight: 400; /* Content มักจะใช้ความหนาปกติ */
+}
+
 .title--gradient {
   display: inline-block;
   -webkit-background-clip: text;
@@ -5290,7 +5215,7 @@ text-big, .text-big {
   position: absolute;
   width: auto;
   height: 100%;
-  right: -2.5%;
+  right: -10%;
   bottom: 0;
   display: flex;
   align-items: flex-end;
@@ -5311,7 +5236,7 @@ text-big, .text-big {
 @media (max-width: calc(1200px - 0.02px)) {
   .bg-symbol:before {
     font-size: 10rem;
-    right: -5%; /* ให้หลุดขอบไปนิดหน่อยจะดูมีมิติขึ้น */
+    right: -15%; /* ให้หลุดขอบไปนิดหน่อยจะดูมีมิติขึ้น */
   }
 }
 
@@ -6940,19 +6865,13 @@ text-big, .text-big {
   width: 100%;
   /* กำหนดสัดส่วนตามรูป Banner ของคุณ เช่น 16/9 หรือ 21/9 */
   aspect-ratio: 16/9;
-  background-color: #f0f0f0; /* สีรองพื้นระหว่างรอรูป */
+  background-color: transparent; /* สีรองพื้นระหว่างรอรูป */
 }
 .hero-slide__image {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* ให้รูปเต็มพื้นที่โดยไม่เบี้ยว */
-  display: block;
+  height: 100%; /* ต้องใส่เพื่อให้รูปปรับสัดส่วนตาม Source ใหม่ */
+  object-fit: cover;
   transition: all 0.3s ease-in-out;
-}
-@media (max-width: 991px) {
-  .hero-slide .hero-slide__picture {
-    aspect-ratio: 4/5; /* ตัวอย่างสัดส่วนแนวตั้งสำหรับมือถือ */
-  }
 }
 .hero-slide__pagination {
   display: flex;
@@ -6982,6 +6901,16 @@ text-big, .text-big {
   .hero-slide__pagination .swiper-pagination-bullet-active {
     width: 16px;
     height: 64px;
+  }
+}
+@media (max-width: calc(1200px - 0.02px)) {
+  .hero-slide {
+    height: 75vh;
+  }
+  .hero-slide .hero-slide__picture {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4/5; /* ตัวอย่างสัดส่วนแนวตั้งสำหรับมือถือ */
   }
 }
 
@@ -7612,14 +7541,14 @@ input[type="checkbox"] {
   border-end-end-radius: 4px;
   /* สีตามสถานะ */
 }
-.card--asset .card__badge.badge--direct {
+.card--asset .card__badge--direct {
   background-color: var(--color-primary-dark);
 }
-.card--asset .card__badge.badge--auction {
+.card--asset .card__badge--auction {
   color: #4b3621;
   background-color: var(--color-accent-yellow);
 }
-.card--asset .card__badge.badge--waiting {
+.card--asset .card__badge--waiting {
   background-color: var(--color-accent-pink);
 }
 .card--asset .card__body {
@@ -7636,7 +7565,7 @@ input[type="checkbox"] {
   color: var(--black);
 }
 .card--asset .card__location-text {
-  font-size: var(--fs-content-md);
+  font-size: 1rem;
   color: var(--text-muted);
 }
 .card--asset .card__price {
@@ -7645,10 +7574,10 @@ input[type="checkbox"] {
   color: var(--color-primary-dark);
 }
 .card--asset:hover {
-  box-shadow: var(--shadow-md);
+  background-color: rgba(255, 255, 255, var(--opacity-light));
 }
 
-.card--asset-type {
+.card--type {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -7657,20 +7586,20 @@ input[type="checkbox"] {
   box-shadow: var(--shadow-sm);
   backdrop-filter: blur(var(--blur-intensity));
   -webkit-backdrop-filter: blur(var(--blur-intensity));
-  background-color: rgba(0, 0, 0, var(--opacity-light));
+  background-color: rgba(0, 0, 0, var(--opacity-medium));
   transition: all 0.3s ease-in-out;
 }
-.card--asset-type .card__figure {
+.card--type .card__figure {
   position: relative;
   border-radius: 4px;
   overflow: hidden;
 }
-.card--asset-type .card__image {
+.card--type .card__image {
   width: 100%;
   aspect-ratio: 1/1; /* กำหนดตามค่าที่คำนวณได้ */
   object-fit: cover;
 }
-.card--asset-type .card__type {
+.card--type .card__type {
   font-size: var(--fs-h3);
   font-weight: 300;
   line-height: 1.4;
@@ -7678,11 +7607,11 @@ input[type="checkbox"] {
   color: var(--white);
   text-align: center;
 }
-.card--asset-type .card__body {
+.card--type .card__body {
   position: relative;
   margin-top: 4rem;
 }
-.card--asset-type .card__count {
+.card--type .card__count {
   font-size: var(--fs-h2);
   font-weight: 600;
   line-height: 1.2;
@@ -7690,7 +7619,7 @@ input[type="checkbox"] {
   color: var(--white);
   text-align: center;
 }
-.card--asset-type .card__unit {
+.card--type .card__unit {
   font-size: var(--fs-content-lg);
   font-weight: 400;
   line-height: 1.4;
@@ -7698,364 +7627,115 @@ input[type="checkbox"] {
   color: var(--white);
   text-align: center;
 }
-
-.card--product {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.card--product__picture {
-  position: relative;
-  max-width: 90%;
-  margin: 0 auto 10px auto;
-  overflow: hidden;
-  /*transform: scale(0.95);*/
-  transition: all 0.3s ease-in-out;
-}
-.card--product__image {
-  aspect-ratio: 1/1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.card--product__body {
-  position: relative;
-  width: 100%;
-  height: auto;
-  text-align: center;
-  overflow: hidden;
-}
-.card--product__brand {
-  margin-bottom: 0;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: black;
-  text-transform: uppercase;
-  text-decoration: underline;
-}
-.card--product__name {
-  margin-bottom: 0;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: black;
-  text-align: center;
-}
-.card--product__stock {
-  margin-top: 5px;
-  margin-bottom: 0;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: black;
-  text-align: center;
-}
-.card--product__price {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 1.5rem;
-  margin-bottom: 0;
-  color: black;
-  text-align: center;
-}
-.card--product__price .price--normal {
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: black;
-}
-.card--product__price .price--sale {
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #E82631;
-}
-.card--product__price .price--old {
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #959595;
-}
-.card--product__price .price-label {
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: black;
-}
-.card--product__button {
-  /*position: relative;
-  width: 100%;
-  height: auto;
-  padding-bottom: 40px;
-  overflow: hidden;*/
-}
-.card--product__button .btn {
-  position: absolute;
-  bottom: -100%;
-  right: 0;
-  transition: all 0.3s ease-in-out;
-}
-.card--product:hover .card--product__button .btn {
-  bottom: 0;
-}
-.card--product.is-out-of-stock {
-  opacity: 0.5;
-  pointer-events: none;
-  filter: grayscale(0.5);
-}
-.card--product .product-badges {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 2;
-  display: flex;
-  gap: 0.5rem;
-  flex-direction: column;
-}
-.card--product .product-badges .badge {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 70px;
-  width: auto;
-  height: 2rem;
-  padding: 0.25rem;
-  font-weight: 400;
-  font-size: 0.875rem;
-  border-radius: 4px;
-}
-.card--product .product-badges .badge.new {
-  color: white;
-  background-color: black;
-}
-.card--product .product-badges .badge.sale {
-  color: white;
-  background-color: #E82631;
-}
-.card--product .product-badges .badge.soldout {
-  color: white;
-  background-color: #d5d5d5;
-}
-
-.card--category {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  transition: all 0.3s ease-in-out;
-}
-.card--category__picture {
-  position: relative;
-  margin-bottom: 1rem;
-  border-radius: 4px;
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
-}
-.card--category__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.3s ease-in-out;
-}
-.card--category__body {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-@media (min-width: 1200px) {
-  .card--category__body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-}
-.card--category__title {
-  display: block;
-  margin-bottom: 15px;
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  color: black;
-}
-@media (min-width: 1200px) {
-  .card--category__title {
-    margin-bottom: 0;
-  }
-}
-.card--category__button {
-  margin-top: 10px;
-}
-.card--category:hover {
-  /*opacity: 1 !important;*/
-}
-.card--category:hover .card--category__image {
-  transform: scale(1.05);
-}
-
-.card--shop {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  background-color: transparent;
-}
-.card--shop__picture {
-  width: 40px; /* Set a specific width */
-  flex: initial; /* Allows shrinking, but respects initial width */
-}
-.card--shop__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.3s ease-in-out;
-}
-.card--shop__body {
-  flex: 1;
-  text-align: center;
-}
-.card--shop__title {
-  margin-bottom: 0;
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: black;
-}
-.card--shop__text {
-  margin-bottom: 0;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.25rem;
-  color: black;
-}
-@media (min-width: 992px) {
-  .card--shop {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  .card--shop__body {
-    text-align: start;
-  }
+.card--type:hover {
+  background-color: rgba(0, 0, 0, var(--opacity-light));
 }
 
 .card--news {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+  background-color: transparent;
   transition: all 0.3s ease-in-out;
+  /*.card__tag {
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      a {
+          color: black;
+          background-color: #f5f5f5;
+          padding: 4px 10px;
+          border-radius: 4px;
+          font-size: 0.85rem;
+          text-decoration: none;
+      }
+
+      a:hover {
+          background-color: black;
+          color: white;
+      }
+  }*/
 }
-.card--news__picture {
+.card--news .card__figure {
   position: relative;
   margin-bottom: 10px;
   border-radius: 4px;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 }
-.card--news__image {
+.card--news .card__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: all 0.3s ease-in-out;
 }
-.card--news__body {
+.card--news .card__body {
   position: relative;
   overflow: hidden;
 }
-.card--news__title {
-  margin-bottom: 0;
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: black;
-}
-.card--news__date {
-  margin-bottom: 5px;
+.card--news .card__title {
+  padding: 1rem 0 0 0;
+  margin-bottom: 1rem;
+  border-top: 1px solid var(--light);
   font-weight: 400;
-  font-size: 0.875rem;
-  line-height: 0.875rem;
-  color: #959595;
-}
-.card--news__button {
-  position: relative;
-  width: 100%;
-  height: auto;
-  margin-top: auto;
-  padding-top: 20px;
-  overflow: hidden;
-}
-.card--news__button .btn {
-  position: absolute;
-  bottom: -100%;
-  right: 0;
+  font-size: var(--fs-content-md);
+  line-height: 1.4;
+  color: black;
   transition: all 0.3s ease-in-out;
 }
-.card--news__tag {
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 5px;
+.card--news .card__date {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--color-primary-dark);
+  transition: all 0.3s ease-in-out;
 }
-.card--news__tag a {
-  color: black;
-  background-color: #f5f5f5;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  text-decoration: none;
-}
-.card--news__tag a:hover {
-  background-color: black;
-  color: white;
-}
-.card--news:hover .card--news__image {
-  transform: scale(1.05);
-}
-.card--news:hover .card--news__button .btn {
-  bottom: 0;
-}
-@media (min-width: 1200px) {
-  .card--news__button {
-    padding-right: 50px;
-  }
+.card--news:hover .card__title {
+  color: var(--color-primary-dark);
 }
 
-.card--store {
-  border-radius: 4px;
-  border: 1px solid #d5d5d5;
-  transition: all 0.3s ease;
+/* Container สำหรับรูปที่ลอยตามเมาส์ */
+.hover-reveal {
+  position: fixed;
+  width: 300px;
+  height: 200px;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* สำคัญมาก: ห้ามรับ event เพื่อไม่ให้ขัดขวางการคลิก Link */
+  opacity: 0;
+  visibility: hidden;
+  z-index: 9999;
+  overflow: hidden;
+  border-radius: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.1s ease-out;
+  opacity: 0;
+  visibility: hidden;
+  background: transparent; /* เปลี่ยนเป็นใสไว้ก่อน */
+  box-shadow: none; /* ปิดเงาเป็นค่าเริ่มต้น */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.hover-reveal__img {
+  width: 100%;
   height: 100%;
-  background: white;
+  object-fit: cover;
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
 }
-.card--store:hover {
-  border-color: black;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+.hover-reveal.active {
+  background: var(--white); /* หรือสีพื้นหลังที่ต้องการ */
+  box-shadow: var(--shadow-sm); /* แสดงเงาเฉพาะตอน active */
 }
-.card--store .store-name {
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  letter-spacing: 1px;
-  border-bottom: 2px solid black;
-  display: inline-block;
-  margin-bottom: 1.5rem;
+.hover-reveal.active .hover-reveal__img {
+  transform: scale(1);
 }
-.card--store .info-label {
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 1rem;
-  color: black;
-  margin-bottom: 5px;
-}
-.card--store .info-value {
-  font-size: 0.875rem;
-  color: black;
-  margin-bottom: 1.2rem;
-  line-height: 1.6;
+
+.hover-reveal__img:not([src]),
+.hover-reveal__img[src=""] {
+  display: none;
 }
 
 .accordion--custom {
@@ -8479,7 +8159,7 @@ input[type="checkbox"] {
 
 .sam-tabs.nav-pills {
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .sam-tabs__link.nav-link {
   color: var(--white);
@@ -8487,10 +8167,34 @@ input[type="checkbox"] {
   backdrop-filter: blur(var(--blur-intensity));
   -webkit-backdrop-filter: blur(var(--blur-intensity));
   background-color: rgba(0, 0, 0, var(--opacity-medium));
+  transition: all 0.3s ease-in-out;
 }
 .sam-tabs__link.nav-link.active {
   color: var(--black);
   background-color: var(--white); /* สีเขียว SAM */
+}
+.sam-tabs__link.nav-link:hover {
+  color: var(--black);
+  background-color: var(--white);
+}
+.sam-tabs--primary .sam-tabs__link.nav-link {
+  color: var(--white);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(var(--blur-intensity));
+  -webkit-backdrop-filter: blur(var(--blur-intensity));
+  background-color: rgba(0, 0, 0, var(--opacity-medium));
+}
+.sam-tabs--primary .sam-tabs__link.nav-link.active {
+  color: var(--white);
+  background-color: var(--color-primary-dark); /* สีเขียว SAM */
+  background-image: var(--grad-green);
+  background-size: 300% 100%;
+}
+.sam-tabs--primary .sam-tabs__link.nav-link:hover {
+  color: var(--white);
+  background-color: var(--color-primary-dark); /* สีเขียว SAM */
+  background-image: var(--grad-green);
+  background-size: 300% 100%;
 }
 
 table.dataTable thead > tr > th.dt-orderable-asc span.dt-column-order:before, table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order:before, table.dataTable thead > tr > td.dt-orderable-asc span.dt-column-order:before, table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order:before {
@@ -9319,6 +9023,19 @@ table .fund--name {
     height: 360px;
   }
 }
+@media (max-width: calc(992px - 0.02px)) {
+  .home-wrapper .stats-board__grid {
+    display: block;
+  }
+  .home-wrapper .stats-board__card {
+    position: static;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .home-wrapper .stats-board__text {
+    height: 240px;
+  }
+}
 .home-wrapper .asset-panel .asset-tags {
   display: flex;
   flex-wrap: wrap;
@@ -9349,6 +9066,58 @@ table .fund--name {
   height: 16px;
   margin-right: 8px;
   fill: var(--color-primary-dark);
+}
+.home-wrapper .asset-area__title {
+  font-size: var(--fs-h2);
+  font-weight: 600;
+}
+.home-wrapper .asset-area__list {
+  list-style: none;
+  padding: 0;
+}
+.home-wrapper .asset-area__list li {
+  border-top: 1px solid var(--light);
+}
+.home-wrapper .asset-area__link {
+  display: block;
+  padding: 12px 0;
+  font-size: var(--fs-content-lg);
+  color: var(--black);
+  text-decoration: none;
+  transition: padding-left 0.2s ease-in-out;
+}
+.home-wrapper .asset-area__link:hover {
+  padding-left: 10px;
+  color: var(--color-primary-dark);
+}
+.home-wrapper .about-panel {
+  background-color: var(--white);
+  overflow: hidden;
+}
+.home-wrapper .about-panel__content {
+  display: block;
+  margin-bottom: 2rem;
+}
+.home-wrapper .about-panel__desc {
+  margin-bottom: 2rem;
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  color: var(--text-main);
+}
+.home-wrapper .about-panel .title {
+  width: max-content; /* ขยายกว้างเท่ากับเนื้อหาภายใน */
+  flex-shrink: 0; /* สำคัญมาก: ป้องกันไม่ให้โดนฝั่งขวา (desc) ดันจนหด */
+}
+@media (min-width: 992px) {
+  .home-wrapper .about-panel__content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .home-wrapper .about-panel__desc {
+    padding-left: 2rem;
+    border-left: 2px solid var(--light);
+  }
 }
 
 .search-panel {

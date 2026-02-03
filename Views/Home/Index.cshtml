@@ -18,7 +18,7 @@
             Scroll
         </div>
 
-        <div class="search-panel asset-search search-container">
+        <div class="search-panel">
             <ul class="nav nav-pills search-panel__tabs" id="searchTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link search-panel__tab-link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal-search" type="button">ค้นหาปกติ</button>
@@ -121,7 +121,7 @@
         </div>
     </div>
 
-    <div class="nav-panel asset-nav">
+    <div class="nav-panel">
         <a href="#" title="" class="btn btn--xl btn--pink btn--hover rounded-0">
             <span class="btn__text">ค้นหาตามแผนที่</span>
             <span class="btn__icon"><i class="bi bi-arrow-up-short"></i></span>
@@ -151,7 +151,7 @@
                     <img src="~/media/images/mascot.png" class="d-none d-md-block d-lg-none w-25" />
                 </div> 
                 
-                <p class="title--content-lg text--muted mb-5">
+                <p class="title--content-md text--muted mb-5">
                     ทรัพย์สินที่ถูกเสนอขายหรือแนะนำให้ซื้อ โดยเฉพาะอย่างยิ่ง "ทรัพย์ NPA" (Non-Performing Asset)
                     ซึ่งเป็นทรัพย์สินที่ธนาคารหรือสถาบันการเงินถือครองอยู่และนำมาขายในราคาพิเศษ มักเป็นบ้านมือสอง 
                     หรือที่ดินเปล่า ที่เคยเป็นหลักประกันและหลุดจำนอง หรือถูกตีโอนชำระหนี้. 
@@ -243,7 +243,7 @@
                     ปิดหนี้ไว ไปต่อได้
                 </h2>
 
-                <p class="title--content-lg text--muted mb-5">
+                <p class="title--content-md text--muted mb-5">
                     หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้างสำคัญที่ส่งผลกระทบต่อความเป็นอยู่ที่ดีของประชาชนและการเติบโตทางเศรษฐกิจของไทย ซึ่งภาครัฐและ ธปท. ได้ร่วมกันผลักดันแนวทางแก้ไขอย่างต่อเนื่อง อย่างไรก็ตาม ภายใต้สถานการณ์ปัจจุบันที่รายได้ของครัวเรือนยังฟื้นตัวช้า ทำให้ยังมีปัญหาการชำระหนี้และกลายเป็นหนี้เสียเพิ่มขึ้น โครงการ “ปิดหนี้ไว ไปต่อได้” จึงเป็นมาตรการเฉพาะกิจ ที่จะดำเนินการเพียงครั้งเดียว มุ่งเน้นช่วยเหลือลูกหนี้รายย่อยที่เป็น NPLs ให้ได้รับการปรับโครงสร้างหนี้เพื่อลดภาระหนี้ ปิดจบหนี้ได้เร็ว และกลับมามีประวัติการชำระหนี้ที่ดีขึ้น 
                 </p>
             </div>
@@ -251,7 +251,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="stats-board">
-                    <div class="card-deck card-deck--cards-md-2 reveal-on-scroll">
+                    <div class="card-deck card-deck--cards-lg-2 reveal-on-scroll">
                         <div class="card card--stats">
                             <div class="card--stats__number">
                                 100 %
@@ -273,17 +273,17 @@
                 </div>
             </div>
             <div class="col-md-12 d-flex flex-wrap gap-3">
-                <a href="/" title="" class="d-none d-lg-flex btn btn--hover btn--green">
+                <a href="/" title="" class="btn btn--hover btn--green">
                     <span class="btn__text">ลงทะเบียน</span>
                     <span class="btn__icon"><i class="bi bi-arrow-up-short"></i></span>
                 </a>
-                <a href="/" title="" class="d-none d-lg-flex btn btn--hover btn--pink">
+                <a href="/" title="" class="btn btn--hover btn--pink">
                     <span class="btn__text">ติดต่อสอบถาม</span>
                     <span class="btn__icon">
                         <i class="bi bi-arrow-up-short"></i>
                     </span>
                 </a>
-                <a href="/" title="" class="d-none d-lg-flex btn btn--hover btn--gray">
+                <a href="/" title="" class="btn btn--hover btn--gray">
                     <span class="btn__text">สายด่วน</span>
                     <span class="btn__icon">
                         <i class="bi bi-arrow-up-short"></i>
@@ -297,7 +297,7 @@
 <section class="home-wrapper bg-gardient-yellow bg-symbol bg-attachment-fixed min-vh-100 py-5 py-md-7" data-symbol="S" style="background-image:url(/media/images/bg/bg-recommend.jpg)">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-3 mb-lg-5">
                 <h2 class="title title--size-display text-white">
                     ทรัพย์เด่น<br />และน่าสนใจ
                 </h2>
@@ -306,35 +306,41 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="asset-panel asset-container">
-                    <div class="d-block d-md-flex justify-content-md-end">
+                    <div class="d-block d-md-flex justify-content-lg-end">
                         <ul class="nav nav-pills sam-tabs" id="assetTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link active" data-province="กรุงเทพมหานคร" data-bs-toggle="tab" data-bs-target="#dynamic-content">กรุงเทพมหานคร</button>
+                                <button class="nav-link sam-tabs__link active" data-province="กรุงเทพมหานคร" data-bs-toggle="tab" data-bs-target="#province-content">กรุงเทพมหานคร</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="ปทุมธานี" data-bs-toggle="tab" data-bs-target="#dynamic-content">ปทุมธานี</button>
+                                <button class="nav-link sam-tabs__link" data-province="ปทุมธานี" data-bs-toggle="tab" data-bs-target="#province-content">ปทุมธานี</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="ชลบุรี" data-bs-toggle="tab" data-bs-target="#dynamic-content">ชลบุรี</button>
+                                <button class="nav-link sam-tabs__link" data-province="ชลบุรี" data-bs-toggle="tab" data-bs-target="#province-content">ชลบุรี</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="ภูเก็ต" data-bs-toggle="tab" data-bs-target="#dynamic-content">ภูเก็ต</button>
+                                <button class="nav-link sam-tabs__link" data-province="ภูเก็ต" data-bs-toggle="tab" data-bs-target="#province-content">ภูเก็ต</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="เชียงใหม่" data-bs-toggle="tab" data-bs-target="#dynamic-content">เชียงใหม่</button>
+                                <button class="nav-link sam-tabs__link" data-province="เชียงใหม่" data-bs-toggle="tab" data-bs-target="#province-content">เชียงใหม่</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="ระยอง" data-bs-toggle="tab" data-bs-target="#dynamic-content">ระยอง</button>
+                                <button class="nav-link sam-tabs__link" data-province="ระยอง" data-bs-toggle="tab" data-bs-target="#province-content">ระยอง</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="นครราชสีมา" data-bs-toggle="tab" data-bs-target="#dynamic-content">นครราชสีมา</button>
+                                <button class="nav-link sam-tabs__link" data-province="นครราชสีมา" data-bs-toggle="tab" data-bs-target="#province-content">นครราชสีมา</button>
                             </li>
                         </ul>
                     </div>
                     <div class="tab-content sam-tab-content" id="assetTabContent">
-                        <div class="tab-pane fade show active" id="dynamic-content" role="tabpanel">
+                        <div class="tab-pane fade show active" id="province-content" role="tabpanel">
                             <div id="asset-list" class="card-deck card-deck--cards-md-2 card-deck--cards-lg-3">
                             </div>
+                            <a href="/" title="" class="btn btn--hover btn--gray">
+                                <span class="btn__text">ดูทั้งหมด</span>
+                                <span class="btn__icon">
+                                    <i class="bi bi-arrow-up-short"></i>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -378,15 +384,112 @@
 <section class="home-wrapper bg-gardient-green bg-symbol bg-attachment-fixed min-vh-100 py-5 py-md-7" data-symbol="M" style="background-image:url(/media/images/bg/bg-location.jpg)">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 mb-3 mb-lg-5">
+            <div class="col-md-6 mb-3 mb-lg-5">
                 <h2 class="title title--size-display text-white">
                     บ้านเด่น<br />
                     ทำเลดี
                 </h2>
             </div>
+            <div class="col-md-6">
+                <div class="asset-area">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="asset-area__group">
+                                <h3 class="asset-area__title">
+                                    ย่าน
+                                </h3>
+                                <ul class="asset-ares__list">
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="asset-area__group">
+                                <h3 class="asset-area__title">
+                                    ใกล้
+                                </h3>
+                                <ul class="asset-ares__list">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+<section class="home-wrapper bg-gardient-yellow bg-symbol bg-attachment-fixed min-vh-100 py-5 py-md-7" data-symbol="" style="background-image:url(/media/images/bg/bg-news.jpg)">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 mb-3 mb-lg-5">
+                <h2 class="title title--size-display title--gradient title--gradient-primary">
+                    ข่าวสาร
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="news-panel">
+                    <div class="d-block d-md-flex justify-content-lg-end">
+                        <ul class="nav nav-pills sam-tabs sam-tabs--primary" id="newsTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link active" data-type="pressReleases" data-bs-toggle="tab" data-bs-target="#news-content">ข่าวสารประชาสัมพันธ์</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-type="articles" data-bs-toggle="tab" data-bs-target="#news-content">บทความและวารสาร</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-type="media" data-bs-toggle="tab" data-bs-target="#news-content">วีดิโอ/สื่อประชาสัมพันธ์</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content sam-tab-content" id="newsTabContent">
+                        <div class="tab-pane fade show active" id="news-content" role="tabpanel">
+                            <div id="news-list" class="card-deck card-deck--cards-md-2 card-deck--cards-lg-3">
+                            </div>
+                            <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray">
+                                <span class="btn__text">ดูทั้งหมด</span>
+                                <span class="btn__icon">
+                                    <i class="bi bi-arrow-up-short"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-wrapper">
+    <div class="about-panel py-5 py-md-7">
+        <div class="container-fluid">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-9">
+                    <div class="about-panel__content">
+                        <h2 class="title title--size-h1 title--gradient title--gradient-primary">
+                            วิสัยทัศน์
+                        </h2>
+                        <div class="about-panel__desc">
+                            เป็นบริษัทบริหารสินทรัพย์แห่งรัฐ
+                            ที่มีบทบาทสนับสนุนให้ประชาชนและภาคธุรกิจฟื้นตัวอย่างยั่งยืน
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 d-flex justify-content-lg-end">
+                    <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray">
+                        <span class="btn__text">เกี่ยวกับเรา</span>
+                        <span class="btn__icon">
+                            <i class="bi bi-arrow-up-short"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @* Offcanvas Search *@
 <div class="offcanvas offcanvas-start offcanvas-search" tabindex="-1" id="advancedSearch">
     <div class="offcanvas-header">
@@ -526,6 +629,7 @@
         </div>
     </div>
 </div>
+
 @section Styles {
     <link href="~/vendors/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <style>

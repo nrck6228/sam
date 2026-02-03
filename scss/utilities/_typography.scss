@@ -82,6 +82,12 @@
     font-weight: 400; /* Content มักจะใช้ความหนาปกติ */
 }
 
+.title--content-md {
+    font-size: var(--fs-content-md);
+    line-height: 1.5;
+    font-weight: 400; /* Content มักจะใช้ความหนาปกติ */
+}
+
 // SAM font color
 .title--gradient {
     display: inline-block;

@@ -4,12 +4,6 @@
         desktopImg: '/media/images/hero/demo-banner-1.webp',
         mobileImg: '/media/images/hero/demo-banner-mobile-1.webp',
         alt: 'SAM ใส่ใจ โครงการปิดหนี้'
-    },
-    {
-        id: 2,
-        desktopImg: '/media/images/hero/demo-banner-2.webp',
-        mobileImg: '/media/images/hero/demo-banner-mobile-1.webp',
-        alt: 'รายการทรัพย์ประมูลมือสอง'
     }
 ];
 
@@ -326,3 +320,188 @@ export const allAssetTypeData = [
     { id: 44, typeName: 'ร้านอาหาร', count: 88, unit: 'รายการ', icon: 'restaurant' },
     { id: 45, typeName: 'มินิแฟคตอรี่', count: 112, unit: 'รายการ', icon: 'mini-factory' }
 ];
+
+export const districtData = [
+    { id: 1, name: 'ถนนเพชรเกษม', group: 'ย่าน' },
+    { id: 2, name: 'ถนนรามอินทรา', group: 'ย่าน' },
+    { id: 3, name: 'ถนนลาดกระบัง', group: 'ย่าน' },
+    { id: 4, name: 'ถนนลาดพร้าว', group: 'ย่าน' },
+    { id: 5, name: 'ถนนวัชรพล', group: 'ย่าน' },
+    { id: 6, name: 'ถนนสายไหม', group: 'ย่าน' }
+];
+
+export const nearbyData = [
+    { id: 101, name: 'รถไฟสายสีเขียว', type: 'BTS', color: '#28a745' },
+    { id: 102, name: 'รถไฟสายสีแดง', type: 'SRT', color: '#dc3545' },
+    { id: 103, name: 'รถไฟสายสีน้ำเงิน', type: 'MRT', color: '#007bff' },
+    { id: 104, name: 'รถไฟสายสีม่วง', type: 'MRT', color: '#6f42c1' },
+    { id: 105, name: 'รถไฟสายสีลม และส่วนต่อขยาย', type: 'BTS', color: '#28a745' },
+    { id: 106, name: 'รถไฟสายสีเหลือง', type: 'MRT', color: '#ffc107' },
+    { id: 107, name: 'แอร์พอร์ตลิ้งค์', type: 'ARL', color: '#800000' }
+];
+
+export const newsData = {
+    // 1. ข่าวสารประชาสัมพันธ์ (News)
+    pressReleases: [
+        {
+            id: "PR001",
+            slug: "sam-npa-q3-campaign-2025",
+            title: "SAM เดินหน้าบทบาท “Social AMC” ร่วมงาน Thailand Smart Money Bangkok 2025",
+            shortDesc: "เปิดพอร์ต NPA เกือบ 5 พันรายการ มูลค่ากว่า 2 หมื่นล้านทั่วประเทศ...",
+            content: "<h1>รายละเอียดข่าว...</h1><p>เนื้อหาข่าวแบบยาวที่รองรับ HTML Tag...</p>",
+            date: "2025-12-05", // เก็บเป็น Format สากลเพื่อใช้ Sort ข้อมูล
+            displayDate: "ธ.ค. 05, 2025",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
+            category: "NPA",
+            tags: ["แคมเปญ", "ทรัพย์มือสอง", "ไตรมาส 3"],
+            views: 1250
+        },
+        {
+            id: "PR002",
+            slug: "debt-clinic-by-sam-parliament-2025",
+            title: "SAM เปิดประมูลทรัพย์ NPA เพื่อการลงทุนและอยู่อาศัย ราคาดี ทำเลเด่น ส่งท้ายปี 68 มูลค่ารวมเกือบ 300 ลบ.",
+            shortDesc: "ร่วมสร้างความเข้าใจในการบริหารจัดการหนี้สินภาคครัวเรือน...",
+            content: "...",
+            date: "2025-12-08",
+            displayDate: "ธ.ค. 08, 2025",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
+            category: "คลินิกแก้หนี้",
+            tags: ["การเงิน", "สภาผู้แทนราษฎร"],
+            views: 890
+        },
+        {
+            id: "PR003",
+            slug: "debt-clinic-by-sam-parliament-2025",
+            title: "SAM ได้รับการจัดอันดับเครดิตจาก TRIS ที่ระดับ “AA+” ด้วยแนวโน้มอันดับเครดิต “Stable” หรือ “คงที่” 6 ปีติดต่อกัน",
+            shortDesc: "ร่วมสร้างความเข้าใจในการบริหารจัดการหนี้สินภาคครัวเรือน...",
+            content: "...",
+            date: "2025-12-15",
+            displayDate: "ธ.ค. 15, 2025",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
+            category: "คลินิกแก้หนี้",
+            tags: ["การเงิน", "สภาผู้แทนราษฎร"],
+            views: 890
+        },
+        {
+            id: "PR004",
+            slug: "debt-clinic-by-sam-parliament-2025",
+            title: "SAM ประเดิมปี 69 เปิดประมูลบ้านในโครงการจัดสรรชื่อดัง และทรัพย์เพื่อการลงทุน มูลค่ารวม 165 ลบ.",
+            shortDesc: "ร่วมสร้างความเข้าใจในการบริหารจัดการหนี้สินภาคครัวเรือน...",
+            content: "...",
+            date: "2025-12-22",
+            displayDate: "ธ.ค. 22, 2025",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
+            category: "คลินิกแก้หนี้",
+            tags: ["การเงิน", "สภาผู้แทนราษฎร"],
+            views: 890
+        },
+        {
+            id: "PR005",
+            slug: "debt-clinic-by-sam-parliament-2025",
+            title: "SAM ประกาศดีเดย์ 5 ม.ค. 69 เริ่มลงทะเบียนลูกหนี้ต่ำแสนร่วมโครงการ “ปิดหนี้ไว ไปต่อได้”",
+            shortDesc: "ร่วมสร้างความเข้าใจในการบริหารจัดการหนี้สินภาคครัวเรือน...",
+            content: "...",
+            date: "2025-12-30",
+            displayDate: "ธ.ค. 30, 2025",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
+            category: "คลินิกแก้หนี้",
+            tags: ["การเงิน", "สภาผู้แทนราษฎร"],
+            views: 890
+        },
+        {
+            id: "PR006",
+            slug: "debt-clinic-by-sam-parliament-2025",
+            title: "SAM เผยยอดผู้สนใจสมัคร “ปิดหนี้ไว ไปต่อได้” เฉียด 9 หมื่นราย สะท้อนดีมานด์แก้หนี้ฐานรากชี้มาตรการ BOT-Quick Big Win",
+            shortDesc: "ร่วมสร้างความเข้าใจในการบริหารจัดการหนี้สินภาคครัวเรือน...",
+            content: "...",
+            date: "2026-01-08",
+            displayDate: "ม.ค. 08, 2026",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
+            category: "คลินิกแก้หนี้",
+            tags: ["การเงิน", "สภาผู้แทนราษฎร"],
+            views: 890
+        },
+        {
+            id: "PR007",
+            slug: "debt-clinic-by-sam-parliament-2025",
+            title: "SAM เข้าพบ ผู้ว่าการ ธปท. ในวาระขึ้นปีใหม่ 2569 เน้นย้ำภารกิจ Social AMC",
+            shortDesc: "ร่วมสร้างความเข้าใจในการบริหารจัดการหนี้สินภาคครัวเรือน...",
+            content: "...",
+            date: "2026-01-19",
+            displayDate: "ม.ค. 19, 2026",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
+            category: "คลินิกแก้หนี้",
+            tags: ["การเงิน", "สภาผู้แทนราษฎร"],
+            views: 890
+        }
+    ],
+
+    // 2. บทความและวารสาร (Articles & Journal)
+    articles: [
+        {
+            id: "AR001",
+            slug: "home-garden-nov-2562",
+            title: "บทความจากหนังสือบ้านและสวน ประจำเดือนพฤศจิกายน 2562",
+            shortDesc: "บทความจากหนังสือบ้านและสวน ประจำเดือนพฤศจิกายน 2562",
+            content: "...",
+            date: "2019-11-01",
+            displayDate: "",
+            author: "ฝ่ายสื่อสารองค์กร SAM",
+            thumbnail: "",
+            category: "ความรู้เรื่องบ้าน",
+            readingTime: "5 นาที", // ข้อมูลเพิ่มเติมสำหรับบทความ
+            isFeatured: true // กำหนดเป็นบทความแนะนำ
+        },
+        {
+            id: "AR002",
+            slug: "home-garden-oct-2562",
+            title: "บทความจากหนังสือบ้านและสวน ประจำเดือนตุลาคม 2562",
+            shortDesc: "บทความจากหนังสือบ้านและสวน ประจำเดือนพฤศจิกายน 2562",
+            content: "...",
+            date: "2019-11-01",
+            displayDate: "",
+            author: "ฝ่ายสื่อสารองค์กร SAM",
+            thumbnail: "",
+            category: "ความรู้เรื่องบ้าน",
+            readingTime: "5 นาที", // ข้อมูลเพิ่มเติมสำหรับบทความ
+            isFeatured: true // กำหนดเป็นบทความแนะนำ
+        }
+    ],
+
+    // 3. วิดีโอและสื่อประชาสัมพันธ์ (Videos & Media)
+    media: [
+        {
+            id: "VD001",
+            slug: "sam-e-auction-guide-2",
+            title: "THE RENOVATION on TOUR กับ SAM ตอนที่ 5 : บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด (บสส.) หรือ SAM",
+            shortDesc: "เรียนรู้วิธีการลงทะเบียนและร่วมประมูลทรัพย์ผ่านระบบออนไลน์",
+            date: "2025-07-20",
+            displayDate: "",
+            videoUrl: "https://www.youtube.com/watch?v=example", // Link วิดีโอ
+            duration: "03:45",
+            thumbnail: "",
+            category: "Tutorial",
+            type: "Video" // เผื่ออนาคตมีสื่อประเภท Infographic
+        },
+        {
+            id: "VD002",
+            slug: "sam-e-auction-guide-1",
+            title: "THE RENOVATION on TOUR กับ SAM ตอนที่ 4 : บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด (บสส.) หรือ SAM",
+            shortDesc: "เรียนรู้วิธีการลงทะเบียนและร่วมประมูลทรัพย์ผ่านระบบออนไลน์",
+            date: "2025-07-20",
+            displayDate: "",
+            videoUrl: "https://www.youtube.com/watch?v=example", // Link วิดีโอ
+            duration: "03:45",
+            thumbnail: "",
+            category: "Tutorial",
+            type: "Video" // เผื่ออนาคตมีสื่อประเภท Infographic
+        }
+    ]
+};

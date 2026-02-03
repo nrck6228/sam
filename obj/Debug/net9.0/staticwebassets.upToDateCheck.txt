@@ -76,7 +76,13 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\media\images\asset\sample-property-1.webp
+wwwroot\media\images\asset\sample-property-2.jpg
+wwwroot\media\images\asset\sample-property-3.jpg
 wwwroot\media\images\bg-body.jpg
+wwwroot\media\images\bg\bg-categories.jpg
+wwwroot\media\images\bg\bg-location.jpg
+wwwroot\media\images\bg\bg-recommend.jpg
 wwwroot\media\images\btn-appstore.webp
 wwwroot\media\images\btn-playstore.webp
 wwwroot\media\images\footer-banner.webp
@@ -125,13 +131,9 @@ wwwroot\vendors\swiper\swiper-bundle.min.js.map
 C:\Works\asp.net\sam\wwwroot\css\bootstrap-icons.css
 C:\Works\asp.net\sam\wwwroot\css\bootstrap-icons.json
 C:\Works\asp.net\sam\wwwroot\css\bootstrap-icons.min.css
-C:\Works\asp.net\sam\wwwroot\css\main.css
-C:\Works\asp.net\sam\wwwroot\css\main.min.css
 C:\Works\asp.net\sam\wwwroot\css\vendor.css
 C:\Works\asp.net\sam\wwwroot\css\vendor.min.css
 C:\Works\asp.net\sam\wwwroot\favicon.ico
-C:\Works\asp.net\sam\wwwroot\js\data.js
-C:\Works\asp.net\sam\wwwroot\js\home.js
 C:\Works\asp.net\sam\wwwroot\js\jquery.js
 C:\Works\asp.net\sam\wwwroot\js\jquery.min.js
 C:\Works\asp.net\sam\wwwroot\js\jquery.min.map
@@ -222,3 +224,7 @@ C:\Works\asp.net\sam\wwwroot\vendors\spotlight\spotlight.min.js
 C:\Works\asp.net\sam\wwwroot\vendors\swiper\swiper-bundle.min.css
 C:\Works\asp.net\sam\wwwroot\vendors\swiper\swiper-bundle.min.js
 C:\Works\asp.net\sam\wwwroot\vendors\swiper\swiper-bundle.min.js.map
+C:\Works\asp.net\sam\wwwroot\css\main.css
+C:\Works\asp.net\sam\wwwroot\css\main.min.css
+C:\Works\asp.net\sam\wwwroot\js\data.js
+C:\Works\asp.net\sam\wwwroot\js\home.js
