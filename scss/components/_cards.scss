@@ -6,21 +6,25 @@
     flex-direction: column;
     gap: 10px;
     padding: 1rem;
-    border-top: 1px solid var(--light);
+    border-top: 1px solid var(--neutral-600);
 
     &__number {
-        margin-bottom: 0;
-        font-weight: 700;
+        display: inline-block;
+        font-weight: 600;
         font-size: var(--fs-display);
-        line-height: 1.6;
+        line-height: 1.1;
         color: var(--black);
+
+        span {
+            font-size: var(--fs-h1);
+            line-height: 1.1;
+        }
     }
 
     &__label {
-        margin-bottom: 0;
         font-weight: 400;
-        font-size: var(--fs-content-lg);
-        line-height: 1.2;
+        font-size: var(--fs-body);
+        line-height: 1.4;
         color: var(--black);
     }
 }
@@ -32,15 +36,13 @@
     padding: 1rem;
     border-radius: 8px;
     box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(var(--blur-intensity));
-    -webkit-backdrop-filter: blur(var(--blur-intensity));
-    background-color: rgba(255, 255, 255, var(--opacity-medium));
-    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    background-color: rgba(255, 255, 255, var(--opacity-50));
+    transition: all var(--transition);
 
     .card__figure {
-        position: relative;
-        border-radius: 4px;
-        overflow: hidden;
+        border-radius: 0;
     }
 
     .card__image {
@@ -53,7 +55,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background-color: var(--color-primary-dark);
+        background-color: var(--clr-primary-dark);
         color: white;
         padding: 5px 10px;
         font-size: 0.875rem;
@@ -61,16 +63,16 @@
         border-end-end-radius: 4px;
         /* สีตามสถานะ */
         &--direct {
-            background-color: var(--color-primary-dark);
+            background-color: var(--clr-primary-dark);
         }
 
         &--auction {
             color: #4b3621;
-            background-color: var(--color-accent-yellow);
+            background-color: var(--clr-accent-yellow);
         }
 
         &--waiting {
-            background-color: var(--color-accent-pink);
+            background-color: var(--clr-accent-pink);
         }
     }
 
@@ -79,18 +81,30 @@
         margin-top: 4rem;
     }
 
+    .card__type {
+        font-weight: 600;
+        font-size: var(--fs-small);
+        color: var(--black);
+    }
+
     .card__location {
         display: flex;
         align-items: center;
         gap: 10px;
+        margin: 10px auto;
 
         &-icon {
-            font-size: var(--fs-content-lg);
             color: var(--black);
+
+            .icon {
+                /* กำหนดขนาด */
+                width: 1.5rem;
+                height: 1.5rem;
+            }
         }
 
         &-text {
-            font-size: 1rem;
+            font-size: var(--fs-small);
             color: var(--text-muted);
         }
     }
@@ -98,11 +112,14 @@
     .card__price {
         font-size: var(--fs-h2);
         font-weight: 600;
-        color: var(--color-primary-dark);
+        line-height: 1.2;
+        color: var(--clr-primary-dark);
     }
 
     &:hover {
-        background-color: rgba(255, 255, 255, var(--opacity-light));
+        box-shadow: var(--shadow-md);
+        transform: scale(1.01);
+        -webkit-transform: scale(1.01);
     }
 }
 
@@ -110,18 +127,21 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 8px;
     box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(var(--blur-intensity));
-    -webkit-backdrop-filter: blur(var(--blur-intensity));
-    background-color: rgba(0, 0, 0, var(--opacity-medium));
-    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    background-color: rgba(0, 0, 0, var(--opacity-50));
+    transition: all var(--transition);
 
     .card__figure {
-        position: relative;
-        border-radius: 4px;
-        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        color: var(--neutral-100);
     }
 
     .card__image {
@@ -135,7 +155,7 @@
         font-weight: 300;
         line-height: 1.4;
         letter-spacing: -0.02em;
-        color: var(--white);
+        color: var(--neutral-100);
         text-align: center;
     }
 
@@ -149,21 +169,23 @@
         font-weight: 600;
         line-height: 1.2;
         letter-spacing: -0.02em;
-        color: var(--white);
+        color: var(--neutral-100);
         text-align: center;
     }
 
     .card__unit {
-        font-size: var(--fs-content-lg);
+        font-size: var(--fs-body);
         font-weight: 400;
         line-height: 1.4;
         letter-spacing: -0.02em;
-        color: var(--white);
+        color: var(--neutral-100);
         text-align: center;
     }
 
     &:hover {
-        background-color: rgba(0, 0, 0, var(--opacity-light));
+        box-shadow: var(--shadow-md);
+        transform: scale(1.01);
+        -webkit-transform: scale(1.01);
     }
 }
 
@@ -173,21 +195,16 @@
     gap: 1rem;
     padding: 0;
     background-color: transparent;
-    transition: all 0.3s ease-in-out;
 
     .card__figure {
-        position: relative;
         margin-bottom: 10px;
         border-radius: 4px;
-        overflow: hidden;
-        transition: all 0.3s ease-in-out;
     }
 
     .card__image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: all 0.3s ease-in-out;
     }
 
     .card__body {
@@ -198,21 +215,20 @@
     .card__title {
         padding: 1rem 0 0 0;
         margin-bottom: 1rem;
-        border-top: 1px solid var(--light);
+        border-top: 1px solid var(--neutral-600);
         font-weight: 400;
-        font-size: var(--fs-content-md);
+        font-size: var(--fs-body);
         line-height: 1.4;
         color: black;
-        transition: all 0.3s ease-in-out;
     }
 
     .card__date {
         font-weight: 500;
         font-size: 1rem;
         line-height: 1.4;
-        color: var(--color-primary-dark);
-        transition: all 0.3s ease-in-out;
+        color: var(--clr-primary-dark);
     }
+
     /*.card__tag {
         display: inline-flex;
         justify-content: flex-start;
@@ -237,7 +253,7 @@
 
     &:hover {
         .card__title {
-            color: var(--color-primary-dark);
+            color: var(--clr-primary-dark);
         }
     }
 }
@@ -271,7 +287,7 @@
     }
 
     &.active {
-        background: var(--white); /* หรือสีพื้นหลังที่ต้องการ */
+        background: var(--neutral-100); /* หรือสีพื้นหลังที่ต้องการ */
         box-shadow: var(--shadow-sm); /* แสดงเงาเฉพาะตอน active */
         .hover-reveal__img {
             transform: scale(1);

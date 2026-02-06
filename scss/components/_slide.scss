@@ -13,6 +13,7 @@
     &__picture {
         position: relative;
         width: 100%;
+        height: 100%;
         /* กำหนดสัดส่วนตามรูป Banner ของคุณ เช่น 16/9 หรือ 21/9 */
         aspect-ratio: 16 / 9;
         background-color: transparent; /* สีรองพื้นระหว่างรอรูป */
@@ -37,8 +38,8 @@
             width: 16px;
             height: 16px;
             border-radius: 0.5rem;
-            border: 1px solid var(--white);
-            background-color: rgba(0, 0, 0, var(--opacity-medium));
+            border: 1px solid var(--neutral-100);
+            background-color: rgba(0, 0, 0, var(--opacity-50));
             transition: all .2s ease-in-out;
             opacity: 1;
         }
@@ -55,16 +56,6 @@
                 width: 16px;
                 height: 64px;
             }
-        }
-    }
-
-    @include media.media-down(lg) {
-        height: 75vh;
-
-        .hero-slide__picture {
-            width: 100%;
-            height: 100%;
-            aspect-ratio: 4 / 5; /* ตัวอย่างสัดส่วนแนวตั้งสำหรับมือถือ */
         }
     }
 }

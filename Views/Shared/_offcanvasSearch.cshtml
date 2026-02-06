@@ -1,0 +1,139 @@
+﻿@* Offcanvas Search *@
+<div class="offcanvas offcanvas-start offcanvas-search" tabindex="-1" id="advancedSearch">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-search__title" id="advancedSearchLabel">ตัวกรองขั้นสูง</h5>
+        <button type="button" class="offcanvas-search__close" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <div class="offcanvas-body">
+        <form id="advSearchForm" onsubmit="event.preventDefault(); return false;">
+            <div class="mb-4">
+                <label class="form-label">คำค้นหาทรัพย์สิน</label>
+                <input type="text" class="form-control offcanvas-search__input" placeholder="รหัสทรัพย์, ทำเล, สถานที่ใกล้เคียง, ประเภท/เส้นทาง ฯลฯ">
+            </div>
+
+            <div class="mb-4 property-range-slider">
+                <label class="form-label mb-3">ราคา (บาท)</label>
+
+                <div class="range-slider-container">
+                    <div class="slider-track"></div>
+                    <input type="range" min="0" max="10000000" value="1500000" step="10000" id="slider-1">
+                    <input type="range" min="0" max="10000000" value="5000000" step="10000" id="slider-2">
+                </div>
+
+                <div class="row mt-3 align-items-center">
+                    <div class="col-5">
+                        <small class="text-white d-block mb-1">เริ่มต้น</small>
+                        <div class="input-group input-group-sm">
+                            <input type="text" id="input-1" class="form-control price-input">
+                            <span class="input-group-text border-start-0">บาท</span>
+                        </div>
+                    </div>
+                    <div class="col-2 text-center mt-4">
+                        <div class="border-top w-100 opacity-25"></div>
+                    </div>
+                    <div class="col-5">
+                        <small class="text-white d-block mb-1">สูงสุด</small>
+                        <div class="input-group input-group-sm">
+                            <input type="text" id="input-2" class="form-control price-input">
+                            <span class="input-group-text border-start-0">บาท</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">พื้นที่ใช้สอย (ตร.ม.)</label>
+                <div class="row g-3">
+                    <div class="col-5"><input type="text" class="form-control offcanvas-search__input" placeholder="0"></div>
+                    <div class="col-2 text-center text-white" style="margin-top: 26px;">
+                        <span class="form-label opacity-25">ถึง</span>
+                    </div>
+                    <div class="col-5"><input type="text" class="form-control offcanvas-search__input" placeholder="100"></div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">ขนาดที่ดิน (ตร.ว.)</label>
+                <div class="row g-3">
+                    <div class="col-5"><input type="text" class="form-control offcanvas-search__input" placeholder="0"></div>
+                    <div class="col-2 text-center text-white" style="margin-top: 26px;">
+                        <span class="form-label opacity-25">ถึง</span>
+                    </div>
+                    <div class="col-5"><input type="text" class="form-control offcanvas-search__input" placeholder="100"></div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">จำนวนห้องนอน</label>
+                <div class="offcanvas-search__check-group">
+                    <input type="radio" class="btn-check" name="bedrooms" id="bed1" value="1"><label class="btn btn--opacity-black" for="bed1">1</label>
+                    <input type="radio" class="btn-check" name="bedrooms" id="bed2" value="2"><label class="btn btn--opacity-black" for="bed2">2</label>
+                    <input type="radio" class="btn-check" name="bedrooms" id="bed3" value="3"><label class="btn btn--opacity-black" for="bed3">3</label>
+                    <input type="radio" class="btn-check" name="bedrooms" id="bed4" value="4+"><label class="btn btn--opacity-black" for="bed4">4+</label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">จำนวนห้องน้ำ</label>
+                <div class="offcanvas-search__check-group">
+                    <input type="radio" class="btn-check" name="bathrooms" id="bath1" value="1"><label class="btn btn--opacity-black" for="bath1">1</label>
+                    <input type="radio" class="btn-check" name="bathrooms" id="bath2" value="2"><label class="btn btn--opacity-black" for="bath2">2</label>
+                    <input type="radio" class="btn-check" name="bathrooms" id="bath3" value="3"><label class="btn btn--opacity-black" for="bath3">3</label>
+                    <input type="radio" class="btn-check" name="bathrooms" id="bath4" value="4+"><label class="btn btn--opacity-black" for="bath4">4+</label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">ข้อมูลพื้นที่และสถานะ</label>
+                <div class="dropdown offcanvas-search__select-group mb-3">
+                    <button class="btn w-100 d-flex justify-content-between align-items-center offcanvas-search__custom-select" type="button" data-bs-toggle="dropdown">
+                        <span class="btn__text">ประเภททรัพย์</span>
+                        <span class="btn__icon"><i class="bi bi-chevron-down transition-icon"></i></span>
+                    </button>
+                    <ul class="dropdown-menu w-100 custom-scrollbar">
+                        <li><a class="dropdown-item" href="#">บ้านเดี่ยว</a></li>
+                        <li><a class="dropdown-item" href="#">คอนโด</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown offcanvas-search__select-group">
+                    <button class="btn w-100 d-flex justify-content-between align-items-center offcanvas-search__custom-select" type="button" data-bs-toggle="dropdown">
+                        <span class="btn__text">สถานะประกาศ</span>
+                        <span class="btn__icon"><i class="bi bi-chevron-down transition-icon"></i></span>
+                    </button>
+                    <ul class="dropdown-menu w-100 custom-scrollbar">
+                        <li><a class="dropdown-item" href="#">ขาย</a></li>
+                        <li><a class="dropdown-item" href="#">เช่า</a></li>
+                        <li><a class="dropdown-item" href="#">ขายดาวน์</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">เลือกตามทำเลและสถานที่สำคัญ</label>
+                <div class="d-flex flex-wrap gap-2">
+                    <input type="checkbox" class="btn-check" id="loc1" autocomplete="off">
+                    <label class="btn btn--opacity-black" for="loc1">ใกล้รถไฟฟ้า (BTS/MRT)</label>
+
+                    <input type="checkbox" class="btn-check" id="loc2" autocomplete="off">
+                    <label class="btn btn--opacity-black" for="loc2">ใกล้ทางด่วน</label>
+
+                    <input type="checkbox" class="btn-check" id="loc3" autocomplete="off">
+                    <label class="btn btn--opacity-black" for="loc3">ห้างสรรพสินค้า</label>
+
+                    <input type="checkbox" class="btn-check" id="loc4" autocomplete="off">
+                    <label class="btn btn--opacity-black" for="loc4">โรงพยาบาล</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="offcanvas-footer p-3 border-top bg-light">
+        <div class="d-flex gap-2">
+            <button type="reset" form="advSearchForm" class="btn btn--hover btn--gray">ล้างข้อมูล</button>
+            <button type="submit" form="advSearchForm" class="btn btn--hover btn--pink"><i class="fa-solid fa-magnifying-glass"></i> ค้นหา</button>
+        </div>
+    </div>
+</div>

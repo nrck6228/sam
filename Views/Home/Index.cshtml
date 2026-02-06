@@ -21,10 +21,14 @@
         <div class="search-panel">
             <ul class="nav nav-pills search-panel__tabs" id="searchTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link search-panel__tab-link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal-search" type="button">ค้นหาปกติ</button>
+                    <button class="nav-link sam-tabs__link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal-search" type="button">
+                        <svg class="icon"><use xlink:href="#icon-search"></use></svg> ค้นหาปกติ
+                    </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link search-panel__tab-link" id="ai-tab" data-bs-toggle="tab" data-bs-target="#ai-search" type="button">ค้นหาจาก AI</button>
+                    <button class="nav-link sam-tabs__link" id="ai-tab" data-bs-toggle="tab" data-bs-target="#ai-search" type="button">
+                        <svg class="icon"><use xlink:href="#icon-ai"></use></svg> ค้นหาจาก AI
+                    </button>
                 </li>
             </ul>
 
@@ -34,19 +38,21 @@
                         <div class="col-md-12 d-flex gap-2">
                             <div class="input-group search-panel__input-group">
                                 <input type="text" class="form-control search-panel__input" id="keywordInput" placeholder="คำค้นหาทรัพย์สิน เช่น รหัสทรัพย์, ทำเล, สถานที่ใกล้เคียง, ประเภท/เส้นทาง ด้านการคมนาคม ฯลฯ">
-                                <button class="btn search-panel__btn" title="ค้นหาด้วยเสียง" id="voice-btn"><i class="bi bi-mic"></i></button>
-                                <button class="btn search-panel__btn" title="ค้นหาด้วยรูปภาพ" id="image-btn"><i class="bi bi-camera"></i></button>
+                                <button class="btn btn--square btn--transparent text-white d-none d-md-block" title="ค้นหาด้วยเสียง" id="voice-btn"><svg class="icon"><use xlink:href="#icon-mic"></use></svg></button>
+                                <button class="btn btn--square btn--transparent text-white" title="ค้นหาด้วยรูปภาพ" id="image-btn"><svg class="icon"><use xlink:href="#icon-camera"></use></svg></button>
                             </div>
-                            <button class="btn search-panel__btn-slide" type="button" data-bs-toggle="offcanvas" data-bs-target="#advancedSearch">
-                                <i class="bi bi-sliders2"></i>
+                            <button class="btn btn--square btn--white" type="button" data-bs-toggle="offcanvas" data-bs-target="#advancedSearch">
+                                <svg class="icon"><use xlink:href="#icon-slider"></use></svg>
                             </button>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 d-none d-md-block">
                             <div class="dropdown search-panel__select-group">
                                 <input type="hidden" name="property_type" class="dropdown-value-storage">
                                 <button class="btn w-100 d-flex justify-content-between align-items-center search-panel__custom-select" type="button" data-bs-toggle="dropdown">
                                     <span class="btn__text">ประเภททรัพย์</span>
-                                    <span class="btn__icon"><i class="bi bi-chevron-down transition-icon"></i></span>
+                                    <span class="btn__icon">
+                                        <svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg>
+                                    </span>
                                 </button>
                                 <ul class="dropdown-menu w-100 custom-scrollbar">
                                     <li><a class="dropdown-item" href="#" data-value="house">บ้านเดี่ยว</a></li>
@@ -56,12 +62,12 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 d-none d-md-block">
                             <div class="dropdown search-panel__select-group">
                                 <input type="hidden" name="province" class="dropdown-value-storage">
                                 <button class="btn w-100 d-flex justify-content-between align-items-center search-panel__custom-select" type="button" data-bs-toggle="dropdown">
                                     <span class="btn__text">เลือกจังหวัด</span>
-                                    <span class="btn__icon"><i class="bi bi-chevron-down transition-icon"></i></span>
+                                    <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
                                 </button>
                                 <ul class="dropdown-menu w-100 custom-scrollbar">
                                     <li><a class="dropdown-item" href="#" data-value="bkk">กรุงเทพฯ</a></li>
@@ -71,12 +77,12 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 d-none d-md-block">
                             <div class="dropdown search-panel__select-group">
                                 <input type="hidden" name="district" class="dropdown-value-storage">
                                 <button class="btn w-100 d-flex justify-content-between align-items-center search-panel__custom-select" type="button" data-bs-toggle="dropdown">
                                     <span class="btn__text">อำเภอ/เขต</span>
-                                    <span class="btn__icon"><i class="bi bi-chevron-down transition-icon"></i></span>
+                                    <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
                                 </button>
                                 <ul class="dropdown-menu w-100 custom-scrollbar">
                                     <li><a class="dropdown-item" href="#">กรุณาเลือกจังหวัดก่อน</a></li>
@@ -94,7 +100,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="ai-search" role="tabpanel">
-                    <div class="ai-input-wrapper d-flex flex-wrap flex-md-nowrap gap-3">
+                    <div class="ai-input-wrapper">
                         <div class="input-group search-panel__input-group">
                             <input type="text" class="form-control search-panel__input" id="keywordInputAi" placeholder="บอกสิ่งที่คุณต้องการ เช่น 'หาคอนโดโซนบางนา งบไม่เกิน 5 ล้าน เลี้ยงหมาได้'">
                             <button class="btn search-panel__btn" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -124,17 +130,17 @@
     <div class="nav-panel">
         <a href="#" title="" class="btn btn--xl btn--pink btn--hover rounded-0">
             <span class="btn__text">ค้นหาตามแผนที่</span>
-            <span class="btn__icon"><i class="bi bi-arrow-up-short"></i></span>
+            <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
         </a>
 
         <div class="nav-panel__group">
             <a href="#" title="" class="btn btn--xl btn--green btn--hover rounded-0">
                 <span class="btn__text">จับคู่ความต้องการทรัพย์สิน NPA</span>
-                <span class="btn__icon"><i class="bi bi-arrow-up-short"></i></span>
+                <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
             </a>
             <a href="#" title="" class="btn btn--xl btn--green btn--hover rounded-0">
                 <span class="btn__text">ทรัพย์ขายทอดตลาดของกรมบังคับคดี</span>
-                <span class="btn__icon"><i class="bi bi-arrow-up-short"></i></span>
+                <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
             </a>
         </div>
     </div>
@@ -251,10 +257,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="stats-board">
-                    <div class="card-deck card-deck--cards-lg-2 reveal-on-scroll">
+                    <div class="card-deck card-deck--cards-1 card-deck--cards-lg-2 reveal-on-scroll">
                         <div class="card card--stats">
                             <div class="card--stats__number">
-                                100 %
+                                100<span>%</span>
                             </div>
                             <div class="card--stats__label">
                                 หยุดดอกเบี้ยถาวร
@@ -263,7 +269,7 @@
 
                         <div class="card card--stats">
                             <div class="card--stats__number">
-                                3 ปี
+                                3<span>ปี</span>
                             </div>
                             <div class="card--stats__label">
                                 ระยะเวลาโครงการ
@@ -275,18 +281,18 @@
             <div class="col-md-12 d-flex flex-wrap gap-3">
                 <a href="/" title="" class="btn btn--hover btn--green">
                     <span class="btn__text">ลงทะเบียน</span>
-                    <span class="btn__icon"><i class="bi bi-arrow-up-short"></i></span>
+                    <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
                 </a>
                 <a href="/" title="" class="btn btn--hover btn--pink">
                     <span class="btn__text">ติดต่อสอบถาม</span>
                     <span class="btn__icon">
-                        <i class="bi bi-arrow-up-short"></i>
+                        <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
                     </span>
                 </a>
                 <a href="/" title="" class="btn btn--hover btn--gray">
                     <span class="btn__text">สายด่วน</span>
                     <span class="btn__icon">
-                        <i class="bi bi-arrow-up-short"></i>
+                        <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
                     </span>
                 </a>
             </div>
@@ -333,12 +339,12 @@
                     </div>
                     <div class="tab-content sam-tab-content" id="assetTabContent">
                         <div class="tab-pane fade show active" id="province-content" role="tabpanel">
-                            <div id="asset-list" class="card-deck card-deck--cards-md-2 card-deck--cards-lg-3">
+                            <div id="asset-list" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3">
                             </div>
                             <a href="/" title="" class="btn btn--hover btn--gray">
                                 <span class="btn__text">ดูทั้งหมด</span>
                                 <span class="btn__icon">
-                                    <i class="bi bi-arrow-up-short"></i>
+                                    <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
                                 </span>
                             </a>
                         </div>
@@ -362,19 +368,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="asset-panel asset-container">
-                    <div id="asset-type" class="card-deck card-deck--cards-md-2 card-deck--cards-lg-4">
+                    <div id="asset-type" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-4">
                     </div>
                     
-                    <div class="row justify-content-lg-end">
-                        <div class="col-lg-6">
-                            <div id="asset-tag" class="asset-tags">
-                                <a href="/" class="asset-badge">
-                                    <svg class="asset-badge__icon"><use xlink:href="sprite.svg#townhouse"></use></svg>
-                                    <span>ทาวน์เฮ้าส์</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="asset-tag" class="asset-tags"></div>
                 </div>
             </div>
         </div>
@@ -446,12 +443,12 @@
                     </div>
                     <div class="tab-content sam-tab-content" id="newsTabContent">
                         <div class="tab-pane fade show active" id="news-content" role="tabpanel">
-                            <div id="news-list" class="card-deck card-deck--cards-md-2 card-deck--cards-lg-3">
+                            <div id="news-list" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-3">
                             </div>
                             <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray">
                                 <span class="btn__text">ดูทั้งหมด</span>
                                 <span class="btn__icon">
-                                    <i class="bi bi-arrow-up-short"></i>
+                                    <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
                                 </span>
                             </a>
                         </div>
@@ -481,7 +478,7 @@
                     <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray">
                         <span class="btn__text">เกี่ยวกับเรา</span>
                         <span class="btn__icon">
-                            <i class="bi bi-arrow-up-short"></i>
+                            <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
                         </span>
                     </a>
                 </div>
@@ -489,146 +486,6 @@
         </div>
     </div>
 </section>
-
-@* Offcanvas Search *@
-<div class="offcanvas offcanvas-start offcanvas-search" tabindex="-1" id="advancedSearch">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-search__title" id="advancedSearchLabel">ตัวกรองขั้นสูง</h5>
-        <button type="button" class="offcanvas-search__close" data-bs-dismiss="offcanvas" aria-label="Close">
-            <i class="bi bi-x-lg"></i>
-        </button>
-    </div>
-
-    <div class="offcanvas-body">
-        <form id="advSearchForm" onsubmit="event.preventDefault(); return false;">
-            <div class="mb-4">
-                <label class="form-label">คำค้นหาทรัพย์สิน</label>
-                <input type="text" class="form-control offcanvas-search__input" placeholder="รหัสทรัพย์, ทำเล, สถานที่ใกล้เคียง, ประเภท/เส้นทาง ฯลฯ">
-            </div>
-
-            <div class="mb-4 property-range-slider">
-                <label class="form-label mb-3">ราคา (บาท)</label>
-
-                <div class="range-slider-container">
-                    <div class="slider-track"></div>
-                    <input type="range" min="0" max="10000000" value="1500000" step="10000" id="slider-1" oninput="slideOne()">
-                    <input type="range" min="0" max="10000000" value="5000000" step="10000" id="slider-2" oninput="slideTwo()">
-                </div>
-
-                <div class="row mt-3 align-items-center">
-                    <div class="col-5">
-                        <small class="text-white d-block mb-1">เริ่มต้น</small>
-                        <div class="input-group input-group-sm">
-                            <input type="text" id="input-1" class="form-control price-input" onchange="inputOne()">
-                            <span class="input-group-text border-start-0">บาท</span>
-                        </div>
-                    </div>
-                    <div class="col-2 text-center mt-4">
-                        <div class="border-top w-100 opacity-25"></div>
-                    </div>
-                    <div class="col-5">
-                        <small class="text-white d-block mb-1">สูงสุด</small>
-                        <div class="input-group input-group-sm">
-                            <input type="text" id="input-2" class="form-control price-input" onchange="inputTwo()">
-                            <span class="input-group-text border-start-0">บาท</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label class="form-label">พื้นที่ใช้สอย (ตร.ม.)</label>
-                <div class="row g-3">
-                    <div class="col-5"><input type="text" class="form-control offcanvas-search__input" placeholder="0"></div>
-                    <div class="col-2 text-center text-white" style="margin-top: 26px;">
-                        <span class="form-label opacity-25">ถึง</span>
-                    </div>
-                    <div class="col-5"><input type="text" class="form-control offcanvas-search__input" placeholder="100"></div>
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label class="form-label">ขนาดที่ดิน (ตร.ว.)</label>
-                <div class="row g-3">
-                    <div class="col-5"><input type="text" class="form-control offcanvas-search__input" placeholder="0"></div>
-                    <div class="col-2 text-center text-white" style="margin-top: 26px;">
-                        <span class="form-label opacity-25">ถึง</span>
-                    </div>
-                    <div class="col-5"><input type="text" class="form-control offcanvas-search__input" placeholder="100"></div>
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label class="form-label">จำนวนห้องนอน</label>
-                <div class="offcanvas-search__check-group">
-                    <input type="radio" class="btn-check" name="bedrooms" id="bed1" value="1"><label class="btn btn--opacity-black" for="bed1">1</label>
-                    <input type="radio" class="btn-check" name="bedrooms" id="bed2" value="2"><label class="btn btn--opacity-black" for="bed2">2</label>
-                    <input type="radio" class="btn-check" name="bedrooms" id="bed3" value="3"><label class="btn btn--opacity-black" for="bed3">3</label>
-                    <input type="radio" class="btn-check" name="bedrooms" id="bed4" value="4+"><label class="btn btn--opacity-black" for="bed4">4+</label>
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label class="form-label">จำนวนห้องน้ำ</label>
-                <div class="offcanvas-search__check-group">
-                    <input type="radio" class="btn-check" name="bathrooms" id="bath1" value="1"><label class="btn btn--opacity-black" for="bath1">1</label>
-                    <input type="radio" class="btn-check" name="bathrooms" id="bath2" value="2"><label class="btn btn--opacity-black" for="bath2">2</label>
-                    <input type="radio" class="btn-check" name="bathrooms" id="bath3" value="3"><label class="btn btn--opacity-black" for="bath3">3</label>
-                    <input type="radio" class="btn-check" name="bathrooms" id="bath4" value="4+"><label class="btn btn--opacity-black" for="bath4">4+</label>
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label class="form-label">ข้อมูลพื้นที่และสถานะ</label>
-                <div class="dropdown offcanvas-search__select-group mb-3">
-                    <button class="btn w-100 d-flex justify-content-between align-items-center offcanvas-search__custom-select" type="button" data-bs-toggle="dropdown">
-                        <span class="btn__text">ประเภททรัพย์</span>
-                        <span class="btn__icon"><i class="bi bi-chevron-down transition-icon"></i></span>
-                    </button>
-                    <ul class="dropdown-menu w-100 custom-scrollbar">
-                        <li><a class="dropdown-item" href="#">บ้านเดี่ยว</a></li>
-                        <li><a class="dropdown-item" href="#">คอนโด</a></li>
-                    </ul>
-                </div>
-                <div class="dropdown offcanvas-search__select-group">
-                    <button class="btn w-100 d-flex justify-content-between align-items-center offcanvas-search__custom-select" type="button" data-bs-toggle="dropdown">
-                        <span class="btn__text">สถานะประกาศ</span>
-                        <span class="btn__icon"><i class="bi bi-chevron-down transition-icon"></i></span>
-                    </button>
-                    <ul class="dropdown-menu w-100 custom-scrollbar">
-                        <li><a class="dropdown-item" href="#">ขาย</a></li>
-                        <li><a class="dropdown-item" href="#">เช่า</a></li>
-                        <li><a class="dropdown-item" href="#">ขายดาวน์</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label class="form-label">เลือกตามทำเลและสถานที่สำคัญ</label>
-                <div class="d-flex flex-wrap gap-2">
-                    <input type="checkbox" class="btn-check" id="loc1" autocomplete="off">
-                    <label class="btn btn--opacity-black" for="loc1">ใกล้รถไฟฟ้า (BTS/MRT)</label>
-
-                    <input type="checkbox" class="btn-check" id="loc2" autocomplete="off">
-                    <label class="btn btn--opacity-black" for="loc2">ใกล้ทางด่วน</label>
-
-                    <input type="checkbox" class="btn-check" id="loc3" autocomplete="off">
-                    <label class="btn btn--opacity-black" for="loc3">ห้างสรรพสินค้า</label>
-
-                    <input type="checkbox" class="btn-check" id="loc4" autocomplete="off">
-                    <label class="btn btn--opacity-black" for="loc4">โรงพยาบาล</label>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <div class="offcanvas-footer p-3 border-top bg-light">
-        <div class="d-flex gap-2">
-            <button type="reset" form="advSearchForm" class="btn btn--hover btn--gray">ล้างข้อมูล</button>
-            <button type="submit" form="advSearchForm" class="btn btn--hover btn--pink"><i class="fa-solid fa-magnifying-glass"></i> ค้นหา</button>
-        </div>
-    </div>
-</div>
 
 @section Styles {
     <link href="~/vendors/swiper/swiper-bundle.min.css" rel="stylesheet" />
@@ -676,100 +533,5 @@
                 });
             });
         });
-    </script>
-
-    <script>
-        let sliderOne = document.getElementById("slider-1");
-        let sliderTwo = document.getElementById("slider-2");
-        let inputOneBox = document.getElementById("input-1");
-        let inputTwoBox = document.getElementById("input-2");
-        let sliderTrack = document.querySelector(".slider-track");
-        let sliderMaxValue = document.getElementById("slider-1").max;
-        let minGap = 100000;
-        const priceInputs = [document.getElementById("input-1"), document.getElementById("input-2")];
-
-        priceInputs.forEach(input => {
-            input.addEventListener("keydown", function(event) {
-                if (event.key === "Enter") {
-                    // 1. ยกเลิกการ Submit Form (ป้องกันการปิด Offcanvas)
-                    event.preventDefault();
-
-                    // 2. เรียกฟังก์ชันอัปเดตค่าที่เราเขียนไว้ (inputOne หรือ inputTwo)
-                    if (this.id === "input-1") {
-                        inputOne();
-                    } else {
-                        inputTwo();
-                    }
-
-                    // 3. ทำให้ช่อง Input หลุดจาก Focus (Optional - เพื่อให้เห็นว่าค่าถูกบันทึกแล้ว)
-                    this.blur();
-                }
-            });
-        });
-
-        // แปลงตัวเลขเป็น Format เงินบาท (1,000,000)
-        function formatCurrency(val) {
-            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-
-        // ล้างคอมม่าออกเพื่อให้เป็นตัวเลขธรรมดา
-        function parseCurrency(val) {
-            return parseInt(val.replace(/,/g, '')) || 0;
-        }
-
-        function slideOne() {
-            if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
-                sliderOne.value = parseInt(sliderTwo.value) - minGap;
-            }
-            inputOneBox.value = formatCurrency(sliderOne.value);
-            fillColor();
-        }
-
-        function slideTwo() {
-            if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
-                sliderTwo.value = parseInt(sliderOne.value) + minGap;
-            }
-            inputTwoBox.value = formatCurrency(sliderTwo.value);
-            fillColor();
-        }
-
-        // ฟังก์ชันเมื่อผู้ใช้พิมพ์ตัวเลขเอง
-        function inputOne() {
-            let val = parseCurrency(inputOneBox.value);
-            if (val < 0) val = 0;
-            if (val >= parseInt(sliderTwo.value) - minGap) {
-                val = parseInt(sliderTwo.value) - minGap;
-            }
-            sliderOne.value = val;
-            inputOneBox.value = formatCurrency(val);
-            fillColor();
-        }
-
-        function inputTwo() {
-            let val = parseCurrency(inputTwoBox.value);
-            if (val > sliderMaxValue) val = sliderMaxValue;
-            if (val <= parseInt(sliderOne.value) + minGap) {
-                val = parseInt(sliderOne.value) + minGap;
-            }
-            sliderTwo.value = val;
-            inputTwoBox.value = formatCurrency(val);
-            fillColor();
-        }
-
-        function fillColor() {
-            let percent1 = (sliderOne.value / sliderMaxValue) * 100;
-            let percent2 = (sliderTwo.value / sliderMaxValue) * 100;
-            sliderTrack.style.background = `linear-gradient(to right,
-                rgba(255,255,255,1) ${percent1}% ,
-                #df9faa ${percent1}% ,
-                #df9faa ${percent2}%,
-                rgba(255,255,255,1) ${percent2}%)`;
-        }
-
-        // Initial Call
-        window.onload = function() {
-            slideOne();
-            slideTwo();
-        };
     </script>
 }

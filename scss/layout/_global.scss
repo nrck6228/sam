@@ -1,134 +1,285 @@
 ﻿@use "../abstracts/variables" as vars;
 @use "../abstracts/mixins" as media;
 
-body {
-    
-}
-
 .main {
     position: relative;
-    min-height: 1080px;
 }
 
-.wrapper {
-    position: relative;
-    margin-bottom: 3.5rem;
-}
+.offcanvas-search {
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    background-color: rgba(0, 0, 0, var(--opacity-50));
 
-.home--banner {
-    position: relative;
-    margin-bottom: 3.5rem;
-    overflow: hidden;
-}
+    &__title {
+        font-weight: 600;
+        font-size: var(--fs-h3);
+        color: var(--neutral-100);
+    }
 
-.page--banner {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    z-index: auto;
-    isolation: isolate;
-    height: 300px;
+    &__close {
+        border: 0;
+        background-color: transparent;
+        font-size: var(--fs-h4);
+        color: var(--neutral-100);
+    }
 
-    .banner__media {
-        position: absolute;
-        left: 0;
-        top: 0;
+    &__input {
         width: 100%;
-        height: 100%;
+        height: 45px;
+        color: var(--neutral-100);
+        border: 0;
+        border-bottom: 1px solid var(--neutral-100);
+        border-radius: 0;
+        background-color: transparent;
 
-        &-image {
+        &::placeholder {
+            color: var(--neutral-100);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            background-color: transparent;
+        }
+    }
+
+    &__input.form-control {
+        width: 100%;
+        height: 45px;
+        color: var(--neutral-100);
+        border: 0;
+        border-bottom: 1px solid var(--neutral-100);
+        border-radius: 0;
+        background-color: transparent;
+
+        &::placeholder {
+            color: var(--neutral-100);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    &__check-group {
+        flex: 1 1 auto;
+        display: flex;
+        grid-gap: 12px;
+        gap: 12px;
+
+        .btn--opacity-black {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all .3s ease-in-out;
-        }
-    }
+            color: var(--neutral-100);
 
-    .banner__content {
-        padding: 0;
-        display: flex;
-        position: relative;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        z-index: 2;
-    }
-
-    .banner__box {
-        position: relative;
-        height: fit-content;
-        align-items: center;
-        text-align: center;
-        width: 100%;
-        word-wrap: break-word;
-        z-index: 1;
-
-        @include media.media-up(md) {
-            width: auto;
-            max-width: 71rem;
-            min-width: 45rem;
-        }
-
-        @include media.media-up(xxl) {
-            max-width: 90rem;
-        }
-    }
-
-    .banner__heading {
-        margin: 0;
-        color: white;
-    }
-}
-
-.marquee {
-    width: 100%;
-    height: 40px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    overflow: hidden;
-
-    .marquees--wrapper {
-        overflow: hidden;
-    }
-
-    .marquee--box {
-        display: flex;
-        width: max-content;
-    }
-
-    .marquee--group {
-        display: flex;
-        white-space: nowrap;
-        flex-shrink: 0;
-
-        .item--logo {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .item--text {
-            position: relative;
-            padding: 5px 3rem;
-            font-weight: 400;
-            font-size: 0.875rem;
-            line-height: 1rem;
-            color: white;
-            overflow: hidden;
-
-            &:after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                right: 0;
-                transform: translateY(-50%);
-                width: 6px;
-                height: 6px;
-                border-radius: 50%;
-                background-color: white;
+            &:hover {
+                color: var(--neutral-100);
+                background-color: var(--clr-accent-pink);
             }
         }
     }
+
+    &__select-group {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--neutral-100);
+
+        &.show {
+            z-index: 1050;
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 8px !important;
+            padding: 8px;
+        }
+
+        .dropdown-item {
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+        /* หมุนไอคอน */
+        .transition-icon {
+            transition: transform var(--transition);
+        }
+
+        .show .transition-icon {
+            transform: rotate(180deg);
+        }
+
+        .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+    }
+
+    &__custom-select {
+        background: transparent;
+        border: none;
+        color: var(--neutral-100);
+        padding: 10px 0;
+        border-radius: 0;
+
+        &:active {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+
+        &:focus, &:focus-visible {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+
+        &:hover {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+
+        &.show {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+    }
+
+    &__select-icon {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        transition: all var(--transition);
+    }
+
+    .btn-check + .btn--opacity-black {
+        &:hover {
+            color: var(--neutral-100);
+            background-color: var(--clr-accent-pink);
+        }
+    }
+
+    .btn-check:checked + .btn--opacity-black {
+        color: var(--neutral-100);
+        background-color: var(--clr-accent-pink);
+    }
+
+    .form-label {
+        color: var(--neutral-100);
+    }
+
+    .property-range-slider {
+        padding: 10px 0;
+    }
+
+    .range-slider-container {
+        position: relative;
+        width: 100%;
+        height: 5px; /* ความหนาของเส้น */
+    }
+    /* เส้นพื้นหลัง */
+    .slider-track {
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.3); /* สีขาวจางๆ แบบในรูป */
+        border-radius: 5px;
+    }
+    /* ตั้งค่าพื้นฐานสำหรับ Input Range ทั้งคู่ */
+    input[type="range"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        outline: none;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        background-color: transparent;
+        pointer-events: none; /* เพื่อให้คลิกทะลุไปตัวที่อยู่ข้างหลังได้ */
+    }
+    /* ปุ่มวงกลม (Thumb) */
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 18px;
+        width: 18px;
+        background-color: #ffffff; /* สีขาวตามรูป */
+        border-radius: 50%;
+        cursor: pointer;
+        pointer-events: auto; /* กลับมาให้รับคลิกได้เฉพาะที่ตัวปุ่ม */
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    /* สำหรับ Firefox */
+    input[type="range"]::-moz-range-thumb {
+        height: 18px;
+        width: 18px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    .input-group {
+        border-bottom: 1px solid var(--neutral-100);
+    }
+
+    .price-input {
+        color: var(--neutral-100);
+        border: 0;
+        border-bottom: 1px solid var(--neutral-100);
+        border-radius: 0;
+        background-color: transparent;
+
+        &::placeholder {
+            color: var(--neutral-100);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .input-group-text {
+        color: var(--neutral-100);
+        border: 0;
+        border-bottom: 1px solid var(--neutral-100);
+        border-radius: 0;
+        background-color: transparent;
+    }
+}
+
+svg.icon {
+    /* กำหนดขนาด */
+    width: clamp(1rem, 0.89rem + 0.45vw, 1.125rem);
+    height: clamp(1rem, 0.89rem + 0.45vw, 1.125rem);
+    /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
+    fill: currentColor;
+    /* ป้องกันปัญหาสัดส่วนเพี้ยน */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+svg.icon-xl {
+    /* กำหนดขนาด */
+    width: clamp(2rem, 1.65rem + 1.5vw, 3rem);
+    height: clamp(2rem, 1.65rem + 1.5vw, 3rem);
+    /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
+    fill: currentColor;
+    /* ป้องกันปัญหาสัดส่วนเพี้ยน */
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .skeleton-box {

@@ -2,67 +2,73 @@
 
 
 :root {
-    /* --- PRIMARY GREEN --- */
-    --color-primary-dark: #286140; /* เขียวเข้ม */
-    --color-primary: #429f69; /* เขียวสด */
-    /* --- ACCENT PINK --- */
-    --color-accent-pink: #df9faa; /* ชมพูหลัก */
-    --color-accent-pink-light: #f3dce0; /* ชมพูอ่อน */
-    /* --- ACCENT YELLOW --- */
-    --color-accent-yellow: #fce780; /* เหลืองทอง */
-    --color-accent-yellow-light: #fef9e3; /* เหลืองอ่อน */
-    /* --- NATURE GREEN --- */
-    --color-nature-green: #adbf8f; /* เขียวขี้ม้า */
-    --color-nature-green-light: #e5ebdc; /* เขียวอ่อนพาสเทล */
-    /* --- NEUTRALS --- */
-    --color-neutral-cool: #ebebeb; /* เทาอมฟ้า */
-    --color-neutral-base: #f8f8f8; /* เทาอ่อนมาก */
-    /* --- GRAY --- */
-    --color-accent-gray: #c2c2c2; /* เทาอมฟ้า */
-    --color-neutral-gray-light: #ececec; /* เทาอ่อนมาก */
-    /* --- BASIC COLOR --- */
+    /* --- BRAND COLORS --- */
+    --clr-primary: #429f69;
+    --clr-primary-dark: #286140; /* เขียวเข้ม */
+    --clr-accent-pink: #df9faa;
+    --clr-accent-pink-light: #f3dce0; /* ชมพูอ่อน */
+    --clr-accent-yellow: #fce780;
+    --clr-accent-yellow-light: #fef9e3; /* เหลืองอ่อน */
+    --clr-nature: #adbf8f;
+    --clr-nature-light: #e5ebdc; /* เขียวอ่อนพาสเทล */
+    --clr-earth-deep: #4B3621; /* สีน้ำตาลเข้มลึก */
+    /* --- NEUTRALS (Light to Dark) --- */
+    --neutral-100: #ffffff; /* ขาวสนิท */
+    --neutral-150: #f9f9f9;
+    --neutral-200: #f5f5f5; /* (เดิม base) พื้นหลังแอป/การ์ด */
+    --neutral-300: #ececec; /* (เดิม gray-light) เส้นแบ่ง/พื้นผิวปุ่ม */
+    --neutral-400: #d1d1d1; /* [เพิ่มใหม่] เพื่อให้รอยต่อระหว่าง 300 กับ 500 ไม่กระโดด */
+    --neutral-500: #c2c2c2; /* (เดิม accent-gray) Placeholder/ไอคอนจางๆ */
+    --neutral-600: #959595; /* (เดิม light) ข้อความรอง/Caption */
+    --neutral-700: #656565; /* [เพิ่มใหม่] (เดิม text-muted) ข้อความประกอบ */
+    --neutral-800: #4a4a4a; /* เทาเข้มจัด สำหรับหัวข้อย่อย */
+    --neutral-900: #363636; /* (เดิม text-main) เกือบดำ สำหรับเนื้อหาหลัก */
+    /* --- Base Palette --- */
+    --black: #1a1a1a;
     --white: #ffffff;
-    --black: #000000;
-    --light: #959595;
-    /* --- TEXT COLOR --- */
-    --text-main: #363636;
-    --text-muted: #656565;
-    --text-light: #959595;
+    --clr-error: #dc3545; /* สีแดงสำหรับแจ้งเตือน */
+    --clr-danger: #b02a37; /* สีแดงสำหรับปุ่มลบ (เข้มกว่าปกติ) */
+    /* --- TEXT SEMANTICS --- */
+    --text-main: #363636; /* อ่านง่ายสุด */
+    --text-muted: #656565; /* ตัวประกอบ, คำอธิบาย */
+    --text-disabled: #959595; /* ตัวอักษรที่จางมากๆ */
+    --text-on-primary: #ffffff; /* สีตัวอักษรเมื่อวางบนปุ่มสีเขียว */
+    /* --- SURFACE & BACKGROUND --- */
+    --bg-body: var(--neutral-100); /* พื้นหลังหลักของหน้า */
+    --bg-section: var(--neutral-200); /* สำหรับสลับอารมณ์ในแต่ละ Section */
+    --bg-footer: var(--neutral-150); /* สำหรับส่วนท้ายของหน้า */
+    --surface-main: var(--neutral-100); /* พื้นผิวหลัก เช่น Card, Section */
+    --surface-variant: var(--neutral-300); /* พื้นผิวรอง เช่น Input, Tag, Divider */
+    --surface-overlay: var(--neutral-100); /* พื้นผิวที่ลอยขึ้นมา เช่น Offcanvas, Modal */
     /* --- GRADIENTS --- */
-    --grad-green: linear-gradient(120deg, var(--color-primary-dark), var(--color-primary), var(--color-primary), var(--color-primary-dark) );
-    --grad-pink: linear-gradient(120deg, var(--color-accent-pink), var(--color-accent-pink-light), var(--color-accent-pink-light), var(--color-accent-pink) );
-    --grad-yellow: linear-gradient(120deg, var(--color-accent-yellow), var(--color-accent-yellow-light), var(--color-accent-yellow-light), var(--color-accent-yellow) );
-    --grad-nature: linear-gradient(120deg, var(--color-nature-green), var(--color-nature-green-light), var(--color-nature-green-light), var(--color-nature-green) );
-    --grad-gray: linear-gradient(120deg, var(--color-accent-gray), var(--color-neutral-gray-light), var(--color-neutral-gray-light), var(--color-accent-gray) );
-    /* --- SHADOWS --- */
-    --shadow-sm: 0 3px 10px rgba(0, 0, 0, .2);
-    --shadow-md: 0 3px 10px rgba(0, 0, 0, .8);
-    /* --- OPACITY --- */
-    --opacity-light: 0.24;
-    --opacity-medium: 0.48;
-    --opacity-dark: 0.64;
-    /* --- BLUR --- */
-    --blur-intensity: 16px;
-    /* --- BORDER RADIUS --- */
+    --grad-green: linear-gradient(120deg, var(--clr-primary-dark), var(--clr-primary), var(--clr-primary), var(--clr-primary-dark) );
+    --grad-pink: linear-gradient(120deg, var(--clr-accent-pink), var(--clr-accent-pink-light), var(--clr-accent-pink-light), var(--clr-accent-pink) );
+    --grad-yellow: linear-gradient(120deg, var(--clr-accent-yellow), var(--clr-accent-yellow-light), var(--clr-accent-yellow-light), var(--clr-accent-yellow) );
+    --grad-nature: linear-gradient(120deg, var(--clr-nature), var(--clr-nature-light), var(--clr-nature-light), var(--clr-nature) );
+    --grad-gray: linear-gradient(120deg, var(--neutral-400), var(--neutral-300), var(--neutral-300), var(--neutral-400) );
+    /* --- UI ELEMENTS --- */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.12); /* สำหรับ Modal/Offcanvas */
+    --opacity-20: 0.24;
+    --opacity-50: 0.48;
+    --opacity-70: 0.64;
+    --blur-sm: 8px;
+    --blur-md: 16px;
     --radius-sm: 8px;
     --radius-md: 16px;
-    --radius-lg: 50%;
-    /* --- TITLE FONT SIZE --- */
-    /* 1. Size 196px (Hero) -> มือถือ 56px ปรับ Slope ให้ Tablet (768px) อยู่ที่ประมาณ 110px (เดิมจะเกือบ 150px) */
-    --fs-display: clamp(3.5rem, 0.413rem + 13.15vw, 12.25rem);
-    /* 2. Size 96px (H1) -> มือถือ 40px 
-       ลดความชันเพื่อให้ Tablet ดูโปร่งขึ้น */
-    --fs-h1: clamp(2.5rem, 1.25rem + 5.3vw, 6rem);
-    /* 3. Size 48px (H2) -> มือถือ 32px */
-    --fs-h2: clamp(2rem, 1.65rem + 1.5vw, 3rem);
-    /* Size 32px (H3) -> มือถือ 24px */
-    --fs-h3: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
-    /* 4. Size 24px (Content Large) -> มือถือ 18px */
-    --fs-content-lg: clamp(1.125rem, 0.99rem + 0.56vw, 1.5rem);
-    /* 5. Size 20px (Content Medium) -> มือถือ 16px */
-    --fs-content-md: clamp(1rem, 0.89rem + 0.45vw, 1.25rem);
-    /* Padding Scale */
+    --radius-round: 100px;
+    --radius-circle: 50%;
+    --transition: 0.4s ease-in-out;
     --pd-large: clamp(3rem, 2.143rem + 4.29vw, 6rem);
+    /* --- TYPOGRAPHY (Fluid Scale) --- */
+    --fs-display: clamp(3.5rem, 0.413rem + 13.15vw, 12.25rem);
+    --fs-h1: clamp(2.5rem, 1.25rem + 5.3vw, 6rem);
+    --fs-h2: clamp(2rem, 1.65rem + 1.5vw, 3rem);
+    --fs-h3: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+    --fs-h4: clamp(1.25rem, 1.14rem + 0.45vw, 1.5rem);
+    --fs-body: clamp(1rem, 0.89rem + 0.45vw, 1.125rem); /* เพิ่มค่ามาตรฐาน */
+    --fs-small: 0.875rem; /* สำหรับแคปชั่นหรือหน่วย */
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
@@ -83,12 +89,13 @@ body {
     font-family: vars.$font-family;
     font-size: vars.$font-size-base;
     line-height: vars.$line-height-base;
-    color: black;
+    color: var(--neutral-900);
+    background-color: var(--bg-body);
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    color: black;
+    font-weight: 600;
+    color: var(--neutral-900);
 }
 
 a, a:hover {

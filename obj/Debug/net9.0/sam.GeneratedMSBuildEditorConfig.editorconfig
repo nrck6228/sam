@@ -36,12 +36,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Works/asp.net/sam/Views/Shared/_offcanvasSearch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9vZmZjYW52YXNTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Works/asp.net/sam/Views/Shared/_PartialFooter.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYXJ0aWFsRm9vdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/Shared/_PartialHeader.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYXJ0aWFsSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Shared/_SpriteIcons.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TcHJpdGVJY29ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/Shared/_ValidationScriptsPartial.cshtml]

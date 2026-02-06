@@ -4,8 +4,6 @@ wwwroot\css\bootstrap-icons.min.css
 wwwroot\css\bootstrap-icons.scss
 wwwroot\css\fonts\bootstrap-icons.woff
 wwwroot\css\fonts\bootstrap-icons.woff2
-wwwroot\css\main.css
-wwwroot\css\main.min.css
 wwwroot\css\vendor.css
 wwwroot\css\vendor.min.css
 wwwroot\favicon.ico
@@ -15,6 +13,7 @@ wwwroot\js\jquery.js
 wwwroot\js\jquery.min.js
 wwwroot\js\jquery.min.map
 wwwroot\js\main.js
+wwwroot\js\search.js
 wwwroot\js\vendor.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -82,6 +81,7 @@ wwwroot\media\images\asset\sample-property-3.jpg
 wwwroot\media\images\bg-body.jpg
 wwwroot\media\images\bg\bg-categories.jpg
 wwwroot\media\images\bg\bg-location.jpg
+wwwroot\media\images\bg\bg-news.jpg
 wwwroot\media\images\bg\bg-recommend.jpg
 wwwroot\media\images\btn-appstore.webp
 wwwroot\media\images\btn-playstore.webp
@@ -93,6 +93,7 @@ wwwroot\media\images\hero\demo-banner-mobile-2.webp
 wwwroot\media\images\logo\logo-main.webp
 wwwroot\media\images\logo\logo-xl.svg
 wwwroot\media\images\mascot.png
+wwwroot\media\images\news\sample-thumb-1.jpg
 wwwroot\vendors\slick\ajax-loader.gif
 wwwroot\vendors\slick\config.rb
 wwwroot\vendors\slick\fonts\slick.eot
@@ -128,16 +129,21 @@ wwwroot\vendors\spotlight\spotlight.min.js
 wwwroot\vendors\swiper\swiper-bundle.min.css
 wwwroot\vendors\swiper\swiper-bundle.min.js
 wwwroot\vendors\swiper\swiper-bundle.min.js.map
+wwwroot\css\main.css
+wwwroot\css\main.min.css
 C:\Works\asp.net\sam\wwwroot\css\bootstrap-icons.css
 C:\Works\asp.net\sam\wwwroot\css\bootstrap-icons.json
 C:\Works\asp.net\sam\wwwroot\css\bootstrap-icons.min.css
 C:\Works\asp.net\sam\wwwroot\css\vendor.css
 C:\Works\asp.net\sam\wwwroot\css\vendor.min.css
 C:\Works\asp.net\sam\wwwroot\favicon.ico
+C:\Works\asp.net\sam\wwwroot\js\data.js
+C:\Works\asp.net\sam\wwwroot\js\home.js
 C:\Works\asp.net\sam\wwwroot\js\jquery.js
 C:\Works\asp.net\sam\wwwroot\js\jquery.min.js
 C:\Works\asp.net\sam\wwwroot\js\jquery.min.map
 C:\Works\asp.net\sam\wwwroot\js\main.js
+C:\Works\asp.net\sam\wwwroot\js\search.js
 C:\Works\asp.net\sam\wwwroot\js\vendor.js
 C:\Works\asp.net\sam\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 C:\Works\asp.net\sam\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -226,5 +232,3 @@ C:\Works\asp.net\sam\wwwroot\vendors\swiper\swiper-bundle.min.js
 C:\Works\asp.net\sam\wwwroot\vendors\swiper\swiper-bundle.min.js.map
 C:\Works\asp.net\sam\wwwroot\css\main.css
 C:\Works\asp.net\sam\wwwroot\css\main.min.css
-C:\Works\asp.net\sam\wwwroot\js\data.js
-C:\Works\asp.net\sam\wwwroot\js\home.js

@@ -58,8 +58,8 @@
 // SAM font size
 .title {
     margin: 0;
-    line-height: 1.1; /* ฟอนต์ใหญ่ควรใช้ line-height น้อย */
-    font-weight: 600;
+    line-height: 1; /* ฟอนต์ใหญ่ควรใช้ line-height น้อย */
+    font-weight: 500;
 }
 
 /* Modifiers */
@@ -77,13 +77,13 @@
 }
 
 .title--content-lg {
-    font-size: var(--fs-content-lg);
+    font-size: var(--fs-body);
     line-height: 1.5;
     font-weight: 400; /* Content มักจะใช้ความหนาปกติ */
 }
 
 .title--content-md {
-    font-size: var(--fs-content-md);
+    font-size: var(--fs-body);
     line-height: 1.5;
     font-weight: 400; /* Content มักจะใช้ความหนาปกติ */
 }
@@ -104,8 +104,8 @@
 
 /* Modifier: จัดการแค่เรื่องสีพื้นหลัง */
 .title--gradient-primary {
-    color: var(--color-primary-dark);
-    background-image: linear-gradient( 120deg, var(--color-primary-dark) 0%, var(--color-primary-dark) 70%, var(--color-primary) 100% );
+    color: var(--clr-primary-dark);
+    background-image: linear-gradient( 120deg, var(--clr-primary-dark) 0%, var(--clr-primary-dark) 70%, var(--clr-primary) 100% );
     -webkit-text-fill-color: transparent;
     background-repeat: no-repeat;
 }

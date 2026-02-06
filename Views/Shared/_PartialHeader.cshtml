@@ -30,15 +30,15 @@
                                     <h3 class="content-panel__title">การจัดการองค์กร</h3>
                                     <div class="content-panel__grid">
                                         <a href="#" class="content-panel__link">คณะกรรมการบริษัท</a>
-                                        <a href="#" class="content-panel__link">คณะกรรมการบริหารความเสี่ยงและบรรษัทภิบาล (คสบ.)</a>
+                                        @* <a href="#" class="content-panel__link">คณะกรรมการบริหารความเสี่ยงและบรรษัทภิบาล (คสบ.)</a>
                                         <a href="#" class="content-panel__link">คณะกรรมการตรวจสอบ</a>
                                         <a href="#" class="content-panel__link">คณะกรรมการกฎหมาย (คกม.)</a>
                                         <a href="#" class="content-panel__link">คณะกรรมการกลยุทธ์และบริหาร (คกบ.)</a>
                                         <a href="#" class="content-panel__link">คณะกรรมการสรรหา และพิจารณาผลตอบแทน (คส.)</a>
                                         <a href="#" class="content-panel__link">คณะกรรมการบริหารสินทรัพย์ (ECC)</a>
                                         <a href="#" class="content-panel__link">คณะกรรมการบริหารทรัพย์สินรอการขาย (NPAC)</a>
-                                        <a href="#" class="content-panel__link">คณะกรรมการเทคโนโลยีสารสนเทศ (ITC)</a>
-                                        <a href="#" class="content-panel__link">คณะผู้บริหาร</a>
+                                        <a href="#" class="content-panel__link">คณะกรรมการเทคโนโลยีสารสนเทศ (ITC)</a> *@
+                                        <a href="#" class="content-panel__link">คณะกรรมการอื่นๆ</a>
                                         <a href="#" class="content-panel__link">คณะผู้บริหารระดับสูง</a>
                                         <a href="#" class="content-panel__link">คณะผู้บริหารฝ่าย</a>
                                     </div>
@@ -157,6 +157,16 @@
                     </div>
                 </li>
             </ul>
+            <div class="search-panel--mobile">
+                <a href="/register" title="" class="d-flex d-lg-none btn btn--hover btn--green">
+                    <span class="btn__text">สมัครสมาชิก</span>
+                    <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
+                </a>
+                <a href="/login" title="" class="d-flex d-lg-none btn btn--hover btn--gray">
+                    <span class="btn__text">เข้าสู่ระบบ</span>
+                    <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
+                </a>
+            </div>
         </div>
     </nav>
     <div class="nav-wrapper">
@@ -181,11 +191,11 @@
                     <i class="bi bi-arrow-up-short"></i>
                 </span>
             </a> *@
-            <div class="member-panel">
+            <div class="member-panel d-none d-lg-block">
                 <button class="btn btn--hover btn--green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="btn__text">ระบบสมาชิก</span>
                     <span class="btn__icon">
-                        <i class="bi bi-arrow-up-short"></i>
+                        <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
                     </span>
                 </button>
                 <ul class="dropdown-menu">
@@ -195,7 +205,7 @@
             </div>
             <div class="nav-switch bg-overlay-black-blur">
                 <a href="/search" title="" class="nav-switch__link">
-                    <i class="bi bi-search"></i>
+                    <svg class="icon"><use xlink:href="#icon-search"></use></svg>
                 </a>
                 <div class="language dropdown">
                     <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

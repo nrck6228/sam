@@ -16,16 +16,20 @@ const getStatusBadge = (status) => {
     return `<div class="card__badge ${badgeClass}">${status}</div>`;
 };
 
-const getAssetIcon = (type) => {
-    const iconMap = {
-        'อาคารชุด': 'bi-building',
-        'บ้านเดี่ยว': 'bi-house-door',
-        'ทาวน์เฮาส์': 'bi-house-fill',
-        'อาคารพาณิชย์': 'bi-shop',
-        'ที่ดินเปล่า': 'bi-layers-half',
-        'อพาร์ทเมนท์': 'bi-buildings'
-    };
-    return `<i class="${iconMap[type] || 'bi-geo-alt'}"></i>`;
+const typeMap = allAssetTypeData.reduce((acc, curr) => {
+    acc[curr.id] = curr;
+    return acc;
+}, {});
+
+// ใช้ typeId จาก assetListData
+const assetTypeIdLookup = allAssetTypeData.reduce((acc, item) => {
+    acc[item.id] = item.icon;
+    return acc;
+}, {});
+
+const getAssetIconById = (typeId) => {
+    const iconName = assetTypeIdLookup[typeId] || 'land';
+    return `<svg class="icon"><use xlink:href="#icon-${iconName}"></use></svg>`;
 };
 
 /**
@@ -63,7 +67,7 @@ const renderQuickLinks = (data) => {
                 <span class="quick-links__number">${item.id}</span>
                 <div class="quick-links__content-wrapper">
                     <span class="quick-links__label">${item.label}</span>
-                    <span class="quick-links__icon"><i class="bi bi-arrow-up-short"></i></span>
+                    <span class="quick-links__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
                 </div>
             </a>
         </div>
@@ -78,24 +82,23 @@ const renderAssets = (province) => {
 
     const filteredData = assetListData.filter(item => item.location.includes(province));
 
-    if (filteredData.length === 0) {
-        container.innerHTML = `<div class="text-center py-5 w-100">ไม่พบข้อมูลรายการทรัพย์สินในจังหวัด${province}</div>`;
-        return;
-    }
-
     container.innerHTML = filteredData.map(asset => {
+        // ดึงข้อมูลประเภทจาก Map ด้วย ID
+        const typeInfo = typeMap[asset.typeId];
         const isWaiting = asset.saleStatus === 'รอประกาศราคา';
-        const priceText = isWaiting ? 'ติดต่อเจ้าหน้าที่' : `${Number(asset.totalPrice).toLocaleString()} บาท`;
+        const priceText = isWaiting ? 'ติดต่อเจ้าหน้าที่' : `${asset.totalPrice.toLocaleString()} บาท`;
 
         return `
-            <a href="/" title="${asset.alt}" class="card card--asset">
+            <a href="#" class="card card--asset">
                 <div class="card__figure">
                     <img src="${asset.img}" alt="${asset.alt}" class="card__image" />
-                    ${getStatusBadge(asset.saleStatus)}
                 </div>
                 <div class="card__body">
+                    <div class="card__type">
+                         ${typeInfo ? typeInfo.typeName : 'ไม่ระบุประเภท'}
+                    </div>
                     <div class="card__location">
-                        <span class="card__location-icon">${getAssetIcon(asset.assetType)}</span>
+                        <span class="card__location-icon">${getAssetIconById(asset.typeId)}</span>
                         <span class="card__location-text">${asset.location}</span>
                     </div>
                     <div class="card__price">${priceText}</div>
@@ -113,7 +116,7 @@ const renderAssetShowcase = (data) => {
     typeContainer.innerHTML = data.slice(0, 4).map(asset => `
         <a href="/" title="${asset.typeName}" class="card card--type">
             <div class="card__figure">
-                <svg><use xlink:href="sprite.svg#${asset.icon}"></use></svg>
+                <svg class="icon-xl"><use xlink:href="#icon-${asset.icon}"></use></svg>
                 <div class="card__type">${asset.typeName}</div>
             </div>
             <div class="card__body">
@@ -125,7 +128,7 @@ const renderAssetShowcase = (data) => {
 
     tagsContainer.innerHTML = data.slice(4).map(asset => `
         <div class="asset-badge">
-            <svg class="asset-badge__icon"><use xlink:href="sprite.svg#${asset.icon}"></use></svg>
+            <svg class="icon"><use xlink:href="#icon-${asset.icon}"></use></svg>
             <span>${asset.typeName}</span>
         </div>
     `).join('');

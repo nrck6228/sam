@@ -57,7 +57,7 @@
         font-size: 90rem; /* ปรับขนาดตามความต้องการ */
         font-weight: 900;
         line-height: 0.6;
-        color: var(--white);
+        color: var(--neutral-100);
         /* ปรับความจางให้เป็นพื้นหลัง */
         opacity: 0.16;
         z-index: 0;
@@ -78,13 +78,13 @@
 }
 
 .bg-overlay-black {
-    background: rgba(0,0,0,var(--opacity-medium));
+    background: rgba(0,0,0,var(--opacity-50));
 }
 
 .bg-overlay-black-blur {
-    background: rgba(0,0,0,var(--opacity-medium));
-    backdrop-filter: blur(var(--blur-intensity));
-    -webkit-backdrop-filter: blur(var(--blur-intensity)); /* รองรับ Safari */
+    background: rgba(0,0,0,var(--opacity-50));
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md)); /* รองรับ Safari */
 }
 
 .bg-gardient-yellow {

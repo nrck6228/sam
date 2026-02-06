@@ -23,15 +23,15 @@
         }
 
         &__item {
-            border-top: 1px solid var(--light); // เส้นคั่นด้านบน
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border-top: 1px solid var(--neutral-600); // เส้นคั่นด้านบน
+            transition: transform var(--transition);
         }
 
         &__link {
             display: flex;
             text-decoration: none;
             padding: 1.5rem 1rem;
-            transition: all 0.3s ease;
+            transition: all var(--transition);
             // --- Mobile & Tablet First ---
             flex-direction: column; // เรียงต่อกันเป็นแนวตั้ง
             align-items: flex-start; // ให้ทุกอย่างชิดซ้าย
@@ -39,15 +39,19 @@
 
             &:hover {
                 .quick-links__label {
-                    color: var(--color-primary-dark); // เปลี่ยนสีข้อความตอน hover
+                    color: var(--clr-primary-dark); // เปลี่ยนสีข้อความตอน hover
+                }
+
+                .quick-links__icon {
+                    transform: translate(8px, -8px); // เปลี่ยนสีข้อความตอน hover
                 }
             }
         }
 
         &__number {
             font-weight: 400;
-            color: var(--color-primary-dark);
-            font-size: 2rem;
+            color: var(--clr-primary-dark);
+            font-size: var(--fs-h3);
         }
 
         &__content-wrapper {
@@ -60,13 +64,24 @@
         &__label {
             flex: 1; // ดันให้ icon ไปอยู่ขวาสุด
             color: var(--black);
-            font-size: 1.5rem;
+            font-size: var(--fs-h4);
         }
 
         &__icon {
-            color: var(--text-light);
-            font-size: 2.5rem;
-            transform: rotate(45deg);
+            color: var(--text-disabled);
+            font-size: 1rem;
+            transition: var(--transition);
+
+            .icon {
+                /* กำหนดขนาด */
+                width: 16px;
+                height: 16px;
+                /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
+                fill: currentColor;
+                /* ป้องกันปัญหาสัดส่วนเพี้ยน */
+                display: inline-block;
+                vertical-align: middle;
+            }
         }
 
         @include media.media-up(md) {
@@ -105,7 +120,7 @@
                 z-index: 1;
 
                 .stats-board__content:before {
-                    background-image: linear-gradient(120deg, var(--color-primary-dark), var(--color-primary), var(--color-primary), var(--color-primary-dark) );
+                    background-image: var(--grad-green);
                 }
             }
             // การ์ดที่ 2: สีชมพู (ล่างซ้าย - กลาง)
@@ -115,7 +130,7 @@
                 z-index: 2;
 
                 .stats-board__content:before {
-                    background-image: linear-gradient(120deg, var(--color-accent-pink), var(--color-accent-pink-light), var(--color-accent-pink-light), var(--color-accent-pink) );
+                    background-image: var(--grad-pink);
                 }
             }
             // การ์ดที่ 3: สีเหลือง (บนกลาง - หน้าการ์ดสีเขียว)
@@ -126,11 +141,11 @@
                 z-index: 3;
 
                 .stats-board__number, .stats-board__desc {
-                    color: #4B3621;
+                    color: var(--clr-earth-deep);
                 }
 
                 .stats-board__content:before {
-                    background-image: linear-gradient(120deg, var(--color-accent-yellow), var(--color-accent-yellow-light), var(--color-accent-yellow-light), var(--color-accent-yellow) );
+                    background-image: var(--grad-yellow);
                 }
             }
             // การ์ดที่ 4: สีเทา/ขาว (ล่างกลาง - หน้าการ์ดสีชมพู)
@@ -141,11 +156,11 @@
                 z-index: 4;
 
                 .stats-board__number, .stats-board__desc {
-                    color: #4a4a4a;
+                    color: var(--neutral-900);
                 }
 
                 .stats-board__content:before {
-                    background-image: linear-gradient(120deg, var(--color-accent-gray), var(--color-neutral-gray-light), var(--color-neutral-gray-light), var(--color-accent-gray) );
+                    background-image: var(--grad-gray);
                 }
             }
             // การ์ดที่ 5: สีเขียวอ่อน (ขวาสุด - หน้าสุด)
@@ -155,11 +170,11 @@
                 z-index: 5;
 
                 .stats-board__number, .stats-board__desc {
-                    color: var(--color-primary-dark);
+                    color: var(--clr-primary-dark);
                 }
 
                 .stats-board__content:before {
-                    background-image: linear-gradient(120deg, var(--color-nature-green), var(--color-nature-green-light), var(--color-nature-green-light), var(--color-nature-green) );
+                    background-image: var(--grad-nature);
                 }
             }
         }
@@ -169,7 +184,7 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease-in-out;
+            transition: all var(--transition);
 
             &:before {
                 content: "";
@@ -200,11 +215,11 @@
         }
 
         &__number {
-            font-size: var(--fs-h1);
-            font-weight: 800;
             margin-bottom: 1rem;
-            color: var(--white);
+            font-size: var(--fs-h1);
             line-height: 1.1;
+            font-weight: 600;
+            color: var(--neutral-100);
         }
 
         &__counter {
@@ -217,8 +232,8 @@
 
         &__desc {
             font-weight: 400;
-            font-size: var(--fs-content-lg);
-            color: var(--white);
+            font-size: var(--fs-body);
+            color: var(--neutral-100);
         }
 
         .digit-col {
@@ -242,13 +257,19 @@
             padding: 0 2px;
         }
 
+        @media screen and (max-width: 1500px) {
+            &__text {
+                height: 360px;
+            }
+        }
+
         @include media.media-down(lg) {
             &__grid {
                 aspect-ratio: auto;
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                /* Optional: Add a gap between columns and rows */
-                gap: 10px;
+                gap: 1rem;
+                min-height: 1px;
             }
 
             &__card {
@@ -257,11 +278,11 @@
             }
 
             &__text {
-                height: 360px;
+                height: auto;
             }
         }
 
-        @include media.media-down(md) {
+        @include media.media-down(sm) {
             &__grid {
                 display: block;
             }
@@ -271,10 +292,6 @@
                 width: 100%;
                 margin-bottom: 1rem;
             }
-
-            &__text {
-                height: 240px;
-            }
         }
     }
 
@@ -282,23 +299,26 @@
         .asset-tags {
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 10px;
+            /*justify-content: flex-end;*/
+            justify-content: center;
+            gap: 15px;
 
             .asset-badge {
                 display: flex;
+                justify-content: center;
                 align-items: center;
+                gap: 10px;
                 background: white;
                 padding: 6px 16px;
                 border-radius: 20px;
                 font-size: 0.9rem;
                 color: var(--black);
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                transition: all 0.3s ease-in-out;
+                transition: all var(--transition);
                 cursor: pointer;
 
                 &:hover {
-                    background: var(--color-primary-dark);
+                    background: var(--clr-primary-dark);
                     color: white;
 
                     .asset-badge__icon {
@@ -311,7 +331,11 @@
                 width: 16px;
                 height: 16px;
                 margin-right: 8px;
-                fill: var(--color-primary-dark);
+                fill: var(--clr-primary-dark);
+            }
+
+            @include media.media-down(md) {
+                justify-content: flex-start;
             }
         }
     }
@@ -327,27 +351,27 @@
             padding: 0;
 
             li {
-                border-top: 1px solid var(--light);
+                border-top: 1px solid var(--neutral-600);
             }
         }
 
         &__link {
             display: block;
             padding: 12px 0;
-            font-size: var(--fs-content-lg);
+            font-size: var(--fs-body);
             color: var(--black);
             text-decoration: none;
-            transition: padding-left 0.2s ease-in-out;
+            transition: padding-left var(--transition);
 
             &:hover {
                 padding-left: 10px;
-                color: var(--color-primary-dark);
+                color: var(--clr-primary-dark);
             }
         }
     }
 
     .about-panel {
-        background-color: var(--white);
+        background-color: var(--bg-section);
         overflow: hidden;
 
         &__content {
@@ -369,14 +393,16 @@
 
         @include media.media-up(lg) {
             &__content {
+                margin-bottom: 0;
                 display: flex;
                 align-items: center;
                 gap: 2rem;
             }
 
             &__desc {
+                margin-bottom: 0;
                 padding-left: 2rem;
-                border-left: 2px solid var(--light);
+                border-left: 2px solid var(--neutral-600);
             }
         }
     }
@@ -385,7 +411,7 @@
 .search-panel {
     position: absolute;
     left: 50%;
-    bottom: 142px;
+    bottom: 15px;
     width: 900px;
     max-width: 90%;
     transform: translateX(-50%);
@@ -397,15 +423,15 @@
     }
 
     &__tab-link.nav-link {
-        color: var(--white);
+        color: var(--neutral-100);
         border-radius: 0.5rem;
-        backdrop-filter: blur(var(--blur-intensity));
-        -webkit-backdrop-filter: blur(var(--blur-intensity));
-        background-color: rgba(0, 0, 0, var(--opacity-medium));
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(0, 0, 0, var(--opacity-50));
 
         &.active {
             color: var(--black);
-            background-color: var(--white); /* สีเขียว SAM */
+            background-color: var(--neutral-100); /* สีเขียว SAM */
         }
     }
 
@@ -414,9 +440,9 @@
         padding: 2rem;
         margin-bottom: 1rem;
         border-radius: 0.5rem;
-        backdrop-filter: blur(var(--blur-intensity));
-        -webkit-backdrop-filter: blur(var(--blur-intensity));
-        background-color: rgba(0, 0, 0, var(--opacity-medium));
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(0, 0, 0, var(--opacity-50));
         z-index: 1050;
 
         @include media.media-down(md) {
@@ -425,21 +451,21 @@
     }
 
     &__input-group {
-        margin-bottom: 0;
-        border-bottom: 1px solid var(--white);
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--neutral-100);
     }
 
     &__input.form-control {
         width: auto;
         height: 45px;
-        color: var(--white);
+        color: var(--neutral-100);
         padding-left: 0;
         border: 0;
         border-radius: 0;
         background-color: transparent;
 
         &::placeholder {
-            color: var(--white);
+            color: var(--neutral-100);
         }
 
         &:focus {
@@ -455,7 +481,7 @@
         align-items: center;
         width: 100%;
         margin-bottom: 1rem;
-        border-bottom: 1px solid var(--white);
+        border-bottom: 1px solid var(--neutral-100);
 
         &.show {
             z-index: 1050;
@@ -475,11 +501,11 @@
         }
 
         .dropdown-item:hover {
-            background-color: #f8f9fa;
+            background-color: var(--neutral-150);
         }
         /* หมุนไอคอน */
         .transition-icon {
-            transition: transform 0.3s ease;
+            transition: transform var(--transition);
         }
 
         .show .transition-icon {
@@ -487,7 +513,7 @@
         }
 
         .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
-            color: var(--white);
+            color: var(--neutral-100);
             box-shadow: none;
         }
     }
@@ -495,27 +521,27 @@
     &__custom-select {
         background: transparent;
         border: none;
-        color: var(--white);
+        color: var(--neutral-100);
         padding: 10px 0;
         border-radius: 0;
 
         &:active {
-            color: var(--white);
+            color: var(--neutral-100);
             box-shadow: none;
         }
 
         &:focus, &:focus-visible {
-            color: var(--white);
+            color: var(--neutral-100);
             box-shadow: none;
         }
 
         &:hover {
-            color: var(--white);
+            color: var(--neutral-100);
             box-shadow: none;
         }
 
         &.show {
-            color: var(--white);
+            color: var(--neutral-100);
             box-shadow: none;
         }
     }
@@ -526,44 +552,44 @@
         top: 50%;
         transform: translateY(-50%);
         color: white;
-        transition: all 0.3s ease-in-out;
+        transition: all var(--transition);
     }
 
     &__btn {
         min-width: 1px;
         width: 45px;
         height: 45px;
-        font-size: 1.5rem;
-        color: var(--white);
-        transition: all 0.3s ease-in-out;
+        font-size: var(--fs-h4);
+        color: var(--neutral-100);
+        transition: all var(--transition);
 
         &:hover {
-            color: var(--white);
+            color: var(--neutral-100);
             outline: none;
             box-shadow: none;
-            opacity: var(--opacity-medium);
+            opacity: var(--opacity-50);
         }
 
         &-slide {
             min-width: 1px;
             width: 45px;
             height: 45px;
-            font-size: 1.5rem;
+            font-size: var(--fs-h4);
             color: var(--black);
-            background-color: var(--white);
+            background-color: var(--neutral-100);
             border-radius: 0.5rem;
 
             &:hover {
-                background-color: rgba(255, 255, 255, var(--opacity-medium));
+                background-color: rgba(255, 255, 255, var(--opacity-50));
             }
 
             &:active, &:focus, &:focus-visible {
-                background-color: var(--white);
+                background-color: var(--neutral-100);
                 outline: none;
                 box-shadow: none;
 
                 &:hover {
-                    background-color: rgba(255, 255, 255, var(--opacity-medium));
+                    background-color: rgba(255, 255, 255, var(--opacity-50));
                 }
             }
         }
@@ -601,304 +627,19 @@
         padding: 0.5rem 1rem;
         color: var(--text-main);
         border-radius: 20px;
-        backdrop-filter: blur(var(--blur-intensity));
-        -webkit-backdrop-filter: blur(var(--blur-intensity));
-        background-color: rgba(255, 255, 255, var(--opacity-medium));
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(255, 255, 255, var(--opacity-50));
         cursor: pointer;
-        transition: all 0.3s ease-in-out;
+        transition: all var(--transition);
 
         &:hover {
-            background-color: rgba(255, 255, 255, var(--opacity-light));
+            background-color: rgba(255, 255, 255, var(--opacity-20));
         }
     }
 
-    @include media.media-down(md) {
-        bottom: 60px;
-    }
-}
-
-.offcanvas-search {
-    backdrop-filter: blur(var(--blur-intensity));
-    -webkit-backdrop-filter: blur(var(--blur-intensity));
-    background-color: rgba(0, 0, 0, var(--opacity-medium));
-
-    &__title {
-        font-weight: 600;
-        font-size: 2rem;
-        color: var(--white);
-    }
-
-    &__close {
-        border: 0;
-        background-color: transparent;
-        font-size: 1.5rem;
-        color: var(--white);
-    }
-
-    &__input {
-        width: 100%;
-        height: 45px;
-        color: var(--white);
-        border: 0;
-        border-bottom: 1px solid var(--white);
-        border-radius: 0;
-        background-color: transparent;
-
-        &::placeholder {
-            color: var(--white);
-        }
-
-        &:focus {
-            outline: none;
-            box-shadow: none;
-            background-color: transparent;
-        }
-    }
-
-    &__input.form-control {
-        width: 100%;
-        height: 45px;
-        color: var(--white);
-        border: 0;
-        border-bottom: 1px solid var(--white);
-        border-radius: 0;
-        background-color: transparent;
-
-        &::placeholder {
-            color: var(--white);
-        }
-
-        &:focus {
-            outline: none;
-            box-shadow: none;
-        }
-    }
-
-    &__check-group {
-        flex: 1 1 auto;
-        display: flex;
-        grid-gap: 12px;
-        gap: 12px;
-
-        .btn--opacity-black {
-            width: 100%;
-            color: var(--white);
-
-            &:hover {
-                color: var(--white);
-                background-color: var(--color-accent-pink);
-            }
-        }
-    }
-
-    &__select-group {
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid var(--white);
-
-        &.show {
-            z-index: 1050;
-        }
-
-        .dropdown-menu {
-            border: none;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-top: 8px !important;
-            padding: 8px;
-        }
-
-        .dropdown-item {
-            border-radius: 8px;
-            padding: 10px 15px;
-        }
-
-        .dropdown-item:hover {
-            background-color: #f8f9fa;
-        }
-        /* หมุนไอคอน */
-        .transition-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .show .transition-icon {
-            transform: rotate(180deg);
-        }
-
-        .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
-            color: var(--white);
-            box-shadow: none;
-        }
-    }
-
-    &__custom-select {
-        background: transparent;
-        border: none;
-        color: var(--white);
-        padding: 10px 0;
-        border-radius: 0;
-
-        &:active {
-            color: var(--white);
-            box-shadow: none;
-        }
-
-        &:focus, &:focus-visible {
-            color: var(--white);
-            box-shadow: none;
-        }
-
-        &:hover {
-            color: var(--white);
-            box-shadow: none;
-        }
-
-        &.show {
-            color: var(--white);
-            box-shadow: none;
-        }
-    }
-
-    &__select-icon {
-        position: absolute;
-        right: 0.5rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: white;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .btn-check + .btn--opacity-black {
-        &:hover {
-            color: var(--white);
-            background-color: var(--color-accent-pink);
-        }
-    }
-
-    .btn-check:checked + .btn--opacity-black {
-        color: var(--white);
-        background-color: var(--color-accent-pink);
-    }
-
-    &.offcanvas-start {
-        width: 520px;
-        max-width: 100%;
-
-        .offcanvas-header {
-            justify-content: space-between;
-        }
-
-        .offcanvas-body {
-            &::-webkit-scrollbar-track {
-                background-color: transparent;
-            }
-
-            &::-webkit-scrollbar {
-                width: 0.5rem;
-                background-color: transparent;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background-color: var(--white);
-                border: 2px solid var(--white);
-            }
-        }
-
-        .offcanvas-footer {
-            background-color: transparent !important;
-            padding: 20px;
-        }
-
-        .form-label {
-            color: var(--white);
-        }
-    }
-
-    .property-range-slider {
-        padding: 10px 0;
-    }
-
-    .range-slider-container {
-        position: relative;
-        width: 100%;
-        height: 5px; /* ความหนาของเส้น */
-    }
-    /* เส้นพื้นหลัง */
-    .slider-track {
-        width: 100%;
-        height: 2px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(255, 255, 255, 0.3); /* สีขาวจางๆ แบบในรูป */
-        border-radius: 5px;
-    }
-    /* ตั้งค่าพื้นฐานสำหรับ Input Range ทั้งคู่ */
-    input[type="range"] {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        width: 100%;
-        outline: none;
-        position: absolute;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        background-color: transparent;
-        pointer-events: none; /* เพื่อให้คลิกทะลุไปตัวที่อยู่ข้างหลังได้ */
-    }
-    /* ปุ่มวงกลม (Thumb) */
-    input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        height: 18px;
-        width: 18px;
-        background-color: #ffffff; /* สีขาวตามรูป */
-        border-radius: 50%;
-        cursor: pointer;
-        pointer-events: auto; /* กลับมาให้รับคลิกได้เฉพาะที่ตัวปุ่ม */
-        box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    }
-    /* สำหรับ Firefox */
-    input[type="range"]::-moz-range-thumb {
-        height: 18px;
-        width: 18px;
-        background-color: #ffffff;
-        border-radius: 50%;
-        cursor: pointer;
-        pointer-events: auto;
-    }
-
-    .input-group {
-        border-bottom: 1px solid var(--white);
-    }
-
-    .price-input {
-        color: var(--white);
-        border: 0;
-        border-bottom: 1px solid var(--white);
-        border-radius: 0;
-        background-color: transparent;
-
-        &::placeholder {
-            color: var(--white);
-        }
-
-        &:focus {
-            outline: none;
-            box-shadow: none;
-        }
-    }
-
-    .input-group-text {
-        color: var(--white);
-        border: 0;
-        border-bottom: 1px solid var(--white);
-        border-radius: 0;
-        background-color: transparent;
+    @include media.media-up(md) {
+        bottom: 145px;
     }
 }
 
@@ -939,13 +680,13 @@
 }
 
 .scroll-animation {
-    display: inline-block;
+    display: none;
     position: absolute;
     right: 10px;
     bottom: 0;
     z-index: 2;
     padding: 10px 10px 110px;
-    color: var(--white);
+    color: var(--neutral-100);
     line-height: 1;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -961,7 +702,7 @@
         left: 50%;
         width: 1px;
         height: 100px;
-        background: rgba(255, 255, 255, var(--opacity-light));
+        background: rgba(255, 255, 255, var(--opacity-20));
     }
 
     &:after {
@@ -971,12 +712,13 @@
         left: 50%;
         width: 1px;
         height: 100px;
-        background-color: var(--white);
+        background-color: var(--neutral-100);
         height: 30px;
         animation: scroll 1.5s ease infinite;
     }
 
     @include media.media-up(md) {
+        display: inline-block;
         bottom: 43px;
     }
 
@@ -993,4 +735,13 @@
     50%, 100% {
         transform: translateY(30px);
     }
+}
+
+/* ปรับแต่ง Backdrop (พื้นหลังดำ) ให้ค่อยๆ Fade นุ่มๆ */
+.offcanvas-backdrop {
+    transition: opacity var(--transition) !important;
+}
+
+.offcanvas {
+    transition-duration: 2s !important; /* ลองใส่ 2 วินาทีเพื่อดูทิศทาง */
 }

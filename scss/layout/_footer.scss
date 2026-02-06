@@ -21,7 +21,7 @@
 
         &--left {
             padding: 3rem;
-            background-color: #F9F9F9;
+            background-color: var(--bg-footer);
             justify-content: flex-start;
         }
 
@@ -71,7 +71,7 @@
     &__social-link {
         font-size: 2rem;
         color: var(--black);
-        transition: all 0.3s ease-in-out;
+        transition: all var(--transition);
 
         &:hover {
             transform: scale(1.2);
@@ -118,14 +118,14 @@
             transform: translate(-50%, -50%);
             width: max-content;
             padding: 6rem;
-            background: rgba(0, 0, 0, var(--opacity-light));
+            background: rgba(0, 0, 0, var(--opacity-20));
             backdrop-filter: blur(10px);
         }
     }
 
     &__app-label {
         font-size: 1.5rem;
-        color: var(--white);
+        color: var(--neutral-100);
 
         @include media.media-down(md) {
             color: var(--black);
@@ -148,10 +148,10 @@
         position: absolute;
         bottom: 0;
         right: 0;
-        background-color: var(--color-accent-pink);
+        background-color: var(--clr-accent-pink);
         padding: 1.5rem;
         width: 100%;
-        color: var(--white);
+        color: var(--neutral-100);
         text-align: right;
     }
 
@@ -253,7 +253,7 @@
         a {
             color: vars.$blue;
             text-decoration: none;
-            transition: all 0.4s ease-in-out 0s;
+            transition: all var(--transition);
 
             &:hover {
                 color: vars.$space-blue;

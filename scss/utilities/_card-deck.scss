@@ -1,25 +1,30 @@
 ﻿@use '../abstracts/variables' as vars;
 @use '../abstracts/functions' as fn;
 
+.card-deck {
+    margin-bottom: 45px;
+}
+
 .card {
-    position: relative;
     border: 0;
     border-radius: 0;
 }
 
 .card, .card__figure {
+    position: relative;
     overflow: hidden;
+    transition: all 0.3s ease-in-out;
 }
 
-.card .card__zoom-in {
+/*.card .card__zoom-in {
     overflow: hidden;
-    transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 
 .card:hover .card__zoom-in {
     transform: scale(1.05);
     -webkit-transform: scale(1.05);
-}
+}*/
 
 @each $bp-name, $bp-value in vars.$breakpoints {
     @if $bp-value != null {
@@ -45,6 +50,4 @@
     }
 }
 
-.card-deck .card {
-    margin-bottom: 45px;
-}
+

@@ -22,6 +22,7 @@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
+    @await Html.PartialAsync("_SpriteIcons")
     @(await Component.InvokeAsync("Header"))
 
     <main role="main" class="main">
@@ -30,9 +31,12 @@
 
     @(await Component.InvokeAsync("Footer"))
 
+    @await Html.PartialAsync("_offcanvasSearch")
+
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/vendor.js"></script>
     <script src="~/js/main.js" asp-append-version="true"></script>
+    <script src="~/js/search.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <div class="menu-overlay" id="overlay"></div>
 </body>
