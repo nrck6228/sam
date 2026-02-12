@@ -49,8 +49,8 @@ export const allAssetTypeData = [
     { id: 41, typeName: 'สวนน้ำ', count: 3, unit: 'รายการ', icon: '' },
     { id: 42, typeName: 'ส่วนโล่งหลังคาคลุม', count: 56, unit: 'รายการ', icon: '' },
     { id: 43, typeName: 'ศูนย์จำหน่ายสินค้า', count: 14, unit: 'รายการ', icon: 'shopping-mall' },
-    { id: 44, typeName: 'ร้านอาหาร', count: 88, unit: 'รายการ', icon: '' },
-    { id: 45, typeName: 'มินิแฟคตอรี่', count: 112, unit: 'รายการ', icon: '' }
+    { id: 44, typeName: 'ร้านอาหาร', count: 88, unit: 'รายการ', icon: 'restaurant' },
+    { id: 45, typeName: 'มินิแฟคตอรี่', count: 112, unit: 'รายการ', icon: 'factory' }
 ];
 
 export const assetListData = [
@@ -65,7 +65,7 @@ export const assetListData = [
         area: '32.16',
         unit: 'ตร.ม.',
         totalPrice: 1515000,
-        saleStatus: 'ซื้อตรง'
+        statusId: 1 // เปลี่ยนจาก saleStatus: 'ซื้อตรง'
     },
     {
         id: 2,
@@ -77,7 +77,7 @@ export const assetListData = [
         area: '60.5',
         unit: 'ตร.ว.',
         totalPrice: 7500000,
-        saleStatus: 'ประมูล'
+        statusId: 2 // เปลี่ยนจาก saleStatus: 'ขายทอดตลาด'
     },
     {
         id: 3,
@@ -89,7 +89,7 @@ export const assetListData = [
         area: '22.0',
         unit: 'ตร.ว.',
         totalPrice: 4200000,
-        saleStatus: 'รอประกาศราคา'
+        statusId: 3 // เปลี่ยนจาก saleStatus: 'รอประกาศราคา'
     },
 
     // --- ปทุมธานี (PTE) ---
@@ -103,7 +103,7 @@ export const assetListData = [
         area: '50.0',
         unit: 'ตร.ว.',
         totalPrice: 3800000,
-        saleStatus: 'ซื้อตรง'
+        statusId: 1 // เปลี่ยนจาก saleStatus: 'ซื้อตรง'
     },
     {
         id: 5,
@@ -115,7 +115,7 @@ export const assetListData = [
         area: '28.5',
         unit: 'ตร.ม.',
         totalPrice: 1250000,
-        saleStatus: 'ประมูล'
+        statusId: 2 // เปลี่ยนจาก saleStatus: 'ขายทอดตลาด'
     },
     {
         id: 6,
@@ -127,7 +127,7 @@ export const assetListData = [
         area: '100.0',
         unit: 'ตร.ว.',
         totalPrice: 2200000,
-        saleStatus: 'รอประกาศราคา'
+        statusId: 3 // เปลี่ยนจาก saleStatus: 'รอประกาศราคา'
     },
 
     // --- ชลบุรี (CBI) ---
@@ -141,7 +141,7 @@ export const assetListData = [
         area: '45.0',
         unit: 'ตร.ม.',
         totalPrice: 3500000,
-        saleStatus: 'ซื้อตรง'
+        statusId: 1 // เปลี่ยนจาก saleStatus: 'ซื้อตรง'
     },
     {
         id: 8,
@@ -153,7 +153,7 @@ export const assetListData = [
         area: '20.0',
         unit: 'ตร.ว.',
         totalPrice: 5900000,
-        saleStatus: 'ประมูล'
+        statusId: 2 // เปลี่ยนจาก saleStatus: 'ขายทอดตลาด'
     },
     {
         id: 9,
@@ -165,7 +165,7 @@ export const assetListData = [
         area: '38.0',
         unit: 'ตร.ว.',
         totalPrice: 2800000,
-        saleStatus: 'รอประกาศราคา'
+        statusId: 3 // เปลี่ยนจาก saleStatus: 'รอประกาศราคา'
     },
 
     // --- ภูเก็ต (PKT) ---
@@ -179,7 +179,7 @@ export const assetListData = [
         area: '120.0',
         unit: 'ตร.ว.',
         totalPrice: 15900000,
-        saleStatus: 'ซื้อตรง'
+        statusId: 1 // เปลี่ยนจาก saleStatus: 'ซื้อตรง'
     },
     {
         id: 11,
@@ -191,7 +191,7 @@ export const assetListData = [
         area: '35.0',
         unit: 'ตร.ม.',
         totalPrice: 4200000,
-        saleStatus: 'ประมูล'
+        statusId: 2 // เปลี่ยนจาก saleStatus: 'ขายทอดตลาด'
     },
     {
         id: 12,
@@ -203,7 +203,7 @@ export const assetListData = [
         area: '80.0',
         unit: 'ตร.ว.',
         totalPrice: 6500000,
-        saleStatus: 'รอประกาศราคา'
+        statusId: 3 // เปลี่ยนจาก saleStatus: 'รอประกาศราคา'
     },
 
     // --- เชียงใหม่ (CMI) ---
@@ -217,7 +217,7 @@ export const assetListData = [
         area: '150.0',
         unit: 'ตร.ว.',
         totalPrice: 8900000,
-        saleStatus: 'ซื้อตรง'
+        statusId: 1 // เปลี่ยนจาก saleStatus: 'ซื้อตรง'
     },
     {
         id: 14,
@@ -229,7 +229,7 @@ export const assetListData = [
         area: '30.0',
         unit: 'ตร.ม.',
         totalPrice: 2400000,
-        saleStatus: 'ประมูล'
+        statusId: 2 // เปลี่ยนจาก saleStatus: 'ขายทอดตลาด'
     },
     {
         id: 15,
@@ -241,7 +241,7 @@ export const assetListData = [
         area: '16.0',
         unit: 'ตร.ว.',
         totalPrice: 7200000,
-        saleStatus: 'รอประกาศราคา'
+        statusId: 3 // เปลี่ยนจาก saleStatus: 'รอประกาศราคา'
     },
 
     // --- ระยอง (RYG) ---
@@ -255,7 +255,7 @@ export const assetListData = [
         area: '45.0',
         unit: 'ตร.ว.',
         totalPrice: 2100000,
-        saleStatus: 'ซื้อตรง'
+        statusId: 1 // เปลี่ยนจาก saleStatus: 'ซื้อตรง'
     },
     {
         id: 17,
@@ -267,7 +267,7 @@ export const assetListData = [
         area: '2.0',
         unit: 'ไร่',
         totalPrice: 12000000,
-        saleStatus: 'ประมูล'
+        statusId: 2 // เปลี่ยนจาก saleStatus: 'ขายทอดตลาด'
     },
     {
         id: 18,
@@ -279,7 +279,7 @@ export const assetListData = [
         area: '40.0',
         unit: 'ตร.ม.',
         totalPrice: 3200000,
-        saleStatus: 'รอประกาศราคา'
+        statusId: 3 // เปลี่ยนจาก saleStatus: 'รอประกาศราคา'
     },
 
     // --- นครราชสีมา (KOR) ---
@@ -293,7 +293,7 @@ export const assetListData = [
         area: '80.0',
         unit: 'ตร.ว.',
         totalPrice: 5500000,
-        saleStatus: 'ซื้อตรง'
+        statusId: 1 // เปลี่ยนจาก saleStatus: 'ซื้อตรง'
     },
     {
         id: 20,
@@ -305,7 +305,7 @@ export const assetListData = [
         area: '20.0',
         unit: 'ตร.ว.',
         totalPrice: 1800000,
-        saleStatus: 'ประมูล'
+        statusId: 2 // เปลี่ยนจาก saleStatus: 'ขายทอดตลาด'
     },
     {
         id: 21,
@@ -317,7 +317,7 @@ export const assetListData = [
         area: '18.0',
         unit: 'ตร.ว.',
         totalPrice: 3400000,
-        saleStatus: 'รอประกาศราคา'
+        statusId: 3 // เปลี่ยนจาก saleStatus: 'รอประกาศราคา'
     }
 ];
 
@@ -416,7 +416,7 @@ export const newsData = {
         {
             id: "PR006",
             slug: "debt-clinic-by-sam-parliament-2025",
-            title: "SAM เผยยอดผู้สนใจสมัคร “ปิดหนี้ไว ไปต่อได้” เฉียด 9 หมื่นราย สะท้อนดีมานด์แก้หนี้ฐานรากชี้มาตรการ BOT-Quick Big Win",
+            title: "SAM เผยยอดผู้สนใจสมัคร “ปิดหนี้ไว ไปต่อได้” เฉียด 9 หมื่นราย สะท้อนดีมานด์แก้หนี้ฐานรากชี้มาตรการ BOT-Quick Big Win หนุนเสถียรภาพและศักยภาพการเติบโตของเศรษฐกิจโดยรวม",
             shortDesc: "ร่วมสร้างความเข้าใจในการบริหารจัดการหนี้สินภาคครัวเรือน...",
             content: "...",
             date: "2026-01-08",
@@ -451,10 +451,11 @@ export const newsData = {
             title: "บทความจากหนังสือบ้านและสวน ประจำเดือนพฤศจิกายน 2562",
             shortDesc: "บทความจากหนังสือบ้านและสวน ประจำเดือนพฤศจิกายน 2562",
             content: "...",
-            date: "2019-11-01",
-            displayDate: "",
+            date: "2026-01-19",
+            displayDate: "ม.ค. 19, 2026",
             author: "ฝ่ายสื่อสารองค์กร SAM",
-            thumbnail: "",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
             category: "ความรู้เรื่องบ้าน",
             readingTime: "5 นาที", // ข้อมูลเพิ่มเติมสำหรับบทความ
             isFeatured: true // กำหนดเป็นบทความแนะนำ
@@ -465,10 +466,11 @@ export const newsData = {
             title: "บทความจากหนังสือบ้านและสวน ประจำเดือนตุลาคม 2562",
             shortDesc: "บทความจากหนังสือบ้านและสวน ประจำเดือนพฤศจิกายน 2562",
             content: "...",
-            date: "2019-11-01",
-            displayDate: "",
+            date: "2026-01-19",
+            displayDate: "ม.ค. 19, 2026",
             author: "ฝ่ายสื่อสารองค์กร SAM",
-            thumbnail: "",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
             category: "ความรู้เรื่องบ้าน",
             readingTime: "5 นาที", // ข้อมูลเพิ่มเติมสำหรับบทความ
             isFeatured: true // กำหนดเป็นบทความแนะนำ
@@ -482,11 +484,12 @@ export const newsData = {
             slug: "sam-e-auction-guide-2",
             title: "THE RENOVATION on TOUR กับ SAM ตอนที่ 5 : บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด (บสส.) หรือ SAM",
             shortDesc: "เรียนรู้วิธีการลงทะเบียนและร่วมประมูลทรัพย์ผ่านระบบออนไลน์",
-            date: "2025-07-20",
-            displayDate: "",
+            date: "2026-01-19",
+            displayDate: "ม.ค. 19, 2026",
             videoUrl: "https://www.youtube.com/watch?v=example", // Link วิดีโอ
             duration: "03:45",
-            thumbnail: "",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
             category: "Tutorial",
             type: "Video" // เผื่ออนาคตมีสื่อประเภท Infographic
         },
@@ -495,11 +498,12 @@ export const newsData = {
             slug: "sam-e-auction-guide-1",
             title: "THE RENOVATION on TOUR กับ SAM ตอนที่ 4 : บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด (บสส.) หรือ SAM",
             shortDesc: "เรียนรู้วิธีการลงทะเบียนและร่วมประมูลทรัพย์ผ่านระบบออนไลน์",
-            date: "2025-07-20",
-            displayDate: "",
+            date: "2026-01-19",
+            displayDate: "ม.ค. 19, 2026",
             videoUrl: "https://www.youtube.com/watch?v=example", // Link วิดีโอ
             duration: "03:45",
-            thumbnail: "",
+            thumbnail: "/media/images/news/sample-thumb-1.jpg",
+            coverImage: "/media/images/news/sample-thumb-1.jpg",
             category: "Tutorial",
             type: "Video" // เผื่ออนาคตมีสื่อประเภท Infographic
         }

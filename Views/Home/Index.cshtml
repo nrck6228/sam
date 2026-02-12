@@ -94,7 +94,7 @@
                     <div class="row">
                         <div class="col-md-4 d-flex gap-2">
                             <button type="reset" class="btn btn--hover btn--gray">ล้างข้อมูล</button>
-                            <button class="btn btn--hover btn--pink"><i class="fa-solid fa-magnifying-glass"></i> ค้นหา</button>
+                            <button class="btn btn--hover btn--pink">ค้นหา</button>
                         </div>
                     </div>
                 </div>
@@ -371,7 +371,16 @@
                     <div id="asset-type" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-4">
                     </div>
                     
-                    <div id="asset-tag" class="asset-tags"></div>
+                    <div id="asset-tag" class="asset-tags d-none d-lg-flex"></div>
+
+                    <div class="d-block d-lg-none">
+                        <a href="/" title="" class="btn btn--hover btn--gray">
+                            <span class="btn__text">ดูทั้งหมด</span>
+                            <span class="btn__icon">
+                                <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -443,10 +452,10 @@
                     </div>
                     <div class="tab-content sam-tab-content" id="newsTabContent">
                         <div class="tab-pane fade show active" id="news-content" role="tabpanel">
-                            <div id="news-list" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-3">
+                            <div id="news-list" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-4">
                             </div>
                             <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray">
-                                <span class="btn__text">ดูทั้งหมด</span>
+                                <span class="btn__text">ดูข่าวสารทั้งหมด</span>
                                 <span class="btn__icon">
                                     <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
                                 </span>

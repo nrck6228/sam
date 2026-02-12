@@ -197,16 +197,15 @@
     background-color: var(--neutral-100);
     box-shadow: var(--shadow-sm);
 
-    &:hover {
+    &:active, &:focus, &:hover {
         color: var(--black);
         background-color: var(--neutral-100);
     }
 
     &:first-child {
-        &:active, &:focus {
+        &:active, &:focus, &:hover {
             color: var(--black);
             background-color: var(--neutral-100);
-            box-shadow: var(--shadow-sm);
         }
     }
 }

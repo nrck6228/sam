@@ -585,7 +585,7 @@
             width: 20px;
             height: 3px;
             background-color: var(--black);
-            border-radius: 3px;
+            border-radius: 0;
             transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); /* Animation แบบสมูท */
             position: relative;
         }

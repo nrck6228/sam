@@ -73,6 +73,17 @@
         color: var(--black);
         transition: all var(--transition);
 
+        .icon {
+            /* กำหนดขนาด */
+            width: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+            height: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+            /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
+            fill: currentColor;
+            /* ป้องกันปัญหาสัดส่วนเพี้ยน */
+            display: inline-block;
+            vertical-align: middle;
+        }
+
         &:hover {
             transform: scale(1.2);
         }
@@ -110,7 +121,7 @@
         color: white;
         margin-bottom: 20px;
 
-        @include media.media-up(md) {
+        @include media.media-up(lg) {
             /* กล่องกระจกเบลอๆ ตรงกลางรูป */
             position: absolute;
             top: 50%;

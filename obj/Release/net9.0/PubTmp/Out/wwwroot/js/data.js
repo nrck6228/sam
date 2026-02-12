@@ -49,8 +49,8 @@ export const allAssetTypeData = [
     { id: 41, typeName: 'สวนน้ำ', count: 3, unit: 'รายการ', icon: '' },
     { id: 42, typeName: 'ส่วนโล่งหลังคาคลุม', count: 56, unit: 'รายการ', icon: '' },
     { id: 43, typeName: 'ศูนย์จำหน่ายสินค้า', count: 14, unit: 'รายการ', icon: 'shopping-mall' },
-    { id: 44, typeName: 'ร้านอาหาร', count: 88, unit: 'รายการ', icon: '' },
-    { id: 45, typeName: 'มินิแฟคตอรี่', count: 112, unit: 'รายการ', icon: '' }
+    { id: 44, typeName: 'ร้านอาหาร', count: 88, unit: 'รายการ', icon: 'restaurant' },
+    { id: 45, typeName: 'มินิแฟคตอรี่', count: 112, unit: 'รายการ', icon: 'factory' }
 ];
 
 export const assetListData = [

@@ -14,7 +14,7 @@
         color: var(--neutral-100);
         font-size: var(--fs-body);
         line-height: 1.4;
-        border-radius: 0.5rem;
+        border-radius: var(--radius-sm);
         backdrop-filter: blur(var(--blur-md));
         -webkit-backdrop-filter: blur(var(--blur-md));
         background-color: rgba(0, 0, 0, var(--opacity-50));
@@ -22,12 +22,16 @@
 
         &.active {
             color: var(--black);
-            background-color: var(--neutral-100); /* สีเขียว SAM */
+            background-color: var(--neutral-100);
+            /*background-image: var(--grad-gray);
+            background-size: 300% 100%;*/
         }
 
         &:hover {
             color: var(--black);
             background-color: var(--neutral-100);
+            /*background-image: var(--grad-gray);
+            background-size: 300% 100%;*/
         }
     }
 
@@ -36,7 +40,7 @@
             color: var(--neutral-100);
             font-size: var(--fs-body);
             line-height: 1.4;
-            border-radius: 0.5rem;
+            border-radius: var(--radius-sm);
             backdrop-filter: blur(var(--blur-md));
             -webkit-backdrop-filter: blur(var(--blur-md));
             background-color: rgba(0, 0, 0, var(--opacity-50));

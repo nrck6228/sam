@@ -6338,7 +6338,7 @@ text-big, .text-big {
   width: 20px;
   height: 3px;
   background-color: var(--black);
-  border-radius: 3px;
+  border-radius: 0;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); /* Animation แบบสมูท */
   position: relative;
 }
@@ -6448,6 +6448,16 @@ text-big, .text-big {
   color: var(--black);
   transition: all var(--transition);
 }
+.footer__social-link .icon {
+  /* กำหนดขนาด */
+  width: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+  height: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+  /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
+  fill: currentColor;
+  /* ป้องกันปัญหาสัดส่วนเพี้ยน */
+  display: inline-block;
+  vertical-align: middle;
+}
 .footer__social-link:hover {
   transform: scale(1.2);
 }
@@ -6480,7 +6490,7 @@ text-big, .text-big {
   color: white;
   margin-bottom: 20px;
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .footer__apps-box {
     /* กล่องกระจกเบลอๆ ตรงกลางรูป */
     position: absolute;
@@ -7253,14 +7263,13 @@ svg.icon-xl {
   background-color: var(--neutral-100);
   box-shadow: var(--shadow-sm);
 }
-.btn--white:hover {
+.btn--white:active, .btn--white:focus, .btn--white:hover {
   color: var(--black);
   background-color: var(--neutral-100);
 }
-.btn--white:first-child:active, .btn--white:first-child:focus {
+.btn--white:first-child:active, .btn--white:first-child:focus, .btn--white:first-child:hover {
   color: var(--black);
   background-color: var(--neutral-100);
-  box-shadow: var(--shadow-sm);
 }
 
 .btn--opacity-white {
@@ -7513,7 +7522,7 @@ svg.icon-xl {
   flex-direction: column;
   gap: 10px;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
   backdrop-filter: blur(var(--blur-md));
   -webkit-backdrop-filter: blur(var(--blur-md));
@@ -7525,8 +7534,9 @@ svg.icon-xl {
 }
 .card--asset .card__image {
   width: 100%;
-  aspect-ratio: 34/15; /* กำหนดตามค่าที่คำนวณได้ */
+  aspect-ratio: 7/3; /* กำหนดตามค่าที่คำนวณได้ */
   object-fit: cover;
+  transition: all var(--transition);
 }
 .card--asset .card__badge {
   position: absolute;
@@ -7536,8 +7546,8 @@ svg.icon-xl {
   color: white;
   padding: 5px 10px;
   font-size: 0.875rem;
-  border-start-start-radius: 4px;
-  border-end-end-radius: 4px;
+  /*border-start-start-radius: 4px;
+  border-end-end-radius: 4px;*/
   /* สีตามสถานะ */
 }
 .card--asset .card__badge--direct {
@@ -7584,9 +7594,13 @@ svg.icon-xl {
   color: var(--clr-primary-dark);
 }
 .card--asset:hover {
-  box-shadow: var(--shadow-md);
+  /*box-shadow: var(--shadow-md);
   transform: scale(1.01);
-  -webkit-transform: scale(1.01);
+  -webkit-transform: scale(1.01);*/
+}
+.card--asset:hover .card__image {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
 }
 
 .card--type {
@@ -7594,7 +7608,7 @@ svg.icon-xl {
   flex-direction: column;
   gap: 10px;
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
   backdrop-filter: blur(var(--blur-md));
   -webkit-backdrop-filter: blur(var(--blur-md));
@@ -7643,17 +7657,32 @@ svg.icon-xl {
   text-align: center;
 }
 .card--type:hover {
-  box-shadow: var(--shadow-md);
+  /*box-shadow: var(--shadow-md);
   transform: scale(1.01);
-  -webkit-transform: scale(1.01);
+  -webkit-transform: scale(1.01);*/
 }
 
 .card--news {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 0;
-  background-color: transparent;
+  gap: 10px;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  background-color: rgba(255, 255, 255, var(--opacity-50));
+  transition: all var(--transition);
+  /*.card__figure {
+      margin-bottom: 15px;
+      border-radius: var(--radius-sm);
+  }*/
+  /*.card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all var(--transition);
+  }*/
   /*.card__tag {
       display: inline-flex;
       justify-content: flex-start;
@@ -7677,42 +7706,79 @@ svg.icon-xl {
   }*/
 }
 .card--news .card__figure {
-  margin-bottom: 10px;
-  border-radius: 4px;
+  margin-bottom: 15px;
+  border-radius: 0;
 }
 .card--news .card__image {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3/2; /* กำหนดตามค่าที่คำนวณได้ */
   object-fit: cover;
+  transition: all var(--transition);
+}
+.card--news .card__badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--clr-primary-dark);
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.875rem;
+  border-start-start-radius: 8px;
+  border-end-end-radius: 8px;
+}
+.card--news .card__video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-circle);
+  color: white;
+  padding: 5px 10px;
 }
 .card--news .card__body {
   position: relative;
   overflow: hidden;
 }
 .card--news .card__title {
-  padding: 1rem 0 0 0;
+  /*padding: 1rem 0 0 0;*/
   margin-bottom: 1rem;
-  border-top: 1px solid var(--neutral-600);
+  /*border-top: 1px solid var(--neutral-600);*/
   font-weight: 400;
   font-size: var(--fs-body);
   line-height: 1.4;
   color: black;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
 }
 .card--news .card__date {
+  display: block;
+  margin-bottom: 15px;
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.4;
   color: var(--clr-primary-dark);
 }
-.card--news:hover .card__title {
-  color: var(--clr-primary-dark);
+.card--news:hover .card__image {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
 }
 
 /* Container สำหรับรูปที่ลอยตามเมาส์ */
 .hover-reveal {
   position: fixed;
-  width: 300px;
-  height: 200px;
+  /*width: 300px;
+  height: 200px;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
   top: 0;
   left: 0;
   pointer-events: none; /* สำคัญมาก: ห้ามรับ event เพื่อไม่ให้ขัดขวางการคลิก Link */
@@ -7720,27 +7786,34 @@ svg.icon-xl {
   visibility: hidden;
   z-index: 9999;
   overflow: hidden;
-  border-radius: 0;
+  border-radius: var(--radius-circle);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.1s ease-out;
   opacity: 0;
   visibility: hidden;
   background: transparent; /* เปลี่ยนเป็นใสไว้ก่อน */
   box-shadow: none; /* ปิดเงาเป็นค่าเริ่มต้น */
   transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-.hover-reveal__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.1);
-  transition: transform 0.5s ease;
+  /*&__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.1);
+      transition: transform 0.5s ease;
+  }*/
 }
 .hover-reveal.active {
-  background: var(--neutral-100); /* หรือสีพื้นหลังที่ต้องการ */
+  background-color: rgba(0, 0, 0, var(--opacity-70));
   box-shadow: var(--shadow-sm); /* แสดงเงาเฉพาะตอน active */
+  /*.hover-reveal__img {
+      transform: scale(1);
+  }*/
 }
-.hover-reveal.active .hover-reveal__img {
-  transform: scale(1);
+
+.preview-text {
+  color: var(--white); /* สีตัวอักษร */
+  font-size: var(--fs-small);
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .hover-reveal__img:not([src]),
@@ -8138,7 +8211,7 @@ svg.icon-xl {
   color: var(--neutral-100);
   font-size: var(--fs-body);
   line-height: 1.4;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   backdrop-filter: blur(var(--blur-md));
   -webkit-backdrop-filter: blur(var(--blur-md));
   background-color: rgba(0, 0, 0, var(--opacity-50));
@@ -8146,17 +8219,21 @@ svg.icon-xl {
 }
 .sam-tabs__link.nav-link.active {
   color: var(--black);
-  background-color: var(--neutral-100); /* สีเขียว SAM */
+  background-color: var(--neutral-100);
+  /*background-image: var(--grad-gray);
+  background-size: 300% 100%;*/
 }
 .sam-tabs__link.nav-link:hover {
   color: var(--black);
   background-color: var(--neutral-100);
+  /*background-image: var(--grad-gray);
+  background-size: 300% 100%;*/
 }
 .sam-tabs--primary .sam-tabs__link.nav-link {
   color: var(--neutral-100);
   font-size: var(--fs-body);
   line-height: 1.4;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   backdrop-filter: blur(var(--blur-md));
   -webkit-backdrop-filter: blur(var(--blur-md));
   background-color: rgba(0, 0, 0, var(--opacity-50));
@@ -8904,12 +8981,17 @@ table .fund--name {
 }
 .home-wrapper .stats-board {
   position: relative;
+  /*@media screen and (max-width: 1500px) {
+      &__text {
+          height: 360px;
+      }
+  }*/
 }
 .home-wrapper .stats-board__grid {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16/8;
   margin: 0 auto;
 }
 .home-wrapper .stats-board__card {
@@ -8925,7 +9007,7 @@ table .fund--name {
   background-image: var(--grad-green);
 }
 .home-wrapper .stats-board__card:nth-child(2) {
-  top: 45%;
+  top: 42.5%;
   left: 0;
   z-index: 2;
 }
@@ -8934,7 +9016,7 @@ table .fund--name {
 }
 .home-wrapper .stats-board__card:nth-child(3) {
   color: #333;
-  top: 15%;
+  top: 10%;
   left: 30%;
   z-index: 3;
 }
@@ -8946,7 +9028,7 @@ table .fund--name {
 }
 .home-wrapper .stats-board__card:nth-child(4) {
   color: #333;
-  top: 60%;
+  top: 52.5%;
   left: 30%;
   z-index: 4;
 }
@@ -8957,7 +9039,7 @@ table .fund--name {
   background-image: var(--grad-gray);
 }
 .home-wrapper .stats-board__card:nth-child(5) {
-  top: 35%;
+  top: 30%;
   right: 0;
   z-index: 5;
 }
@@ -8991,7 +9073,7 @@ table .fund--name {
   border-radius: 8px;
   /*aspect-ratio: 4 / 3;*/
   width: 100%;
-  height: 480px;
+  height: 360px;
   padding: 2rem;
   border-radius: 8px;
   display: flex;
@@ -9035,11 +9117,6 @@ table .fund--name {
 .home-wrapper .stats-board .digit-static {
   width: auto;
   padding: 0 2px;
-}
-@media screen and (max-width: 1500px) {
-  .home-wrapper .stats-board__text {
-    height: 360px;
-  }
 }
 @media (max-width: calc(1200px - 0.02px)) {
   .home-wrapper .stats-board__grid {

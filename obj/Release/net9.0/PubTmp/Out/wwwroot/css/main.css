@@ -6448,6 +6448,16 @@ text-big, .text-big {
   color: var(--black);
   transition: all var(--transition);
 }
+.footer__social-link .icon {
+  /* กำหนดขนาด */
+  width: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+  height: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+  /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
+  fill: currentColor;
+  /* ป้องกันปัญหาสัดส่วนเพี้ยน */
+  display: inline-block;
+  vertical-align: middle;
+}
 .footer__social-link:hover {
   transform: scale(1.2);
 }
@@ -6480,7 +6490,7 @@ text-big, .text-big {
   color: white;
   margin-bottom: 20px;
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .footer__apps-box {
     /* กล่องกระจกเบลอๆ ตรงกลางรูป */
     position: absolute;
@@ -7253,14 +7263,13 @@ svg.icon-xl {
   background-color: var(--neutral-100);
   box-shadow: var(--shadow-sm);
 }
-.btn--white:hover {
+.btn--white:active, .btn--white:focus, .btn--white:hover {
   color: var(--black);
   background-color: var(--neutral-100);
 }
-.btn--white:first-child:active, .btn--white:first-child:focus {
+.btn--white:first-child:active, .btn--white:first-child:focus, .btn--white:first-child:hover {
   color: var(--black);
   background-color: var(--neutral-100);
-  box-shadow: var(--shadow-sm);
 }
 
 .btn--opacity-white {
@@ -8146,11 +8155,15 @@ svg.icon-xl {
 }
 .sam-tabs__link.nav-link.active {
   color: var(--black);
-  background-color: var(--neutral-100); /* สีเขียว SAM */
+  background-color: var(--neutral-100);
+  /*background-image: var(--grad-gray);
+  background-size: 300% 100%;*/
 }
 .sam-tabs__link.nav-link:hover {
   color: var(--black);
   background-color: var(--neutral-100);
+  /*background-image: var(--grad-gray);
+  background-size: 300% 100%;*/
 }
 .sam-tabs--primary .sam-tabs__link.nav-link {
   color: var(--neutral-100);

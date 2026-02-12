@@ -106,7 +106,7 @@
             position: relative;
             width: 100%;
             min-height: 100vh;
-            aspect-ratio: 16 / 10;
+            aspect-ratio: 16 / 8;
             margin: 0 auto;
         }
 
@@ -125,7 +125,7 @@
             }
             // การ์ดที่ 2: สีชมพู (ล่างซ้าย - กลาง)
             &:nth-child(2) {
-                top: 45%;
+                top: 42.5%;
                 left: 0;
                 z-index: 2;
 
@@ -136,7 +136,7 @@
             // การ์ดที่ 3: สีเหลือง (บนกลาง - หน้าการ์ดสีเขียว)
             &:nth-child(3) {
                 color: #333;
-                top: 15%;
+                top: 10%;
                 left: 30%;
                 z-index: 3;
 
@@ -151,7 +151,7 @@
             // การ์ดที่ 4: สีเทา/ขาว (ล่างกลาง - หน้าการ์ดสีชมพู)
             &:nth-child(4) {
                 color: #333;
-                top: 60%;
+                top: 52.5%;
                 left: 30%;
                 z-index: 4;
 
@@ -165,7 +165,7 @@
             }
             // การ์ดที่ 5: สีเขียวอ่อน (ขวาสุด - หน้าสุด)
             &:nth-child(5) {
-                top: 35%;
+                top: 30%;
                 right: 0;
                 z-index: 5;
 
@@ -205,7 +205,7 @@
             border-radius: 8px;
             /*aspect-ratio: 4 / 3;*/
             width: 100%;
-            height: 480px;
+            height: 360px;
             padding: 2rem;
             border-radius: 8px;
             display: flex;
@@ -257,11 +257,11 @@
             padding: 0 2px;
         }
 
-        @media screen and (max-width: 1500px) {
+        /*@media screen and (max-width: 1500px) {
             &__text {
                 height: 360px;
             }
-        }
+        }*/
 
         @include media.media-down(lg) {
             &__grid {

@@ -113,7 +113,10 @@ const renderAssetShowcase = (data) => {
     const tagsContainer = document.getElementById('asset-tag');
     if (!typeContainer || !tagsContainer) return;
 
-    typeContainer.innerHTML = data.slice(0, 4).map(asset => `
+    // --- เรียงลำดับจากมากไปน้อย ---
+    const sortedData = [...data].sort((a, b) => b.count - a.count);
+
+    typeContainer.innerHTML = sortedData.slice(0, 4).map(asset => `
         <a href="/" title="${asset.typeName}" class="card card--type">
             <div class="card__figure">
                 <svg class="icon-xl"><use xlink:href="#icon-${asset.icon}"></use></svg>
@@ -126,7 +129,7 @@ const renderAssetShowcase = (data) => {
         </a>
     `).join('');
 
-    tagsContainer.innerHTML = data.slice(4).map(asset => `
+    tagsContainer.innerHTML = sortedData.slice(4).map(asset => `
         <div class="asset-badge">
             <svg class="icon"><use xlink:href="#icon-${asset.icon}"></use></svg>
             <span>${asset.typeName}</span>
