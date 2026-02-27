@@ -1,0 +1,36 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+.bg-vision {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.bg-mission {
+    width: 100%;
+    height: auto;
+    padding: 3rem 0;
+
+    @include media.media-up(sm) {
+        padding: 6rem 0;
+    }
+}
+
+.mission-board {
+    position: relative;
+}
+
+.bg-history {
+    .logo-sticky {
+        position: sticky;
+        top: 0;
+
+        &__image {
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+    }
+}

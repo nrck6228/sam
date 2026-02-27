@@ -19,7 +19,6 @@
         &__grid {
             display: grid;
             grid-template-columns: 1fr; // แบ่ง 2 คอลัมน์บน Desktop
-            gap: 24px; // ใช้ border แทน gap เพื่อให้เส้นบรรทัดติดกัน
         }
 
         &__item {
@@ -87,6 +86,7 @@
         @include media.media-up(md) {
             &__grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
         }
 
@@ -112,8 +112,8 @@
 
         &__card {
             position: absolute;
-            width: 39.75%; // ความกว้างโดยประมาณเทียบกับพื้นที่รวม
-            // การ์ดที่ 1: สีเขียวเข้ม (บนซ้าย - หลังสุด)
+            width: 39.75%;
+
             &:nth-child(1) {
                 top: 0;
                 left: 0;
@@ -123,7 +123,7 @@
                     background-image: var(--grad-green);
                 }
             }
-            // การ์ดที่ 2: สีชมพู (ล่างซ้าย - กลาง)
+
             &:nth-child(2) {
                 top: 42.5%;
                 left: 0;
@@ -133,7 +133,7 @@
                     background-image: var(--grad-pink);
                 }
             }
-            // การ์ดที่ 3: สีเหลือง (บนกลาง - หน้าการ์ดสีเขียว)
+
             &:nth-child(3) {
                 color: #333;
                 top: 10%;
@@ -148,7 +148,7 @@
                     background-image: var(--grad-yellow);
                 }
             }
-            // การ์ดที่ 4: สีเทา/ขาว (ล่างกลาง - หน้าการ์ดสีชมพู)
+
             &:nth-child(4) {
                 color: #333;
                 top: 52.5%;
@@ -163,7 +163,7 @@
                     background-image: var(--grad-gray);
                 }
             }
-            // การ์ดที่ 5: สีเขียวอ่อน (ขวาสุด - หน้าสุด)
+
             &:nth-child(5) {
                 top: 30%;
                 right: 0;
@@ -256,7 +256,6 @@
             width: auto;
             padding: 0 2px;
         }
-
         /*@media screen and (max-width: 1500px) {
             &__text {
                 height: 360px;
@@ -266,15 +265,21 @@
         @include media.media-down(lg) {
             &__grid {
                 aspect-ratio: auto;
-                display: grid;
+                /*display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
+                gap: 1rem;*/
+                display: flex; /* Turns the container into a flex container */
+                flex-wrap: wrap; /* Allows items to wrap onto new lines */
+                justify-content: space-around; /* Optional: distributes items evenly with space around them */
+                gap: 1rem; /* Optional: adds space between items */
                 min-height: 1px;
             }
 
             &__card {
                 position: static;
                 width: auto;
+                flex: 1 1 calc(33.333% - 1rem);
+                box-sizing: border-box;
             }
 
             &__text {
@@ -368,6 +373,16 @@
                 color: var(--clr-primary-dark);
             }
         }
+
+        @include media.media-down(sm) {
+            &__group {
+                padding: 1rem;
+                margin-bottom: 1rem;
+                border-radius: var(--radius-sm);
+                box-shadow: var(--shadow-md);
+                background-color: rgba(255, 255, 255, var(--opacity-70));
+            }
+        }
     }
 
     .about-panel {
@@ -409,13 +424,8 @@
 }
 
 .search-panel {
-    position: absolute;
-    left: 50%;
-    bottom: 15px;
-    width: 900px;
-    max-width: 90%;
-    transform: translateX(-50%);
-    z-index: 9;
+    display: block;
+    margin-top: 30px;
 
     &__tabs.nav-pills {
         gap: 0.5rem;
@@ -522,8 +532,8 @@
         background: transparent;
         border: none;
         color: var(--neutral-100);
-        padding: 10px 0;
-        border-radius: 0;
+        padding: 10px 0 !important;
+        border-radius: 0 !important;
 
         &:active {
             color: var(--neutral-100);
@@ -601,11 +611,12 @@
     &__tags {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 1rem;
         color: white;
 
-        @include media.media-down(md) {
-            flex-wrap: wrap;
+        @include media.media-down(sm) {
+            display: none;
         }
     }
 
@@ -639,7 +650,13 @@
     }
 
     @include media.media-up(md) {
+        position: absolute;
+        left: 50%;
         bottom: 145px;
+        width: 900px;
+        max-width: 90%;
+        transform: translateX(-50%);
+        z-index: 9;
     }
 }
 

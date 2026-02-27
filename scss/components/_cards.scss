@@ -1,6 +1,12 @@
 ﻿@use "../abstracts/variables" as vars;
 @use "../abstracts/mixins" as media;
 
+$gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที่ 1
+(var(--clr-accent-pink), var(--clr-accent-pink-light)), // ชุดที่ 2
+(var(--clr-accent-yellow), var(--clr-accent-yellow-light)), // ชุดที่ 3
+(var(--neutral-400), var(--neutral-300)) // ชุดที่ 4
+);
+
 .card--stats {
     display: flex;
     flex-direction: column;
@@ -60,8 +66,6 @@
         color: white;
         padding: 5px 10px;
         font-size: 0.875rem;
-        /*border-start-start-radius: 4px;
-        border-end-end-radius: 4px;*/
         /* สีตามสถานะ */
         &--direct {
             background-color: var(--clr-primary-dark);
@@ -83,9 +87,28 @@
     }
 
     .card__type {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin: 10px auto;
         font-weight: 600;
-        font-size: var(--fs-small);
+        font-size: var(--fs-body);
         color: var(--black);
+
+        &-icon {
+            color: var(--black);
+
+            .icon {
+                /* กำหนดขนาด */
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+
+        &-text {
+            font-size: var(--fs-body);
+            color: var(--black);
+        }
     }
 
     .card__location {
@@ -105,7 +128,7 @@
         }
 
         &-text {
-            font-size: var(--fs-small);
+            font-size: var(--fs-body);
             color: var(--text-muted);
         }
     }
@@ -121,9 +144,20 @@
         /*box-shadow: var(--shadow-md);
         transform: scale(1.01);
         -webkit-transform: scale(1.01);*/
+        box-shadow: var(--shadow-md);
+        background-color: rgba(255, 255, 255, var(--opacity-70));
+
         .card__image {
             transform: scale(1.05);
             -webkit-transform: scale(1.05);
+        }
+    }
+
+    @include media.media-down(sm) {
+        padding: 1rem;
+
+        .card__body {
+            margin-top: 1rem;
         }
     }
 }
@@ -191,6 +225,16 @@
         /*box-shadow: var(--shadow-md);
         transform: scale(1.01);
         -webkit-transform: scale(1.01);*/
+        box-shadow: var(--shadow-md);
+        background-color: rgba(0, 0, 0, var(--opacity-70));
+    }
+
+    @include media.media-down(sm) {
+        padding: 1rem;
+
+        .card__body {
+            margin-top: 1rem;
+        }
     }
 }
 
@@ -311,6 +355,187 @@
     }
 }
 
+.card--mission {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 2rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    background-color: rgba(0, 0, 0, var(--opacity-20));
+    transition: all var(--transition);
+
+    .card__title {
+        font-size: var(--fs-h4);
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--neutral-100);
+    }
+}
+
+.card--annual {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition);
+
+    @for $i from 1 through 4 {
+        &:nth-child(4n + #{$i}) {
+            $current-grad: nth($gradients, $i);
+            background-image: url('../../media/images/bg/bg-board-char-2.svg'), linear-gradient(120deg, nth($current-grad, 1), nth($current-grad, 2));
+        }
+    }
+    // ส่วนกลางที่ใช้ร่วมกัน (เพื่อลดการเขียนโค้ดซ้ำ)
+    &:nth-child(n) {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-size: cover; // แนะนำให้ใส่เพื่อให้รูปเต็มพื้นที่ card
+    }
+
+    .card__figure {
+        position: relative;
+        width: 285px;
+        height: 395px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        border-radius: var(--blur-sm);
+        /*box-shadow: var(--shadow-md);*/
+        margin-bottom: 1.5rem;
+    }
+
+    .card__image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition: all var(--transition);
+    }
+
+    .card__download {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        align-items: center;
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(0, 0, 0, var(--opacity-50));
+        transition: all var(--transition);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .card__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card__title {
+        font-size: var(--fs-h4);
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--black);
+    }
+
+    .card__text {
+        font-size: var(--fs-h2);
+        font-weight: 500;
+        line-height: 1.4;
+        color: var(--black);
+    }
+
+    &:hover {
+        .card__download {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.card--board {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 0;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition);
+    // รันลูปไปถึง 12 (เพื่อให้รูปกับสีสลับคู่กันจนครบทุกความเป็นไปได้)
+    @for $i from 1 through 12 {
+        &:nth-child(12n + #{$i}) {
+            // คำนวณลำดับรูป (วนทุกๆ 3) -> S, A, M, S, A, M...
+            $img-index: ($i - 1)
+            % 3 + 1;
+            // คำนวณลำดับสี (วนทุกๆ 4) -> 1, 2, 3, 4, 1, 2...
+            $color-index: ($i - 1)
+            % 4 + 1;
+            $current-grad: nth($gradients, $color-index);
+
+            background-image: url('../../media/images/bg/bg-board-char-#{$img-index}.svg'), linear-gradient(120deg, nth($current-grad, 1), nth($current-grad, 2));
+        }
+    }
+    // ส่วนกลางที่ใช้ร่วมกัน (เพื่อลดการเขียนโค้ดซ้ำ)
+    &:nth-child(n) {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-size: cover; // แนะนำให้ใส่เพื่อให้รูปเต็มพื้นที่ card
+    }
+
+    .card__figure {
+        position: relative;
+        width: 375px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--blur-sm);
+    }
+
+    .card__image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition: all var(--transition);
+    }
+
+    .card__body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.7); /* แถบขาวโปร่งแสง */
+        backdrop-filter: blur(10px);
+        padding: 15px;
+    }
+
+    .card__name {
+        font-size: var(--fs-h3);
+        font-weight: 500;
+        line-height: 1.4;
+        color: var(--clr-primary-dark);
+    }
+
+    .card__position {
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--black);
+    }
+}
 /* Container สำหรับรูปที่ลอยตามเมาส์ */
 .hover-reveal {
     position: fixed;
@@ -354,7 +579,7 @@
 
 .preview-text {
     color: var(--white); /* สีตัวอักษร */
-    font-size: var(--fs-small);
+    font-size: var(--fs-body);
     font-weight: 500;
     white-space: nowrap;
 }

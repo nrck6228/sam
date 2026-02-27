@@ -100,6 +100,13 @@ const renderAssets = (province) => {
         const isWaiting = asset.statusId === 3;
         const priceText = isWaiting ? 'ติดต่อเจ้าหน้าที่' : `${asset.totalPrice.toLocaleString()} บาท`;
 
+        // --- เพิ่มเงื่อนไข ---
+        // ถ้ามี typeInfo ให้แสดง div class="card__type-icon" พร้อมไอคอน
+        // ถ้าไม่มี (null/undefined) ให้เป็นค่าว่าง
+        const iconHtml = typeInfo
+            ? `<div class="card__type-icon">${getAssetIconById(asset.typeId)}</div>`
+            : '';
+
         return `
             <a href="#" class="card card--asset">
                 <div class="card__figure">
@@ -108,11 +115,13 @@ const renderAssets = (province) => {
                 </div>
                 <div class="card__body">
                     <div class="card__type">
-                         ${typeInfo ? typeInfo.typeName : 'ไม่ระบุประเภท'}
+                        ${iconHtml}
+                        <div class="card__type-text">
+                            ${typeInfo ? typeInfo.typeName : 'ไม่ระบุประเภท'}
+                        </div>
                     </div>
                     <div class="card__location">
-                        <span class="card__location-icon">${getAssetIconById(asset.typeId)}</span>
-                        <span class="card__location-text">${asset.location}</span>
+                        <div class="card__location-text">${asset.location}</div>
                     </div>
                     <div class="card__price">${priceText}</div>
                 </div>
@@ -208,7 +217,7 @@ const renderNews = (contentType) => {
     // 2. จัดการลำดับและจำนวน (Logic เพิ่มเติม)
     const processedData = [...data] // ใช้ Spread operator เพื่อไม่ให้กระทบข้อมูลต้นฉบับ
         .sort((a, b) => new Date(b.date) - new Date(a.date)) // เรียงใหม่ไปเก่า
-        .slice(0, 4); // เอาแค่ 6 รายการล่าสุด
+        .slice(0, 3); // 3 รายการล่าสุด
 
     if (processedData.length === 0) {
         container.innerHTML = `<div class="text-center py-5 w-100">ไม่พบข้อมูลในหมวดหมู่ข้างต้น</div>`;
@@ -255,7 +264,7 @@ const renderNews = (contentType) => {
                         <time datetime="${item.date}" class="card__date">
                             ${item.displayDate}
                         </time>
-                        <h4 class="card__title">${item.title}</h4>
+                        <h3 class="card__title">${item.title}</h3>
                         <p class="card__excerpt" style="display: none;">${item.shortDesc}</p>
                     </div>
                 </a>

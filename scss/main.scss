@@ -23,30 +23,28 @@
 @use "layout/global";
 
 // 5. Components
-@use "components/loader";
-@use "components/slide";
-@use "components/buttons";
-@use "components/breadcrumb";
-@use "components/dropdown";
-@use "components/forms";
-@use "components/cards";
 @use "components/accordion";
+@use "components/breadcrumb";
+@use "components/buttons";
+@use "components/cards";
+@use "components/carousel";
+@use "components/dropdown";
+@use "components/listgroup";
+@use "components/loader";
+@use "components/forms";
 @use "components/modal";
-@use "components/tab";
+@use "components/offcanvas";
+@use "components/pagination";
+/*@use "components/slide";*/
+@use "components/tabs";
 @use "components/table";
 @use "components/share";
-@use "components/offcanvas";
 
-// 6. Pages
+// 6. Content
+
+// 7. Pages
 @use "page/home";
-@use "page/news";
-@use "page/product";
-@use "page/cart";
-@use "page/checkout";
-@use "page/account";
-@use "page/dashboard";
-@use "page/contact";
-@use "page/return";
+@use "page/about";
 
 
 

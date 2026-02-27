@@ -1,0 +1,421 @@
+﻿@using sam.Models
+@model List<VicePresidentViewModel>
+@{
+    ViewData["Title"] = "คณะผู้บริหาร | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<nav aria-label="breadcrumb" class="breadcrumb--section">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+
+        <li class="breadcrumb-item dropdown">
+            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                เกี่ยวกับเรา
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+            </ul>
+        </li>
+
+        <li class="breadcrumb-item dropdown active" aria-current="page">
+            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                รู้จักเรา
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+            </ul>
+        </li>
+    </ol>
+</nav>
+
+<div class="page-wrapper">
+    <section class="page-wrapper__header mb-4">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-10 col-md-8">
+                    <h1 class="title title--size-h2">
+                        ผู้บริหารฝ่าย
+                    </h1>
+                </div>
+
+                <div class="col-lg-2 col-md-4">
+                    <div class="dropdown dropdown--primary">
+                        <button class="btn w-100 d-flex justify-content-between align-items-center dropdown--primary__custom-select" type="button" data-bs-toggle="dropdown">
+                            <span class="btn__text">กรรมการบริษัท</span>
+                            <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
+                        </button>
+                        <ul class="dropdown-menu w-100 custom-scrollbar">
+                            <li><a class="dropdown-item" href="#" data-value="กรรมการอื่นๆ">กรรมการอื่นๆ</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารระดับสูง">คณะผู้บริหารระดับสูง</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารฝ่าย">คณะผู้บริหารฝ่าย</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-container">
+        <div id="director-container" class="container-fluid">
+            <div class="tab-container">
+                <button class="arrow left" onclick="scrollTab(-1)">
+                    <svg class="icon"><use xlink:href="#icon-previous"></use></svg>
+                </button>
+                <ul class="nav nav-pills sam-tabs sam-tabs--primary m-0" id="execTab" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link active" data-bs-toggle="tab" data-bs-target="#group1">สายงานบริหารงานทั่วไป</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group2">สายงานบริหารหนี้</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group3">สายงานบริหารทรัพย์สิน</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group4">สายงานกฎหมายและสนับสนุนธุรกิจ</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group5">สายงานการเงินและเทคโนโลยี</button>
+                    </li>
+                   @*  <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group6">สายงานกฎหมายและสนับสนุนธุรกิจ</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group7">สายงานการเงินและเทคโนโลยี</button>
+                    </li> *@
+                </ul>
+                <button class="arrow right" onclick="scrollTab(1)">
+                    <svg class="icon"><use xlink:href="#icon-next"></use></svg>
+                </button>
+            </div>
+
+            <div class="tab-content my-5" id="execTabContent">
+
+                <div class="tab-pane fade show active" id="group1">
+                    <h3 class="mobile-accordion-header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group1"
+                        aria-expanded="true">
+                        สายงานบริหารงานทั่วไป
+                        <i class="bi bi-chevron-down"></i>
+                    </h3>
+                    <div id="col-group1" class="collapse show d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่มตรวจสอบขึ้นตรงต่อคณะกรรมการตรวจสอบ
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-1"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่มบริหารความเสี่ยงและกำกับการปฏิบัติงานขึ้นตรงต่อคณะกรรมการบริหารความเสี่ยง
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-2"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่มกลยุทธ์และสื่อสารองค์กรขึ้นตรงต่อกรรมการผู้จัดการ
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-3"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่มทรัพยากรมนุษย์ขึ้นตรงต่อกรรมการผู้จัดการ
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-4"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h3 class="title title--size-h3 mb-3">
+                            ฝ่ายงานที่รายงานตรงต่อกรรมการผู้จัดการ
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-5"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="group2">
+                    <h3 class="mobile-accordion-header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group2"
+                        aria-expanded="false">
+                        สายงานบริหารหนี้
+                        <i class="bi bi-chevron-down"></i>
+                    </h3>
+                    <div id="col-group2" class="collapse d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่ม Corporate & SME
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-6"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่ม Retail & Branch
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-7"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่ม Clean Loan
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-8"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="group3">
+                    <h3 class="mobile-accordion-header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group3"
+                        aria-expanded="false">
+                        สายงานบริหารทรัพย์สิน
+                        <i class="bi bi-chevron-down"></i>
+                    </h3>
+                    <div id="col-group3" class="collapse d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่มบริหารทรัพย์สิน
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-9"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="group4">
+                    <h3 class="mobile-accordion-header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group4"
+                        aria-expanded="false">
+                        สายงานกฎหมายและสนับสนุนธุรกิจ
+                        <i class="bi bi-chevron-down"></i>
+                    </h3>
+                    <div id="col-group4" class="collapse d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่มกฎหมายและงานคดี
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-10"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่มสนับสนุนธุรกิจ
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-11"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="group5">
+                    <h3 class="mobile-accordion-header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group5"
+                        aria-expanded="false">
+                        สายงานการเงินและเทคโนโลยี
+                        <i class="bi bi-chevron-down"></i>
+                    </h3>
+                    <div id="col-group5" class="collapse d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่มบัญชี การเงิน และจัดซื้อจัดจ้าง
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-12"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h3 class="title title--size-h3 mb-3">
+                            กลุ่มเทคโนโลยีสารสนเทศ
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-13"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h3 class="title title--size-h3 mb-3">
+                            ฝ่ายงานที่รายงานตรงต่อสายงานการเงิน และเทคโนโลยี
+                        </h3>
+                        <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-14"))
+                            {
+                                <div class="card card--board">
+                                    <div class="card__figure">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="card__image">
+                                    </div>
+                                    <div class="card__body">
+                                        <h3 class="card__name">@item.Name</h3>
+                                        <p class="card__position">@item.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Styles {
+    <style>
+    </style>
+}
+@section Scripts {
+    <script>
+        function scrollTab(direction) {
+            const container = document.querySelector('#execTab');
+            const scrollAmount = 200; // ปรับความเร็วในการเลื่อน
+            container.scrollLeft += direction * scrollAmount;
+        }
+    </script>
+}

@@ -2,22 +2,16 @@
 @use "../abstracts/mixins" as media;
 
 .breadcrumb--section {
-    position: relative;
+    position: absolute;
+    top: 110px;
+    left: 0;
+    width: 100%;
+    height: auto;
     background-color: transparent;
-    overflow: hidden;
-    z-index: 1030;
-
-    &.is-sticky {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+    z-index: 90;
 
     .breadcrumb {
-        padding: 15px 0;
+        padding: 15px;
         margin: 0;
         background-color: transparent;
     }
@@ -27,68 +21,41 @@
         line-height: 1.5rem;
         color: black;
 
+        a {
+            color: var(--black);
+        }
+
+        &.dropdown {
+            text-decoration: none;
+
+            .dropdown-toggle {
+                color: var(--black);
+
+                &:after {
+                    display: none;
+                }
+            }
+        }
+
         + .breadcrumb-item {
             position: relative;
             padding-left: 20px;
 
             &:before {
-                content: '';
+                content: '|';
                 position: absolute;
-                top: 50%;
-                left: 6px;
-                transform: translateY(-50%);
-                width: 6px;
-                height: 6px;
+                top: 0;
+                left: 5px;
+                width: 1px;
+                height: 100%;
                 padding: 0;
                 margin: 0;
-                border-radius: 50%;
-                background-color: black;
             }
         }
 
         &.active {
             color: black;
             text-transform: uppercase;
-        }
-
-        &.text-muted {
-            color: vars.$gray !important;
-        }
-
-        a {
-            text-decoration: none;
-            position: relative;
-            padding: 0;
-            font-size: 1rem;
-            line-height: 1.5rem;
-            color: black;
-            text-transform: uppercase;
-            transition: all .3s ease-in-out;
-
-            &:hover {
-                color: black;
-            }
-        }
-    }
-
-    &__checkout {
-        .breadcrumb {
-            justify-content: center;
-        }
-
-        .breadcrumb-item {
-            + .breadcrumb-item {
-                padding-left: 2rem;
-
-                &:before {
-                    font-family: 'bootstrap-icons' !important;
-                    content: '\f138';
-                    width: auto;
-                    height: auto;
-                    border-radius: 0;
-                    background-color: transparent;
-                }
-            }
         }
     }
 }

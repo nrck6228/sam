@@ -58,6 +58,10 @@
             }
         }
     }
+
+    @include media.media-down(sm) {
+        height: 50vh;
+    }
 }
 
 .hero-slide__controls {

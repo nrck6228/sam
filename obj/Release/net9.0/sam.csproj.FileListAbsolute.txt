@@ -259,7 +259,13 @@ C:\Works\asp.net\sam\obj\Release\net9.0\refint\sam.dll
 C:\Works\asp.net\sam\obj\Release\net9.0\sam.pdb
 C:\Works\asp.net\sam\obj\Release\net9.0\sam.genruntimeconfig.cache
 C:\Works\asp.net\sam\obj\Release\net9.0\ref\sam.dll
-C:\Works\asp.net\sam\obj\Release\net9.0\compressed\h21vvrf00o-epuzirv25d.gz
-C:\Works\asp.net\sam\obj\Release\net9.0\compressed\kmeabb3ahe-s6a9ksg4zt.gz
-C:\Works\asp.net\sam\obj\Release\net9.0\compressed\vrw03gdoom-bgr6bdggmd.gz
-C:\Works\asp.net\sam\obj\Release\net9.0\compressed\kzz7qp2ahs-c3vyvnu5wr.gz
+C:\Works\asp.net\sam\obj\Release\net9.0\compressed\kmeabb3ahe-kw23q70j3a.gz
+C:\Works\asp.net\sam\obj\Release\net9.0\compressed\nyinfqjy1n-dob9afoaeq.gz
+C:\Works\asp.net\sam\obj\Release\net9.0\compressed\vrw03gdoom-n2kqccn2fe.gz
+C:\Works\asp.net\sam\obj\Release\net9.0\compressed\h21vvrf00o-nt5iedhjay.gz
+C:\Works\asp.net\sam\obj\Release\net9.0\compressed\kzz7qp2ahs-v337opk1fj.gz
+C:\Works\asp.net\sam\obj\Release\net9.0\compressed\wr5p9ivoyk-45kpywp6bk.gz
+C:\Works\asp.net\sam\obj\Release\net9.0\compressed\s8cs80fb6o-nc0xnlcx3y.gz
+C:\Works\asp.net\sam\obj\Release\net9.0\compressed\cekwdtjnex-5meb0x5gtb.gz
+C:\Works\asp.net\sam\obj\Release\net9.0\compressed\s8dhewy8q1-dob9afoaeq.gz
+C:\Works\asp.net\sam\obj\Release\net9.0\compressed\etmxyf168q-dob9afoaeq.gz

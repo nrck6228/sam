@@ -14,6 +14,48 @@
                 <input type="text" class="form-control offcanvas-search__input" placeholder="รหัสทรัพย์, ทำเล, สถานที่ใกล้เคียง, ประเภท/เส้นทาง ฯลฯ">
             </div>
 
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="dropdown offcanvas-search__select-group">
+                        <button class="btn w-100 d-flex justify-content-between align-items-center offcanvas-search__custom-select" type="button" data-bs-toggle="dropdown">
+                            <span class="btn__text">ประเภททรัพย์</span>
+                            <span class="btn__icon">
+                                <svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg>
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu w-100 custom-scrollbar">
+                            <li><a class="dropdown-item" href="#" data-value="house">บ้านเดี่ยว</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="condo">คอนโด</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="land">ที่ดิน</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="dropdown offcanvas-search__select-group">
+                        <button class="btn w-100 d-flex justify-content-between align-items-center offcanvas-search__custom-select" type="button" data-bs-toggle="dropdown">
+                            <span class="btn__text">เลือกจังหวัด</span>
+                            <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
+                        </button>
+                        <ul class="dropdown-menu w-100 custom-scrollbar">
+                            <li><a class="dropdown-item" href="#" data-value="bkk">กรุงเทพฯ</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="nonthaburi">นนทบุรี</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="pathum">ปทุมธานี</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="dropdown offcanvas-search__select-group">
+                        <button class="btn w-100 d-flex justify-content-between align-items-center offcanvas-search__custom-select" type="button" data-bs-toggle="dropdown">
+                            <span class="btn__text">อำเภอ/เขต</span>
+                            <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
+                        </button>
+                        <ul class="dropdown-menu w-100 custom-scrollbar">
+                            <li><a class="dropdown-item" href="#">กรุณาเลือกจังหวัดก่อน</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <div class="mb-4 property-range-slider">
                 <label class="form-label mb-3">ราคา (บาท)</label>
 

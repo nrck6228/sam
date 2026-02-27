@@ -1,0 +1,306 @@
+﻿@using sam.Models
+@model List<CommitteeViewModel>
+@{
+    ViewData["Title"] = "คณะกรรมการ | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<nav aria-label="breadcrumb" class="breadcrumb--section">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+
+        <li class="breadcrumb-item dropdown">
+            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                เกี่ยวกับเรา
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+            </ul>
+        </li>
+
+        <li class="breadcrumb-item dropdown active" aria-current="page">
+            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                รู้จักเรา
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+            </ul>
+        </li>
+    </ol>
+</nav>
+
+<div class="page-wrapper">
+    <section class="page-wrapper__header mb-4">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-10 col-md-8">
+                    <h1 class="title title--size-h2">
+                        คณะกรรมการ
+                    </h1>
+                </div>
+
+                <div class="col-lg-2 col-md-4">
+                    <div class="dropdown dropdown--primary">
+                        <button class="btn w-100 d-flex justify-content-between align-items-center dropdown--primary__custom-select" type="button" data-bs-toggle="dropdown">
+                            <span class="btn__text">กรรมการบริษัท</span>
+                            <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
+                        </button>
+                        <ul class="dropdown-menu w-100 custom-scrollbar">
+                            <li><a class="dropdown-item" href="#" data-value="กรรมการอื่นๆ">กรรมการอื่นๆ</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารระดับสูง">คณะผู้บริหารระดับสูง</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารฝ่าย">คณะผู้บริหารฝ่าย</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-container">
+        <div id="director-container" class="container-fluid">
+            <div class="tab-container">
+                <button class="arrow left" onclick="scrollTab(-1)">
+                    <svg class="icon"><use xlink:href="#icon-previous"></use></svg>
+                </button>
+                <ul class="nav nav-pills sam-tabs sam-tabs--primary m-0" id="execTab" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link active" data-bs-toggle="tab" data-bs-target="#group1">คณะกรรมการบริหารความเสี่ยงและบรรษัทภิบาล (คสบ.)</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group2">คณะกรรมการตรวจสอบ</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group3">คณะกรรมการกฎหมาย (คกม.)</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group4">คณะกรรมการบริหารสินทรัพย์ (ECC)</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group5">คณะกรรมการบริหารทรัพย์สินรอการขาย (NPAC)</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group6">คณะกรรมการเทคโนโลยีสารสนเทศ (ITC)</button>
+                    </li>
+                    @*  <li class="nav-item">
+                        <button class="nav-link sam-tabs__link" data-bs-toggle="tab" data-bs-target="#group7">คณะกรรมการบริหารทรัพย์สินรอการขาย (NPAC)</button>
+                    </li> *@
+                </ul>
+                <button class="arrow right" onclick="scrollTab(1)">
+                    <svg class="icon"><use xlink:href="#icon-next"></use></svg>
+                </button>
+            </div>
+
+            <div class="tab-content accordion--board my-5" id="execTabContent">
+
+                <div class="tab-pane fade show active" id="group1">
+                    <div class="accordion__header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group1"
+                        aria-expanded="true">
+                        <h3 class="accordion__title">
+                            คณะกรรมการบริหารความเสี่ยงและบรรษัทภิบาล (คสบ.)
+                        </h3>
+                        <span class="accordion__icon">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div id="col-group1" class="collapse show d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            คณะกรรมการบริหารความเสี่ยงและบรรษัทภิบาล (คสบ.)
+                        </h3>
+                        <div class="list-group list-group--committee">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-1"))
+                            {
+                                <div class="list-group__item">
+                                    <div class="list-group__title">
+                                        @item.Name
+                                    </div>
+                                    <div class="list-group__position">
+                                        @item.Position
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="group2">
+                    <div class="accordion__header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group2"
+                        aria-expanded="false">
+                        <h3 class="accordion__title">
+                            คณะกรรมการตรวจสอบ
+                        </h3>
+                        <span class="accordion__icon">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div id="col-group2" class="collapse d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            คณะกรรมการตรวจสอบ
+                        </h3>
+                        <div class="list-group list-group--committee">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-2"))
+                            {
+                                <div class="list-group__item">
+                                    <div class="list-group__title">
+                                        @item.Name
+                                    </div>
+                                    <div class="list-group__position">
+                                        @item.Position
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="group3">
+                    <div class="accordion__header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group3"
+                        aria-expanded="false">
+                        <h3 class="accordion__title">
+                            คณะกรรมการกฎหมาย (คกม.)
+                        </h3>
+                        <span class="accordion__icon">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div id="col-group3" class="collapse d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            คณะกรรมการกฎหมาย (คกม.)
+                        </h3>
+                        <div class="list-group list-group--committee">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-3"))
+                            {
+                                <div class="list-group__item">
+                                    <div class="list-group__title">
+                                        @item.Name
+                                    </div>
+                                    <div class="list-group__position">
+                                        @item.Position
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="group4">
+                    <div class="accordion__header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group4"
+                        aria-expanded="false">
+                        <h3 class="accordion__title">
+                            คณะกรรมการบริหารสินทรัพย์ (ECC)
+                        </h3>
+                        <span class="accordion__icon">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div id="col-group4" class="collapse d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            คณะกรรมการบริหารสินทรัพย์ (ECC)
+                        </h3>
+                        <div class="list-group list-group--committee">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-4"))
+                            {
+                                <div class="list-group__item">
+                                    <div class="list-group__title">
+                                        @item.Name
+                                    </div>
+                                    <div class="list-group__position">
+                                        @item.Position
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="group5">
+                    <div class="accordion__header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group5"
+                        aria-expanded="false">
+                        <h3 class="accordion__title">
+                            คณะกรรมการบริหารทรัพย์สินรอการขาย (NPAC)
+                        </h3>
+                        <span class="accordion__icon">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div id="col-group5" class="collapse d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            คณะกรรมการบริหารทรัพย์สินรอการขาย (NPAC)
+                        </h3>
+                        <div class="list-group list-group--committee">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-5"))
+                            {
+                                <div class="list-group__item">
+                                    <div class="list-group__title">
+                                        @item.Name
+                                    </div>
+                                    <div class="list-group__position">
+                                        @item.Position
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="group6">
+                    <div class="accordion__header d-md-none"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#col-group6"
+                        aria-expanded="false">
+                        <h3 class="accordion__title">
+                            คณะกรรมการเทคโนโลยีสารสนเทศ (ITC)
+                        </h3>
+                        <span class="accordion__icon">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div id="col-group6" class="collapse d-md-block" data-bs-parent="#execTabContent">
+                        <h3 class="title title--size-h3 mb-3">
+                            คณะกรรมการเทคโนโลยีสารสนเทศ (ITC)
+                        </h3>
+                        <div class="list-group list-group--committee">
+                            @foreach (var item in Model.Where(x => x.GroupName == "group-6"))
+                            {
+                                <div class="list-group__item">
+                                    <div class="list-group__title">
+                                        @item.Name
+                                    </div>
+                                    <div class="list-group__position">
+                                        @item.Position
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Styles {
+    <style>
+    </style>
+}
+@section Scripts {
+    <script>
+        function scrollTab(direction) {
+            const container = document.querySelector('#execTab');
+            const scrollAmount = 200; // ปรับความเร็วในการเลื่อน
+            container.scrollLeft += direction * scrollAmount;
+        }
+    </script>
+}

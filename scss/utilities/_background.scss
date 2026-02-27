@@ -88,6 +88,8 @@
 }
 
 .bg-gardient-yellow {
-    background-image: linear-gradient(to bottom, #F3DB67, #FCE781);
+    background-image: var(--grad-yellow);
+    background-size: 300% 100%;
+    background-position: left center;
 }
 

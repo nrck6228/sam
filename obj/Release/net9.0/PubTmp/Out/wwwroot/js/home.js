@@ -6,14 +6,19 @@ import { serviceData, heroBannerData, assetListData, allAssetTypeData, districtD
  * ฟังก์ชันสำหรับสร้าง HTML Markup
  */
 
-const getStatusBadge = (status) => {
-    const badgeMap = {
-        'ซื้อตรง': 'card__badge--direct',
-        'ประมูล': 'card__badge--auction',
-        'รอประกาศราคา': 'card__badge--waiting'
-    };
-    const badgeClass = badgeMap[status] || 'card__badge--default';
-    return `<div class="card__badge ${badgeClass}">${status}</div>`;
+//const getStatusBadge = (status) => {
+//    const badgeMap = {
+//        'ซื้อตรง': 'card__badge--direct',
+//        'ประมูล': 'card__badge--auction',
+//        'รอประกาศราคา': 'card__badge--waiting'
+//    };
+//    const badgeClass = badgeMap[status] || 'card__badge--default';
+//    return `<div class="card__badge ${badgeClass}">${status}</div>`;
+//};
+const STATUS_CONFIG = {
+    1: { label: 'ซื้อตรง', class: 'card__badge--direct' },
+    2: { label: 'ขายทอดตลาด', class: 'card__badge--auction' },
+    3: { label: 'รอประกาศราคา', class: 'card__badge--waiting' }
 };
 
 const typeMap = allAssetTypeData.reduce((acc, curr) => {
@@ -85,21 +90,38 @@ const renderAssets = (province) => {
     container.innerHTML = filteredData.map(asset => {
         // ดึงข้อมูลประเภทจาก Map ด้วย ID
         const typeInfo = typeMap[asset.typeId];
-        const isWaiting = asset.saleStatus === 'รอประกาศราคา';
+        //const isWaiting = asset.saleStatus === 'รอประกาศราคา';
+        //const priceText = isWaiting ? 'ติดต่อเจ้าหน้าที่' : `${asset.totalPrice.toLocaleString()} บาท`;
+
+        // ดึงข้อมูลสถานะจาก Config ด้วย ID
+        const status = STATUS_CONFIG[asset.statusId] || { label: 'ไม่ทราบสถานะ', class: '' };
+
+        // เช็คเงื่อนไขเรื่องราคา (ถ้า ID คือ 3 หมายถึงรอประกาศราคา)
+        const isWaiting = asset.statusId === 3;
         const priceText = isWaiting ? 'ติดต่อเจ้าหน้าที่' : `${asset.totalPrice.toLocaleString()} บาท`;
+
+        // --- เพิ่มเงื่อนไข ---
+        // ถ้ามี typeInfo ให้แสดง div class="card__type-icon" พร้อมไอคอน
+        // ถ้าไม่มี (null/undefined) ให้เป็นค่าว่าง
+        const iconHtml = typeInfo
+            ? `<div class="card__type-icon">${getAssetIconById(asset.typeId)}</div>`
+            : '';
 
         return `
             <a href="#" class="card card--asset">
                 <div class="card__figure">
                     <img src="${asset.img}" alt="${asset.alt}" class="card__image" />
+                    <div class="card__badge ${status.class}">${status.label}</div>
                 </div>
                 <div class="card__body">
                     <div class="card__type">
-                         ${typeInfo ? typeInfo.typeName : 'ไม่ระบุประเภท'}
+                        ${iconHtml}
+                        <div class="card__type-text">
+                            ${typeInfo ? typeInfo.typeName : 'ไม่ระบุประเภท'}
+                        </div>
                     </div>
                     <div class="card__location">
-                        <span class="card__location-icon">${getAssetIconById(asset.typeId)}</span>
-                        <span class="card__location-text">${asset.location}</span>
+                        <div class="card__location-text">${asset.location}</div>
                     </div>
                     <div class="card__price">${priceText}</div>
                 </div>
@@ -170,7 +192,8 @@ const setupPreview = () => {
         followerEl = document.createElement('div');
         followerEl.id = 'hover-preview-container';
         followerEl.className = 'hover-reveal';
-        followerEl.innerHTML = `<img src="" class="hover-reveal__img">`;
+        //followerEl.innerHTML = `<img src="" class="hover-reveal__img">`;
+        followerEl.innerHTML = `<span class="preview-text">อ่านต่อ</span>`;
         document.body.appendChild(followerEl);
     }
 
@@ -194,7 +217,7 @@ const renderNews = (contentType) => {
     // 2. จัดการลำดับและจำนวน (Logic เพิ่มเติม)
     const processedData = [...data] // ใช้ Spread operator เพื่อไม่ให้กระทบข้อมูลต้นฉบับ
         .sort((a, b) => new Date(b.date) - new Date(a.date)) // เรียงใหม่ไปเก่า
-        .slice(0, 6); // เอาแค่ 6 รายการล่าสุด
+        .slice(0, 3); // 3 รายการล่าสุด
 
     if (processedData.length === 0) {
         container.innerHTML = `<div class="text-center py-5 w-100">ไม่พบข้อมูลในหมวดหมู่ข้างต้น</div>`;
@@ -232,16 +255,16 @@ const renderNews = (contentType) => {
         return `
             <article class="card card--news" data-hover-img="${thumb}">
                 <a href="/${basePath}/${item.slug}" class="card__link" title="${item.title}">
-                    <div class="card__figure" style="display: none">
+                    <div class="card__figure">
                         <img src="${item.thumbnail}" alt="${item.title}" class="card__image" loading="lazy">
-                        ${isVideo ? '<div class="card__video-overlay"><i class="bi bi-play-circle-fill"></i></div>' : ''}
-                        <div class="card__category-badge">${item.category}</div>
+                        ${isVideo ? '<div class="card__video-overlay"><svg class="icon"><use xlink:href="#icon-youtube"></use></svg></div>' : ''}
+                        <div class="card__badge">${item.category}</div>
                     </div>
                     <div class="card__body">
-                        <h4 class="card__title">${item.title}</h4>
                         <time datetime="${item.date}" class="card__date">
                             ${item.displayDate}
                         </time>
+                        <h3 class="card__title">${item.title}</h3>
                         <p class="card__excerpt" style="display: none;">${item.shortDesc}</p>
                     </div>
                 </a>
@@ -257,15 +280,19 @@ const renderNews = (contentType) => {
             card.addEventListener('mouseenter', () => {
                 const imgUrl = card.dataset.hoverImg;
                 if (imgUrl && imgUrl !== 'undefined' && imgUrl !== 'null' && imgUrl !== '') {
-                    newsPreview.image.src = imgUrl;
+                    //newsPreview.image.src = imgUrl;
                     newsPreview.container.classList.add('active');
                     newsPreview.container.style.opacity = '1';
                     newsPreview.container.style.visibility = 'visible';
-                } else {
-                    // ถ้าไม่มีรูป ให้ซ่อน Preview ทันที (ป้องกันกรณีเลื่อนจากตัวมีรูปมาตัวไม่มีรูปแล้วรูปเก่าค้าง)
-                    newsPreview.container.style.opacity = '0';
-                    newsPreview.container.style.visibility = 'hidden';
+
+                    // หากต้องการเปลี่ยนคำตามหมวดหมู่ สามารถทำตรงนี้ได้
+                    // newsPreview.container.querySelector('.preview-text').innerText = 'อ่านรายละเอียด';
                 }
+                //else {
+                //    // ถ้าไม่มีรูป ให้ซ่อน Preview ทันที (ป้องกันกรณีเลื่อนจากตัวมีรูปมาตัวไม่มีรูปแล้วรูปเก่าค้าง)
+                //    newsPreview.container.style.opacity = '0';
+                //    newsPreview.container.style.visibility = 'hidden';
+                //}
             });
 
             card.addEventListener('mouseleave', () => {
@@ -279,8 +306,11 @@ const renderNews = (contentType) => {
                 let y = e.clientY + 20;
 
                 // กันรูปหลุดขอบจอขวา
-                if (x + 300 > window.innerWidth) {
-                    x = e.clientX - 320;
+                //if (x + 300 > window.innerWidth) {
+                //    x = e.clientX - 320;
+                //}
+                if (x + 40 > window.innerWidth) {
+                    x = e.clientX - 80;
                 }
 
                 // ใช้ requestAnimationFrame หรือ transform เพื่อประสิทธิภาพ

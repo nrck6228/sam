@@ -47,9 +47,9 @@
     --grad-nature: linear-gradient(120deg, var(--clr-nature), var(--clr-nature-light), var(--clr-nature-light), var(--clr-nature) );
     --grad-gray: linear-gradient(120deg, var(--neutral-400), var(--neutral-300), var(--neutral-300), var(--neutral-400) );
     /* --- UI ELEMENTS --- */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.12); /* สำหรับ Modal/Offcanvas */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.16);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.24); /* สำหรับ Modal/Offcanvas */
     --opacity-20: 0.24;
     --opacity-50: 0.48;
     --opacity-70: 0.64;
@@ -62,7 +62,8 @@
     --transition: 0.4s ease-in-out;
     --pd-large: clamp(3rem, 2.143rem + 4.29vw, 6rem);
     /* --- TYPOGRAPHY (Fluid Scale) --- */
-    --fs-display: clamp(3.5rem, 0.413rem + 13.15vw, 12.25rem);
+    /*--fs-display: clamp(3.5rem, 0.413rem + 13.15vw, 12.25rem);*/
+    --fs-display: clamp(3rem, 1.301rem + 7.2492vw, 10rem);
     --fs-h1: clamp(2.5rem, 1.25rem + 5.3vw, 6rem);
     --fs-h2: clamp(2rem, 1.65rem + 1.5vw, 3rem);
     --fs-h3: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);

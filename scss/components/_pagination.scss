@@ -1,0 +1,55 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+.pagination--primary {
+    margin-bottom: 45px;
+
+    .page-item {
+        margin: 0 4px;
+
+        &.active {
+            .page-link {
+                background-color: #00338D;
+                background-image: linear-gradient(120deg, var(--clr-primary-dark), var(--clr-primary));
+                border-color: none;
+                color: white;
+                box-shadow: var(--shadow-sm);
+            }
+        }
+
+        &.first-item, &.last-item {
+            .page-link {
+                background-color: transparent;
+                color: var(--black);
+            }
+        }
+
+        &.prev-item, &.next-item {
+            .page-link {
+                background-color: transparent;
+                color: var(--black);
+            }
+        }
+
+        &.disabled {
+            .page-link {
+                color: var(--text-disabled);
+            }
+        }
+    }
+
+    .page-link {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        font-weight: 300;
+        font-size: 1.25rem;
+        color: var(--black); /* สีน้ำเงินขององค์กร */
+        background-color: var(--neutral-200);
+        border: none;
+        transition: all var(--transition);
+    }
+}

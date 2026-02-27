@@ -1,0 +1,190 @@
+﻿@using sam.Models
+@model List<AnnualReportViewModel>
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<nav aria-label="breadcrumb" class="breadcrumb--section">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+
+        <li class="breadcrumb-item dropdown">
+            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                เกี่ยวกับเรา
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+            </ul>
+        </li>
+
+        <li class="breadcrumb-item dropdown active" aria-current="page">
+            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                รู้จักเรา
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+            </ul>
+        </li>
+    </ol>
+</nav>
+
+<div class="page-wrapper">
+    <section class="page-wrapper__header mb-4">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-10 col-md-8">
+                    <h1 class="title title--size-h2">
+                        รายงานประจำปี
+                    </h1>
+                </div>
+
+                @* <div class="col-lg-2 col-md-4">
+                    <div class="dropdown dropdown--primary">
+                        <button class="btn w-100 d-flex justify-content-between align-items-center dropdown--primary__custom-select" type="button" data-bs-toggle="dropdown">
+                            <span class="btn__text">เลือกปี</span>
+                            <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
+                        </button>
+                        <ul class="dropdown-menu w-100 custom-scrollbar">
+                            <li><a class="dropdown-item" href="#" data-value="2568">2568</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="2567">2567</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="2566">2566</a></li>
+                        </ul>
+                    </div>
+                </div> *@
+            </div>
+        </div>
+    </section>
+
+    <section class="page-container">
+        <div id="annual-container" class="container-fluid transition-fade">
+                <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3">
+                    @foreach (var item in Model)
+                    {
+                        <div class="card card--annual">
+                            <div class="card__figure">
+                                <img src="@item.ImageUrl" alt="รายงานประจำปี @item.Year" class="card__image">
+                                <div class="card__download">
+                                    <a href="@item.ViewUrl" class="btn btn--white">
+                                        <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-view"></use></svg></span>
+                                        <span class="btn__text">ดูออนไลน์</span>
+                                    </a>
+                                    <a href="@item.DownloadUrl" class="btn btn--white">
+                                        <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-download"></use></svg></span>
+                                        <span class="btn__text">ดาวน์โหลด</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card__body">
+                                <div class="card__title-group">
+                                    <div class="card__title">รายงานประจำปี</div>
+                                    <div class="card__text">@item.Year</div>
+                                </div>
+                                <div class="card__code">
+                                    <img src="@item.QrCodeUrl" alt="QR Code @item.Year" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                @if (ViewBag.TotalPages > 1)
+                {
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center pagination--primary">
+                            @{
+                                int currentPage = ViewBag.CurrentPage;
+                                int totalPages = ViewBag.TotalPages;
+                                int delta = 2; // จำนวนหน้าที่จะโชว์รอบๆ หน้าปัจจุบัน
+                            }
+
+                            @* ปุ่ม First (ไปหน้าแรกสุด) *@
+                            <li class="page-item first-item @(currentPage <= 1 ? "disabled" : "")">
+                                <a class="page-link" href="?page=1" aria-label="First">
+                                <span aria-hidden="true"><svg class="icon"><use xlink:href="#icon-first"></use></svg></span>
+                                </a>
+                            </li>
+
+                            @* ปุ่ม Prev *@
+                            <li class="page-item prev-item @(currentPage <= 1 ? "disabled" : "")">
+                            <a class="page-link" href="?page=@(currentPage - 1)"><svg class="icon"><use xlink:href="#icon-previous"></use></svg></a>
+                            </li>
+
+                            @* ส่วนของเลขหน้าแบบมี Ellipsis (...) *@
+                            @for (int i = 1; i <= totalPages; i++)
+                            {
+                                if (i == 1 || i == totalPages || (i >= currentPage - delta && i <= currentPage + delta))
+                                {
+                                    <li class="page-item @(currentPage == i ? "active" : "")">
+                                        <a class="page-link" href="?page=@i">@i</a>
+                                    </li>
+                                }
+                                else if (i == currentPage - delta - 1 || i == currentPage + delta + 1)
+                                {
+                                    <li class="page-item disabled"><span class="page-link">...</span></li>
+                                }
+                            }
+
+                            @* ปุ่ม Next *@
+                            <li class="page-item next-item @(currentPage >= totalPages ? "disabled" : "")">
+                            <a class="page-link" href="?page=@(currentPage + 1)"><svg class="icon"><use xlink:href="#icon-next"></use></svg></a>
+                            </li>
+
+                            @* ปุ่ม Last (ไปหน้าสุดท้าย) *@
+                            <li class="page-item last-item @(currentPage >= totalPages ? "disabled" : "")">
+                                <a class="page-link" href="?page=@totalPages" aria-label="Last">
+                                    <span aria-hidden="true"><svg class="icon"><use xlink:href="#icon-last"></use></svg></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                }
+            </div>
+    </section>
+</div>
+
+@section Styles {
+    <style>
+        #annual-container {
+            transition: opacity 0.4s ease-in-out;
+            will-change: opacity;
+        }
+
+        /* ใส่ Loading Spinner เล็กๆ ตอนกำลังโหลด (ถ้าต้องการ) */
+        .is-loading {
+            cursor: wait;
+            pointer-events: none;
+        }
+    </style>
+}
+@section Scripts {
+    <script>
+        $(document).on('click', '.pagination a', function (e) {
+            e.preventDefault();
+            const url = $(this).attr('href');
+
+            // 1. เริ่ม Effect ค่อยๆ หายไป (Fade Out)
+            $('#annual-container').css('opacity', '0.5');
+
+            // 2. โหลดข้อมูลจาก Server เฉพาะส่วน
+            $.get(url, function (data) {
+                // ดึงเฉพาะส่วนเนื้อหาใหม่จากหน้า HTML ที่ได้รับ
+                const newContent = $(data).find('#annual-container').html();
+
+                // 3. อัปเดตข้อมูลและทำให้ค่อยๆ ปรากฏ (Fade In)
+                $('#annual-container').html(newContent).css('opacity', '1');
+
+                // เลื่อนหน้าจอขึ้นไปบนสุดของส่วนรายงาน (Optional)
+                $('html, body').animate({
+                    scrollTop: $("#annual-container").offset().top - 100
+                }, 500);
+
+                // อัปเดต URL บน Browser โดยไม่ Refresh
+                window.history.pushState(null, '', url);
+            });
+        });
+    </script>
+}

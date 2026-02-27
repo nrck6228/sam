@@ -17,8 +17,10 @@
         <div class="scroll-animation">
             Scroll
         </div>
+    </div>
 
-        <div class="search-panel">
+    <div class="search-panel">
+        <div class="container">
             <ul class="nav nav-pills search-panel__tabs" id="searchTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link sam-tabs__link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal-search" type="button">
@@ -146,12 +148,12 @@
     </div>
 </section>
 
-<section class="home-wrapper bg-white py-5 py-md-7">
+<section class="home-wrapper bg-white py-5 py-lg-7">
     <div class="container-fluid">
         <div class="row align-items-end">
             <div class="col-lg-8">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h2 class="title title--size-display title--gradient title--gradient-primary">
+                    <h2 class="title title--home-display title--gradient title--gradient-primary">
                         SAM ใส่ใจ
                     </h2>
                     <img src="~/media/images/mascot.png" class="d-none d-md-block d-lg-none w-25" />
@@ -175,7 +177,7 @@
     </div>
 </section>
 
-<section class="home-wrapper bg-white py-5 py-md-7">
+<section class="home-wrapper bg-white py-5 py-lg-7">
     <div class="container-fluid">
         <div class="stats-board">
             <div class="stats-board__grid">
@@ -241,11 +243,11 @@
     </div>
 </section>
 
-<section class="home-wrapper bg-white py-5 py-md-7">
+<section class="home-wrapper bg-white py-5 py-lg-7">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="title title--size-display title--gradient title--gradient-primary">
+                <h2 class="title title--home-display title--gradient title--gradient-primary">
                     ปิดหนี้ไว ไปต่อได้
                 </h2>
 
@@ -300,11 +302,11 @@
     </div>
 </section>
 
-<section class="home-wrapper bg-gardient-yellow bg-symbol bg-attachment-fixed min-vh-100 py-5 py-md-7" data-symbol="S" style="background-image:url(/media/images/bg/bg-recommend.jpg)">
+<section class="home-wrapper bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol="S" style="background-image:url(/media/images/bg/bg-recommend.jpg)">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 mb-3 mb-lg-5">
-                <h2 class="title title--size-display text-white">
+                <h2 class="title title--home-display">
                     ทรัพย์เด่น<br />และน่าสนใจ
                 </h2>
             </div>
@@ -355,11 +357,11 @@
     </div>
 </section>
 
-<section class="home-wrapper bg-gardient-green bg-symbol bg-attachment-fixed min-vh-100 py-5 py-md-7" data-symbol="A" style="background-image:url(/media/images/bg/bg-categories.jpg)">
+<section class="home-wrapper bg-gardient-green bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol="A" style="background-image:url(/media/images/bg/bg-categories.jpg)">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 mb-3 mb-lg-5">
-                <h2 class="title title--size-display text-white">
+                <h2 class="title title--home-display">
                     คุณกำลัง<br />
                     มองหาอะไร
                 </h2>
@@ -387,11 +389,11 @@
     </div>
 </section>
 
-<section class="home-wrapper bg-gardient-green bg-symbol bg-attachment-fixed min-vh-100 py-5 py-md-7" data-symbol="M" style="background-image:url(/media/images/bg/bg-location.jpg)">
+<section class="home-wrapper bg-gardient-green bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol="M" style="background-image:url(/media/images/bg/bg-location.jpg)">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 mb-3 mb-lg-5">
-                <h2 class="title title--size-display text-white">
+                <h2 class="title title--home-display">
                     บ้านเด่น<br />
                     ทำเลดี
                 </h2>
@@ -425,17 +427,13 @@
     </div>
 </section>
 
-<section class="home-wrapper bg-gardient-yellow bg-symbol bg-attachment-fixed min-vh-100 py-5 py-md-7" data-symbol="" style="background-image:url(/media/images/bg/bg-news.jpg)">
+<section class="home-wrapper bg-gardient-yellow bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol="" style="background-image:url(/media/images/bg/bg-news.jpg)">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 mb-3 mb-lg-5">
-                <h2 class="title title--size-display title--gradient title--gradient-primary">
+            <div class="col-md-12">
+                <h2 class="title title--home-display title--gradient title--gradient-primary">
                     ข่าวสาร
                 </h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
                 <div class="news-panel">
                     <div class="d-block d-md-flex justify-content-lg-end">
                         <ul class="nav nav-pills sam-tabs sam-tabs--primary" id="newsTab" role="tablist">
@@ -452,7 +450,7 @@
                     </div>
                     <div class="tab-content sam-tab-content" id="newsTabContent">
                         <div class="tab-pane fade show active" id="news-content" role="tabpanel">
-                            <div id="news-list" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-4">
+                            <div id="news-list" class="card-deck card-deck--cards-1 card-deck--cards-md-3">
                             </div>
                             <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray">
                                 <span class="btn__text">ดูข่าวสารทั้งหมด</span>
@@ -469,7 +467,7 @@
 </section>
 
 <section class="home-wrapper">
-    <div class="about-panel py-5 py-md-7">
+    <div class="about-panel py-5 py-lg-7">
         <div class="container-fluid">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-9">

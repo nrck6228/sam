@@ -139,17 +139,17 @@
 }
 
 .btn--pink {
-    color: var(--neutral-100);
+    color: var(--black);
     background-image: var(--grad-pink);
     box-shadow: var(--shadow-sm);
 
     &:hover {
-        color: var(--neutral-100);
+        color: var(--black);
     }
 
     &:first-child {
         &:active, &:focus {
-            color: var(--neutral-100);
+            color: var(--black);
             background-image: var(--grad-pink);
             box-shadow: var(--shadow-sm);
         }
@@ -199,13 +199,13 @@
 
     &:active, &:focus, &:hover {
         color: var(--black);
-        background-color: var(--neutral-100);
+        background-color: var(--clr-accent-pink);
     }
 
     &:first-child {
         &:active, &:focus, &:hover {
             color: var(--black);
-            background-color: var(--neutral-100);
+            background-color: var(--clr-accent-pink);
         }
     }
 }

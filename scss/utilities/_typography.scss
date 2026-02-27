@@ -58,33 +58,38 @@
 // SAM font size
 .title {
     margin: 0;
-    line-height: 1; /* ฟอนต์ใหญ่ควรใช้ line-height น้อย */
+    line-height: 1.4;
     font-weight: 500;
 }
 
 /* Modifiers */
-.title--size-display {
+.title--home-display {
     font-size: var(--fs-display);
+    line-height: 1; /* ฟอนต์ใหญ่ควรใช้ line-height น้อย */
     letter-spacing: -0.02em; /* ฟอนต์ใหญ่มากควรลดระยะห่างตัวอักษร */
 }
 
 .title--size-h1 {
     font-size: var(--fs-h1);
+    line-height: 1; /* ฟอนต์ใหญ่ควรใช้ line-height น้อย */
+    letter-spacing: -0.02em; /* ฟอนต์ใหญ่มากควรลดระยะห่างตัวอักษร */
 }
 
 .title--size-h2 {
     font-size: var(--fs-h2);
 }
 
+.title--size-h3 {
+    font-size: var(--fs-h3);
+}
+
 .title--content-lg {
     font-size: var(--fs-body);
-    line-height: 1.5;
     font-weight: 400; /* Content มักจะใช้ความหนาปกติ */
 }
 
 .title--content-md {
     font-size: var(--fs-body);
-    line-height: 1.5;
     font-weight: 400; /* Content มักจะใช้ความหนาปกติ */
 }
 
@@ -95,11 +100,11 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    line-height: 1.4;
+    line-height: 1.5;
     /* หรือใช้ค่าที่เหมาะสมกับฟอนต์นั้นๆ เช่น 1.5 หรือ 1.6 */
     /* เพิ่ม padding-top/bottom เล็กน้อยเพื่อป้องกันขอบบน-ล่างโดนตัด */
-    padding-top: 0.1em;
-    padding-bottom: 0.1em;
+    /*padding-top: 0.1em;*/
+    /*padding-bottom: 0.1em;*/
 }
 
 /* Modifier: จัดการแค่เรื่องสีพื้นหลัง */

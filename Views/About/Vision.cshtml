@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<nav aria-label="breadcrumb" class="breadcrumb--section">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+
+        <li class="breadcrumb-item dropdown">
+            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                เกี่ยวกับเรา
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+            </ul>
+        </li>
+
+        <li class="breadcrumb-item dropdown active" aria-current="page">
+            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                รู้จักเรา
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+            </ul>
+        </li>
+    </ol>
+</nav>
+
+<section class="bg-vision bg-symbol bg-attachment-fixed" data-symbol="" style="background-image:url(/media/images/bg/bg-vision.jpg)">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 mb-3 mb-lg-5">
+                <h2 class="title title--home-display title--gradient title--gradient-primary">
+                    วิสัยทัศน์
+                </h2>
+                <p class="h3 font-weight-normal">
+                    เป็นบริษัทบริหารสินทรัพย์แห่งรัฐ<br />
+                    ที่มีบทบาทสนับสนุนให้ประชาชนและภาคธุรกิจฟื้นตัวอย่างยั่งยืน
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-mission bg-symbol bg-attachment-fixed py-5 py-lg-7" data-symbol="" style="background-image:url(/media/images/bg/bg-mission.jpg)">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 mb-3 mb-lg-5">
+                <h2 class="title title--home-display title--gradient title--gradient-primary">
+                    พันธกิจ
+                </h2>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 mission-board">
+                    <div class="card card--mission">
+                        <div class="card__title">
+                            บริหารจัดการสินทรัพย์ด้อยคุณภาพอย่างมีประสิทธิภาพ โดยคำนึงถึงผลตอบแทนที่เหมาะสม เพื่อช่วยเหลือลูกค้าให้ฟื้นตัวได้โดยเร็ว
+                        </div>
+                    </div>
+
+                    <div class="card card--mission">
+                        <div class="card__title">
+                            สร้างเครือข่ายพันธมิตร เพื่อเพิ่มประสิทธิภาพการบริหารจัดการ
+                        </div>
+                    </div>
+
+                    <div class="card card--mission">
+                        <div class="card__title">
+                            สร้างและพัฒนาบุคลากรมืออาชีพ ที่มีความสามารถ มีจริยธรรม และก้าวทันการเปลี่ยนแปลง
+                        </div>
+                    </div>
+
+                    <div class="card card--mission">
+                        <div class="card__title">
+                            พัฒนาและผสมผสานการใช้เทคโนโลยี เพื่อส่งมอบบริการที่มีประสิทธิภาพ ทันสมัย สะดวก และปลอดภัย
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@section Styles {
+    <style>
+        /* ซ่อนลูกศร Dropdown มาตรฐานถ้าต้องการความสะอาดตา */
+        .breadcrumb-item .dropdown-toggle::after {
+            vertical-align: middle;
+        }
+    </style>
+}
+@section Scripts {
+    <script type="module" src="~/js/home.js"></script>
+}

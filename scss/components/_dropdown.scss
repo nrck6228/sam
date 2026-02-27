@@ -7,6 +7,50 @@
     }
 }
 
+.dropdown--primary {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--black);
+
+    &.show {
+        z-index: 1050;
+    }
+
+    .dropdown-menu {
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        margin-top: 8px !important;
+        padding: 8px;
+    }
+
+    .dropdown-item {
+        border-radius: 8px;
+        padding: 10px 15px;
+    }
+
+    .dropdown-item:hover {
+        background-color: var(--neutral-150);
+    }
+    /* หมุนไอคอน */
+    .transition-icon {
+        transition: transform var(--transition);
+    }
+
+    .show .transition-icon {
+        transform: rotate(180deg);
+    }
+
+    .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+        color: var(--black);
+        box-shadow: none;
+    }
+}
+
 .dropdown-menu {
     /*max-height: 30rem;
     overflow-y: auto;*/
