@@ -39,20 +39,19 @@ const getAssetIconById = (typeId) => {
 
 /**
  * 2. Render Functions
- * ฟังก์ชันสำหรับพ่นข้อมูลลง DOM
  */
 
 const renderHeroSliders = (data) => {
-    const container = document.querySelector('.hero-slide .swiper-wrapper');
+    const container = document.querySelector('.swiper--home .swiper-wrapper');
     if (!container) return;
 
     container.innerHTML = data.map((item, index) => `
         <div class="swiper-slide">
-            <div class="hero-slide__picture">
+            <div class="swiper--home__picture">
                 <picture>
                     <source media="(min-width: 992px)" srcset="${item.desktopImg}">
                     <source media="(min-width: 320px)" srcset="${item.mobileImg}">
-                    <img alt="${item.alt}" class="hero-slide__image" src="${item.desktopImg}" 
+                    <img alt="${item.alt}" class="swiper--home__image" src="${item.desktopImg}" 
                          ${index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
                 </picture>
             </div>
@@ -63,22 +62,22 @@ const renderHeroSliders = (data) => {
 };
 
 const renderQuickLinks = (data) => {
-    const container = document.querySelector('#quick-links-grid');
+    const container = document.querySelector('#highlight-grid');
     if (!container) return;
 
     container.innerHTML = data.map((item, index) => `
-        <div class="quick-links__item" style="animation-delay: ${(index + 1) * 0.1}s">
-            <a href="${item.url}" class="quick-links__link">
-                <span class="quick-links__number">${item.id}</span>
-                <div class="quick-links__content-wrapper">
-                    <span class="quick-links__label">${item.label}</span>
-                    <span class="quick-links__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
+        <div class="highlight__item" style="animation-delay: ${(index + 1) * 0.1}s">
+            <a href="${item.url}" class="highlight__link">
+                <span class="highlight__number">${item.id}</span>
+                <div class="highlight__content-wrapper">
+                    <span class="highlight__label">${item.label}</span>
+                    <span class="highlight__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
                 </div>
             </a>
         </div>
     `).join('');
 
-    initScrollReveal('.quick-links');
+    initScrollReveal('.highlight');
 };
 
 const renderAssets = (province) => {
@@ -205,7 +204,7 @@ const setupPreview = () => {
 
 const renderNews = (contentType) => {
     const container = document.getElementById('news-list');
-    const preview = document.getElementById('hover-preview');
+    //const preview = document.getElementById('hover-preview');
     const btnNewsAll = document.getElementById('btn-news-all');
     if (!container) return;
 
@@ -326,13 +325,13 @@ const renderNews = (contentType) => {
  */
 
 const initSwiper = () => {
-    if (!document.querySelector('.hero-slide')) return;
-    new Swiper('.hero-slide', {
+    if (!document.querySelector('.swiper--home')) return;
+    new Swiper('.swiper--home', {
         loop: true,
         speed: 800,
         autoplay: { delay: 5000, pauseOnMouseEnter: true },
-        pagination: { el: '.hero-slide__pagination', clickable: true },
-        navigation: { prevEl: '.hero-slide__prev', nextEl: '.hero-slide__next' },
+        pagination: { el: '.swiper--home__pagination', clickable: true },
+        navigation: { prevEl: '.swiper--home__prev', nextEl: '.swiper--home__next' },
         effect: "creative",
         creativeEffect: {
             prev: { shadow: true, translate: ["-20%", 0, -1] },
@@ -355,7 +354,7 @@ const initScrollReveal = (selector) => {
 };
 
 const initRollingNumbers = () => {
-    const counters = document.querySelectorAll('.stats-board__counter');
+    const counters = document.querySelectorAll('.stats__counter');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -451,7 +450,7 @@ const initApp = () => {
     renderAssets('กรุงเทพมหานคร');
 
     initRollingNumbers();
-    initScrollReveal('.stats-board .card-deck');
+    initScrollReveal('.reveal-on-scroll');
     renderNews('pressReleases');
     setupEventListeners();
 };

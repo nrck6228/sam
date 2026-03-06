@@ -2,7 +2,7 @@
 @use "../abstracts/mixins" as media;
 
 //Hero Slide
-.hero-slide {
+.swiper--home {
     position: relative;
     width: 100%;
     height: 100vh;
@@ -64,7 +64,7 @@
     }
 }
 
-.hero-slide__controls {
+.swiper--home__controls {
     position: absolute;
     left: 15px;
     bottom: 15px;
@@ -85,6 +85,54 @@
 }
 
 /* enable click */
-.hero-slide__controls > * {
+.swiper--home__controls > * {
     pointer-events: auto;
+}
+
+.swiper--home__scroll {
+    display: none;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    z-index: 2;
+    padding: 10px 10px 110px;
+    color: var(--neutral-100);
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    writing-mode: vertical-lr;
+    transition: 0.3s;
+    overflow: hidden;
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        height: 100px;
+        background: rgba(255, 255, 255, var(--opacity-20));
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        height: 100px;
+        background-color: var(--neutral-100);
+        height: 30px;
+        animation: scroll 1.5s ease infinite;
+    }
+
+    @include media.media-up(md) {
+        display: inline-block;
+        bottom: 43px;
+    }
+
+    @include media.media-up(lg) {
+        bottom: 66px;
+    }
 }

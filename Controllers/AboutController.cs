@@ -186,7 +186,8 @@ namespace sam.Controllers
         }
 
         [Route("about/vice-president")]
-        public IActionResult VicePresident()
+        [Route("about/vice-president/{slug?}")]
+        public IActionResult VicePresident(string slug)
         {
             var presidents = new List<VicePresidentViewModel>
             {
@@ -234,7 +235,8 @@ namespace sam.Controllers
         }
 
         [Route("about/committee")]
-        public IActionResult Committee()
+        [Route("about/committee/{slug?}")]
+        public IActionResult Committee(string slug)
         {
             var presidents = new List<CommitteeViewModel>
             {
@@ -281,6 +283,14 @@ namespace sam.Controllers
             };
 
             return View("~/Views/About/Committee.cshtml", presidents);
+        }
+
+        [Route("about/business-policy")] // เก็บไว้เผื่อคนพิมพ์แบบเต็ม
+        [Route("business-policy/{slug?}")] // URL ที่ต้องการ: business-policy/management-non-performing-loans
+        public IActionResult BusinessPolicy(string slug)
+        {
+            // เราจะใช้ slug ในการระบุว่าจะเปิด Tab ไหน (จะอธิบายในส่วน JS)
+            return View("~/Views/About/BusinessPolicy.cshtml");
         }
     }
 }

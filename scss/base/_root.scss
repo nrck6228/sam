@@ -62,12 +62,14 @@
     --transition: 0.4s ease-in-out;
     --pd-large: clamp(3rem, 2.143rem + 4.29vw, 6rem);
     /* --- TYPOGRAPHY (Fluid Scale) --- */
-    /*--fs-display: clamp(3.5rem, 0.413rem + 13.15vw, 12.25rem);*/
-    --fs-display: clamp(3rem, 1.301rem + 7.2492vw, 10rem);
-    --fs-h1: clamp(2.5rem, 1.25rem + 5.3vw, 6rem);
-    --fs-h2: clamp(2rem, 1.65rem + 1.5vw, 3rem);
-    --fs-h3: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
-    --fs-h4: clamp(1.25rem, 1.14rem + 0.45vw, 1.5rem);
+    /*--fs-display-1: clamp(3.5rem, 0.413rem + 13.15vw, 12.25rem);*/
+    --fs-display-1: clamp(3rem, 1.301rem + 7.2492vw, 10rem);
+    --fs-display-2: clamp(2.5rem, 1.25rem + 5.3vw, 6rem);
+    --fs-h1: 3.75rem;
+    --fs-h2: 3rem;
+    --fs-h3: 2.5rem;
+    --fs-h4: 2rem;
+    --fs-h5: 1.5rem;
     --fs-body: clamp(1rem, 0.89rem + 0.45vw, 1.125rem); /* เพิ่มค่ามาตรฐาน */
     --fs-small: 0.875rem; /* สำหรับแคปชั่นหรือหน่วย */
 }

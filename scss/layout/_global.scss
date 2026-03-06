@@ -5,17 +5,274 @@
     position: relative;
 }
 
+.section {
+    position: relative;
+
+    &--banner {
+        padding: 15rem 0 1.5rem 0;
+        display: flex;
+        align-items: flex-end;
+        background-image: linear-gradient(0deg, #fff, #D0D8D9);
+    }
+
+    &--content {
+        margin-bottom: 3rem;
+    } 
+}
+
+.section {
+    &__title {
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: var(--fs-h1);
+        line-height: 1.4;
+        letter-spacing: -.02em;
+    }
+
+    &__subtitle {
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: var(--fs-h3);
+        line-height: 1.4;
+        letter-spacing: -.02em;
+    }
+}
+
 .page-wrapper {
     position: relative;
 
-    .page-wrapper__header {
+    &__header {
         padding-top: 15rem;
+        margin-bottom: 1.5rem;
         background-image: linear-gradient(0deg, #fff, #D0D8D9);
     }
 }
 
 .page-container {
     position: relative;
+}
+
+.search {
+    &__tabs.nav-pills {
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    &__tab-link.nav-link {
+        color: var(--neutral-100);
+        border-radius: 0.5rem;
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(0, 0, 0, var(--opacity-50));
+
+        &.active {
+            color: var(--black);
+            background-color: var(--neutral-100); /* สีเขียว SAM */
+        }
+    }
+
+    &__content {
+        position: relative;
+        padding: 2rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(0, 0, 0, var(--opacity-50));
+        z-index: 1050;
+
+        @include media.media-down(md) {
+            padding: 1rem;
+        }
+    }
+
+    &__input-group {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--neutral-100);
+    }
+
+    &__input.form-control {
+        width: auto;
+        height: 45px;
+        color: var(--neutral-100);
+        padding-left: 0;
+        border: 0;
+        border-radius: 0;
+        background-color: transparent;
+
+        &::placeholder {
+            color: var(--neutral-100);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    &__select-group {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--neutral-100);
+
+        &.show {
+            z-index: 1050;
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 8px !important;
+            padding: 8px;
+        }
+
+        .dropdown-item {
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--neutral-150);
+        }
+        /* หมุนไอคอน */
+        .transition-icon {
+            transition: transform var(--transition);
+        }
+
+        .show .transition-icon {
+            transform: rotate(180deg);
+        }
+
+        .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+    }
+
+    &__custom-select {
+        background: transparent;
+        border: none;
+        color: var(--neutral-100);
+        padding: 10px 0 !important;
+        border-radius: 0 !important;
+
+        &:active {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+
+        &:focus, &:focus-visible {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+
+        &:hover {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+
+        &.show {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+    }
+
+    &__select-icon {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        transition: all var(--transition);
+    }
+
+    &__btn {
+        min-width: 1px;
+        width: 45px;
+        height: 45px;
+        font-size: var(--fs-h4);
+        color: var(--neutral-100);
+        transition: all var(--transition);
+
+        &:hover {
+            color: var(--neutral-100);
+            outline: none;
+            box-shadow: none;
+            opacity: var(--opacity-50);
+        }
+
+        &-slide {
+            min-width: 1px;
+            width: 45px;
+            height: 45px;
+            font-size: var(--fs-h4);
+            color: var(--black);
+            background-color: var(--neutral-100);
+            border-radius: 0.5rem;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, var(--opacity-50));
+            }
+
+            &:active, &:focus, &:focus-visible {
+                background-color: var(--neutral-100);
+                outline: none;
+                box-shadow: none;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, var(--opacity-50));
+                }
+            }
+        }
+    }
+
+    &__tags {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        color: white;
+
+        @include media.media-down(sm) {
+            display: none;
+        }
+    }
+
+    &__tag-cloud {
+        display: flex;
+        gap: 1rem;
+
+        @include media.media-down(md) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__tag {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        height: 40px;
+        padding: 0.5rem 1rem;
+        color: var(--text-main);
+        border-radius: 20px;
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(255, 255, 255, var(--opacity-50));
+        cursor: pointer;
+        transition: all var(--transition);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, var(--opacity-20));
+        }
+    }
 }
 
 .offcanvas-search {

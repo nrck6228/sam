@@ -21,3 +21,27 @@
 
 // Generate text color utilities
 @include generate-text-color-utilities();
+
+.text-black {
+    color: var(--black) !important;
+}
+
+.text-black-1 {
+    color: var(--neutral-900) !important;
+}
+
+.text-gradient {
+    display: inline-block;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    line-height: 1.5;
+
+    &--green {
+        color: var(--clr-primary-dark);
+        background-image: linear-gradient( 120deg, var(--clr-primary-dark) 0%, var(--clr-primary-dark) 70%, var(--clr-primary) 100% );
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+    }
+}

@@ -24,6 +24,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcQW5udWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Works/asp.net/sam/Views/About/BusinessPolicy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcQnVzaW5lc3NQb2xpY3kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Works/asp.net/sam/Views/About/Committee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcQ29tbWl0dGVlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,6 +58,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Works/asp.net/sam/Views/About/Vision.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcVmlzaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Assets/Promotion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXFByb21vdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Assets/TypeAsset.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXFR5cGVBc3NldC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/Home/Index.cshtml]

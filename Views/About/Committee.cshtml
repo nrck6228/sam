@@ -5,61 +5,63 @@
     ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
 }
 
-<nav aria-label="breadcrumb" class="breadcrumb--section">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
 
-        <li class="breadcrumb-item dropdown">
-            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                เกี่ยวกับเรา
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
-                <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
-                <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
-            </ul>
-        </li>
+                <li class="breadcrumb-item dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        เกี่ยวกับเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+                    </ul>
+                </li>
 
-        <li class="breadcrumb-item dropdown active" aria-current="page">
-            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                รู้จักเรา
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
-                <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
-            </ul>
-        </li>
-    </ol>
-</nav>
+                <li class="breadcrumb-item dropdown active" aria-current="page">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        รู้จักเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </nav>
+    </div>
 
-<div class="page-wrapper">
-    <section class="page-wrapper__header mb-4">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-lg-10 col-md-8">
-                    <h1 class="title title--size-h2">
-                        คณะกรรมการ
-                    </h1>
-                </div>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-10 col-md-8">
+                <h1 class="page__title">
+                    คณะกรรมการ
+                </h1>
+            </div>
 
-                <div class="col-lg-2 col-md-4">
-                    <div class="dropdown dropdown--primary">
-                        <button class="btn w-100 d-flex justify-content-between align-items-center dropdown--primary__custom-select" type="button" data-bs-toggle="dropdown">
-                            <span class="btn__text">กรรมการบริษัท</span>
-                            <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
-                        </button>
-                        <ul class="dropdown-menu w-100 custom-scrollbar">
-                            <li><a class="dropdown-item" href="#" data-value="กรรมการอื่นๆ">กรรมการอื่นๆ</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารระดับสูง">คณะผู้บริหารระดับสูง</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารฝ่าย">คณะผู้บริหารฝ่าย</a></li>
-                        </ul>
-                    </div>
+            <div class="col-lg-2 col-md-4">
+                <div class="dropdown dropdown--primary">
+                    <button class="btn w-100 d-flex justify-content-between align-items-center dropdown--primary__custom-select" type="button" data-bs-toggle="dropdown">
+                        <span class="btn__text">กรรมการบริษัท</span>
+                        <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
+                    </button>
+                    <ul class="dropdown-menu w-100 custom-scrollbar">
+                        <li><a class="dropdown-item" href="#" data-value="กรรมการอื่นๆ">กรรมการอื่นๆ</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารระดับสูง">คณะผู้บริหารระดับสูง</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารฝ่าย">คณะผู้บริหารฝ่าย</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="page-container">
+<section>
+    <div class="section section--content">
         <div id="director-container" class="container-fluid">
             <div class="tab-container">
                 <button class="arrow left" onclick="scrollTab(-1)">
@@ -97,9 +99,9 @@
 
                 <div class="tab-pane fade show active" id="group1">
                     <div class="accordion__header d-md-none"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#col-group1"
-                        aria-expanded="true">
+                         data-bs-toggle="collapse"
+                         data-bs-target="#col-group1"
+                         aria-expanded="true">
                         <h3 class="accordion__title">
                             คณะกรรมการบริหารความเสี่ยงและบรรษัทภิบาล (คสบ.)
                         </h3>
@@ -108,7 +110,7 @@
                         </span>
                     </div>
                     <div id="col-group1" class="collapse show d-md-block" data-bs-parent="#execTabContent">
-                        <h3 class="title title--size-h3 mb-3">
+                        <h3 class="section__subtitle mb-3">
                             คณะกรรมการบริหารความเสี่ยงและบรรษัทภิบาล (คสบ.)
                         </h3>
                         <div class="list-group list-group--committee">
@@ -129,9 +131,9 @@
 
                 <div class="tab-pane fade" id="group2">
                     <div class="accordion__header d-md-none"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#col-group2"
-                        aria-expanded="false">
+                         data-bs-toggle="collapse"
+                         data-bs-target="#col-group2"
+                         aria-expanded="false">
                         <h3 class="accordion__title">
                             คณะกรรมการตรวจสอบ
                         </h3>
@@ -140,7 +142,7 @@
                         </span>
                     </div>
                     <div id="col-group2" class="collapse d-md-block" data-bs-parent="#execTabContent">
-                        <h3 class="title title--size-h3 mb-3">
+                        <h3 class="section__subtitle mb-3">
                             คณะกรรมการตรวจสอบ
                         </h3>
                         <div class="list-group list-group--committee">
@@ -161,9 +163,9 @@
 
                 <div class="tab-pane fade" id="group3">
                     <div class="accordion__header d-md-none"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#col-group3"
-                        aria-expanded="false">
+                         data-bs-toggle="collapse"
+                         data-bs-target="#col-group3"
+                         aria-expanded="false">
                         <h3 class="accordion__title">
                             คณะกรรมการกฎหมาย (คกม.)
                         </h3>
@@ -172,7 +174,7 @@
                         </span>
                     </div>
                     <div id="col-group3" class="collapse d-md-block" data-bs-parent="#execTabContent">
-                        <h3 class="title title--size-h3 mb-3">
+                        <h3 class="section__subtitle mb-3">
                             คณะกรรมการกฎหมาย (คกม.)
                         </h3>
                         <div class="list-group list-group--committee">
@@ -193,9 +195,9 @@
 
                 <div class="tab-pane fade" id="group4">
                     <div class="accordion__header d-md-none"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#col-group4"
-                        aria-expanded="false">
+                         data-bs-toggle="collapse"
+                         data-bs-target="#col-group4"
+                         aria-expanded="false">
                         <h3 class="accordion__title">
                             คณะกรรมการบริหารสินทรัพย์ (ECC)
                         </h3>
@@ -204,7 +206,7 @@
                         </span>
                     </div>
                     <div id="col-group4" class="collapse d-md-block" data-bs-parent="#execTabContent">
-                        <h3 class="title title--size-h3 mb-3">
+                        <h3 class="section__subtitle mb-3">
                             คณะกรรมการบริหารสินทรัพย์ (ECC)
                         </h3>
                         <div class="list-group list-group--committee">
@@ -225,9 +227,9 @@
 
                 <div class="tab-pane fade" id="group5">
                     <div class="accordion__header d-md-none"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#col-group5"
-                        aria-expanded="false">
+                         data-bs-toggle="collapse"
+                         data-bs-target="#col-group5"
+                         aria-expanded="false">
                         <h3 class="accordion__title">
                             คณะกรรมการบริหารทรัพย์สินรอการขาย (NPAC)
                         </h3>
@@ -236,7 +238,7 @@
                         </span>
                     </div>
                     <div id="col-group5" class="collapse d-md-block" data-bs-parent="#execTabContent">
-                        <h3 class="title title--size-h3 mb-3">
+                        <h3 class="section__subtitle mb-3">
                             คณะกรรมการบริหารทรัพย์สินรอการขาย (NPAC)
                         </h3>
                         <div class="list-group list-group--committee">
@@ -257,9 +259,9 @@
 
                 <div class="tab-pane fade" id="group6">
                     <div class="accordion__header d-md-none"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#col-group6"
-                        aria-expanded="false">
+                         data-bs-toggle="collapse"
+                         data-bs-target="#col-group6"
+                         aria-expanded="false">
                         <h3 class="accordion__title">
                             คณะกรรมการเทคโนโลยีสารสนเทศ (ITC)
                         </h3>
@@ -268,7 +270,7 @@
                         </span>
                     </div>
                     <div id="col-group6" class="collapse d-md-block" data-bs-parent="#execTabContent">
-                        <h3 class="title title--size-h3 mb-3">
+                        <h3 class="section__subtitle mb-3">
                             คณะกรรมการเทคโนโลยีสารสนเทศ (ITC)
                         </h3>
                         <div class="list-group list-group--committee">
@@ -288,12 +290,10 @@
                 </div>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
 
 @section Styles {
-    <style>
-    </style>
 }
 @section Scripts {
     <script>
@@ -302,5 +302,50 @@
             const scrollAmount = 200; // ปรับความเร็วในการเลื่อน
             container.scrollLeft += direction * scrollAmount;
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const path = window.location.pathname.toLowerCase().replace(/\/$/, ""); // ตัด / ตัวสุดท้ายออกถ้ามี
+            const tabLinks = document.querySelectorAll('.sam-tabs__link');
+
+            const routeMap = {
+                '/about/committee/risk-management-corporate-governance': '#group1',
+                '/about/committee/audit': '#group2',
+                '/about/committee/legal': '#group3',
+                '/about/committee/strategy-management': '#group4',
+                '/about/committee/nomination-remuneration': '#group5',
+                '/about/committee/executive-credit': '#group6',
+                '/about/committee/npa': '#group7',
+                '/about/committee/information-technology': '#group8',
+            };
+
+            function activateTab(targetId) {
+                const targetTabButton = document.querySelector(`.sam-tabs__link[data-bs-target="${targetId}"]`);
+                if (targetTabButton) {
+                    // ใช้ความสามารถของ Bootstrap 5 Tab
+                    const tab = new bootstrap.Tab(targetTabButton);
+                    tab.show();
+                }
+            }
+
+            // --- ส่วนที่แก้ไข: ตรวจสอบและรันการ Active Tab ---
+            // ค้นหา ID จาก Path ที่เราอยู่
+            const initialTabId = routeMap[path];
+            if (initialTabId) {
+                activateTab(initialTabId);
+            }
+
+            // --- ส่วนที่แก้ไข: รวม Logic การคลิกไว้ที่เดียว ---
+            tabLinks.forEach(tabBtn => {
+                tabBtn.addEventListener('shown.bs.tab', function (event) {
+                    const targetId = event.target.getAttribute('data-bs-target');
+
+                    // 1. อัปเดต URL
+                    const newPath = Object.keys(routeMap).find(key => routeMap[key] === targetId);
+                    if (newPath) {
+                        window.history.pushState(null, '', newPath);
+                    }
+                });
+            });
+        });
     </script>
 }

@@ -4,6 +4,12 @@
         desktopImg: '/media/images/hero/demo-banner-1.webp',
         mobileImg: '/media/images/hero/demo-banner-mobile-1.webp',
         alt: 'SAM ใส่ใจ โครงการปิดหนี้'
+    },
+    {
+        id: 2,
+        desktopImg: '/media/images/hero/demo-banner-1.webp',
+        mobileImg: '/media/images/hero/demo-banner-mobile-1.webp',
+        alt: 'ปิดหนี้ไว ไปต่อได้'
     }
 ];
 
@@ -509,3 +515,87 @@ export const newsData = {
         }
     ]
 };
+
+export const promotionData = [
+    {
+        id: 1,
+        title: "โครงการปิดหนี้ไวไปต่อได้",
+        description: "หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้างที่ส่งผลกระทบต่อความเป็นอยู่ของประชาชน...",
+        imageUrl: "/media/images/promotion/thumb.jpg",
+        date: "ม.ค. 19, 2026",
+        link: "/promotion/debt-free"
+    },
+    {
+        id: 2,
+        title: "รายการทรัพย์ประมูล",
+        description: "เปิดประมูลทรัพย์ เพื่ออยู่อาศัยและการลงทุน ครั้งที่ 3 ประเภททรัพย์ : บ้านเดี่ยว ทาวน์เฮ้าส์...",
+        imageUrl: "/media/images/promotion/thumb-1.jpg",
+        date: "ม.ค. 08, 2026",
+        link: "/promotion/auction-3"
+    },
+    {
+        id: 3,
+        title: "บ้าน SAM ผ่อนได้",
+        description: "SAM มอบโอกาสให้คุณเป็นเจ้าของบ้านได้ง่ายขึ้น ด้วยแผนผ่อนที่ออกแบบมาให้เลือกถึง 5 แบบ...",
+        imageUrl: "/media/images/promotion/thumb-2.jpg",
+        date: "ธ.ค. 30, 2025",
+        link: "/promotion/installment"
+    },
+    {
+        id: 4,
+        title: "บ้าน SAM ผ่อนได้",
+        description: "SAM มอบโอกาสให้คุณเป็นเจ้าของบ้านได้ง่ายขึ้น ด้วยแผนผ่อนที่ออกแบบมาให้เลือกถึง 5 แบบ...",
+        imageUrl: "/media/images/promotion/thumb-3.jpg",
+        date: "ธ.ค. 30, 2025",
+        link: "/promotion/installment"
+    },
+    {
+        id: 5,
+        title: "บ้าน SAM ผ่อนได้",
+        description: "SAM มอบโอกาสให้คุณเป็นเจ้าของบ้านได้ง่ายขึ้น ด้วยแผนผ่อนที่ออกแบบมาให้เลือกถึง 5 แบบ...",
+        imageUrl: "/media/images/promotion/thumb-4.jpg",
+        date: "ธ.ค. 30, 2025",
+        link: "/promotion/installment"
+    },
+    {
+        id: 6,
+        title: "โครงการปิดหนี้ไวไปต่อได้",
+        description: "หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้างที่ส่งผลกระทบต่อความเป็นอยู่ของประชาชน...",
+        imageUrl: "/media/images/promotion/thumb.jpg",
+        date: "ม.ค. 19, 2026",
+        link: "/promotion/debt-free"
+    },
+    {
+        id: 7,
+        title: "รายการทรัพย์ประมูล",
+        description: "เปิดประมูลทรัพย์ เพื่ออยู่อาศัยและการลงทุน ครั้งที่ 3 ประเภททรัพย์ : บ้านเดี่ยว ทาวน์เฮ้าส์...",
+        imageUrl: "/media/images/promotion/thumb-1.jpg",
+        date: "ม.ค. 08, 2026",
+        link: "/promotion/auction-3"
+    },
+    {
+        id: 8,
+        title: "บ้าน SAM ผ่อนได้",
+        description: "SAM มอบโอกาสให้คุณเป็นเจ้าของบ้านได้ง่ายขึ้น ด้วยแผนผ่อนที่ออกแบบมาให้เลือกถึง 5 แบบ...",
+        imageUrl: "/media/images/promotion/thumb-2.jpg",
+        date: "ธ.ค. 30, 2025",
+        link: "/promotion/installment"
+    },
+    {
+        id: 9,
+        title: "บ้าน SAM ผ่อนได้",
+        description: "SAM มอบโอกาสให้คุณเป็นเจ้าของบ้านได้ง่ายขึ้น ด้วยแผนผ่อนที่ออกแบบมาให้เลือกถึง 5 แบบ...",
+        imageUrl: "/media/images/promotion/thumb-3.jpg",
+        date: "ธ.ค. 30, 2025",
+        link: "/promotion/installment"
+    },
+    {
+        id: 10,
+        title: "บ้าน SAM ผ่อนได้",
+        description: "SAM มอบโอกาสให้คุณเป็นเจ้าของบ้านได้ง่ายขึ้น ด้วยแผนผ่อนที่ออกแบบมาให้เลือกถึง 5 แบบ...",
+        imageUrl: "/media/images/promotion/thumb-4.jpg",
+        date: "ธ.ค. 30, 2025",
+        link: "/promotion/installment"
+    }
+    // เพิ่มข้อมูลให้ครบ 6 หรือ 9 รายการเพื่อลองทำ Pagination
+];

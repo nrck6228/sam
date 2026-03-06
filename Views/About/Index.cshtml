@@ -3,51 +3,46 @@
     ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
 }
 
-<nav aria-label="breadcrumb" class="breadcrumb--section">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
 
-        <li class="breadcrumb-item dropdown">
-            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                เกี่ยวกับเรา
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
-                <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
-                <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
-            </ul>
-        </li>
+                <li class="breadcrumb-item dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        เกี่ยวกับเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+                    </ul>
+                </li>
 
-        <li class="breadcrumb-item dropdown active" aria-current="page">
-            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                รู้จักเรา
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
-                <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
-            </ul>
-        </li>
-    </ol>
-</nav>
+                <li class="breadcrumb-item dropdown active" aria-current="page">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        รู้จักเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
 
-<div class="page-wrapper">
-    <section class="page-wrapper__header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="title title--size-h2">
-                        เกี่ยวกับบริษัท
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="page-container bg-history">
+<section>
+    <div class="section section--content section--about">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="about mb-5 mb-lg-7">
+                        <h2 class="section__title">
+                            เกี่ยวกับบริษัท
+                        </h2>
                         <div class="content-editor">
                             <p>
                                 หน่วยงานภาครัฐ ภายใต้การกำกับดูแลของธนาคารแห่งประเทศไทย มีภารกิจสำคัญในการบริหาร สินทรัพย์ด้อยคุณภาพของระบบสถาบันการเงิน โดยทำหน้าที่เป็นหนึ่งในกลไกของภาครัฐที่ร่วม แก้ไข พัฒนา และฟื้นฟูระบบเศรษฐกิจของประเทศ ด้วยการให้ โอกาส ลูกค้าของ SAM ในการ เจรจาปรับโครงสร้างหนี้ และให้ โอกาส ผู้สนใจได้เป็นเจ้าของอสังหาริมทรัพย์มือสอง หรือ “ทรัพย์สินรอการขาย” เพื่อคนไทยมีบ้านเพื่ออยู่อาศัยหรืออสังหาริมทรัพย์เพื่อการลงทุนในทำเลดี ทั่วประเทศ รวมทั้งให้ โอกาส ลูกค้าที่เป็นหนี้เสียบัตรเครดิต บัตรกดเงินสด สินเชื่อส่วนบุคคล ได้แบ่งเบาภาระหนี้สิน ภายใต้โครงการ “คลินิกแก้หนี้ by SAM”
@@ -55,8 +50,8 @@
                         </div>
                     </div>
 
-                    <div class="about mb-5 mb-lg-7">
-                        <h2 class="title title--size-h2">
+                    <div class="about">
+                        <h2 class="section__title">
                             ประวัติความเป็นมา
                         </h2>
                         <div class="content-editor">
@@ -69,60 +64,60 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="logo-sticky">
-                        <img src="~/media/images/logo/logo-xl.svg" class="logo-sticky__image" alt="Logo" />
+                    <div class="position-sticky top-0">
+                        <img src="~/media/images/logo/logo-xl.svg" class="img-fluid" alt="Logo" />
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="page-container bg-history">
+    <div class="section section--content section--history">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="title title--size-h2 mb-5">
+                    <h2 class="section__title mb-3">
                         การเปลี่ยนแปลงและการพัฒนาที่สำคัญ
                     </h2>
-                    <div class="milestone-wrapper" id="milestone-container">
-                        <div class="line-bg"></div>
-                        <div class="line-progress" id="progress-line"></div>
+                    <div class="milestone" id="milestone-container">
+                        <div class="milestone__line-bg"></div>
+                        <div class="milestone__line-progress" id="progress-line"></div>
 
-                        <div class="milestone-item">
-                            <div class="milestone-dot"></div>
-                            <div class="milestone-content">
-                                <div class="year" data-start="2540" data-target="2567">2540</div>
-                                <div class="description">
+                        <div class="milestone__item">
+                            <div class="milestone__dot"></div>
+                            <div class="milestone__content">
+                                <div class="milestone__year" data-start="2540" data-target="2567">2540</div>
+                                <div class="milestone__description">
                                     บริษัท ทริสเรทติ้ง จำกัด (TRIS) ได้ประกาศคงอันดับเครดิตองค์กรและอันดับเครดิตหุ้นกู้ไม่ด้อยสิทธิ ไม่มีหลักประกันของ บสส. ที่ระดับ “AA+” ด้วยแนวโน้มอันดับเครดิต “Stable” หรือ “คงที่” โดย บสส. ได้รับการจัดอันดับเครดิตองค์กรที่ระดับ AA+ นับเป็นปีที่ 5
                                 </div>
                             </div>
                         </div>
 
-                        <div class="milestone-item">
-                            <div class="milestone-dot"></div>
-                            <div class="milestone-content">
-                                <div class="year" data-start="2540" data-target="2566">2540</div>
-                                <div class="description">
+                        <div class="milestone__item">
+                            <div class="milestone__dot"></div>
+                            <div class="milestone__content">
+                                <div class="milestone__year" data-start="2540" data-target="2566">2540</div>
+                                <div class="milestone__description">
                                     บสส. ได้ประมูลซื้อหนี้ด้อยคุณภาพจากสถาบันการเงิน มูลค่ารวม 5,684 ล้านบาท วันที่ 16 พฤศจิกายน 2566 ได้รับการจัดอันดับความน่าเชื่อถือองค์กรที่ระดับ AA+ ด้วยแนวโน้มอันดับเครดิต Stable หรือ “คงที่” ต่อเนื่อง จากบริษัท ทริสเรทติ้ง จำกัด
                                 </div>
                             </div>
                         </div>
 
-                        <div class="milestone-item">
-                            <div class="milestone-dot"></div>
-                            <div class="milestone-content">
-                                <div class="year" data-start="2540" data-target="2565">2540</div>
-                                <div class="description">
+                        <div class="milestone__item">
+                            <div class="milestone__dot"></div>
+                            <div class="milestone__content">
+                                <div class="milestone__year" data-start="2540" data-target="2565">2540</div>
+                                <div class="milestone__description">
                                     วันที่ 2 พฤศจิกายน 2565 บริษัทได้รับการจัดอันดับความน่าเชื่อถือองค์กรที่ระดับ AA+ แนวโน้มอันดับเครดิต “Stable” หรือ “คงที่” ต่อเนื่องเป็นปีที่ 3 นับตั้งแต่ปี 2563 จาก บริษัท ทริสเรทติ้ง จำกัด / บสส. ได้ประมูลซื้อหนี้ด้อยคุณภาพจากสถาบันการเงิน มูลค่ารวม 5,262.77 ล้านบาท / เดือนธันวาคม 2565 บสส. เสนอขายหุ้นกู้ครั้งแรก ประเภทหุ้นกู้ไม่ด้อยสิทธิ ไม่มีหลักประกัน วงเงิน 2,500 ล้านบาท อายุ 3-7 ปี และได้รับการตอบรับอย่างดีเยี่ยมจากผู้ลงทุนสถาบันและ ผู้ลงทุนรายใหญ่ (Institutional Investors and High Net Worth Investors)
                                 </div>
                             </div>
                         </div>
 
-                        <div class="milestone-item">
-                            <div class="milestone-dot"></div>
-                            <div class="milestone-content">
-                                <div class="year" data-start="2540" data-target="2564">2540</div>
-                                <div class="description">
+                        <div class="milestone__item">
+                            <div class="milestone__dot"></div>
+                            <div class="milestone__content">
+                                <div class="milestone__year" data-start="2540" data-target="2564">2540</div>
+                                <div class="milestone__description">
                                     วันที่ 24 พฤศจิกายน 2564 บริษัทได้รับการจัดอันดับความน่าเชื่อถือองค์กรที่ระดับ AA+ แนวโน้มอันดับเครดิต “Stable” หรือ “คงที่” จาก บริษัท ทริสเรทติ้ง จำกัด / บสส. ได้ประมูลซื้อหนี้ด้อยคุณภาพจากสถาบันการเงิน มูลค่ารวม 2,780.22 ล้านบาท
                                 </div>
                             </div>
@@ -131,108 +126,17 @@
                 </div>
             </div>
         </div>
-    </section>
-
-</div>
+    </div>
+</section>
 
 @section Styles {
-    <style>
-        :root {
-            --line-color: #e0e0e0; /* สีเส้นพื้นหลัง */
-            --progress-color: #1a5d3b; /* สีเส้นที่วิ่งตาม (สีเขียวเข้ม) */
-            --dot-color: #e9a2a8; /* สีจุดชมพู */
-        }
-
-        .milestone-wrapper {
-            position: relative;
-            /* max-width: 900px; */
-            margin: auto;
-            padding-left: 60px;
-        }
-
-        /* เส้นพื้นหลัง (Static) */
-        .line-bg {
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--line-color);
-            z-index: 1;
-        }
-
-        /* เส้น Progress (Dynamic) */
-        .line-progress {
-            position: absolute;
-            left: 20px;
-            top: 0;
-            width: 4px;
-            height: 0%; /* เริ่มต้นที่ 0 */
-            background: var(--progress-color);
-            z-index: 2;
-            transition: height 0.1s ease-out; /* ให้เส้นวิ่งลื่นๆ */
-        }
-
-        .milestone-item {
-            position: relative;
-            margin-bottom: 120px;
-            /* Slide จากด้านล่าง */
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: 3;
-        }
-
-        /* จุดวงกลม (Dot) */
-        .milestone-dot {
-            position: absolute;
-            left: -50px;
-            top: 0;
-            width: 24px;
-            height: 24px;
-            background: var(--dot-color);
-            border: 4px solid #fff;
-            border-radius: 50%;
-            z-index: 3;
-            opacity: 0; /* ซ่อนไว้ก่อน */
-            transition: opacity 0.5s ease;
-        }
-
-        /* เมื่อ Active (ผ่าน JS) */
-        .milestone-item.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-            .milestone-item.active .milestone-dot {
-                opacity: 1;
-            }
-
-        .milestone-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 30px;
-        }
-
-        .year {
-            font-size: 2.5rem;
-            font-weight: bold;
-            min-width: 100px;
-        }
-
-        .description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #444;
-        }
-    </style>
 }
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', () => {
           const progressLine = document.getElementById('progress-line');
           const wrapper = document.getElementById('milestone-container');
-          const items = document.querySelectorAll('.milestone-item');
+          const items = document.querySelectorAll('.milestone__item');
 
           // --- 1. ฟังก์ชันนับตัวเลข (Counter) ---
           const countUp = (el) => {
@@ -275,7 +179,7 @@
             entries.forEach(entry => {
               if (entry.isIntersecting) {
                 const item = entry.target;
-                const yearEl = item.querySelector('.year');
+                const yearEl = item.querySelector('.milestone__year');
 
                 // เริ่ม Animation Slide & Dot Fade
                 item.classList.add('active');

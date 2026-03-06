@@ -165,3 +165,13 @@
         background-color: transparent;
     }
 }
+
+@keyframes scroll {
+    0% {
+        transform: translateY(-70px);
+    }
+
+    50%, 100% {
+        transform: translateY(30px);
+    }
+}

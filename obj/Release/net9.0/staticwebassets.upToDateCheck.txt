@@ -4,13 +4,13 @@ wwwroot\css\bootstrap-icons.min.css
 wwwroot\css\bootstrap-icons.scss
 wwwroot\css\fonts\bootstrap-icons.woff
 wwwroot\css\fonts\bootstrap-icons.woff2
-wwwroot\js\data.js
-wwwroot\js\home.js
+wwwroot\css\main.min.css
+wwwroot\css\main.css
 wwwroot\css\vendor.css
 wwwroot\css\vendor.min.css
 wwwroot\favicon.ico
-wwwroot\css\main.min.css
-wwwroot\css\main.css
+wwwroot\js\home.js
+wwwroot\js\data.js
 wwwroot\js\jquery.js
 wwwroot\js\jquery.min.js
 wwwroot\js\jquery.min.map
@@ -224,6 +224,9 @@ wwwroot\media\images\financial\thumb-2564.jpg
 wwwroot\media\images\financial\thumb-2565.jpg
 wwwroot\media\images\financial\thumb-2566.jpg
 wwwroot\media\images\financial\thumb-2567.jpg
+wwwroot\media\images\bg\bg-policy-1.jpg
+wwwroot\media\images\bg\bg-policy-2.jpg
+wwwroot\media\images\bg\bg-policy-3.jpg
 C:\Works\asp.net\sam\wwwroot\vendors\swiper\swiper-bundle.min.js
 C:\Works\asp.net\sam\wwwroot\vendors\swiper\swiper-bundle.min.css
 C:\Works\asp.net\sam\wwwroot\vendors\spotlight\spotlight.min.js

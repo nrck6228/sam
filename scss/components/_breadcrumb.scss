@@ -1,9 +1,9 @@
 ﻿@use "../abstracts/variables" as vars;
 @use "../abstracts/mixins" as media;
 
-.breadcrumb--section {
+.section__breadcrumb {
     position: absolute;
-    top: 110px;
+    top: 6.875rem;
     left: 0;
     width: 100%;
     height: auto;

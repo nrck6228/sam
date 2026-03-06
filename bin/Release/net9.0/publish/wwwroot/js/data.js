@@ -4,6 +4,12 @@
         desktopImg: '/media/images/hero/demo-banner-1.webp',
         mobileImg: '/media/images/hero/demo-banner-mobile-1.webp',
         alt: 'SAM ใส่ใจ โครงการปิดหนี้'
+    },
+    {
+        id: 2,
+        desktopImg: '/media/images/hero/demo-banner-1.webp',
+        mobileImg: '/media/images/hero/demo-banner-mobile-1.webp',
+        alt: 'ปิดหนี้ไว ไปต่อได้'
     }
 ];
 

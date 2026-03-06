@@ -5,65 +5,64 @@
     ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
 }
 
-<nav aria-label="breadcrumb" class="breadcrumb--section">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
 
-        <li class="breadcrumb-item dropdown">
-            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                เกี่ยวกับเรา
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
-                <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
-                <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
-            </ul>
-        </li>
+                <li class="breadcrumb-item dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        เกี่ยวกับเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+                    </ul>
+                </li>
 
-        <li class="breadcrumb-item dropdown active" aria-current="page">
-            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                รู้จักเรา
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
-                <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
-            </ul>
-        </li>
-    </ol>
-</nav>
+                <li class="breadcrumb-item dropdown active" aria-current="page">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        รู้จักเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </nav>
+    </div>
 
-<div class="page-wrapper">
-    <section class="page-wrapper__header mb-4">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-lg-10 col-md-8">
-                    <h1 class="title title--size-h2">
-                        ผู้บริหารระดับสูง
-                    </h1>
-                </div>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-10 col-md-8">
+                <h1 class="page__title">
+                    ผู้บริหารระดับสูง
+                </h1>
+            </div>
 
-                <div class="col-lg-2 col-md-4">
-                    <div class="dropdown dropdown--primary">
-                        <button class="btn w-100 d-flex justify-content-between align-items-center dropdown--primary__custom-select" type="button" data-bs-toggle="dropdown">
-                            <span class="btn__text">กรรมการบริษัท</span>
-                            <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
-                        </button>
-                        <ul class="dropdown-menu w-100 custom-scrollbar">
-                            <li><a class="dropdown-item" href="#" data-value="กรรมการอื่นๆ">กรรมการอื่นๆ</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารระดับสูง">คณะผู้บริหารระดับสูง</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารฝ่าย">คณะผู้บริหารฝ่าย</a></li>
-                        </ul>
-                    </div>
+            <div class="col-lg-2 col-md-4">
+                <div class="dropdown dropdown--primary">
+                    <button class="btn w-100 d-flex justify-content-between align-items-center dropdown--primary__custom-select" type="button" data-bs-toggle="dropdown">
+                        <span class="btn__text">กรรมการบริษัท</span>
+                        <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
+                    </button>
+                    <ul class="dropdown-menu w-100 custom-scrollbar">
+                        <li><a class="dropdown-item" href="#" data-value="กรรมการอื่นๆ">กรรมการอื่นๆ</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารระดับสูง">คณะผู้บริหารระดับสูง</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="คณะผู้บริหารฝ่าย">คณะผู้บริหารฝ่าย</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="page-container">
+<section>
+    <div class="section section--content">
         <div id="director-container" class="container-fluid">
-            @* <h2 class="title title--size-h2 mb-3">
-                ผู้บริหารระดับสูง
-            </h2> *@
             <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
                 @foreach (var item in Model.Where(x => x.GroupName == "executives"))
                 {
@@ -79,7 +78,7 @@
                 }
             </div>
 
-            <h2 class="title title--size-h2 mb-3">
+            <h2 class="section__title mb-3">
                 ผู้บริหารสายงาน
             </h2>
             <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3 mb-5 mb-lg-7">
@@ -97,7 +96,7 @@
                 }
             </div>
 
-            <h2 class="title title--size-h2 mb-3">
+            <h2 class="section__title mb-3">
                 ผู้บริหารกลุ่มงาน
             </h2>
             <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3">
@@ -115,14 +114,10 @@
                 }
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
 
 @section Styles {
-    <style>
-    </style>
 }
 @section Scripts {
-    <script>
-    </script>
 }

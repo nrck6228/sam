@@ -3,139 +3,143 @@
     ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
 }
 
-<section class="hero-banner">
-    <div class="swiper hero-slide">
-        <div class="swiper-wrapper">
-            <!-- Render from home.js -->
-        </div>
+<section class="home home--banner">
+    <div class="home__slide">
+        <div class="swiper swiper--home">
+            <div class="swiper-wrapper">
+                <!-- Render from home.js -->
+            </div>
 
-        <!-- Controls -->
-        <div class="hero-slide__controls">
-            <div class="hero-slide__pagination"></div>
-        </div>
+            <!-- Controls -->
+            <div class="swiper--home__controls">
+                <div class="swiper--home__pagination"></div>
+            </div>
 
-        <div class="scroll-animation">
-            Scroll
+            <div class="swiper--home__scroll">
+                Scroll
+            </div>
         </div>
     </div>
 
-    <div class="search-panel">
+    <div class="home__search">
         <div class="container">
-            <ul class="nav nav-pills search-panel__tabs" id="searchTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link sam-tabs__link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal-search" type="button">
-                        <svg class="icon"><use xlink:href="#icon-search"></use></svg> ค้นหาปกติ
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link sam-tabs__link" id="ai-tab" data-bs-toggle="tab" data-bs-target="#ai-search" type="button">
-                        <svg class="icon"><use xlink:href="#icon-ai"></use></svg> ค้นหาจาก AI
-                    </button>
-                </li>
-            </ul>
-
-            <div class="tab-content search-panel__content" id="searchTabContent">
-                <div class="tab-pane fade show active" id="normal-search" role="tabpanel">
-                    <div class="row">
-                        <div class="col-md-12 d-flex gap-2">
-                            <div class="input-group search-panel__input-group">
-                                <input type="text" class="form-control search-panel__input" id="keywordInput" placeholder="คำค้นหาทรัพย์สิน เช่น รหัสทรัพย์, ทำเล, สถานที่ใกล้เคียง, ประเภท/เส้นทาง ด้านการคมนาคม ฯลฯ">
-                                <button class="btn btn--square btn--transparent text-white d-none d-md-block" title="ค้นหาด้วยเสียง" id="voice-btn"><svg class="icon"><use xlink:href="#icon-mic"></use></svg></button>
-                                <button class="btn btn--square btn--transparent text-white" title="ค้นหาด้วยรูปภาพ" id="image-btn"><svg class="icon"><use xlink:href="#icon-camera"></use></svg></button>
-                            </div>
-                            <button class="btn btn--square btn--white" type="button" data-bs-toggle="offcanvas" data-bs-target="#advancedSearch">
-                                <svg class="icon"><use xlink:href="#icon-slider"></use></svg>
-                            </button>
-                        </div>
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="dropdown search-panel__select-group">
-                                <input type="hidden" name="property_type" class="dropdown-value-storage">
-                                <button class="btn w-100 d-flex justify-content-between align-items-center search-panel__custom-select" type="button" data-bs-toggle="dropdown">
-                                    <span class="btn__text">ประเภททรัพย์</span>
-                                    <span class="btn__icon">
-                                        <svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg>
-                                    </span>
-                                </button>
-                                <ul class="dropdown-menu w-100 custom-scrollbar">
-                                    <li><a class="dropdown-item" href="#" data-value="house">บ้านเดี่ยว</a></li>
-                                    <li><a class="dropdown-item" href="#" data-value="condo">คอนโด</a></li>
-                                    <li><a class="dropdown-item" href="#" data-value="land">ที่ดิน</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="dropdown search-panel__select-group">
-                                <input type="hidden" name="province" class="dropdown-value-storage">
-                                <button class="btn w-100 d-flex justify-content-between align-items-center search-panel__custom-select" type="button" data-bs-toggle="dropdown">
-                                    <span class="btn__text">เลือกจังหวัด</span>
-                                    <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
-                                </button>
-                                <ul class="dropdown-menu w-100 custom-scrollbar">
-                                    <li><a class="dropdown-item" href="#" data-value="bkk">กรุงเทพฯ</a></li>
-                                    <li><a class="dropdown-item" href="#" data-value="nonthaburi">นนทบุรี</a></li>
-                                    <li><a class="dropdown-item" href="#" data-value="pathum">ปทุมธานี</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="dropdown search-panel__select-group">
-                                <input type="hidden" name="district" class="dropdown-value-storage">
-                                <button class="btn w-100 d-flex justify-content-between align-items-center search-panel__custom-select" type="button" data-bs-toggle="dropdown">
-                                    <span class="btn__text">อำเภอ/เขต</span>
-                                    <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
-                                </button>
-                                <ul class="dropdown-menu w-100 custom-scrollbar">
-                                    <li><a class="dropdown-item" href="#">กรุณาเลือกจังหวัดก่อน</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 d-flex gap-2">
-                            <button type="reset" class="btn btn--hover btn--gray">ล้างข้อมูล</button>
-                            <button class="btn btn--hover btn--pink">ค้นหา</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane fade" id="ai-search" role="tabpanel">
-                    <div class="ai-input-wrapper">
-                        <div class="input-group search-panel__input-group">
-                            <input type="text" class="form-control search-panel__input" id="keywordInputAi" placeholder="บอกสิ่งที่คุณต้องการ เช่น 'หาคอนโดโซนบางนา งบไม่เกิน 5 ล้าน เลี้ยงหมาได้'">
-                            <button class="btn search-panel__btn" data-bs-toggle="tooltip" data-bs-placement="top"
-                                    data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="การค้นหาจาก AI อาจใช้ระยะเวลาในการประมวลผลนานขึ้น">
-                                <i class="bi bi-info-circle"></i>
-                            </button>
-                        </div>
-                        <button class="btn btn--hover btn--purple">
-                            <span class="btn__text">ค้นหาจาก AI</span>
+            <div class="search search--assets">
+                <ul class="nav nav-pills search__tabs" id="searchTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal-search" type="button">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg> ค้นหาปกติ
                         </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link" id="ai-tab" data-bs-toggle="tab" data-bs-target="#ai-search" type="button">
+                            <svg class="icon"><use xlink:href="#icon-ai"></use></svg> ค้นหาจาก AI
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content search__content" id="searchTabContent">
+                    <div class="tab-pane fade show active" id="normal-search" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12 d-flex gap-2">
+                                <div class="input-group search__input-group">
+                                    <input type="text" class="form-control search__input" id="keywordInput" placeholder="คำค้นหาทรัพย์สิน เช่น รหัสทรัพย์, ทำเล, สถานที่ใกล้เคียง, ประเภท/เส้นทาง ด้านการคมนาคม ฯลฯ">
+                                    <button class="btn btn--square btn--transparent text-white d-none d-md-block" title="ค้นหาด้วยเสียง" id="voice-btn"><svg class="icon"><use xlink:href="#icon-mic"></use></svg></button>
+                                    <button class="btn btn--square btn--transparent text-white" title="ค้นหาด้วยรูปภาพ" id="image-btn"><svg class="icon"><use xlink:href="#icon-camera"></use></svg></button>
+                                </div>
+                                <button class="btn btn--square btn--white" type="button" data-bs-toggle="offcanvas" data-bs-target="#advancedSearch">
+                                    <svg class="icon"><use xlink:href="#icon-slider"></use></svg>
+                                </button>
+                            </div>
+                            <div class="col-md-4 d-none d-md-block">
+                                <div class="dropdown search__select-group">
+                                    <input type="hidden" name="property_type" class="dropdown-value-storage">
+                                    <button class="btn w-100 d-flex justify-content-between align-items-center search__custom-select" type="button" data-bs-toggle="dropdown">
+                                        <span class="btn__text">ประเภททรัพย์</span>
+                                        <span class="btn__icon">
+                                            <svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg>
+                                        </span>
+                                    </button>
+                                    <ul class="dropdown-menu w-100 custom-scrollbar">
+                                        <li><a class="dropdown-item" href="#" data-value="house">บ้านเดี่ยว</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="condo">คอนโด</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="land">ที่ดิน</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 d-none d-md-block">
+                                <div class="dropdown search__select-group">
+                                    <input type="hidden" name="province" class="dropdown-value-storage">
+                                    <button class="btn w-100 d-flex justify-content-between align-items-center search__custom-select" type="button" data-bs-toggle="dropdown">
+                                        <span class="btn__text">เลือกจังหวัด</span>
+                                        <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
+                                    </button>
+                                    <ul class="dropdown-menu w-100 custom-scrollbar">
+                                        <li><a class="dropdown-item" href="#" data-value="bkk">กรุงเทพฯ</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="nonthaburi">นนทบุรี</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="pathum">ปทุมธานี</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 d-none d-md-block">
+                                <div class="dropdown search__select-group">
+                                    <input type="hidden" name="district" class="dropdown-value-storage">
+                                    <button class="btn w-100 d-flex justify-content-between align-items-center search__custom-select" type="button" data-bs-toggle="dropdown">
+                                        <span class="btn__text">อำเภอ/เขต</span>
+                                        <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
+                                    </button>
+                                    <ul class="dropdown-menu w-100 custom-scrollbar">
+                                        <li><a class="dropdown-item" href="#">กรุณาเลือกจังหวัดก่อน</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 d-flex gap-2">
+                                <button type="reset" class="btn btn--hover btn--gray">ล้างข้อมูล</button>
+                                <button class="btn btn--hover btn--pink">ค้นหา</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="ai-search" role="tabpanel">
+                        <div class="ai-input-wrapper">
+                            <div class="input-group search__input-group">
+                                <input type="text" class="form-control search__input" id="keywordInputAi" placeholder="บอกสิ่งที่คุณต้องการ เช่น 'หาคอนโดโซนบางนา งบไม่เกิน 5 ล้าน เลี้ยงหมาได้'">
+                                <button class="btn search__btn" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        data-bs-custom-class="custom-tooltip"
+                                        data-bs-title="การค้นหาจาก AI อาจใช้ระยะเวลาในการประมวลผลนานขึ้น">
+                                    <i class="bi bi-info-circle"></i>
+                                </button>
+                            </div>
+                            <button class="btn btn--hover btn--purple">
+                                <span class="btn__text">ค้นหาจาก AI</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="search-panel__tags">
-                <div class="d-block">ยอดนิยม:</div>
-                <div class="search-panel__tag-cloud tag-cloud">
-                    <span class="search-panel__tag popular-tag" data-query="ขายทอดตลาด">รวมทรัพย์ขายทอดตลาด</span>
-                    <span class="search-panel__tag popular-tag" data-query="บ้านเดี่ยว 3-5 ล้าน">บ้านเดี่ยว 3-5 ล้าน</span>
-                    <span class="search-panel__tag popular-tag" data-query="คอนโดใกล้รถไฟฟ้า">คอนโดใกล้รถไฟฟ้า</span>
+                <div class="search__tags">
+                    <div class="d-block">ยอดนิยม:</div>
+                    <div class="search__tag-cloud tag-cloud">
+                        <span class="search__tag popular-tag" data-query="ขายทอดตลาด">รวมทรัพย์ขายทอดตลาด</span>
+                        <span class="search__tag popular-tag" data-query="บ้านเดี่ยว 3-5 ล้าน">บ้านเดี่ยว 3-5 ล้าน</span>
+                        <span class="search__tag popular-tag" data-query="คอนโดใกล้รถไฟฟ้า">คอนโดใกล้รถไฟฟ้า</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="nav-panel">
+    <div class="home__nav">
         <a href="#" title="" class="btn btn--xl btn--pink btn--hover rounded-0">
             <span class="btn__text">ค้นหาตามแผนที่</span>
             <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
         </a>
 
-        <div class="nav-panel__group">
+        <div class="home__nav__group">
             <a href="#" title="" class="btn btn--xl btn--green btn--hover rounded-0">
                 <span class="btn__text">จับคู่ความต้องการทรัพย์สิน NPA</span>
                 <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
@@ -148,25 +152,27 @@
     </div>
 </section>
 
-<section class="home-wrapper bg-white py-5 py-lg-7">
+<section class="home home--highlight">
     <div class="container-fluid">
         <div class="row align-items-end">
             <div class="col-lg-8">
-                <div class="d-flex align-items-center justify-content-between">
-                    <h2 class="title title--home-display title--gradient title--gradient-primary">
+                <div class="home__header">
+                    <h2 class="home__title text-gradient text-gradient--green">
                         SAM ใส่ใจ
                     </h2>
                     <img src="~/media/images/mascot.png" class="d-none d-md-block d-lg-none w-25" />
-                </div> 
-                
-                <p class="title--content-md text--muted mb-5">
-                    ทรัพย์สินที่ถูกเสนอขายหรือแนะนำให้ซื้อ โดยเฉพาะอย่างยิ่ง "ทรัพย์ NPA" (Non-Performing Asset)
-                    ซึ่งเป็นทรัพย์สินที่ธนาคารหรือสถาบันการเงินถือครองอยู่และนำมาขายในราคาพิเศษ มักเป็นบ้านมือสอง 
-                    หรือที่ดินเปล่า ที่เคยเป็นหลักประกันและหลุดจำนอง หรือถูกตีโอนชำระหนี้. 
-                </p>
+                </div>
 
-                <nav class="quick-links reveal-on-scroll">
-                    <div id="quick-links-grid" class="quick-links__grid"></div>
+                <div class="home__body">
+                    <p>
+                        ทรัพย์สินที่ถูกเสนอขายหรือแนะนำให้ซื้อ โดยเฉพาะอย่างยิ่ง "ทรัพย์ NPA" (Non-Performing Asset)
+                        ซึ่งเป็นทรัพย์สินที่ธนาคารหรือสถาบันการเงินถือครองอยู่และนำมาขายในราคาพิเศษ มักเป็นบ้านมือสอง 
+                        หรือที่ดินเปล่า ที่เคยเป็นหลักประกันและหลุดจำนอง หรือถูกตีโอนชำระหนี้. 
+                    </p>
+                </div>
+
+                <nav class="highlight reveal-on-scroll">
+                    <div id="highlight-grid" class="highlight__grid"></div>
                 </nav>
             </div>
 
@@ -177,64 +183,64 @@
     </div>
 </section>
 
-<section class="home-wrapper bg-white py-5 py-lg-7">
+<section class="home home--stats">
     <div class="container-fluid">
-        <div class="stats-board">
-            <div class="stats-board__grid">
-                <div class="stats-board__card stats-board__card--1">
-                    <div class="stats-board__content">
-                        <div class="stats-board__text">
-                            <div class="stats-board__number">
-                                <span class="stats-board__counter" data-target="150000">0</span>+
+        <div class="stats">
+            <div class="stats__grid">
+                <div class="stats__card stats__card--1">
+                    <div class="stats__content">
+                        <div class="stats__text">
+                            <div class="stats__number">
+                                <span class="stats__counter" data-target="150000">0</span>+
                             </div>
-                            <div class="stats-board__desc">ครอบครัวที่เราช่วยแก้หนี้</div>
+                            <div class="stats__desc">ครอบครัวที่เราช่วยแก้หนี้</div>
                         </div>
                     </div>
                 </div>
-                <div class="stats-board__card stats-board__card--2">
-                    <div class="stats-board__content">
+                <div class="stats__card stats__card--2">
+                    <div class="stats__content">
 
-                        <div class="stats-board__text">
-                            <div class="stats-board__number">
-                                <span class="stats-board__counter" data-target="20000">0</span>+
+                        <div class="stats__text">
+                            <div class="stats__number">
+                                <span class="stats__counter" data-target="20000">0</span>+
                             </div>
                             
-                            <div class="stats-board__desc">ทรัพย์สินที่กลับสู่ระบบ</div>
+                            <div class="stats__desc">ทรัพย์สินที่กลับสู่ระบบ</div>
                         </div>
                     </div>
                 </div>
-                <div class="stats-board__card stats-board__card--3">
-                    <div class="stats-board__content">
+                <div class="stats__card stats__card--3">
+                    <div class="stats__content">
 
-                        <div class="stats-board__text">
-                            <div class="stats-board__number">
-                                <span class="stats-board__counter" data-target="35000">0</span>ล้าน
+                        <div class="stats__text">
+                            <div class="stats__number">
+                                <span class="stats__counter" data-target="35000">0</span>ล้าน
                             </div>
                             
-                            <div class="stats-board__desc">มูลค่าเศรษฐกิจที่ฟื้นฟู</div>
+                            <div class="stats__desc">มูลค่าเศรษฐกิจที่ฟื้นฟู</div>
                         </div>
                     </div>
                 </div>
-                <div class="stats-board__card stats-board__card--4">
-                    <div class="stats-board__content">
+                <div class="stats__card stats__card--4">
+                    <div class="stats__content">
 
-                        <div class="stats-board__text">
-                            <div class="stats-board__number">
-                                <span class="stats-board__counter" data-target="98">0</span>%
+                        <div class="stats__text">
+                            <div class="stats__number">
+                                <span class="stats__counter" data-target="98">0</span>%
                             </div>
-                            <div class="stats-board__desc">ความพึงพอใจ</div>
+                            <div class="stats__desc">ความพึงพอใจ</div>
                         </div>
                     </div>
                 </div>
-                <div class="stats-board__card stats-board__card--5">
-                    <div class="stats-board__content">
+                <div class="stats__card stats__card--5">
+                    <div class="stats__content">
 
-                        <div class="stats-board__text">
-                            <div class="stats-board__number">
-                                <span class="stats-board__counter" data-target="25">0</span>ปี
+                        <div class="stats__text">
+                            <div class="stats__number">
+                                <span class="stats__counter" data-target="25">0</span>ปี
                             </div>
                             
-                            <div class="stats-board__desc">เคียงข้างคนไทย</div>
+                            <div class="stats__desc">เคียงข้างคนไทย</div>
                         </div>
                     </div>
                 </div>
@@ -243,252 +249,240 @@
     </div>
 </section>
 
-<section class="home-wrapper bg-white py-5 py-lg-7">
+<section class="home home--project home-wrapper">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="title title--home-display title--gradient title--gradient-primary">
-                    ปิดหนี้ไว ไปต่อได้
-                </h2>
-
-                <p class="title--content-md text--muted mb-5">
-                    หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้างสำคัญที่ส่งผลกระทบต่อความเป็นอยู่ที่ดีของประชาชนและการเติบโตทางเศรษฐกิจของไทย ซึ่งภาครัฐและ ธปท. ได้ร่วมกันผลักดันแนวทางแก้ไขอย่างต่อเนื่อง อย่างไรก็ตาม ภายใต้สถานการณ์ปัจจุบันที่รายได้ของครัวเรือนยังฟื้นตัวช้า ทำให้ยังมีปัญหาการชำระหนี้และกลายเป็นหนี้เสียเพิ่มขึ้น โครงการ “ปิดหนี้ไว ไปต่อได้” จึงเป็นมาตรการเฉพาะกิจ ที่จะดำเนินการเพียงครั้งเดียว มุ่งเน้นช่วยเหลือลูกหนี้รายย่อยที่เป็น NPLs ให้ได้รับการปรับโครงสร้างหนี้เพื่อลดภาระหนี้ ปิดจบหนี้ได้เร็ว และกลับมามีประวัติการชำระหนี้ที่ดีขึ้น 
-                </p>
-            </div>
+        <div class="home__header">
+            <h2 class="home__title text-gradient text-gradient--green">
+                ปิดหนี้ไว ไปต่อได้
+            </h2>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="stats-board">
-                    <div class="card-deck card-deck--cards-1 card-deck--cards-lg-2 reveal-on-scroll">
-                        <div class="card card--stats">
-                            <div class="card--stats__number">
-                                100<span>%</span>
-                            </div>
-                            <div class="card--stats__label">
-                                หยุดดอกเบี้ยถาวร
-                            </div>
-                        </div>
+        <div class="home__body">
+            <p>
+                หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้างสำคัญที่ส่งผลกระทบต่อความเป็นอยู่ที่ดีของประชาชนและการเติบโตทางเศรษฐกิจของไทย ซึ่งภาครัฐและ ธปท. ได้ร่วมกันผลักดันแนวทางแก้ไขอย่างต่อเนื่อง อย่างไรก็ตาม ภายใต้สถานการณ์ปัจจุบันที่รายได้ของครัวเรือนยังฟื้นตัวช้า ทำให้ยังมีปัญหาการชำระหนี้และกลายเป็นหนี้เสียเพิ่มขึ้น โครงการ “ปิดหนี้ไว ไปต่อได้” จึงเป็นมาตรการเฉพาะกิจ ที่จะดำเนินการเพียงครั้งเดียว มุ่งเน้นช่วยเหลือลูกหนี้รายย่อยที่เป็น NPLs ให้ได้รับการปรับโครงสร้างหนี้เพื่อลดภาระหนี้ ปิดจบหนี้ได้เร็ว และกลับมามีประวัติการชำระหนี้ที่ดีขึ้น 
+            </p>
+        </div>
 
-                        <div class="card card--stats">
-                            <div class="card--stats__number">
-                                3<span>ปี</span>
-                            </div>
-                            <div class="card--stats__label">
-                                ระยะเวลาโครงการ
-                            </div>
-                        </div>
+        <div class="reveal-on-scroll">
+            <div class="card-deck card-deck--cards-1 card-deck--cards-lg-2">
+                <div class="card card--stats">
+                    <div class="card--stats__number">
+                        100<span>%</span>
+                    </div>
+                    <div class="card--stats__label">
+                        หยุดดอกเบี้ยถาวร
+                    </div>
+                </div>
+
+                <div class="card card--stats">
+                    <div class="card--stats__number">
+                        3<span>ปี</span>
+                    </div>
+                    <div class="card--stats__label">
+                        ระยะเวลาโครงการ
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 d-flex flex-wrap gap-3">
-                <a href="/" title="" class="btn btn--hover btn--green">
-                    <span class="btn__text">ลงทะเบียน</span>
-                    <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
-                </a>
-                <a href="/" title="" class="btn btn--hover btn--pink">
-                    <span class="btn__text">ติดต่อสอบถาม</span>
-                    <span class="btn__icon">
-                        <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
-                    </span>
-                </a>
-                <a href="/" title="" class="btn btn--hover btn--gray">
-                    <span class="btn__text">สายด่วน</span>
-                    <span class="btn__icon">
-                        <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
-                    </span>
-                </a>
-            </div>
+        </div>
+
+        <div class="home__btn">
+            <a href="/" title="" class="btn btn--hover btn--green">
+                <span class="btn__text">ลงทะเบียน</span>
+                <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
+            </a>
+            <a href="/" title="" class="btn btn--hover btn--pink">
+                <span class="btn__text">ติดต่อสอบถาม</span>
+                <span class="btn__icon">
+                    <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
+                </span>
+            </a>
+            <a href="/" title="" class="btn btn--hover btn--gray">
+                <span class="btn__text">สายด่วน</span>
+                <span class="btn__icon">
+                    <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
+                </span>
+            </a>
         </div>
     </div>
 </section>
 
-<section class="home-wrapper bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol="S" style="background-image:url(/media/images/bg/bg-recommend.jpg)">
+<section class="home home--assets bg-symbol bg-attachment-fixed min-vh-100" data-symbol="S" style="background-image:url(/media/images/bg/bg-recommend.jpg)">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 mb-3 mb-lg-5">
-                <h2 class="title title--home-display">
-                    ทรัพย์เด่น<br />และน่าสนใจ
-                </h2>
-            </div>
+        <div class="home__header">
+            <h2 class="home__title text-black-1">
+                ทรัพย์เด่น<br />และน่าสนใจ
+            </h2>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="asset-panel asset-container">
-                    <div class="d-block d-md-flex justify-content-lg-end">
-                        <ul class="nav nav-pills sam-tabs" id="assetTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link active" data-province="กรุงเทพมหานคร" data-bs-toggle="tab" data-bs-target="#province-content">กรุงเทพมหานคร</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="ปทุมธานี" data-bs-toggle="tab" data-bs-target="#province-content">ปทุมธานี</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="ชลบุรี" data-bs-toggle="tab" data-bs-target="#province-content">ชลบุรี</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="ภูเก็ต" data-bs-toggle="tab" data-bs-target="#province-content">ภูเก็ต</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="เชียงใหม่" data-bs-toggle="tab" data-bs-target="#province-content">เชียงใหม่</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="ระยอง" data-bs-toggle="tab" data-bs-target="#province-content">ระยอง</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-province="นครราชสีมา" data-bs-toggle="tab" data-bs-target="#province-content">นครราชสีมา</button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tab-content sam-tab-content" id="assetTabContent">
-                        <div class="tab-pane fade show active" id="province-content" role="tabpanel">
-                            <div id="asset-list" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3">
-                            </div>
-                            <a href="/" title="" class="btn btn--hover btn--gray">
-                                <span class="btn__text">ดูทั้งหมด</span>
-                                <span class="btn__icon">
-                                    <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="home-wrapper bg-gardient-green bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol="A" style="background-image:url(/media/images/bg/bg-categories.jpg)">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 mb-3 mb-lg-5">
-                <h2 class="title title--home-display">
-                    คุณกำลัง<br />
-                    มองหาอะไร
-                </h2>
+        <div class="home__body">
+            <div class="d-block d-md-flex justify-content-lg-end">
+                <ul class="nav nav-pills sam-tabs" id="assetTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link active" data-province="กรุงเทพมหานคร" data-bs-toggle="tab" data-bs-target="#province-content">กรุงเทพมหานคร</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link" data-province="ปทุมธานี" data-bs-toggle="tab" data-bs-target="#province-content">ปทุมธานี</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link" data-province="ชลบุรี" data-bs-toggle="tab" data-bs-target="#province-content">ชลบุรี</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link" data-province="ภูเก็ต" data-bs-toggle="tab" data-bs-target="#province-content">ภูเก็ต</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link" data-province="เชียงใหม่" data-bs-toggle="tab" data-bs-target="#province-content">เชียงใหม่</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link" data-province="ระยอง" data-bs-toggle="tab" data-bs-target="#province-content">ระยอง</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link" data-province="นครราชสีมา" data-bs-toggle="tab" data-bs-target="#province-content">นครราชสีมา</button>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="asset-panel asset-container">
-                    <div id="asset-type" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-4">
+            <div class="tab-content sam-tab-content" id="assetTabContent">
+                <div class="tab-pane fade show active" id="province-content" role="tabpanel">
+                    <div id="asset-list" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3">
                     </div>
-                    
-                    <div id="asset-tag" class="asset-tags d-none d-lg-flex"></div>
-
-                    <div class="d-block d-lg-none">
-                        <a href="/" title="" class="btn btn--hover btn--gray">
-                            <span class="btn__text">ดูทั้งหมด</span>
-                            <span class="btn__icon">
-                                <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="home-wrapper bg-gardient-green bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol="M" style="background-image:url(/media/images/bg/bg-location.jpg)">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 mb-3 mb-lg-5">
-                <h2 class="title title--home-display">
-                    บ้านเด่น<br />
-                    ทำเลดี
-                </h2>
-            </div>
-            <div class="col-md-6">
-                <div class="asset-area">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="asset-area__group">
-                                <h3 class="asset-area__title">
-                                    ย่าน
-                                </h3>
-                                <ul class="asset-ares__list">
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="asset-area__group">
-                                <h3 class="asset-area__title">
-                                    ใกล้
-                                </h3>
-                                <ul class="asset-ares__list">
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="home-wrapper bg-gardient-yellow bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol="" style="background-image:url(/media/images/bg/bg-news.jpg)">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="title title--home-display title--gradient title--gradient-primary">
-                    ข่าวสาร
-                </h2>
-                <div class="news-panel">
-                    <div class="d-block d-md-flex justify-content-lg-end">
-                        <ul class="nav nav-pills sam-tabs sam-tabs--primary" id="newsTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link active" data-type="pressReleases" data-bs-toggle="tab" data-bs-target="#news-content">ข่าวสารประชาสัมพันธ์</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-type="articles" data-bs-toggle="tab" data-bs-target="#news-content">บทความและวารสาร</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link sam-tabs__link" data-type="media" data-bs-toggle="tab" data-bs-target="#news-content">วีดิโอ/สื่อประชาสัมพันธ์</button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tab-content sam-tab-content" id="newsTabContent">
-                        <div class="tab-pane fade show active" id="news-content" role="tabpanel">
-                            <div id="news-list" class="card-deck card-deck--cards-1 card-deck--cards-md-3">
-                            </div>
-                            <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray">
-                                <span class="btn__text">ดูข่าวสารทั้งหมด</span>
-                                <span class="btn__icon">
-                                    <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="home-wrapper">
-    <div class="about-panel py-5 py-lg-7">
-        <div class="container-fluid">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-lg-9">
-                    <div class="about-panel__content">
-                        <h2 class="title title--size-h1 title--gradient title--gradient-primary">
-                            วิสัยทัศน์
-                        </h2>
-                        <div class="about-panel__desc">
-                            เป็นบริษัทบริหารสินทรัพย์แห่งรัฐ
-                            ที่มีบทบาทสนับสนุนให้ประชาชนและภาคธุรกิจฟื้นตัวอย่างยั่งยืน
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 d-flex justify-content-lg-end">
-                    <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray">
-                        <span class="btn__text">เกี่ยวกับเรา</span>
+                    <a href="/" title="" class="btn btn--hover btn--gray">
+                        <span class="btn__text">ดูทั้งหมด</span>
                         <span class="btn__icon">
                             <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
                         </span>
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home home--assets bg-symbol bg-attachment-fixed min-vh-100" data-symbol="A" style="background-image:url(/media/images/bg/bg-categories.jpg)">
+    <div class="container-fluid">
+        <div class="home__header">
+            <h2 class="home__title text-black-1">
+                คุณกำลัง<br />มองหาอะไร
+            </h2>
+        </div>
+
+        <div class="home__body">
+            <div id="asset-type" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-4">
+            </div>
+
+            <div id="asset-tag" class="asset-tags"></div>
+        </div>
+
+        <div class="home__btn d-block d-lg-none">
+            <a href="/" title="" class="btn btn--hover btn--gray">
+                <span class="btn__text">ดูทั้งหมด</span>
+                <span class="btn__icon">
+                    <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="home home--assets bg-symbol bg-attachment-fixed min-vh-100" data-symbol="M" style="background-image:url(/media/images/bg/bg-location.jpg)">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 mb-3 mb-lg-5">
+                <div class="home__header">
+                    <h2 class="home__title text-black-1">
+                        บ้านเด่น<br />ทำเลดี
+                    </h2>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="home__body">
+                    <div class="asset-area">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="asset-area__group">
+                                    <h3 class="asset-area__title">
+                                        ย่าน
+                                    </h3>
+                                    <ul class="asset-ares__list">
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="asset-area__group">
+                                    <h3 class="asset-area__title">
+                                        ใกล้
+                                    </h3>
+                                    <ul class="asset-ares__list">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home home--news bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol="" style="background-image:url(/media/images/bg/bg-news.jpg)">
+    <div class="container-fluid">
+        <div class="home__header">
+            <h2 class="home__title text-black-1">
+                ข่าวสาร
+            </h2>
+        </div>
+
+        <div class="home__body">
+            <div class="d-block d-md-flex justify-content-lg-end">
+                <ul class="nav nav-pills sam-tabs sam-tabs--primary" id="newsTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link active" data-type="pressReleases" data-bs-toggle="tab" data-bs-target="#news-content">ข่าวสารประชาสัมพันธ์</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link" data-type="articles" data-bs-toggle="tab" data-bs-target="#news-content">บทความและวารสาร</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link sam-tabs__link" data-type="media" data-bs-toggle="tab" data-bs-target="#news-content">วีดิโอ/สื่อประชาสัมพันธ์</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content sam-tab-content" id="newsTabContent">
+                <div class="tab-pane fade show active" id="news-content" role="tabpanel">
+                    <div id="news-list" class="card-deck card-deck--cards-1 card-deck--cards-md-3">
+                    </div>
+                    <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray">
+                        <span class="btn__text">ดูข่าวสารทั้งหมด</span>
+                        <span class="btn__icon">
+                            <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home home--about">
+    <div class="container-fluid">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-9">
+                <div class="home__header">
+                    <h2 class="home__title text-black-1">
+                        วิสัยทัศน์
+                    </h2>
+
+                    <div class="home__content">
+                        เป็นบริษัทบริหารสินทรัพย์แห่งรัฐ
+                        ที่มีบทบาทสนับสนุนให้ประชาชนและภาคธุรกิจฟื้นตัวอย่างยั่งยืน
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 justify-content-lg-end">
+                <a href="/news" title="" class="btn btn--hover btn--gray">
+                    <span class="btn__text">เกี่ยวกับเรา</span>
+                    <span class="btn__icon">
+                        <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
+                    </span>
+                </a>
             </div>
         </div>
     </div>
@@ -510,7 +504,7 @@
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
         document.addEventListener('DOMContentLoaded', function() {
-            const dropdownGroups = document.querySelectorAll('.search-panel__select-group');
+            const dropdownGroups = document.querySelectorAll('.search__select-group');
 
             dropdownGroups.forEach(group => {
                 const items = group.querySelectorAll('.dropdown-item');

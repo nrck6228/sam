@@ -1,0 +1,74 @@
+﻿@using sam.Models
+@model List<AnnualReportViewModel>
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+
+                <li class="breadcrumb-item dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        เกี่ยวกับเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+                    </ul>
+                </li>
+
+                <li class="breadcrumb-item dropdown active" aria-current="page">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        รู้จักเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            ประเภททรัพย์สิน
+        </h1>
+    </div>
+</section>
+
+<section>
+    <div class="section section--content section--assets bg-attachment-fixed" style="background-image:url(/media/images/bg/bg-categories.jpg)">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <form class="form form--filter-search">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4">
+                                <div class="search">
+                                    <input type="text" class="form-control search__input" name="keyword" id="keyword" maxlength="100" autocomplete="off" placeholder="คำค้นหา">
+                                    <button class="search__icon" type="submit">
+                                        <svg class="icon"><use xlink:href="#icon-search"></use></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="asset-type" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-4">
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+}
+@section Scripts {
+    <script type="module" src="~/js/assets.js"></script>
+}

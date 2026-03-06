@@ -56,15 +56,32 @@
 }
 
 // SAM font size
-.title {
+.home__title {
     margin: 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: var(--fs-display-1);
+    line-height: 1; /* ฟอนต์ใหญ่ควรใช้ line-height น้อย */
+    letter-spacing: -0.02em; /* ฟอนต์ใหญ่มากควรลดระยะห่างตัวอักษร */
+}
+
+.page__title {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: var(--fs-h1);
+    line-height: 1.4;
+    letter-spacing: -.02em;
+}
+
+.title {
     line-height: 1.4;
     font-weight: 500;
 }
 
 /* Modifiers */
 .title--home-display {
-    font-size: var(--fs-display);
+    font-size: var(--fs-display-1);
     line-height: 1; /* ฟอนต์ใหญ่ควรใช้ line-height น้อย */
     letter-spacing: -0.02em; /* ฟอนต์ใหญ่มากควรลดระยะห่างตัวอักษร */
 }
