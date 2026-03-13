@@ -10,71 +10,99 @@ namespace sam.Controllers
 {
     public class AssetsController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
 
-        [Route("npa/type-assets")]
+        [Route("npa/asset-category")]
         public IActionResult TypeAsset()
         {
-            return View("~/Views/Assets/TypeAsset.cshtml");
+            return View("~/Views/Assets/AssetCategory.cshtml");
         }
 
-        [Route("promotion")]
-        [Route("promotion/page/{page:int}")]
+        // แก้ไข: ใช้ npa ให้ตรงกับ JS และระบุลำดับ (Order)
+        [Route("npa/{id:int}/{slug}/page/{page:int}", Order = 1)]
+        [Route("npa/{id:int}/{slug}", Order = 2)]
+        public IActionResult AssetListByType(int id, string slug, int page = 1)
+        {
+            // ป้องกันกรณีส่งเลขหน้าติดลบมาทาง URL
+            if (page < 1) page = 1;
+
+            ViewBag.AssetTypeId = id;
+            ViewBag.AssetSlug = slug;
+            ViewBag.CurrentPage = page;
+
+            // สร้าง Title เบื้องต้นจาก Slug (เช่น single-house -> Single House)
+            ViewBag.Title = slug.Replace("-", " ").ToUpper() + " - SAM";
+
+            return View("~/Views/Assets/AssetList.cshtml");
+        }
+
+        // เพิ่ม Route สำหรับการค้นหาโดยเฉพาะ
+        [HttpGet]
+        [Route("npa/search-results")]
+        [Route("npa/search-results/page/{page:int?}")] // เพิ่มบรรทัดนี้เพื่อรองรับ /page/2
+        public IActionResult SearchResults(
+            int? page, // รับค่าเลขหน้า (Optional)
+            string mode,
+            string keyword,
+            string types,
+            string provinces,
+            string district,
+            string minPrice,
+            string maxPrice)
+        {
+            // เก็บค่าหน้าปัจจุบันไว้ (ถ้าไม่ส่งมาให้เริ่มที่หน้า 1)
+            ViewBag.CurrentPage = page ?? 1;
+
+            // ส่งค่าที่ Search มาจากหน้าแรกผ่าน ViewBag เพื่อให้ JS ในหน้า AssetList นำไปกรองข้อมูล
+            ViewBag.IsSearchMode = true;
+            ViewBag.SearchMode = mode;
+            ViewBag.Keyword = keyword;
+            ViewBag.Types = types;
+            ViewBag.Provinces = provinces;
+            ViewBag.District = district;
+            ViewBag.MinPrice = minPrice;
+            ViewBag.MaxPrice = maxPrice;
+
+            // ตั้งชื่อหัวข้อหน้าให้ดู Premium
+            ViewBag.Title = !string.IsNullOrEmpty(keyword) ? $"ผลการค้นหา: {keyword} - SAM" : "ค้นหาทรัพย์สิน - SAM";
+
+            // ส่งกลับไปที่ View เดิม
+            return View("~/Views/Assets/AssetList.cshtml");
+        }
+
+        // เพิ่ม Route สำหรับหน้าเปรียบเทียบทรัพย์สิน
+        [Route("npa/compare-results")]
+        public IActionResult CompareResults()
+        {
+            // เนื่องจากเราใช้ JavaScript ดึงข้อมูลจาก LocalStorage 
+            // เราจึงแค่ส่ง Title และจัดการ Breadcrumb เบื้องต้น
+            ViewBag.Title = "เปรียบเทียบทรัพย์สิน - SAM";
+
+            return View("~/Views/Assets/CompareResult.cshtml");
+        }
+
+        [Route("asset-detail/{code}")]
+        public IActionResult Detail(string code)
+        {
+            ViewBag.AssetCode = code;
+            return View("~/Views/Assets/AssetDetail.cshtml");
+        }
+
+        [Route("promotion/page/{page:int}", Order = 1)]
+        [Route("promotion", Order = 2)]
         public IActionResult Promotion(int page = 1)
         {
-            // เรียกใช้ฟังก์ชันดึงข้อมูลตามหน้าเพียงอย่างเดียว
-            var promotions = GetPromotionsByPage(page);
-
-            // ส่งตัวแปรที่ดึงมาไปยัง View
-            return View("~/Views/Assets/Promotion.cshtml", promotions);
+            ViewBag.CurrentPage = page;
+            return View("~/Views/Assets/Promotion.cshtml");
         }
 
-        private List<PromotionViewModel> GetPromotionsByPage(int page)
+        [Route("promotion/{id:int}/{slug}")]
+        public IActionResult PromotionDetail(int id, string slug)
         {
-            int itemsPerPage = 6;
+            ViewBag.PromotionId = id;
+            ViewBag.PromotionSlug = slug;
 
-            // ข้อมูลทั้งหมด (ในสถานการณ์จริงอาจจะดึงจาก Database)
-            var allData = new List<PromotionViewModel> {
-                new PromotionViewModel {
-                    Id = 1, Title = "โครงการปิดหนี้ไวไปต่อได้",
-                    Description = "หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้าง...",
-                    ImageUrl = "/media/images/promotion/thumb.jpg", Date = "ม.ค. 19, 2026", Link = "#"
-                },
-                new PromotionViewModel {
-                    Id = 2, Title = "โครงการปิดหนี้ไวไปต่อได้",
-                    Description = "หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้าง...",
-                    ImageUrl = "/media/images/promotion/thumb.jpg", Date = "ม.ค. 19, 2026", Link = "#"
-                },
-                new PromotionViewModel {
-                    Id = 3, Title = "โครงการปิดหนี้ไวไปต่อได้",
-                    Description = "หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้าง...",
-                    ImageUrl = "/media/images/promotion/thumb.jpg", Date = "ม.ค. 19, 2026", Link = "#"
-                },
-                new PromotionViewModel {
-                    Id = 4, Title = "โครงการปิดหนี้ไวไปต่อได้",
-                    Description = "หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้าง...",
-                    ImageUrl = "/media/images/promotion/thumb.jpg", Date = "ม.ค. 19, 2026", Link = "#"
-                },
-                new PromotionViewModel {
-                    Id = 5, Title = "โครงการปิดหนี้ไวไปต่อได้",
-                    Description = "หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้าง...",
-                    ImageUrl = "/media/images/promotion/thumb.jpg", Date = "ม.ค. 19, 2026", Link = "#"
-                },
-                new PromotionViewModel {
-                    Id = 6, Title = "โครงการปิดหนี้ไวไปต่อได้",
-                    Description = "หนี้ครัวเรือนเป็นปัญหาเชิงโครงสร้าง...",
-                    ImageUrl = "/media/images/promotion/thumb.jpg", Date = "ม.ค. 19, 2026", Link = "#"
-                },
-            };
-
-            // ทำ Pagination ฝั่ง Server
-            return allData
-                .Skip((page - 1) * itemsPerPage)
-                .Take(itemsPerPage)
-                .ToList();
+            return View("~/Views/Assets/PromotionDetail.cshtml");
         }
     }
 }

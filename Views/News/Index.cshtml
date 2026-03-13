@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+
+                <li class="breadcrumb-item dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        เกี่ยวกับเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+                    </ul>
+                </li>
+
+                <li class="breadcrumb-item dropdown active" aria-current="page">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        รู้จักเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            ข่าวประชาสัมพันธ์
+        </h1>
+    </div>
+</section>
+
+<section>
+    <div class="section section--content">
+        <div class="container-fluid">
+            <div class="row justify-content-between">
+                <div class="col-lg-auto">
+                    <ul class="nav nav-pills sam-tabs sam-tabs--primary mb-3">
+                        <li class="nav-item">
+                            <a class="nav-link sam-tabs__link active" href="/news">ข่าวประชาสัมพันธ์</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sam-tabs__link" href="/video">วิดีโอ / สื่อประชาสัมพันธ์</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-auto">
+                    <div class="form form--filter">
+                        <div class="form-group">
+                            <div class="select">
+                                <select id="filter-month" class="select__input">
+                                    <option value="all">เดือน</option>
+                                    <option value="1">มกราคม</option>
+                                    <option value="2">กุมภาพันธ์</option>
+                                    <option value="3">มีนาคม</option>
+                                </select>
+                            </div>
+
+                            <div class="select">
+                                <select id="filter-year" class="select__input">
+                                    <option value="all">ปี</option>
+                                    <option value="2026">2569</option>
+                                    <option value="2025">2568</option>
+                                </select>
+                            </div>
+                            @* <div class="dropdown dropdown--filter">
+                                <button class="btn w-100 d-flex justify-content-between align-items-center btn--dropdown" type="button" id="monthBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="btn__text">Month</span>
+                                    <span class="btn__icon">
+                                        <svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg>
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu shadow-sm" id="month-menu">
+                                    <li><a class="dropdown-item active" href="#" data-value="">All Month</a></li>
+                                    <li><a class="dropdown-item" href="#" data-value="1">มกราคม</a></li>
+                                    <li><a class="dropdown-item" href="#" data-value="2">กุมภาพันธ์</a></li>
+                                    <li><a class="dropdown-item" href="#" data-value="3">มีนาคม</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown dropdown--filter">
+                                <button class="btn w-100 d-flex justify-content-between align-items-center btn--dropdown" type="button" id="yearBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="btn__text">Year</span>
+                                    <span class="btn__icon">
+                                        <svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg>
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu shadow-sm" id="year-menu">
+                                    <li><a class="dropdown-item active" href="#" data-value="">All Year</a></li>
+                                    <li><a class="dropdown-item" href="#" data-value="2026">2026</a></li>
+                                    <li><a class="dropdown-item" href="#" data-value="2025">2025</a></li>
+                                </ul>
+                            </div> *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="news-container" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-3">
+                    </div>
+
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center pagination--primary" id="news-pagination">
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+}
+@section Scripts {
+    <script type="module" src="~/js/features/content/news.js"></script>
+
+    <script>
+        $(document).on('click', '#news-pagination .page-link', function (e) {
+            e.preventDefault();
+
+            const $btn = $(this);
+            const $container = $('#news-container');
+
+            // ป้องกันการกดซ้ำหน้าเดิมหรือปุ่มที่กดไม่ได้
+            if ($btn.parent().hasClass('disabled') || $btn.parent().hasClass('active')) return;
+
+            const href = $btn.attr('href');
+            const page = parseInt(href.split('/').pop());
+
+            if (isNaN(page)) return;
+
+            // 1. ทำ Animation จางลง
+            $container.stop().animate({ opacity: 0 }, 200, function() {
+
+                // 2. เรียกฟังก์ชัน Render ของหน้า News โดยเฉพาะ
+                if (typeof window.renderNewsContent === 'function') {
+                    window.renderNewsContent(page);
+                }
+
+                // 3. ทำ Animation แสดงกลับมา
+                $(this).animate({ opacity: 1 }, 200);
+            });
+
+            // 4. เลื่อนหน้าจอกลับขึ้นไปที่หัวรายการ
+            $('html, body').stop().animate({
+                scrollTop: $container.offset().top - 150
+            }, 600);
+
+            // 5. อัปเดต URL บน Browser
+            window.history.pushState({ page: page }, '', href);
+        });
+    </script>
+}

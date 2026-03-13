@@ -74,6 +74,19 @@
     letter-spacing: -.02em;
 }
 
+.page__subtitle {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: var(--fs-h4);
+    line-height: 1.4;
+    letter-spacing: -.02em;
+
+    span {
+        font-weight: 700;
+    }
+}
+
 .title {
     line-height: 1.4;
     font-weight: 500;

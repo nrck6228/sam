@@ -1,0 +1,174 @@
+﻿@model NewsDetailViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+
+                <li class="breadcrumb-item dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        เกี่ยวกับเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+                    </ul>
+                </li>
+
+                <li class="breadcrumb-item dropdown active" aria-current="page">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        รู้จักเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section>
+    <article class="news">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <h1 id="news-title" class="news__title"></h1>
+
+                    <div class="d-flex justify-content-between align-content-center">
+                        <time id="news-date" class="news__date">--/--/----</time>
+                        <div class="share--inline d-flex gap-2">
+                            <span class="me-2 text-muted align-self-center d-none d-sm-block"><svg class="icon"><use xlink:href="#icon-share"></use></svg></span>
+                            <a href="#" class="share-icon share-icon--facebook" onclick="shareTo('facebook')"><svg class="icon"><use xlink:href="#icon-facebook"></use></svg></a>
+                            <a href="#" class="share-icon share-icon--twitter" onclick="shareTo('twitter')"><svg class="icon"><use xlink:href="#icon-twitter-x"></use></svg></a>
+                            <a href="#" class="share-icon share-icon--line" onclick="shareTo('line')"><svg class="icon"><use xlink:href="#icon-line"></use></svg></a>
+                            <a href="#" class="share-icon share-icon--copy-link" onclick="copyToClipboard()"><i class="bi bi-link-45deg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <figure class="news__figure">
+                        <img id="news-image" src="/media/images/news/default-thumb.svg" class="news__image" alt="News Image">
+                    </figure>
+                </div>
+                <div class="col-lg-12">
+                    <div id="news-content" class="news__content content-builder">
+                        <div class="text-center p-5">
+                            <div class="spinner-border text-primary" role="status"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="news__download">
+                        <p class="">ดาวน์โหลดเอกสาร</p>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <a href="#" class="btn btn--download btn--green">
+                                <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-download"></use></svg></span>
+                                <span class="btn__text">Save as PDF</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+
+<section class="related--news">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center mb-4">
+            <h2 class="page__title">ข่าวที่น่าสนใจ</h2>
+            <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray ms-auto">
+                <span class="btn__text">ดูข่าวสารทั้งหมด</span>
+                <span class="btn__icon">
+                    <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
+                </span>
+            </a>
+        </div>
+        <div id="related-news-container" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-3"></div>
+    </div>
+</section>
+
+@section Meta {
+    <meta property="og:url" content="@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:description" content="@Model.Description" />
+    <meta property="og:image" content="@Model.ImageUrl" />
+    <meta name="twitter:card" content="summary_large_image">
+}
+
+@section Scripts {
+    <script type="module" src="~/js/shared/share.util.js"></script>
+    <script type="module">
+        // ใช้ Absolute Path (เริ่มด้วย /) เพื่อป้องกันปัญหา URL หลายระดับ
+        import { newsData } from '/js/data/data.js';
+        import { initListEngine } from '/js/shared/list-renderer.js';
+
+        const currentId = "@Model.Id";
+
+        // 1. ค้นหาข่าวที่ต้องการ (ใช้ .toString() เพื่อให้เทียบกับ ID ใน data.js ได้ทุกประเภท)
+        const news = newsData.pressReleases.find(item => item.id.toString() === currentId);
+
+        if (news) {
+            // 2. ฉีดข้อมูลเข้าสู่หน้า UI
+            document.getElementById('news-title').innerText = news.title;
+            document.getElementById('news-date').innerText = news.displayDate;
+            document.getElementById('news-image').src = news.imageDetail || news.thumbnail;
+
+            // ใช้ .content หรือ .detail ตามโครงสร้างใน data.js ของคุณ
+            document.getElementById('news-content').innerHTML = news.content || news.detail || '<p class="text-muted">ไม่พบรายละเอียดเนื้อหาข่าว</p>';
+
+            // 3. จัดการส่วน "ข่าวที่น่าสนใจ" (Related News)
+            // กรองเอาข่าวปัจจุบันออก และแสดงข่าวอื่นๆ 3 อันล่าสุด
+            const relatedData = newsData.pressReleases
+                .filter(item => item.id.toString() !== currentId)
+                .slice(0, 3);
+
+            const engine = initListEngine({
+                data: relatedData,
+                itemsPerPage: 3,
+                containerId: 'related-news-container',
+                paginationId: 'related-pagination', // ใส่ ID หลอกไว้ หรือเว้นว่างถ้าไม่มี
+                urlPath: '/news/page',
+                renderTemplate: (item) => `
+                    <div class="card card--news">
+                        <div class="card__figure">
+                            <img src="${item.thumbnail || '/media/images/news/default-thumb.svg'}" class="card__image" alt="${item.title}">
+                        </div>
+                        <div class="card__body">
+                            <time class="card__date">${item.displayDate}</time>
+                            <h5 class="card__title">${item.title}</h5>
+                        </div>
+                        <a href="/news/${item.id}/${item.slug}" class="stretched-link"></a>
+                    </div>`
+            });
+
+            // สั่ง Render ข่าวที่เกี่ยวข้อง
+            engine.render(1);
+
+        } else {
+            // กรณีไม่พบข้อมูล
+            document.getElementById('news-content').innerHTML = `
+                <div class="alert alert-warning text-center">
+                    ไม่พบข้อมูลข่าวที่คุณกำลังค้นหา <br>
+                    <a href="/news" class="btn btn-primary mt-3">กลับไปหน้ารวมข่าว</a>
+                </div>`;
+            console.error("News ID not found in data.js:", currentId);
+        }
+    </script>
+}

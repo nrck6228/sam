@@ -23,113 +23,7 @@
 
     <div class="home__search">
         <div class="container">
-            <div class="search search--assets">
-                <ul class="nav nav-pills search__tabs" id="searchTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal-search" type="button">
-                            <svg class="icon"><use xlink:href="#icon-search"></use></svg> ค้นหาปกติ
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link" id="ai-tab" data-bs-toggle="tab" data-bs-target="#ai-search" type="button">
-                            <svg class="icon"><use xlink:href="#icon-ai"></use></svg> ค้นหาจาก AI
-                        </button>
-                    </li>
-                </ul>
-
-                <div class="tab-content search__content" id="searchTabContent">
-                    <div class="tab-pane fade show active" id="normal-search" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-12 d-flex gap-2">
-                                <div class="input-group search__input-group">
-                                    <input type="text" class="form-control search__input" id="keywordInput" placeholder="คำค้นหาทรัพย์สิน เช่น รหัสทรัพย์, ทำเล, สถานที่ใกล้เคียง, ประเภท/เส้นทาง ด้านการคมนาคม ฯลฯ">
-                                    <button class="btn btn--square btn--transparent text-white d-none d-md-block" title="ค้นหาด้วยเสียง" id="voice-btn"><svg class="icon"><use xlink:href="#icon-mic"></use></svg></button>
-                                    <button class="btn btn--square btn--transparent text-white" title="ค้นหาด้วยรูปภาพ" id="image-btn"><svg class="icon"><use xlink:href="#icon-camera"></use></svg></button>
-                                </div>
-                                <button class="btn btn--square btn--white" type="button" data-bs-toggle="offcanvas" data-bs-target="#advancedSearch">
-                                    <svg class="icon"><use xlink:href="#icon-slider"></use></svg>
-                                </button>
-                            </div>
-                            <div class="col-md-4 d-none d-md-block">
-                                <div class="dropdown search__select-group">
-                                    <input type="hidden" name="property_type" class="dropdown-value-storage">
-                                    <button class="btn w-100 d-flex justify-content-between align-items-center search__custom-select" type="button" data-bs-toggle="dropdown">
-                                        <span class="btn__text">ประเภททรัพย์</span>
-                                        <span class="btn__icon">
-                                            <svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg>
-                                        </span>
-                                    </button>
-                                    <ul class="dropdown-menu w-100 custom-scrollbar">
-                                        <li><a class="dropdown-item" href="#" data-value="house">บ้านเดี่ยว</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="condo">คอนโด</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="land">ที่ดิน</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 d-none d-md-block">
-                                <div class="dropdown search__select-group">
-                                    <input type="hidden" name="province" class="dropdown-value-storage">
-                                    <button class="btn w-100 d-flex justify-content-between align-items-center search__custom-select" type="button" data-bs-toggle="dropdown">
-                                        <span class="btn__text">เลือกจังหวัด</span>
-                                        <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
-                                    </button>
-                                    <ul class="dropdown-menu w-100 custom-scrollbar">
-                                        <li><a class="dropdown-item" href="#" data-value="bkk">กรุงเทพฯ</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="nonthaburi">นนทบุรี</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="pathum">ปทุมธานี</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 d-none d-md-block">
-                                <div class="dropdown search__select-group">
-                                    <input type="hidden" name="district" class="dropdown-value-storage">
-                                    <button class="btn w-100 d-flex justify-content-between align-items-center search__custom-select" type="button" data-bs-toggle="dropdown">
-                                        <span class="btn__text">อำเภอ/เขต</span>
-                                        <span class="btn__icon"><svg class="icon transition-icon"><use xlink:href="#icon-chevron-down"></use></svg></span>
-                                    </button>
-                                    <ul class="dropdown-menu w-100 custom-scrollbar">
-                                        <li><a class="dropdown-item" href="#">กรุณาเลือกจังหวัดก่อน</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4 d-flex gap-2">
-                                <button type="reset" class="btn btn--hover btn--gray">ล้างข้อมูล</button>
-                                <button class="btn btn--hover btn--pink">ค้นหา</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="ai-search" role="tabpanel">
-                        <div class="ai-input-wrapper">
-                            <div class="input-group search__input-group">
-                                <input type="text" class="form-control search__input" id="keywordInputAi" placeholder="บอกสิ่งที่คุณต้องการ เช่น 'หาคอนโดโซนบางนา งบไม่เกิน 5 ล้าน เลี้ยงหมาได้'">
-                                <button class="btn search__btn" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="การค้นหาจาก AI อาจใช้ระยะเวลาในการประมวลผลนานขึ้น">
-                                    <i class="bi bi-info-circle"></i>
-                                </button>
-                            </div>
-                            <button class="btn btn--hover btn--purple">
-                                <span class="btn__text">ค้นหาจาก AI</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="search__tags">
-                    <div class="d-block">ยอดนิยม:</div>
-                    <div class="search__tag-cloud tag-cloud">
-                        <span class="search__tag popular-tag" data-query="ขายทอดตลาด">รวมทรัพย์ขายทอดตลาด</span>
-                        <span class="search__tag popular-tag" data-query="บ้านเดี่ยว 3-5 ล้าน">บ้านเดี่ยว 3-5 ล้าน</span>
-                        <span class="search__tag popular-tag" data-query="คอนโดใกล้รถไฟฟ้า">คอนโดใกล้รถไฟฟ้า</span>
-                    </div>
-                </div>
-            </div>
+            <partial name="_SearchPanel" />
         </div>
     </div>
 
@@ -317,25 +211,25 @@
             <div class="d-block d-md-flex justify-content-lg-end">
                 <ul class="nav nav-pills sam-tabs" id="assetTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link active" data-province="กรุงเทพมหานคร" data-bs-toggle="tab" data-bs-target="#province-content">กรุงเทพมหานคร</button>
+                        <button class="nav-link sam-tabs__link active" data-province-id="10" data-bs-toggle="tab" data-bs-target="#province-content">กรุงเทพมหานคร</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link" data-province="ปทุมธานี" data-bs-toggle="tab" data-bs-target="#province-content">ปทุมธานี</button>
+                        <button class="nav-link sam-tabs__link" data-province-id="13" data-bs-toggle="tab" data-bs-target="#province-content">ปทุมธานี</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link" data-province="ชลบุรี" data-bs-toggle="tab" data-bs-target="#province-content">ชลบุรี</button>
+                        <button class="nav-link sam-tabs__link" data-province-id="20" data-bs-toggle="tab" data-bs-target="#province-content">ชลบุรี</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link" data-province="ภูเก็ต" data-bs-toggle="tab" data-bs-target="#province-content">ภูเก็ต</button>
+                        <button class="nav-link sam-tabs__link" data-province-id="83" data-bs-toggle="tab" data-bs-target="#province-content">ภูเก็ต</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link" data-province="เชียงใหม่" data-bs-toggle="tab" data-bs-target="#province-content">เชียงใหม่</button>
+                        <button class="nav-link sam-tabs__link" data-province-id="50" data-bs-toggle="tab" data-bs-target="#province-content">เชียงใหม่</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link" data-province="ระยอง" data-bs-toggle="tab" data-bs-target="#province-content">ระยอง</button>
+                        <button class="nav-link sam-tabs__link" data-province-id="21" data-bs-toggle="tab" data-bs-target="#province-content">ระยอง</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link" data-province="นครราชสีมา" data-bs-toggle="tab" data-bs-target="#province-content">นครราชสีมา</button>
+                        <button class="nav-link sam-tabs__link" data-province-id="30" data-bs-toggle="tab" data-bs-target="#province-content">นครราชสีมา</button>
                     </li>
                 </ul>
             </div>
@@ -343,12 +237,12 @@
                 <div class="tab-pane fade show active" id="province-content" role="tabpanel">
                     <div id="asset-list" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3">
                     </div>
-                    <a href="/" title="" class="btn btn--hover btn--gray">
+                    @* <a href="/" title="" class="btn btn--hover btn--gray">
                         <span class="btn__text">ดูทั้งหมด</span>
                         <span class="btn__icon">
                             <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
                         </span>
-                    </a>
+                    </a> *@
                 </div>
             </div>
         </div>
@@ -488,17 +382,54 @@
     </div>
 </section>
 
+<div class="modal fade" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark border-0">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="ratio ratio-16x9">
+                    <iframe src=""
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Styles {
     <link href="~/vendors/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    
     <style>
         .swiper-notification {
             pointer-events: none;
+        }
+
+        /* ตกแต่งชื่อกลุ่มใน Select2 */
+        .select2-results__group {
+            padding: 8px 12px !important;
+            background-color: #f8f9fa; /* สีพื้นหลังอ่อนๆ ให้เห็นขอบเขตกลุ่ม */
+            color: #666 !important;
+            font-size: 0.85rem !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ปรับระยะห่างของตัวเลือกข้างในกลุ่ม */
+        .select2-results__option[aria-selected] {
+            padding-left: 20px !important;
         }
     </style>
 }
 @section Scripts {
     <script src="~/vendors/swiper/swiper-bundle.min.js"></script>
-    <script type="module" src="~/js/home.js"></script>
+    <script type="module" src="~/js/features/search/search-handler.js"></script>
+    <script type="module" src="~/js/features/home/home-renderer.js"></script>
+    <script type="module" src="~/js/shared/video-util.js"></script>
     <script>
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))

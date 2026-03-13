@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <span>ข่าวสารและประกาศ</span>
+                </li>
+                <li class="breadcrumb-item"><a href="/news">ข่าวสาร</a></li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            วิดีโอ / สื่อประชาสัมพันธ์
+        </h1>
+    </div>
+</section>
+
+<section class="section section--video-gallery">
+    <div class="container-fluid">
+        <div class="row justify-content-between">
+            <div class="col-lg-auto">
+                <ul class="nav nav-pills sam-tabs sam-tabs--primary m-0">
+                    <li class="nav-item">
+                        <a class="nav-link sam-tabs__link" href="/news">ข่าวประชาสัมพันธ์</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link sam-tabs__link active" href="/video">วิดีโอ / สื่อประชาสัมพันธ์</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-auto">
+                <div class="form form--filter">
+                    <div class="form-group">
+                        <div class="select">
+                            <select id="filter-category" class="select__input">
+                                <option value="all">ทุกประเภท</option>
+                                <option value="NPA">วิดีโอ NPA</option>
+                                <option value="Activities">วิดีโอกิจกรรม</option>
+                                <option value="Ads">วิดีโอโฆษณา</option>
+                            </select>
+                        </div>
+                        
+                        <div class="select">
+                            <select id="filter-year" class="select__input">
+                                <option value="all">ทุกปี</option>
+                                <option value="2026">2569</option>
+                                <option value="2025">2568</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div id="video-container" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-3">
+        </div>
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center pagination--primary" id="video-pagination">
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<div class="modal fade" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark border-0">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="ratio ratio-16x9">
+                    <iframe src=""
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+}
+@section Scripts {
+    <script type="module" src="~/js/features/content/video-player.js"></script>
+
+    <script>
+        $(document).on('click', '#video-pagination .page-link', function (e) {
+            e.preventDefault();
+
+            const $btn = $(this);
+            const $container = $('#video-container');
+
+            if ($btn.parent().hasClass('disabled') || $btn.parent().hasClass('active')) return;
+
+            const href = $btn.attr('href');
+            const page = parseInt(href.split('/').pop());
+
+            if (isNaN(page)) return;
+
+            // ทำ Animation
+            $container.stop().animate({ opacity: 0 }, 200, function() {
+
+                // --- แก้ไขจุดนี้: เรียกใช้ videoEngine จากไฟล์ video.js ---
+                if (window.videoEngine) {
+                    // อัปเดต URL บน Browser ก่อนเพื่อให้ getInitialPage อ่านค่าได้ (ถ้าจำเป็น)
+                    window.history.pushState({ page: page }, '', href);
+
+                    // สั่ง Render ใหม่ผ่าน Engine
+                    window.videoEngine.render(page);
+                }
+
+                $(this).animate({ opacity: 1 }, 200);
+            });
+
+            $('html, body').stop().animate({
+                scrollTop: $container.offset().top - 150
+            }, 600);
+        });
+    </script>
+}

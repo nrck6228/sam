@@ -1,0 +1,137 @@
+﻿@{
+    Layout = "_Layout";
+    var promoId = ViewBag.PromotionId;
+    var slug = ViewBag.PromotionSlug;
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <span>ทรัพย์สินรอการขาย</span>
+                </li>
+                <li class="breadcrumb-item"><a href="/promotion">โปรโมชั่นทรัพย์เด่น</a></li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section>
+    <article class="promotion">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <h1 id="promo-title" class="promotion__title"></h1>
+
+                    <div class="d-flex justify-content-between align-content-center">
+                        <time id="promo-date" class="promotion__date">--/--/----</time>
+                        <div class="share--inline d-flex gap-2">
+                            <span class="me-2 text-muted align-self-center d-none d-sm-block"><svg class="icon"><use xlink:href="#icon-share"></use></svg></span>
+                            <a href="#" class="share-icon share-icon--facebook" onclick="shareTo('facebook')"><svg class="icon"><use xlink:href="#icon-facebook"></use></svg></a>
+                            <a href="#" class="share-icon share-icon--twitter" onclick="shareTo('twitter')"><svg class="icon"><use xlink:href="#icon-twitter-x"></use></svg></a>
+                            <a href="#" class="share-icon share-icon--line" onclick="shareTo('line')"><svg class="icon"><use xlink:href="#icon-line"></use></svg></a>
+                            <a href="#" class="share-icon share-icon--copy-link" onclick="copyToClipboard()"><i class="bi bi-link-45deg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <figure class="promotion__figure">
+                        <img id="promo-image" src="/media/images/news/default-thumb.svg" class="promotion__image" alt="Promotion Image">
+                    </figure>
+                </div>
+                <div class="col-md-12 col-lg-10">
+                    <div id="promo-content" class="promotion__content content-builder">
+                        <div class="text-center p-5">
+                            <div class="spinner-border text-primary" role="status"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="promotion__download">
+                        <p class="">ดาวน์โหลดเอกสาร</p>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <a href="#" class="btn btn--download btn--green">
+                                <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-download"></use></svg></span>
+                                <span class="btn__text">Save as PDF</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="promotion__footer">
+                        <a href="/promotion" class="btn btn--outline-black">
+                            <span class="btn__icon">
+                                <svg class="icon"><use xlink:href="#icon-previous"></use></svg>
+                            </span>
+                            <span class="btn__text">
+                                กลับหน้าโปรโมชั่น
+                            </span>
+                        </a>
+                        <button class="btn btn--hover btn--pink">
+                            <span class="btn__text">ติดต่อเจ้าหน้าที่</span>
+                            <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+
+@section Meta {
+    <meta property="og:url" content="@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="โปรโมชั่นทรัพย์เด่น | SAM" />
+    <meta property="og:description" content="รายละเอียดโปรโมชั่นและสิทธิพิเศษจาก SAM" />
+}
+
+@section Scripts {
+    <script type="module" src="~/js/shared/share.util.js"></script>
+    <script type="module">
+        import { promotionData } from '/js/data/data.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // ดึง ID จาก ViewBag ที่ส่งมาจาก Controller
+            const currentId = parseInt("@promoId");
+
+            // ค้นหาข้อมูลใน data.js ที่มี ID ตรงกัน
+            const data = promotionData.find(item => item.id === currentId);
+
+            if (data) {
+                // อัปเดต Title ของ Browser
+                document.title = data.title + " | SAM";
+
+                // ฉีดข้อมูลลงใน HTML Elements (ID ต้องตรงกับในหน้า View)
+                const titleEl = document.getElementById('promo-title');
+                const dateEl = document.getElementById('promo-date');
+                const imgEl = document.getElementById('promo-image');
+                const contentEl = document.getElementById('promo-content');
+
+                if (titleEl) titleEl.innerText = data.title;
+                if (dateEl) dateEl.innerText = data.date;
+                if (imgEl) {
+                    imgEl.src = data.imageUrl;
+                    imgEl.alt = data.title;
+                }
+                if (contentEl) {
+                    // ถ้ามี content ให้ใช้ content ถ้าไม่มีให้ใช้ description แก้ขัด
+                    contentEl.innerHTML = data.content || `<p>${data.description}</p>`;
+                }
+            } else {
+                // กรณีหา ID ไม่เจอ (เช่น User พิมพ์ URL มั่ว)
+                const contentEl = document.getElementById('promo-content');
+                if (contentEl) contentEl.innerHTML = "<div class='text-center py-5'>ไม่พบข้อมูลโปรโมชั่นที่ระบุ</div>";
+            }
+        });
+    </script>
+}

@@ -1,0 +1,164 @@
+﻿@{
+    ViewData["Title"] = "รายการทรัพย์สิน | SAM";
+}
+
+<section class="section section--banner section--banner-search">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <span>ทรัพย์สินรอการขาย</span>
+                </li>
+                <li class="breadcrumb-item"><a href="/npa/asset-category">ประเภททรัพย์</a></li>
+                <li class="breadcrumb-item active">
+                    <span id="breadcrumb-current-text">กำลังโหลด...</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="page--banner">
+        <img src="~/media/images/bg/bg-assets-list.jpg" alt="Asset List Banner" class="banner__image">
+    </div>
+
+    <div class="page--search">
+        <div class="container">
+            <partial name="_SearchPanel" />
+        </div>
+    </div>
+
+    <div class="page--nav">
+        <a href="#" title="" class="btn btn--xl btn--pink btn--hover rounded-0">
+            <span class="btn__text">ค้นหาตามแผนที่</span>
+            <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
+        </a>
+
+        <div class="page--nav__group">
+            <a href="#" title="" class="btn btn--xl btn--green btn--hover rounded-0">
+                <span class="btn__text">จับคู่ความต้องการทรัพย์สิน NPA</span>
+                <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
+            </a>
+            <a href="#" title="" class="btn btn--xl btn--green btn--hover rounded-0">
+                <span class="btn__text">ทรัพย์ขายทอดตลาดของกรมบังคับคดี</span>
+                <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section section--assets">
+    <h1 class="page__title d-none" id="list-title">รายการทรัพย์สิน</h1>
+
+    <div class="container-fluid">
+        <div class="row justify-content-between mb-5">
+            <div class="col-lg-auto">
+                <button id="btn-print-list" class="btn btn--hover btn--gray">
+                    <span class="btn__text">พิมพ์รายการ</span>
+                    <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
+                </button>
+            </div>
+
+            <div class="col-lg-auto">
+                <div class="d-flex align-items-center gap-5">
+                    <h4 class="page__subtitle m-0">ผลการค้นหา <span id="asset-count" style="color: #286140;">0</span> รายการ</h4>
+                    <div class="form form--filter m-0">
+                        <div class="form-group">
+                            <div class="select">
+                                <select id="sort-criteria" class="select__input">
+                                    <option value="newest">ใหม่ล่าสุด</option>
+                                    <option value="code-asc">รหัสทรัพย์ (ก-ฮ, A-Z)</option>
+                                    <option value="code-desc">รหัสทรัพย์ (ฮ-ก, Z-A)</option>
+                                    <option value="price-asc">ราคาน้อยไปมาก</option>
+                                    <option value="price-desc">ราคามากไปน้อย</option>
+                                    <option value="size-asc">พื้นที่น้อยไปมาก</option>
+                                    <option value="size-desc">พื้นที่มากไปน้อย</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div id="asset-result-list" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-3">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center pagination--primary" id="asset-pagination">
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="compare-sticky-bar" class="compare--bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div id="compare-preview-items" class="compare--grid">
+                </div>
+            </div>
+            <div class="col-lg-4 text-end mt-3 mt-lg-0">
+                <button class="btn btn--hover btn--green" onclick="window.goToComparePage()">
+                    <span class="btn__text">
+                        เปรียบเทียบ (<span id="compare-count">0</span>)
+                    </span>
+                </button>
+                <button class="btn btn--hover btn--gray" onclick="clearAllCompare()">
+                    <span class="btn__text">
+                        ล้างตัวเลือก
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+    <style media="print">
+        .section--banner, .sort-tool, .pagination, .compare-panel, #ai-tab, .search__tags, footer {
+            display: none !important;
+        }
+
+        #asset-result-list {
+            display: block !important;
+        }
+    </style>
+
+    <style>
+        #asset-result-list:has(.col-12) {
+            display: block !important; /* เมื่อเจอ Empty State ให้ยกเลิกความเป็น Grid ของแม่ชั่วคราว */
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
+    <script>
+        // รับค่าจาก ViewBag
+        // const SELECTED_TYPE_ID = parseInt("@ViewBag.AssetTypeId");
+        // ข้อมูลจากระบบ Category เดิม
+        window.SELECTED_TYPE_ID = @(ViewBag.AssetTypeId ?? "null");
+
+        // ข้อมูลจากระบบ Search ใหม่
+        window.SEARCH_PARAMS = {
+            isSearchMode: @(ViewBag.IsSearchMode?.ToString().ToLower() ?? "false"),
+            keyword: '@Html.Raw(ViewBag.Keyword)',
+            types: '@ViewBag.Types',
+            provinces: '@ViewBag.Provinces',
+            minPrice: '@ViewBag.MinPrice',
+            maxPrice: '@ViewBag.MaxPrice'
+        };
+    </script>
+    <script type="module" src="~/js/features/search/search-handler.js"></script>
+    <script type="module" src="~/js/features/compare/compare-service.js"></script>
+    <script type="module" src="~/js/features/assets/asset-list.js"></script> 
+}

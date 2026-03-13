@@ -27,106 +27,19 @@ namespace sam.Controllers
         //    return View("~/Views/About/History.cshtml");
         //}
 
-
         [Route("about/annual-report")]
-        public IActionResult Annual(int page = 1) // รับค่า page มาจาก URL (ถ้าไม่มีจะเป็น 1)
+        [Route("about/annual-report/page/{page:int}")]
+        public IActionResult Annual(int page = 1)
         {
-            int pageSize = 12; // จำนวนเล่มต่อหน้า
-
-            // 1. สร้างข้อมูลจำลอง (Mock Data) 20 เล่ม
-            var allReports = Enumerable.Range(2543, 26).Select(year => {
-                // 1. กำหนดนามสกุลที่ต้องการรองรับ
-                string[] extensions = { ".png", ".jpg", ".jpeg", ".webp" };
-                string imageUrl = "/media/images/annual/default-thumb.svg"; // ค่าเริ่มต้น
-
-                // 2. วนลูปเช็กว่าไฟล์ไหนมีอยู่จริง
-                foreach (var ext in extensions)
-                {
-                    var fileName = $"thumb-{year}{ext}";
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/media/images/annual", fileName);
-
-                    if (System.IO.File.Exists(filePath))
-                    {
-                        imageUrl = $"/media/images/annual/{fileName}";
-                        break; // เจอไฟล์แล้วให้หยุดหาทันที
-                    }
-                }
-
-                return new AnnualReportViewModel
-                {
-                    Year = year.ToString(),
-                    ImageUrl = imageUrl,
-                    ViewUrl = "#",
-                    DownloadUrl = "#",
-                    QrCodeUrl = "/media/images/annual/sample-qr.jpg"
-                };
-            }).OrderByDescending(x => x.Year).ToList();
-
-            // 2. คำนวณจำนวนหน้าทั้งหมด
-            var totalItems = allReports.Count;
-            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
-
-            // 3. ตัดข้อมูลแสดงเฉพาะหน้านั้นๆ
-            var pagedData = allReports
-                            .Skip((page - 1) * pageSize)
-                            .Take(pageSize)
-                            .ToList();
-
-            // 4. ส่งค่าไปแสดงผล
-            ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = totalPages;
-
-            return View("~/Views/About/Annual.cshtml", pagedData);
+            // ไม่ต้องส่ง Model แล้ว เพราะ JS จะจัดการต่อเอง
+            return View("~/Views/About/Annual.cshtml");
         }
 
         [Route("about/financial-statements")]
+        [Route("about/financial-statements/page/{page:int}")]
         public IActionResult Financial(int page = 1) // รับค่า page มาจาก URL (ถ้าไม่มีจะเป็น 1)
         {
-            int pageSize = 12; // จำนวนเล่มต่อหน้า
-
-            // 1. สร้างข้อมูลจำลอง (Mock Data) 20 เล่ม
-            var allReports = Enumerable.Range(2561, 8).Select(year => {
-                // 1. กำหนดนามสกุลที่ต้องการรองรับ
-                string[] extensions = { ".png", ".jpg", ".jpeg", ".webp" };
-                string imageUrl = "/media/images/financial/default-thumb.svg"; // ค่าเริ่มต้น
-
-                // 2. วนลูปเช็กว่าไฟล์ไหนมีอยู่จริง
-                foreach (var ext in extensions)
-                {
-                    var fileName = $"thumb-{year}{ext}";
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/media/images/financial", fileName);
-
-                    if (System.IO.File.Exists(filePath))
-                    {
-                        imageUrl = $"/media/images/financial/{fileName}";
-                        break; // เจอไฟล์แล้วให้หยุดหาทันที
-                    }
-                }
-
-                return new FinancialStatementsViewModel
-                {
-                    Year = year.ToString(),
-                    ImageUrl = imageUrl,
-                    ViewUrl = "#",
-                    DownloadUrl = "#",
-                };
-            }).OrderByDescending(x => x.Year).ToList();
-
-            // 2. คำนวณจำนวนหน้าทั้งหมด
-            var totalItems = allReports.Count;
-            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
-
-            // 3. ตัดข้อมูลแสดงเฉพาะหน้านั้นๆ
-            var pagedData = allReports
-                            .Skip((page - 1) * pageSize)
-                            .Take(pageSize)
-                            .ToList();
-
-            // 4. ส่งค่าไปแสดงผล
-            ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = totalPages;
-
-            return View("~/Views/About/Financial.cshtml", pagedData);
+            return View("~/Views/About/Financial.cshtml");
         }
 
         [Route("about/board-of-directors")]

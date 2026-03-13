@@ -4,26 +4,36 @@
 
 @if vars.$enable-container-classes {
     .container,
-    .container-fluid {
+    .container-fluid,
+    [class*="container-"] {
         @include make-container();
     }
 
+    // 1. .container (มาตรฐาน)
     @each $breakpoint, $container-max-width in vars.$container-max-widths {
-        .container-#{$breakpoint} {
-            @extend .container-fluid;
+        @include media-breakpoint-up($breakpoint) {
+            .container {
+                max-width: $container-max-width;
+            }
         }
+    }
+
+    // 2. .container-{breakpoint} (แบบยืดหยุ่น)
+    @each $breakpoint, $container-max-width in vars.$container-max-widths {
+        $infix: fn.breakpoint-infix($breakpoint, vars.$breakpoints);
 
         @include media-breakpoint-up($breakpoint) {
-            $extend-breakpoint: true;
-
-            @each $name, $width in vars.$breakpoints {
-                @if ($extend-breakpoint) {
-                    .container#{fn.breakpoint-infix($name, vars.$breakpoints)} {
-                        max-width: $container-max-width;
-                    }
-
-                    @if ($breakpoint == $name) {
-                        $extend-breakpoint: false;
+            // สร้าง placeholder เพื่อรวมกลุ่ม selector ที่ใช้ max-width เดียวกัน
+            %container-fixed-#{$breakpoint} {
+                max-width: $container-max-width;
+            }
+            // จัดการคลาสที่ต้องล็อค max-width
+            // เราจะวนลูป $container-max-widths เพื่อหาตัวที่ใหญ่กว่าหรือเท่ากับปัจจุบัน
+            @each $name, $width in vars.$container-max-widths {
+                // ถ้า breakpoint ที่วนถึงกว้างกว่าหรือเท่ากับตัวหลัก ให้ล็อคค่า
+                @if ($width >= $container-max-width) {
+                    .container#{$infix} {
+                        @extend %container-fixed-#{$breakpoint};
                     }
                 }
             }

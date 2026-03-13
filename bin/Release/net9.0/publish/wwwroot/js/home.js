@@ -5,16 +5,6 @@ import { serviceData, heroBannerData, assetListData, allAssetTypeData, districtD
  * 1. UI Components & Templates
  * ฟังก์ชันสำหรับสร้าง HTML Markup
  */
-
-//const getStatusBadge = (status) => {
-//    const badgeMap = {
-//        'ซื้อตรง': 'card__badge--direct',
-//        'ประมูล': 'card__badge--auction',
-//        'รอประกาศราคา': 'card__badge--waiting'
-//    };
-//    const badgeClass = badgeMap[status] || 'card__badge--default';
-//    return `<div class="card__badge ${badgeClass}">${status}</div>`;
-//};
 const STATUS_CONFIG = {
     1: { label: 'ซื้อตรง', class: 'card__badge--direct' },
     2: { label: 'ขายทอดตลาด', class: 'card__badge--auction' },
@@ -39,7 +29,6 @@ const getAssetIconById = (typeId) => {
 
 /**
  * 2. Render Functions
- * ฟังก์ชันสำหรับพ่นข้อมูลลง DOM
  */
 
 const renderHeroSliders = (data) => {
@@ -81,51 +70,58 @@ const renderQuickLinks = (data) => {
     initScrollReveal('.highlight');
 };
 
-const renderAssets = (province) => {
+const renderAssets = (provinceId) => {
     const container = document.getElementById('asset-list');
     if (!container) return;
 
-    const filteredData = assetListData.filter(item => item.location.includes(province));
+    // แปลง provinceId ให้เป็น Number เพื่อความแม่นยำในการเปรียบเทียบ
+    const targetId = Number(provinceId);
+
+    // 1. กรองตาม ID -> 2. กลับด้านเอาใหม่ขึ้นก่อน -> 3. เอาแค่ 3 รายการ
+    const filteredData = assetListData
+        .filter(item => item.provinceId === targetId)
+        .reverse()
+        .slice(0, 3);
+
+    // กรณีไม่พบทรัพย์สิน (แสดงชื่อจังหวัดจากข้อมูลที่มีหรือ fallback)
+    if (filteredData.length === 0) {
+        container.innerHTML = `<div class="col-12 text-center p-5 text-muted">ไม่พบทรัพย์สินในพื้นที่ที่เลือก</div>`;
+        return;
+    }
 
     container.innerHTML = filteredData.map(asset => {
-        // ดึงข้อมูลประเภทจาก Map ด้วย ID
         const typeInfo = typeMap[asset.typeId];
-        //const isWaiting = asset.saleStatus === 'รอประกาศราคา';
-        //const priceText = isWaiting ? 'ติดต่อเจ้าหน้าที่' : `${asset.totalPrice.toLocaleString()} บาท`;
-
-        // ดึงข้อมูลสถานะจาก Config ด้วย ID
         const status = STATUS_CONFIG[asset.statusId] || { label: 'ไม่ทราบสถานะ', class: '' };
 
-        // เช็คเงื่อนไขเรื่องราคา (ถ้า ID คือ 3 หมายถึงรอประกาศราคา)
         const isWaiting = asset.statusId === 3;
         const priceText = isWaiting ? 'ติดต่อเจ้าหน้าที่' : `${asset.totalPrice.toLocaleString()} บาท`;
 
-        // --- เพิ่มเงื่อนไข ---
-        // ถ้ามี typeInfo ให้แสดง div class="card__type-icon" พร้อมไอคอน
-        // ถ้าไม่มี (null/undefined) ให้เป็นค่าว่าง
         const iconHtml = typeInfo
             ? `<div class="card__type-icon">${getAssetIconById(asset.typeId)}</div>`
             : '';
 
+        const detailUrl = `/asset-detail/${asset.assetCode}`;
+
         return `
-            <a href="#" class="card card--asset">
-                <div class="card__figure">
-                    <img src="${asset.img}" alt="${asset.alt}" class="card__image" />
-                    <div class="card__badge ${status.class}">${status.label}</div>
-                </div>
-                <div class="card__body">
-                    <div class="card__type">
-                        ${iconHtml}
-                        <div class="card__type-text">
-                            ${typeInfo ? typeInfo.typeName : 'ไม่ระบุประเภท'}
+                <div class="card card--asset">
+                    <div class="card__figure">
+                        <img src="${asset.img}" alt="${asset.alt}" class="card__image" />
+                        <div class="card__badge ${status.class}">${status.label}</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="card__type">
+                            ${iconHtml}
+                            <div class="card__type-text">
+                                ${typeInfo ? typeInfo.typeName : 'ไม่ระบุประเภท'}
+                            </div>
                         </div>
+                        <div class="card__location">
+                            <div class="card__location-text">${asset.location}</div>
+                        </div>
+                        <div class="card__price">${priceText}</div>
                     </div>
-                    <div class="card__location">
-                        <div class="card__location-text">${asset.location}</div>
-                    </div>
-                    <div class="card__price">${priceText}</div>
+                    <a href="${detailUrl}" class="stretched-link" title="ดูรายละเอียด ${asset.assetCode}"></a>
                 </div>
-            </a>
         `;
     }).join('');
 };
@@ -139,7 +135,7 @@ const renderAssetShowcase = (data) => {
     const sortedData = [...data].sort((a, b) => b.count - a.count);
 
     typeContainer.innerHTML = sortedData.slice(0, 4).map(asset => `
-        <a href="/" title="${asset.typeName}" class="card card--type">
+        <a href="/npa/${asset.id}/${asset.slug}" title="${asset.typeName}" class="card card--type">
             <div class="card__figure">
                 <svg class="icon-xl"><use xlink:href="#icon-${asset.icon}"></use></svg>
                 <div class="card__type">${asset.typeName}</div>
@@ -152,10 +148,10 @@ const renderAssetShowcase = (data) => {
     `).join('');
 
     tagsContainer.innerHTML = sortedData.slice(4).map(asset => `
-        <div class="asset-badge">
+        <a href="/npa/${asset.id}/${asset.slug}" title="${asset.typeName}" class="asset-badge">
             <svg class="icon"><use xlink:href="#icon-${asset.icon}"></use></svg>
             <span>${asset.typeName}</span>
-        </div>
+        </a>
     `).join('');
 };
 
@@ -185,27 +181,20 @@ const renderAssetAreaList = () => {
  */
 // สร้าง Cursor Follower ไว้ใน DOM(ทำครั้งเดียวตอนโหลดหน้า)
 const setupPreview = () => {
-    // ใช้ชื่อที่เฉพาะเจาะจงเพื่อเลี่ยงการชนกันของชื่อตัวแปร
     let followerEl = document.getElementById('hover-preview-container');
-
     if (!followerEl) {
         followerEl = document.createElement('div');
         followerEl.id = 'hover-preview-container';
         followerEl.className = 'hover-reveal';
-        //followerEl.innerHTML = `<img src="" class="hover-reveal__img">`;
         followerEl.innerHTML = `<span class="preview-text">อ่านต่อ</span>`;
         document.body.appendChild(followerEl);
     }
-
-    return {
-        container: followerEl,
-        image: followerEl.querySelector('img')
-    };
+    return { container: followerEl };
 };
 
 const renderNews = (contentType) => {
     const container = document.getElementById('news-list');
-    const preview = document.getElementById('hover-preview');
+    //const preview = document.getElementById('hover-preview');
     const btnNewsAll = document.getElementById('btn-news-all');
     if (!container) return;
 
@@ -253,22 +242,16 @@ const renderNews = (contentType) => {
         const thumb = item.thumbnail ? item.thumbnail : '';
 
         return `
-            <article class="card card--news" data-hover-img="${thumb}">
-                <a href="/${basePath}/${item.slug}" class="card__link" title="${item.title}">
-                    <div class="card__figure">
-                        <img src="${item.thumbnail}" alt="${item.title}" class="card__image" loading="lazy">
-                        ${isVideo ? '<div class="card__video-overlay"><svg class="icon"><use xlink:href="#icon-youtube"></use></svg></div>' : ''}
-                        <div class="card__badge">${item.category}</div>
-                    </div>
-                    <div class="card__body">
-                        <time datetime="${item.date}" class="card__date">
-                            ${item.displayDate}
-                        </time>
-                        <h3 class="card__title">${item.title}</h3>
-                        <p class="card__excerpt" style="display: none;">${item.shortDesc}</p>
-                    </div>
-                </a>
-            </article>
+            <div class="card card--news" data-hover-img="${item.thumbnail}"> <div class="card__figure">
+                    <img src="${item.thumbnail}" alt="${item.title}" class="card__image" loading="lazy">
+                    ${isVideo ? '<div class="card__video-overlay"><svg class="icon"><use xlink:href="#icon-youtube"></use></svg></div>' : ''}
+                </div>
+                <div class="card__body">
+                    <time datetime="${item.date}" class="card__date">${item.displayDate}</time>
+                    <h3 class="card__title">${item.title}</h3>
+                </div>
+                <a href="/${basePath}/${item.id}/${item.slug}" class="stretched-link"></a>
+            </div>
         `;
     }).join('');
 
@@ -278,21 +261,10 @@ const renderNews = (contentType) => {
 
         newsCards.forEach(card => {
             card.addEventListener('mouseenter', () => {
-                const imgUrl = card.dataset.hoverImg;
-                if (imgUrl && imgUrl !== 'undefined' && imgUrl !== 'null' && imgUrl !== '') {
-                    //newsPreview.image.src = imgUrl;
-                    newsPreview.container.classList.add('active');
-                    newsPreview.container.style.opacity = '1';
-                    newsPreview.container.style.visibility = 'visible';
-
-                    // หากต้องการเปลี่ยนคำตามหมวดหมู่ สามารถทำตรงนี้ได้
-                    // newsPreview.container.querySelector('.preview-text').innerText = 'อ่านรายละเอียด';
-                }
-                //else {
-                //    // ถ้าไม่มีรูป ให้ซ่อน Preview ทันที (ป้องกันกรณีเลื่อนจากตัวมีรูปมาตัวไม่มีรูปแล้วรูปเก่าค้าง)
-                //    newsPreview.container.style.opacity = '0';
-                //    newsPreview.container.style.visibility = 'hidden';
-                //}
+                // เปลี่ยนมาเช็คแค่ว่ามี container ไหม หรือเช็คแค่ความกว้างจอ
+                newsPreview.container.classList.add('active');
+                newsPreview.container.style.opacity = '1';
+                newsPreview.container.style.visibility = 'visible';
             });
 
             card.addEventListener('mouseleave', () => {
@@ -304,16 +276,7 @@ const renderNews = (contentType) => {
             card.addEventListener('mousemove', (e) => {
                 let x = e.clientX + 20;
                 let y = e.clientY + 20;
-
-                // กันรูปหลุดขอบจอขวา
-                //if (x + 300 > window.innerWidth) {
-                //    x = e.clientX - 320;
-                //}
-                if (x + 40 > window.innerWidth) {
-                    x = e.clientX - 80;
-                }
-
-                // ใช้ requestAnimationFrame หรือ transform เพื่อประสิทธิภาพ
+                if (x + 120 > window.innerWidth) x = e.clientX - 100; // กันหลุดขอบ
                 newsPreview.container.style.transform = `translate3d(${x}px, ${y}px, 0)`;
             });
         });
@@ -413,7 +376,9 @@ const setupEventListeners = () => {
     // Tab Province switching
     document.querySelectorAll('#assetTab .sam-tabs__link').forEach(link => {
         link.addEventListener('shown.bs.tab', (e) => {
-            renderAssets(e.target.getAttribute('data-province'));
+            // ดึงค่า "10", "13", "20" ออกมา
+            const provId = e.target.getAttribute('data-province-id');
+            renderAssets(provId);
         });
     });
 
@@ -448,7 +413,7 @@ const initApp = () => {
     renderQuickLinks(serviceData);
     renderAssetShowcase(allAssetTypeData);
     renderAssetAreaList();
-    renderAssets('กรุงเทพมหานคร');
+    renderAssets(10);
 
     initRollingNumbers();
     initScrollReveal('.reveal-on-scroll');

@@ -1,12 +1,20 @@
 ﻿@use "../abstracts/variables" as vars;
 
 @mixin generate-grid-system($max-cols: 12) {
-    // Base .row
+    // 1. Base .row
     .row {
         display: flex;
         flex-wrap: wrap;
-        // margin-left: -#{vars.$gutter};
-        // margin-right: -#{vars.$gutter};
+    }
+    // 2. Shared Column Properties (ประกาศครั้งเดียว ไม่ซ้ำใน Media Query)
+    // ใช้ Selector เพื่อคลุมทุก col- และ .col มาตรฐาน
+    .col,
+    [class*="col-"] {
+        position: relative;
+        width: 100%;
+        min-height: 1px; // ป้องกันคอลัมน์ยุบตัวเมื่อไม่มี content
+        // padding-left: vars.$gutter;
+        // padding-right: vars.$gutter;
     }
     // .no-gutters
     .no-gutters {
@@ -19,36 +27,37 @@
             padding-right: 0;
         }
     }
-    // Loop through breakpoints
+    // 3. Loop through breakpoints
     @each $breakpoint, $min-width in vars.$breakpoints {
         $infix: if($breakpoint == null, "", "-#{$breakpoint}");
 
-        @if $min-width != null {
+        // ถ้า $min-width เป็น null (Mobile) ให้พ่นโค้ดออกมาเลยโดยไม่มี @media
+        @if $min-width {
             @media (min-width: #{$min-width}) {
                 @include generate-grid-utilities($infix, $max-cols);
             }
         }
         @else {
+            // ส่วนนี้จะรันสำหรับคีย์ null (หน้าจอเริ่มต้น)
             @include generate-grid-utilities($infix, $max-cols);
         }
     }
 }
 
-// Sub mixin สำหรับสร้าง utility ทั้งหมดของ col, offset, order, row-cols
+// Sub mixin สำหรับสร้าง utility (เน้นเฉพาะส่วนที่ต้องเปลี่ยนตามหน้าจอ เช่น width)
 @mixin generate-grid-utilities($infix, $max-cols) {
-    // .col
     .col#{$infix} {
         flex-grow: 1;
         flex-basis: 0;
         max-width: 100%;
     }
-    // .col-auto
+
     .col#{$infix}-auto {
         flex: 0 0 auto;
         width: auto;
         max-width: 100%;
     }
-    // .col-{n}
+
     @for $i from 1 through $max-cols {
         $percent: percentage($i / $max-cols);
 
@@ -57,57 +66,11 @@
             max-width: $percent;
         }
     }
-    // .offset-{n}
-    @for $i from 1 through ($max-cols - 1) {
-        $percent: percentage($i / $max-cols);
-
-        .offset#{$infix}-#{$i} {
-            margin-left: $percent;
-        }
-    }
-    // .order-{n}
-    @for $i from 0 through $max-cols {
-        .order#{$infix}-#{$i} {
-            order: $i;
-        }
-    }
-    // .order-first / .order-last
-    .order#{$infix}-first {
-        order: -1;
-    }
-
-    .order#{$infix}-last {
-        order: 999;
-    }
-    // .row-cols-{n}
-    @for $i from 1 through $max-cols {
-        $percent: percentage(1 / $i);
-
-        .row-cols#{$infix}-#{$i} > * {
-            flex: 0 0 $percent;
-            max-width: $percent;
-        }
-    }
-    // Column padding (col spacing)
-    @for $i from 1 through $max-cols {
-        .col#{$infix}-#{$i} {
-            position: relative;
-            width: 100%;
-            // padding-left: vars.$gutter;
-            // padding-right: vars.$gutter;
-        }
-    }
-
-    .col#{$infix},
-    .col#{$infix}-auto {
-        position: relative;
-        width: 100%;
-        // padding-left: vars.$gutter;
-        // padding-right: vars.$gutter;
-    }
+    // Offset / Order / Row-cols (ใส่โค้ดเดิมของคุณต่อตรงนี้ได้เลย)
+    // ...
 }
 
-// Generate grid system for 12 columns
+// เรียกใช้งาน
 @include generate-grid-system(12);
 
 [v-cloak] {

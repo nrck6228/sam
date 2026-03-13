@@ -1,0 +1,208 @@
+﻿@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <span>ทรัพย์สินรอการขาย</span>
+                </li>
+                <li class="breadcrumb-item"><a href="/npa/asset-category">ประเภททรัพย์</a></li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            เปรียบเทียบรายการทรัพย์
+        </h1>
+    </div>
+</section>
+
+<section>
+    <div class="section section--content">
+        <div class="container">
+            <div class="d-flex justify-content-end align-items-center gap-3 mb-4">
+                <button class="btn btn--hover btn--gray" onclick="window.print()">
+                    <span class="btn__text">
+                        พิมพ์เอกสาร
+                    </span>
+                </button>
+                <button class="btn btn--outline-clear" onclick="clearAllCompare()">
+                    <span class="btn__icon">
+                        <i class="bi bi-trash"></i>
+                    </span>
+                    <span class="btn__text">
+                        ล้างทั้งหมด
+                    </span>
+                </button>
+            </div>
+            <div class="print-header">
+                <img src="~/media/images/logo/logo-main.webp" style="width: 120px;"/>
+                <h4>เอกสารเปรียบเทียบทรัพย์สิน NPA</h4>
+                <p>วันที่พิมพ์: @DateTime.Now.ToString("dd/MM/yyyy")</p>
+            </div>
+            <div id="compare-result-wrapper" class="compare-container">
+                <div class="text-center py-5">
+                    <div class="spinner-border text-pink" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">กำลังเตรียมข้อมูลการเปรียบเทียบ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        .compare-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* ให้ไถลื่นใน iOS */
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+        /* ตัวแม่ไม่ต้องเป็น grid แล้ว เป็นแค่ container ปกติ */
+        .compare-grid {
+            display: block;
+            width: 100%;
+        }
+
+        /* มาใส่ grid ที่นี่แทน */
+        .compare-row {
+            display: grid;
+            /* 160px สำหรับ Label และที่เหลือแบ่งเท่าๆ กันตามจำนวนทรัพย์ */
+            grid-template-columns: 160px repeat(auto-fit, minmax(200px, 1fr));
+            border-bottom: 1px solid #eee;
+        }
+
+        .compare-cell {
+            padding: 15px;
+            background: #fff;
+        }
+
+        .compare-label {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            position: sticky; /* ทำ sticky column เฉพาะหัวข้อได้ง่ายขึ้น */
+            left: 0;
+            z-index: 5;
+        }
+
+        /* รูปภาพทรัพย์สิน */
+        .compare-image-cell {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .compare-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .btn--pink {
+            min-height: 24px;
+            padding: 5px 15px;
+            font-size: 0.875rem;
+        }
+
+        .btn--remove {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+        .compare-row--images .compare-cell {
+            position: sticky;
+            top: 0;
+            z-index: 11; /* ต้องสูงกว่า Sticky Left */
+            background: #fff;
+            border-bottom: 2px solid #E91E63; /* เส้นใต้เน้นธีม SAM */
+        }
+
+        @@media print {
+            /* 1. ซ่อนส่วนที่ไม่ต้องการให้ปรากฏในกระดาษ */
+            header, nav, footer, .btn, .section--banner {
+                display: none !important;
+            }
+            /* 2. ยกเลิกการ Scroll และขยายตารางให้เต็มหน้ากระดาษ */
+            body {
+                background-color: white !important;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .compare-container {
+                overflow: visible !important; /* ปิดการไถข้าง */
+                border: none !important;
+            }
+
+            .compare-grid {
+                display: table !important;
+                width: 100% !important;
+                border-collapse: collapse !important;
+                table-layout: fixed; /* บังคับให้ทุกคอลัมน์เฉลี่ยความกว้างเท่าๆ กัน */
+            }
+            /* บังคับให้ "ตัวหุ้มแถว" ทำหน้าที่เป็น Row ของตาราง */
+            .compare-row {
+                display: table-row !important;
+            }
+            /* บังคับให้ "ข้อมูลข้างใน" ทำหน้าที่เป็น Cell ของตาราง */
+            .compare-cell, 
+            .compare-label {
+                display: table-cell !important;
+                border: 1px solid #ddd !important;
+                padding: 8px !important;
+                vertical-align: top;
+                word-wrap: break-word; /* ป้องกันข้อความยาวทะลุช่อง */
+            }
+            /* ล็อกความกว้างคอลัมน์แรก (หัวข้อ) */
+            .compare-label {
+                width: 120px !important;
+                background-color: #f8f9fa !important;
+                font-weight: bold;
+                -webkit-print-color-adjust: exact; /* บังคับให้พิมพ์สีพื้นหลังใน Chrome/Edge */
+            }
+            /* จัดการรูปภาพให้พอดีช่อง */
+            .compare-img {
+                width: 100% !important;
+                max-width: 120px !important;
+                height: auto !important;
+            }
+            /* เพิ่มหัวกระดาษพิเศษ (Optional) */
+            .print-header {
+                display: block !important;
+                text-align: left;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* ซ่อนหัวกระดาษพิเศษในหน้าจอปกติ */
+        .print-header {
+            display: none;
+        }
+
+    </style>
+}
+@section Scripts {
+    <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="~/js/data/data.js" type="module"></script>
+    <script src="~/js/features/compare/compare-service.js" type="module"></script>
+    <script src="~/js/features/compare/compare-result.js" type="module"></script>
+}

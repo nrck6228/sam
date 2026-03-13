@@ -11,6 +11,7 @@
         display: flex;
         align-items: center;
         gap: 5px;
+        min-height: 45px;
         color: var(--neutral-100);
         font-size: var(--fs-body);
         line-height: 1.4;
@@ -109,7 +110,6 @@
         }
     }
 }
-
 
 @media (max-width: 767px) {
     .tab-container {

@@ -1,0 +1,91 @@
+﻿<form action="/npa/search-results" method="GET" class="search search--assets" id="mainSearchForm">
+    <input type="hidden" name="mode" id="searchMode" value="normal">
+
+    <ul class="nav nav-pills search__tabs" id="searchTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link sam-tabs__link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal-search" type="button" onclick="setSearchMode('normal')">
+                <svg class="icon"><use xlink:href="#icon-search"></use></svg> ค้นหาปกติ
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link sam-tabs__link" id="ai-tab" data-bs-toggle="tab" data-bs-target="#ai-search" type="button" onclick="setSearchMode('ai')">
+                <svg class="icon"><use xlink:href="#icon-ai"></use></svg> ค้นหาจาก AI
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content search__content" id="searchTabContent">
+        <div class="tab-pane fade show active" id="normal-search" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12 d-flex gap-2">
+                    <div class="input-group search__input-group">
+                        <input type="text" name="keyword" class="form-control search__input" id="keywordInput" placeholder="คำค้นหาทรัพย์สิน เช่น รหัสทรัพย์, ทำเล...">
+                        <button type="button" class="btn btn--square btn--transparent text-white d-none d-md-block" id="voice-btn"><svg class="icon"><use xlink:href="#icon-mic"></use></svg></button>
+                        <button type="button" class="btn btn--square btn--transparent text-white" id="image-btn"><svg class="icon"><use xlink:href="#icon-camera"></use></svg></button>
+                    </div>
+                    <button class="btn btn--square btn--white" type="button" data-bs-toggle="offcanvas" data-bs-target="#advancedSearch">
+                        <svg class="icon"><use xlink:href="#icon-slider"></use></svg>
+                    </button>
+                </div>
+
+                <div class="col-md-4 d-none d-md-block">
+                    <div class="search__select-group">
+                        <select id="search-property-type" name="types" multiple>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-none d-md-block">
+                    <div class="search__select-group">
+                        <select id="search-province" name="provinces" multiple>
+                            <option value="select-all">-- เลือกทั้งหมด --</option>
+                            <option value="bkk">กรุงเทพฯ</option>
+                            <option value="nonthaburi">นนทบุรี</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-none d-md-block">
+                    <div class="search__select-group">
+                        <select id="search-district" name="districts" multiple disabled>
+                            <option value="select-all">-- เลือกทั้งหมด --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" name="minPrice" id="minPriceInput">
+            <input type="hidden" name="maxPrice" id="maxPriceInput">
+
+            <div class="row mt-3">
+                <div class="col-md-4 d-flex gap-2">
+                    <button type="reset" id="btn-reset" class="btn btn--hover btn--gray">ล้างข้อมูล</button>
+                    <button type="button" id="btn-normal-search" class="btn btn--hover btn--pink">ค้นหา</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="ai-search" role="tabpanel">
+            <div class="ai-input-wrapper">
+                <div class="input-group search__input-group">
+                    <input type="text" name="ai_query" class="form-control search__input" id="keywordInputAi" placeholder="บอกสิ่งที่คุณต้องการ เช่น 'หาคอนโดโซนบางนา...'">
+                    <button type="button" class="btn search__btn" data-bs-toggle="tooltip" data-bs-title="การค้นหาจาก AI อาจใช้เวลานานขึ้น">
+                        <i class="bi bi-info-circle"></i>
+                    </button>
+                </div>
+                <button type="button" id="btn-ai-search" class="btn btn--hover btn--purple">
+                    <span class="btn__text">ค้นหาจาก AI</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="search--tags">
+        <div class="d-block">ยอดนิยม:</div>
+        <div class="tag--cloud">
+            <span class="tag--cloud__tag popular-tag" data-query="ขายทอดตลาด">รวมทรัพย์ขายทอดตลาด</span>
+            <span class="tag--cloud__tag popular-tag" data-query="บ้านเดี่ยว 3-5 ล้าน">บ้านเดี่ยว 3-5 ล้าน</span>
+            <span class="tag--cloud__tag popular-tag" data-query="คอนโดใกล้รถไฟฟ้า">คอนโดใกล้รถไฟฟ้า</span>
+        </div>
+    </div>
+</form>

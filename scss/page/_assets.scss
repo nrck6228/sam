@@ -10,3 +10,28 @@
 .section--promotion {
     overflow: hidden;
 }
+
+.compare--bar {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    left: 0;
+    bottom: 0;
+    padding: 15px 0;
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    background-color: rgba(0, 0, 0, var(--opacity-50));
+    z-index: 1050;
+    transform: translateY(100%); /* เริ่มต้นซ่อนไว้ด้านล่าง */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &.active {
+        transform: translateY(0);
+    }
+
+    .compare--grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /* Creates 5 equal-width columns */
+        gap: 10px; /* Optional: adds space between items */
+    }
+}

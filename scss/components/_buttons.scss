@@ -120,6 +120,42 @@
     }
 }
 
+.btn--primary {
+    color: var(--neutral-100);
+    background-image: var(--clr-primary-dark);
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+        color: var(--neutral-100);
+    }
+
+    &:first-child {
+        &:active, &:focus {
+            color: var(--neutral-100);
+            background-image: var(--neutral-500);
+            box-shadow: var(--shadow-sm);
+        }
+    }
+}
+
+.btn--secondary {
+    color: var(--neutral-100);
+    background-image: var(--neutral-400);
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+        color: var(--neutral-100);
+    }
+
+    &:first-child {
+        &:active, &:focus {
+            color: var(--neutral-100);
+            background-image: var(--neutral-500);
+            box-shadow: var(--shadow-sm);
+        }
+    }
+}
+
 .btn--green {
     color: var(--neutral-100);
     background-image: var(--grad-green);
@@ -210,6 +246,27 @@
     }
 }
 
+.btn--outline-black {
+    color: var(--black);
+    background-color: transparent;
+    border: 1px solid var(--neutral-300);
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+        color: var(--black);
+        background-color: var(--neutral-300);
+        border-color: var(--neutral-300);
+    }
+
+    &:first-child {
+        &:active, &:focus {
+            color: var(--black);
+            background-color: var(--neutral-300);
+            border-color: var(--neutral-300);
+        }
+    }
+}
+
 .btn--opacity-white {
     color: var(--text-main);
     backdrop-filter: blur(var(--blur-md));
@@ -250,6 +307,69 @@
     }
 }
 
+.btn--clear {
+    color: var(--neutral-100);
+    background-color: var(--clr-danger);
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+        color: var(--neutral-100);
+        background-color: var(--clr-danger);
+        box-shadow: var(--shadow-sm);
+    }
+
+    &:first-child {
+        &:active, &:focus {
+            color: var(--neutral-100);
+            background-color: var(--clr-danger);
+            box-shadow: var(--shadow-sm);
+        }
+    }
+}
+
+.btn--outline-clear {
+    color: var(--clr-danger);
+    border-color: var(--clr-danger);
+    background-color: var(--neutral-100);
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+        color: var(--neutral-100);
+        background-color: var(--clr-danger);
+        box-shadow: var(--shadow-sm);
+    }
+
+    &:first-child {
+        &:active, &:focus {
+            color: var(--clr-danger);
+            border-color: var(--clr-danger);
+            background-image: var(--neutral-100);
+            box-shadow: var(--shadow-sm);
+        }
+    }
+}
+
+.btn--remove {
+    min-width: 1px;
+    min-height: 1px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border-radius: var(--radius-circle);
+    color: var(--neutral-100);
+    border-color: var(--clr-danger);
+    background-color: var(--clr-danger);
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+        border-radius: var(--radius-circle);
+        color: var(--neutral-100);
+        border-color: var(--clr-danger);
+        background-color: var(--clr-danger);
+        box-shadow: var(--shadow-sm);
+    }
+}
+
 .btn--square {
     min-width: 1px;
     width: 40px;
@@ -273,5 +393,36 @@
         .btn__icon {
             transform: translate(5px, -5px);
         }
+    }
+}
+
+.btn--download {
+    background-size: 300% 100%;
+    background-position: left center;
+    overflow: hidden;
+
+    .btn__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.2em;
+        height: 1.2em;
+        transition: all var(--transition);
+
+        .icon {
+            /* กำหนดขนาด */
+            width: 16px;
+            height: 16px;
+            /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
+            fill: currentColor;
+            /* ป้องกันปัญหาสัดส่วนเพี้ยน */
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+
+    &:hover {
+        background-position: right center;
     }
 }

@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "รายละเอียดทรัพย์สิน | SAM";
+}
+
+<div id="asset-detail-container">
+    <div class="text-center py-5">กำลังโหลดข้อมูลทรัพย์สิน...</div>
+</div>
+
+@section Scripts {
+    <script>
+        // รับค่ารหัสทรัพย์สินจาก ViewBag
+        const SELECTED_ASSET_CODE = "@ViewBag.AssetCode";
+    </script>
+    <script type="module" src="~/js/asset-detail-engine.js"></script>
+}

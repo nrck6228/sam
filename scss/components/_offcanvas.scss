@@ -36,6 +36,261 @@
     }
 }
 
+.offcanvas-search {
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    background-color: rgba(0, 0, 0, var(--opacity-50));
+
+    &__title {
+        font-weight: 600;
+        font-size: var(--fs-h3);
+        color: var(--neutral-100);
+    }
+
+    &__close {
+        border: 0;
+        background-color: transparent;
+        font-size: var(--fs-h4);
+        color: var(--neutral-100);
+    }
+
+    &__input {
+        width: 100%;
+        height: 45px;
+        color: var(--neutral-100);
+        border: 0;
+        border-bottom: 1px solid var(--neutral-100);
+        border-radius: 0;
+        background-color: transparent;
+
+        &::placeholder {
+            color: var(--neutral-100);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            background-color: transparent;
+        }
+    }
+
+    &__input.form-control {
+        width: 100%;
+        height: 45px;
+        color: var(--neutral-100);
+        border: 0;
+        border-bottom: 1px solid var(--neutral-100);
+        border-radius: 0;
+        background-color: transparent;
+
+        &::placeholder {
+            color: var(--neutral-100);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    &__check-group {
+        flex: 1 1 auto;
+        display: flex;
+        grid-gap: 12px;
+        gap: 12px;
+
+        .btn--opacity-black {
+            width: 100%;
+            color: var(--neutral-100);
+
+            &:hover {
+                color: var(--neutral-100);
+                background-color: var(--clr-accent-pink);
+            }
+        }
+    }
+
+    &__select-group {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--neutral-100);
+
+        &.show {
+            z-index: 1050;
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 8px !important;
+            padding: 8px;
+        }
+
+        .dropdown-item {
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+        /* หมุนไอคอน */
+        .transition-icon {
+            transition: transform var(--transition);
+        }
+
+        .show .transition-icon {
+            transform: rotate(180deg);
+        }
+
+        .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+    }
+
+    &__custom-select {
+        background: transparent;
+        border: none;
+        color: var(--neutral-100);
+        padding: 10px 0 !important;
+        border-radius: 0 !important;
+
+        &:active {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+
+        &:focus, &:focus-visible {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+
+        &:hover {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+
+        &.show {
+            color: var(--neutral-100);
+            box-shadow: none;
+        }
+    }
+
+    &__select-icon {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        transition: all var(--transition);
+    }
+
+    .btn-check + .btn--opacity-black {
+        &:hover {
+            color: var(--neutral-100);
+            background-color: var(--clr-accent-pink);
+        }
+    }
+
+    .btn-check:checked + .btn--opacity-black {
+        color: var(--neutral-100);
+        background-color: var(--clr-accent-pink);
+    }
+
+    .form-label {
+        color: var(--neutral-100);
+    }
+
+    .property-range-slider {
+        padding: 10px 0;
+    }
+
+    .range-slider-container {
+        position: relative;
+        width: 100%;
+        height: 5px; /* ความหนาของเส้น */
+    }
+    /* เส้นพื้นหลัง */
+    .slider-track {
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.3); /* สีขาวจางๆ แบบในรูป */
+        border-radius: 5px;
+    }
+    /* ตั้งค่าพื้นฐานสำหรับ Input Range ทั้งคู่ */
+    input[type="range"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        outline: none;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        background-color: transparent;
+        pointer-events: none; /* เพื่อให้คลิกทะลุไปตัวที่อยู่ข้างหลังได้ */
+    }
+    /* ปุ่มวงกลม (Thumb) */
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 18px;
+        width: 18px;
+        background-color: #ffffff; /* สีขาวตามรูป */
+        border-radius: 50%;
+        cursor: pointer;
+        pointer-events: auto; /* กลับมาให้รับคลิกได้เฉพาะที่ตัวปุ่ม */
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    /* สำหรับ Firefox */
+    input[type="range"]::-moz-range-thumb {
+        height: 18px;
+        width: 18px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    .input-group {
+        border-bottom: 1px solid var(--neutral-100);
+    }
+
+    .price-input {
+        color: var(--neutral-100);
+        border: 0;
+        border-bottom: 1px solid var(--neutral-100);
+        border-radius: 0;
+        background-color: transparent;
+
+        &::placeholder {
+            color: var(--neutral-100);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .input-group-text {
+        color: var(--neutral-100);
+        border: 0;
+        border-bottom: 1px solid var(--neutral-100);
+        border-radius: 0;
+        background-color: transparent;
+    }
+}
+
 /* ปรับแต่ง Backdrop (พื้นหลังดำ) ให้ค่อยๆ Fade นุ่มๆ */
 .offcanvas-backdrop {
     transition: opacity 0.5s ease !important;

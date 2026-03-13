@@ -37,7 +37,7 @@
 
     <div class="container-fluid">
         <h1 class="page__title">
-            โปรโมชั่นทรัพย์สินเด่น
+            โปรโมชั่นทรัพย์เด่น
         </h1>
     </div>
 </section>
@@ -47,23 +47,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div id="promotion-container" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-3">
-                        @foreach (var item in Model)
-                        {
-                            <div class="card card--promotion">
-                                <div class="card__figure">
-                                    <img src="@item.ImageUrl" class="card__image" alt="@item.Title">
-                                </div>
-                                <div class="card__body">
-                                    <h5 class="card__title">@item.Title</h5>
-                                    <p class="card__text">@item.Description</p>
-                                    <time class="card__date">
-                                        @item.Date
-                                    </time>
-                                </div>
-                                <a href="@item.Link" class="stretched-link"></a>
-                            </div>
-                        }
+                    <div id="promotion-container" class="card-deck card-deck--cards-lg-3">
                     </div>
 
                     <nav aria-label="Page navigation">
@@ -79,33 +63,32 @@
 @section Styles {
 }
 @section Scripts {
-    <script type="module" src="~/js/promotion.js"></script>
+    <script type ="module" src="~/js/features/content/promotion.js"></script>
     <script>
-        $(document).on('click', '#promotion-pagination .page-link', function (e) {
+        $(document).on('click', '.page-link', function (e) {
             e.preventDefault();
-
-            // ตรวจสอบว่าปุ่มที่คลิกเป็นปุ่มที่ใช้งานได้หรือไม่
-            if ($(this).parent().hasClass('disabled') || $(this).parent().hasClass('active')) {
-                return;
-            }
+            if ($(this).parent().hasClass('disabled') || $(this).parent().hasClass('active')) return;
 
             const href = $(this).attr('href');
             const segments = href.split('/');
             const page = parseInt(segments[segments.length - 1]);
 
-            if (!page) return;
+            // 1. สั่งจางลง (Opacity -> 0)
+            $('#promotion-container').stop().animate({ opacity: 0 }, 200, function() {
 
-            // เอฟเฟกต์การเปลี่ยนหน้า
-            $('#promotion-container').stop().animate({ opacity: 0 }, 300, function() {
-                window.currentPage = page;
-                window.renderPromotions(page);
-                $(this).animate({ opacity: 1 }, 300);
+                // 2. เรียกฟังก์ชัน Render ใหม่ (ต้องชื่อเดียวกับที่ผูกในไฟล์ JS)
+                if (typeof window.renderContent === 'function') {
+                    window.renderContent(page);
+                }
+
+                // 3. สั่งแสดงผลกลับมา (Opacity -> 1)
+                $(this).animate({ opacity: 1 }, 200);
             });
 
-            // เลื่อนหน้าจอขึ้น
+            // เลื่อนหน้าจอกลับขึ้นไปด้านบน
             $('html, body').stop().animate({
                 scrollTop: $("#promotion-container").offset().top - 120
-            }, 800, 'swing');
+            }, 600);
 
             window.history.pushState({ page: page }, '', href);
         });
