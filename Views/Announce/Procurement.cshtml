@@ -1,0 +1,193 @@
+﻿@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+
+                <li class="breadcrumb-item dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        เกี่ยวกับเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+                    </ul>
+                </li>
+
+                <li class="breadcrumb-item dropdown active" aria-current="page">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        รู้จักเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            ประกาศจัดซื้อจัดจ้าง
+        </h1>
+    </div>
+</section>
+
+<section class="section section--content">
+    <div class="section--content-announcement">
+        <div class="container-fluid">
+            <div class="row justify-content-between align-items-center mb-4">
+                <div class="col-12 col-lg-auto">
+                    <ul class="nav nav-pills sam-tabs sam-tabs--primary m-0">
+                        <li class="nav-item">
+                            <a href="/announcement/interest-rate" class="nav-link sam-tabs__link">ประกาศอัตราดอกเบี้ย</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/announcement/procurement" class="nav-link sam-tabs__link active">ประกาศจัดซื้อจัดจ้าง</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/announcement/npl-npa" class="nav-link sam-tabs__link">NPL / NPA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/announcement/general" class="nav-link sam-tabs__link">ประกาศทั่วไป</a>
+                        </li>
+                    </ul>
+                </div>
+                @* <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                    <div class="form form--filter">
+                        <div class="form-group d-flex gap-2">
+                            <div class="select">
+                                <select id="filter-month" class="select__input">
+                                    <option value="all">ทุกเดือน</option>
+                                    <option value="1">มกราคม</option>
+                                    <option value="2">กุมภาพันธ์</option>
+                                    <option value="3">มีนาคม</option>
+                                    <option value="4">เมษายน</option>
+                                    <option value="5">พฤษภาคม</option>
+                                    <option value="6">มิถุนายน</option>
+                                    <option value="7">กรกฎาคม</option>
+                                    <option value="8">สิงหาคม</option>
+                                    <option value="9">กันยายน</option>
+                                    <option value="10">ตุลาคม</option>
+                                    <option value="11">พฤศจิกายน</option>
+                                    <option value="12">ธันวาคม</option>
+                                </select>
+                            </div>
+                            <div class="select">
+                                <select id="filter-year" class="select__input">
+                                    <option value="all">ทุกปี</option>
+                                    <option value="2026">2569</option>
+                                    <option value="2025">2568</option>
+                                    <option value="2024">2567</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div> *@
+            </div>
+            <div class="form form--filter">
+                <div class="row">
+                    <div class="col-12 col-md-4 col-lg-3 mb-3">
+                        <div class="form-group">
+                            <div class="search w-100">
+                                <input type="text" class="search__input" name="keyword" id="search-keyword" maxlength="100" autocomplete="off" placeholder="ชื่อโครงการ หรือ เลขที่ประกาศ...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-3 mb-3">
+                        <div class="form-group">
+                            <div class="select w-100">
+                                <select id="filter-method" class="select__input">
+                                    <option value="all">วิธีการจัดซื้อ</option>
+                                    <option value="เฉพาะเจาะจง">เฉพาะเจาะจง</option>
+                                    <option value="คัดเลือก">คัดเลือก</option>
+                                    <option value="e-bidding">e-bidding</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-3 mb-3">
+                        <div class="form-group">
+                            <div class="select w-100">
+                                <select id="filter-type" class="select__input">
+                                    <option value="all">ประเภทประกาศ</option>
+                                    <option value="ประกาศเชิญชวน">ประกาศเชิญชวน</option>
+                                    <option value="ประกาศผู้ชนะ">ประกาศผู้ชนะ</option>
+                                    <option value="ยกเลิกประกาศ">ยกเลิกประกาศ</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-3 mb-3">
+                        <div class="form-group">
+                            <div class="search w-100">
+                                <input type="text" id="filter-date-start" class="search__input" placeholder="วันที่เริ่มต้น" required>
+                                <div class="search__icon">
+                                    <span class="date-icon-wrapper" style="color: #656565">
+                                        <svg class="icon"><use xlink:href="#icon-calendar"></use></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-3 mb-3">
+                        <div class="form-group">
+                            <div class="select w-100">
+                                <select id="filter-budget-year" class="select__input">
+                                    <option value="all">ปีงบประมาณ</option>
+                                    <option value="2569">2569</option>
+                                    <option value="2568">2568</option>
+                                    <option value="2567">2567</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-auto mb-3">
+                        <div class="form-group">
+                            <button type="button" id="btn-search" class="btn btn--hover btn--pink">
+                                <span class="btn__text">ค้นหา</span>
+                            </button>
+                            @* <button type="button" id="btn-reset-filter" class="btn btn--hover btn--gray">
+                                <span class="btn__text">รีเซท</span>
+                            </button> *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="procurement-container" class="card-deck card-deck--cards-1 card-deck--cards-md-3 card-deck--cards-lg-4">
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center pagination--primary" id="procurement-pagination">
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+}
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/th.js"></script>
+    <script type="module" src="~/js/features/announcement/procurement.js"></script>
+}

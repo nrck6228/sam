@@ -1,25 +1,81 @@
 ﻿@use "../abstracts/variables" as vars;
 @use "../abstracts/mixins" as media;
 
-.contact, .contact-form {
-    position: relative;
-}
+.section--contact {
+    width: 100%;
+    min-height: 100dvh;
+    padding-bottom: 4rem;
+    margin: 0 auto;
 
-.contact-form {
-    .contact-direct {
-        .info-label {
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 1rem;
-            color: black;
-            margin-bottom: 5px;
+    .branch--list {
+        display: block;
+        margin: 0 auto;
+
+        .branch--item {
+            display: block;
+            padding-top: 1.5rem;
+            margin-bottom: 2rem;
+            border-top: 1px solid var(--neutral-400);
+
+            .branch__title {
+                margin-bottom: 10px;
+                font-weight: 600;
+                font-size: 1.5rem;
+                line-height: 1.4;
+                color: var(--clr-primary-dark);
+            }
+
+            .branch__subtitle {
+                margin-bottom: 10px;
+                font-weight: 600;
+                font-size: 1.25rem;
+                line-height: 1.4;
+                color: var(--black);
+            }
+
+            .branch__info {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    display: flex;
+                    gap: 15px;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .branch__label {
+                display: block;
+                width: 100px;
+                height: auto;
+                flex: 0 0 100px;
+                font-weight: 600;
+                font-size: 1rem;
+                color: var(--black);
+            }
+
+            .branch__text {
+                display: block;
+                font-weight: 400;
+                font-size: 1rem;
+                color: var(--black);
+            }
         }
+    }
 
-        .info-value {
-            font-size: 0.875rem;
-            color: black;
-            margin-bottom: 1.2rem;
-            line-height: 1.6;
+    .branch--map {
+        position: sticky;
+        top: 100px;
+        width: 100%;
+        height: 600px;
+        padding: 0;
+        background-color: var(--white);
+        overflow: hidden;
+
+        iframe {
+            width: 100%;
+            height: 100%;
         }
     }
 }

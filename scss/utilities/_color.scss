@@ -22,6 +22,10 @@
 // Generate text color utilities
 @include generate-text-color-utilities();
 
+.text-green {
+    color: var(--clr-primary-dark) !important;
+}
+
 .text-black {
     color: var(--black) !important;
 }

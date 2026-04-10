@@ -1,0 +1,16 @@
+﻿@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+.section--career {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100dvh;
+    margin: 0 auto;
+}
+
+.section--vacancies {
+    padding: 5rem 0 4rem 0;
+    margin: 0 auto;
+}

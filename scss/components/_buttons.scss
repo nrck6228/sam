@@ -48,7 +48,7 @@
     min-height: 40px;
     padding: 0.5em 1em; // ใช้ em เพื่อให้ padding ขยายตามขนาดฟอนต์
     font-weight: 400;
-    font-size: var(--fs-body);
+    font-size: 1rem;
     line-height: 1.4;
     white-space: nowrap;
     border-radius: 100px; // ใช้ค่าเยอะๆ เพื่อให้โค้งมนเสมอ
@@ -72,8 +72,8 @@
 
         .icon {
             /* กำหนดขนาด */
-            width: 12px;
-            height: 12px;
+            width: 18px;
+            height: 18px;
             /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
             fill: currentColor;
             /* ป้องกันปัญหาสัดส่วนเพี้ยน */
@@ -92,8 +92,8 @@
 
             .icon {
                 /* กำหนดขนาด */
-                width: 12px;
-                height: 12px;
+                width: 18px;
+                height: 18px;
                 /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
                 fill: currentColor;
                 /* ป้องกันปัญหาสัดส่วนเพี้ยน */
@@ -151,6 +151,74 @@
         &:active, &:focus {
             color: var(--neutral-100);
             background-image: var(--neutral-500);
+            box-shadow: var(--shadow-sm);
+        }
+    }
+}
+
+.btn--sam-green {
+    color: var(--neutral-100);
+    background-color: var(--clr-primary-dark);
+    background-image: var(--grad-green);
+    box-shadow: var(--shadow-sm);
+    background-size: 300% 100%;
+    background-position: left center;
+    overflow: hidden;
+
+    &:hover {
+        color: var(--neutral-100);
+        background-position: right center;
+    }
+
+    &:first-child {
+        &:active, &:focus {
+            color: var(--neutral-100);
+            background-color: var(--neutral-500);
+            box-shadow: var(--shadow-sm);
+        }
+    }
+}
+
+.btn--sam-pink {
+    color: var(--black);
+    background-color: var(--clr-accent-pink);
+    background-image: var(--grad-pink);
+    box-shadow: var(--shadow-sm);
+    background-size: 300% 100%;
+    background-position: left center;
+    overflow: hidden;
+
+    &:hover {
+        background-position: right center;
+    }
+
+    &:first-child {
+        &:active, &:focus {
+            background-color: var(--clr-accent-pink);
+            background-image: var(--grad-pink);
+            box-shadow: var(--shadow-sm);
+        }
+    }
+}
+
+.btn--sam-gray {
+    color: var(--black);
+    background-color: var(--neutral-300);
+    background-image: var(--grad-gray);
+    box-shadow: var(--shadow-sm);
+    background-size: 300% 100%;
+    background-position: left center;
+    overflow: hidden;
+
+    &:hover {
+        background-position: right center;
+    }
+
+    &:first-child {
+        &:active, &:focus {
+            color: var(--black);
+            background-color: var(--neutral-300);
+            background-image: var(--grad-gray);
             box-shadow: var(--shadow-sm);
         }
     }
@@ -307,6 +375,9 @@
     }
 }
 
+.btn--accept {
+}
+
 .btn--clear {
     color: var(--neutral-100);
     background-color: var(--clr-danger);
@@ -424,5 +495,64 @@
 
     &:hover {
         background-position: right center;
+    }
+}
+
+.btn--file {
+    padding-left: 0;
+    gap: 10px;
+
+    .btn__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: var(--white);
+        border-radius: var(--radius-circle);
+        transition: all var(--transition);
+        background-color: var(--black);
+
+        .icon {
+            /* กำหนดขนาด */
+            width: 16px;
+            height: 16px;
+            /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
+            fill: currentColor;
+            /* ป้องกันปัญหาสัดส่วนเพี้ยน */
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    &-view {
+        .btn__icon {
+            background-image: var(--grad-green);
+            background-size: 300% 100%;
+            background-position: left center;
+            overflow: hidden;
+        }
+
+        &:hover {
+            .btn__icon {
+                background-position: right center;
+            }
+        }
+    }
+
+    &-download {
+        .btn__icon {
+            color: var(--black);
+            background-image: var(--grad-pink);
+            background-size: 300% 100%;
+            background-position: left center;
+            overflow: hidden;
+        }
+
+        &:hover {
+            .btn__icon {
+                background-position: right center;
+            }
+        }
     }
 }

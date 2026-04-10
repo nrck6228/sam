@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+
+                <li class="breadcrumb-item dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        เกี่ยวกับเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+                    </ul>
+                </li>
+
+                <li class="breadcrumb-item dropdown active" aria-current="page">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        รู้จักเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            ประกาศทั่วไป
+        </h1>
+    </div>
+</section>
+
+<section class="section section--content">
+    <div class="section--content-announcement">
+        <div class="container-fluid">
+            <div class="row justify-content-between align-items-center mb-4">
+                <div class="col-12 col-lg-auto">
+                    <ul class="nav nav-pills sam-tabs sam-tabs--primary m-0">
+                        <li class="nav-item">
+                            <a href="/announcement/interest-rate" class="nav-link sam-tabs__link">ประกาศอัตราดอกเบี้ย</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/announcement/procurement" class="nav-link sam-tabs__link">ประกาศจัดซื้อจัดจ้าง</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/announcement/npl-npa" class="nav-link sam-tabs__link">NPL / NPA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/announcement/general" class="nav-link sam-tabs__link active">ประกาศทั่วไป</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                    <div class="form form--filter">
+                        <div class="form-group d-flex gap-2">
+                            <div class="select">
+                                <select id="filter-month" class="select__input">
+                                    <option value="all">ทุกเดือน</option>
+                                    <option value="1">มกราคม</option>
+                                    <option value="2">กุมภาพันธ์</option>
+                                    <option value="3">มีนาคม</option>
+                                    <option value="4">เมษายน</option>
+                                    <option value="5">พฤษภาคม</option>
+                                    <option value="6">มิถุนายน</option>
+                                    <option value="7">กรกฎาคม</option>
+                                    <option value="8">สิงหาคม</option>
+                                    <option value="9">กันยายน</option>
+                                    <option value="10">ตุลาคม</option>
+                                    <option value="11">พฤศจิกายน</option>
+                                    <option value="12">ธันวาคม</option>
+                                </select>
+                            </div>
+                            <div class="select">
+                                <select id="filter-year" class="select__input">
+                                    <option value="all">ทุกปี</option>
+                                    <option value="2026">2569</option>
+                                    <option value="2025">2568</option>
+                                    <option value="2024">2567</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="general-container" class="card-deck card-deck--cards-1 card-deck--cards-md-3 card-deck--cards-lg-4">
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center pagination--primary" id="general-pagination">
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+}
+@section Scripts {
+    <script type="module" src="~/js/features/announcement/general.js"></script>
+}

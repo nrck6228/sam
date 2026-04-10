@@ -23,15 +23,15 @@ const engine = initListEngine({
             : ""; // ไม่มีข้อมูล ไม่ต้องแสดงอะไรเลย
 
         return `
-        <div class="card card--annual">
+                            <div class="card card--annual">
                                 <div class="card__figure">
                                     <img src="${item.imageUrl}" alt="รายงานประจำปี ${item.year}" class="card__image" onerror="this.onerror=null; this.src='/media/images/annual/default-thumb.svg';">
                                     <div class="card__download">
-                                        <a href="${item.viewUrl}" class="btn btn--download btn--white">
+                                        <a href="${item.viewUrl}" target="_blank" class="btn btn--file btn--file-view">
                                             <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-view"></use></svg></span>
                                             <span class="btn__text">ดูออนไลน์</span>
                                         </a>
-                                        <a href="${item.downloadUrl}" class="btn btn--download btn--white">
+                                        <a href="${item.downloadUrl}" download class="btn btn--file btn--file-download">
                                             <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-download"></use></svg></span>
                                             <span class="btn__text">ดาวน์โหลด</span>
                                         </a>

@@ -35,3 +35,576 @@
         gap: 10px; /* Optional: adds space between items */
     }
 }
+
+// asset-detail.scss
+
+.asset-detail {
+    padding: 5rem 0;
+    min-height: 100vh;
+    background-color: var(--neutral-150);
+
+    .section-title {
+        font-size: var(--fs-h2);
+        font-weight: 600;
+        color: var(--black);
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #f0f0f0;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--clr-accent-pink);
+        }
+    }
+    // --- Left Side: Information ---
+    .asset-info {
+        padding: 4rem 2rem 2rem 1rem; // เว้นด้านซ้ายไว้เยอะหน่อยให้ดูมี Space
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: var(--neutral-100);
+
+        &__title {
+            font-size: var(--fs-h2);
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+
+        &__address {
+            color: var(--neutral-700);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        &__stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); // แบ่ง 2 คอลัมน์สำหรับ Stat
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+
+            .stat-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 1rem;
+                border-radius: var(--radius-sm);
+                background-color: var(--neutral-200);
+
+                &__icon {
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    color: var(--black);
+                }
+
+                &__text {
+                    font-weight: 300;
+                    font-size: 1rem;
+                    color: var(--neutral-700);
+                }
+            }
+        }
+
+        &__details {
+            margin-bottom: 3rem;
+
+            li {
+                margin-bottom: 0.75rem;
+                display: flex;
+                font-size: var(--fs-small);
+                line-height: 1.6;
+                color: var(--neutral-700);
+
+                .label {
+                    font-weight: 600;
+                    color: var(--neutral-700);
+                    min-width: 220px; // ดันให้ค่าฝั่งขวาตรงกัน
+                    flex-shrink: 0;
+                }
+
+                span:not(.label) {
+                    color: var(--black);
+                }
+            }
+        }
+
+        &__price-block {
+            .price {
+                margin-bottom: 1.5rem;
+
+                &__value {
+                    display: block;
+                    font-size: 4rem;
+                    font-weight: 700;
+                    color: var(--clr-primary-dark);
+                    line-height: 1;
+                }
+
+                &__currency {
+                    font-size: 3rem;
+                    font-weight: 700;
+                    color: var(--clr-primary-dark);
+                    line-height: 1;
+                }
+
+                &__unit {
+                    color: var(--neutral-700);
+                    font-size: var(--fs-small);
+                }
+            }
+        }
+
+        &__badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            .badge {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: auto;
+                height: 40px;
+                padding: .5rem 1rem;
+                color: var(--text-main);
+                border-radius: 20px;
+                backdrop-filter: blur(var(--blur-md));
+                -webkit-backdrop-filter: blur(var(--blur-md));
+                background-color: rgba(255, 255, 255, var(--opacity-50));
+                cursor: pointer;
+                transition: all var(--transition);
+
+                &--gray {
+                    background-color: var(--neutral-300);
+                }
+
+                &--pink {
+                    color: var(--neutral-100);
+                    background-color: var(--clr-accent-pink);
+                }
+
+                &--green {
+                    color: var(--neutral-100);
+                    background-color: var(--clr-primary-dark);
+                }
+            }
+        }
+    }
+    // --- Right Side: Gallery ---
+    .asset-gallery {
+        position: relative;
+        height: 100vh; // ให้สูงเต็มจอ
+        overflow: hidden;
+
+        &__slider {
+            height: 100%;
+        }
+
+        &__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; // ให้รูปเต็มพื้นที่โดยไม่เสียสัดส่วน
+        }
+
+        &__nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            width: 100%;
+            padding: 1rem 3rem;
+
+            .nav-btn {
+                width: 4rem;
+                height: 4rem;
+                border-radius: var(--radius-sm);
+                border: none;
+                background-color: rgba(0, 0, 0, var(--opacity-20));
+                color: var(--white);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(var(--blur-sm));
+                transition: all 0.3s;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, var(--opacity-70));
+                }
+            }
+        }
+
+        &__search-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 10;
+        }
+    }
+    // --- Section 2 Left Side: Information ---
+    .asset-description {
+        margin-bottom: 3rem;
+
+        .description-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--neutral-700);
+            white-space: pre-line; // สำคัญ: เพื่อให้การเว้นวรรคและขึ้นบรรทัดใหม่จาก Data แสดงผลถูกต้อง
+        }
+    }
+
+    .asset-sale-status {
+        margin-bottom: 3rem;
+
+        .status-list {
+            margin-bottom: 3rem;
+
+            li {
+                margin-bottom: 0.75rem;
+                display: flex;
+                font-size: 1rem;
+                line-height: 1.6;
+                color: var(--neutral-700);
+
+                .label {
+                    font-weight: 600;
+                    color: var(--neutral-700);
+                    min-width: 220px; // ดันให้ค่าฝั่งขวาตรงกัน
+                    flex-shrink: 0;
+                }
+
+                span:not(.label) {
+                    color: var(--black);
+                }
+            }
+        }
+
+        @media (max-width: 576px) {
+            .status-list {
+                li {
+                    flex-direction: column; // ในมือถือให้ Label อยู่บน เนื้อหาอยู่ล่าง
+
+                    .label {
+                        width: 100%;
+                        margin-bottom: 0.25rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .asset-documents {
+        .document-grid {
+            /*display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));*/
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            &__item {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 1rem 1.25rem;
+                background-color: var(--white);
+                border: 1px solid var(--white);
+                border-radius: 8px;
+                text-decoration: none;
+                transition: all var(--transition);
+
+                &:hover {
+                    background-color: var(--white);
+                    border-color: var(--white);
+                    /*.document-grid__icon {
+                        transform: translateY(5px);
+                    }*/
+
+                    .document-grid__text {
+                        color: var(--clr-primary-dark);
+                    }
+                }
+            }
+
+            &__icon {
+                width: 40px;
+                height: 40px;
+                /*background-color: rgba(var(--white), 0.1);
+                border-radius: 50%;*/
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                transition: all var(--transition);
+
+                .icon {
+                    width: 20px;
+                    height: 20px;
+                    fill: var(--clr-primary-dark);
+                }
+            }
+
+            &__text {
+                font-weight: 500;
+                color: var(--black);
+                font-size: 0.95rem;
+                transition: color var(--transition);
+            }
+        }
+    }
+    // --- Section 2 Left Side: MAP ---
+    .asset-sidebar-card {
+        position: sticky;
+        top: 100px; // ระยะห่างจากด้านบนเวลา Scroll
+    }
+
+    .asset-map {
+        &__container {
+            width: 100%;
+            height: 500px;
+            margin: 2rem auto;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        &__footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+    }
+}
+
+.related-section {
+    background-color: #f5f5f5; // พื้นหลังสีเทาอ่อนตามรูป
+    background-image: linear-gradient(120deg, var(--neutral-400), var(--neutral-300) );
+    padding: 80px 0;
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+
+        h2 {
+            font-size: var(--fs-h2);
+            font-weight: 600;
+            color: var(--black);
+            line-height: 1.4;
+            margin-bottom: 0;
+            position: relative;
+        }
+    }
+}
+
+.appointment-section {
+    padding: 5rem 0;
+    background-image: url('/media/images/bg/bg-appointment.jpg');
+    background-attachment: fixed;
+
+    .section-title {
+        font-size: var(--fs-h2);
+        font-weight: 600;
+        color: var(--black);
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .section-subtitle {
+        font-size: var(--fs-h5);
+        font-weight: 400;
+        color: var(--neutral-700);
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .asset-code {
+        font-size: var(--fs-h4);
+        font-weight: 400;
+        color: var(--black);
+        line-height: 1.4;
+        margin-bottom: 0;
+        position: relative;
+    }
+
+    .appointment-card {
+        position: relative;
+        padding: 2rem;
+        margin-bottom: 1rem;
+        border-radius: .5rem;
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(0, 0, 0, var(--opacity-50));
+
+        &__title {
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 1.4;
+            color: var(--white);
+        }
+    }
+}
+
+.loan-calculator {
+    padding: 5rem 0;
+    background-image: url('/media/images/bg/bg-cal.jpg');
+    background-attachment: fixed;
+
+    .section-title {
+        font-size: var(--fs-h2);
+        font-weight: 600;
+        color: var(--black);
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .calculator-card {
+        position: relative;
+        padding: 2rem;
+        margin-bottom: 1rem;
+        border-radius: .5rem;
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(0, 0, 0, var(--opacity-50));
+
+        &__title {
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 1.4;
+            color: var(--white);
+        }
+    }
+
+    .result-card {
+        position: relative;
+        padding: 2rem;
+        margin-bottom: 1rem;
+        border-radius: .5rem;
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(255, 255, 255, var(--opacity-50));
+
+        &__title {
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 1.4;
+            color: var(--black);
+        }
+
+        &__label {
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 1.4;
+            color: var(--black);
+        }
+
+        &__value {
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: var(--black);
+        }
+    }
+}
+// Responsive
+@media (max-width: 991px) {
+    .asset-detail {
+        .asset-info {
+            padding: 3rem 1.5rem;
+            height: auto;
+        }
+
+        .asset-gallery {
+            height: 50vh; // จอเล็กให้รูปเล็กลงครึ่งจอ
+        }
+    }
+}
+
+.share-options {
+    display: flex;
+    align-items: center;
+    gap: 12px; // ระยะห่างระหว่างไอคอน
+    padding: 10px 15px;
+    min-width: max-content; // บังคับให้กว้างเท่ากับเนื้อหาภายใน ไม่ให้หด
+
+    .share-btn {
+        flex-shrink: 0; // ป้องกันไอคอนโซเชียลโดนบีบ
+        transition: all var(--transition);
+
+        img {
+            width: 40px;
+            height: 40px;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .share-divider {
+        width: 1px;
+        height: 30px;
+        background-color: var(--neutral-300);
+        margin: 0 5px;
+        flex-shrink: 0;
+    }
+
+    .share-copy-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap; // *** สำคัญ: ห้ามตัวหนังสือตกบรรทัดเด็ดขาด ***
+        padding: 8px 16px;
+        color: var(--black);
+        background: #FFF35F;
+        border: 1px solid #FFF35F;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: 0.2s;
+        flex-shrink: 0; // ป้องกันปุ่มโดนบีบ
+
+        &:hover {
+            color: var(--black);
+            background: #FFE02E;
+        }
+
+        &.copied {
+            color: var(--black);
+            background-color: #FFD504;
+        }
+    }
+}
+
+.tippy-box[data-theme~='sam-share'] {
+    background-color: var(--white);
+    color: var(--black);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    border: 1px solid #eee;
+
+    .tippy-content {
+        padding: 5px; // ลด padding ของ tippy ลง เพราะเราคุมใน .share-options แล้ว
+    }
+
+    .tippy-arrow {
+        color: var(--white); // สีของติ่งลูกศร
+    }
+}

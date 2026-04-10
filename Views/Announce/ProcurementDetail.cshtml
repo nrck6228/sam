@@ -1,0 +1,273 @@
+﻿@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+
+                <li class="breadcrumb-item dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        เกี่ยวกับเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
+                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
+                    </ul>
+                </li>
+
+                <li class="breadcrumb-item dropdown active" aria-current="page">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        รู้จักเรา
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
+                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            ประกาศจัดซื้อจัดจ้าง
+        </h1>
+    </div>
+</section>
+
+<section class="section section--content py-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 mb-5">
+                <h2>@ViewBag.AnnounceTitle</h2>
+                <time class="text-muted d-block">วันที่ประกาศ: @ViewBag.DisplayDate</time>
+            </div>
+
+            <div class="col-12 mb-5">
+                <p>@ViewBag.Content</p>
+            </div>
+
+            <div class="col-12">
+                <h5 class="mb-3">เอกสารดาวน์โหลด</h5>
+            </div>
+
+            <div class="col-12">
+                <div class="card-deck card-deck--cards-1 card-deck--cards-md-3">
+                    @if (ViewBag.DownloadFiles != null)
+                    {
+                        foreach (var file in ViewBag.DownloadFiles)
+                        {
+                            <div class="card card--announcement h-100">
+                                <div class="card__body">
+                                    <h5 class="card__title">@file.name</h5>
+                                </div>
+                                <div class="card__footer">
+                                    <button type="button" onclick="checkDownloadPermission('@file.link')" class="btn btn--file btn--file-download">
+                                        <span class="btn__icon">
+                                            <svg class="icon"><use xlink:href="#icon-download"></use></svg>
+                                        </span>
+                                        <span class="btn__text">ดาวน์โหลด</span>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="col-12 mt-5">
+                <a href="/announcement/procurement" class="btn btn--hover btn--green">
+                    <span class="btn__text">
+                        กลับหน้าประกาศจัดซื้อจัดจ้าง
+                    </span>    
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade modal--custom" id="modalTerms" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="title">
+                    <h4 class="modal-title text-white">
+                        เงื่อนไขการยื่นข้อเสนอ
+                    </h4>
+                    <p class="modal-subtitle text-white">
+                        การจัดซื้อจัดจ้างของ บริษัท บริหารสินทรัพย์สุขุมวัท จำกัด
+                    </p>
+                    @* <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x"></i>
+                    </button> *@
+                </div>
+            </div>
+            <div class="modal-body text-white" style="max-height: 400px; overflow-y: auto;">
+                <p>1. ผู้ยื่นข้อเสนอต้องปฏิบัติตามระเบียบการจัดซื้อจัดจ้างอย่างเคร่งครัด...</p>
+                <p>2. ข้อมูลที่กรอกต้องเป็นความจริงทุกประการ...</p>
+            </div>
+            <div class="modal-footer justify-content-start">
+                <button type="button" class="btn btn--hover btn--gray" data-bs-dismiss="modal">
+                    <span class="btn__text">
+                        ยกเลิก
+                    </span>
+                </button>
+                <button type="button" onclick="acceptTerms()" class="btn btn--hover btn--pink">
+                    <spn class="btn__text">
+                        ยอมรับเงื่อนไข
+                    </spn>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal--custom" id="modalUserForm" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="title">
+                    <h4 class="modal-title text-white">
+                        ข้อมูลผู้ประกอบการในการดาวน์โหลดเอกสารจัดซื้อจัดจ้าง
+                    </h4>
+                </div>
+            </div>
+            <div class="modal-body p-4">
+                <form id="formOperator" class="form">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="เลขประจำตัวผู้เสียภาษี*" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="ชื่อ-นามสกุล*" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="ชื่อสถานประกอบการ*" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="ชื่ออาคาร">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="ห้องเลขที่">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="ชั้นที่">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="ชื่อหมู่บ้าน">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="เลขที่">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="หมู่ที่">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="ตรอก/ซอย">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="ถนน">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <select id="province" name="province" class="form-select">
+                                    <option value="0">จังหวัด*</option>
+                                    <option value="1">กรุงเทพฯ</option>
+                                    <option value="2">นนทบุรี</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <select id="province" name="district" class="form-select">
+                                    <option value="0">อำเภอ*</option>
+                                    <option value="1">เมืองสมุทรปราการ</option>
+                                    <option value="2">เมืองนนทบุรี</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <select id="province" name="subdistrict" class="form-select">
+                                    <option value="0">ตำบล*</option>
+                                    <option value="1">ตำบล</option>
+                                    <option value="2">ตำบล</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="รหัสไปรษณีย์*" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์สำหรับติดต่อ*" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="อีเมล*" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="รหัสยืนยัน*" required>
+                                    <span class="input-group-text bg-dark text-warning fw-bold border-0 rounded-0">4235</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-start border-0">
+                <button type="button" class="btn btn--hover btn--gray" data-bs-dismiss="modal">ยกเลิก</button>
+                <button type="button" onclick="submitOperatorForm()" class="btn btn--hover btn--pink">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+}
+@section Scripts {
+    <script type="module" src="~/js/features/announcement/procurement-detail.js"></script>
+    <script>
+        // $(document).ready(function() {
+        //     $('#province').select2({
+        //         placeholder: 'จังหวัด*',
+        //         allowClear: true
+        //     });
+        // });
+    </script>
+}

@@ -1,0 +1,190 @@
+﻿@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item"><a href="/contact-us">ติดต่อเรา</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>แลกเปลี่ยนลิงก์</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section>
+    <div class="section section--contact d-flex align-items-center" style="background-image:url(/media/images/bg/bg-contact-1.jpg)">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="page__title text-gradient text-gradient--green">
+                        แลกเปลี่ยนลิงค์กับเว็บไซต์ SAM
+                    </h2>
+                    <p class="h5 font-weight-normal">
+                        แลกเปลี่ยนลิงค์กับเว็บไซต์ SAM คือการแลกลิงค์ซึ่งกันและกัน โดยการแลกลิงค์นี้ ต้องได้รับความ ร่วมมือในการแลกลิงค์ทั้งสองฝ่าย เป็นการยินยอมกันทั้งคู่ โดยการแลกลิงค์ ต้องคำนึงถึงลิงค์ที่ จะแลก และเว็บไซต์ที่จะแลก โดยการพิจารณาแลกลิงค์ จะขึ้นอยู่กับความเห็นชอบของทาง
+                        บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section--content py-5 py-lg-7 mb-0">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="page__title">
+                        วิธีการ
+                    </h2>
+                </div>
+
+                <div class="col-md-6 col-lg-8">
+                    <ol class="mb-5">
+                        <li class="mb-3">
+                            <p>คลิกขวาที่รูปภาพ เลือก copy นำไปวางที่เว็บท่าน แล้วนำ code มาโพสที่กระทู้ ด้านล่าง</p>
+                            <img src="~/media/images/logo/logo-main.webp" alt="แลกเปลี่ยนลิงค์กับเว็บไซต์ SAM" class="img-fluid">
+                        </li>
+                        <li class="mb-3">
+                            <p>copy code นำไปวางที่เว็บท่านแล้วนำ code มาโพสที่กระทู้ด้านล่าง</p>
+                            <a href="#" class="btn btn--hover btn--pink" data-link="โค้ดแลกเปลี่ยนลิ้งก์">
+                                <span class="btn__text">คัดลอกโค้ด</span>
+                            </a>
+                        </li>
+                    </ol>
+                    <hr />
+                    <p>
+                        รับแลกลิ้งค์เ เฉพาะลิ้งค์จากเว็บที่เหมาะสม เท่านั้น! โดยการพิจารณาแลกลิงค์ จะขึ้นอยู่กับความเห็นชอบของทาง บริษัท บริหารสินทรัพย์สขุมวิท จำกัด
+                    </p>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="position-sticky" style="top: 0px;">
+                        <form class="form form--dark form--exchange">
+                            <label class="h3 text-white m-4">ข้อมูลเว็บไซต์ที่คุณ ต้องการแลกเปลี่ยนลิงค์</label>
+
+                            <div class="form-group mb-4">
+                                <input type="text" class="form-control w-100" id="applyName" placeholder=" " />
+                                <label class="form-label">ชื่อ - นามสกุล</label>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <input type="email" class="form-control w-100" id="applyEmail" placeholder=" " />
+                                <label class="form-label">อีเมล</label>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <input type="text" class="form-control w-100" id="applyWebsite" placeholder=" " />
+                                <label class="form-label">เว็บไซต์</label>
+                            </div>
+
+                            <div class="form-group border-0 mb-4">
+                                <div class="custom--inputfile">
+                                    <input type="file" id="real-file" hidden="hidden" />
+                                    <button type="button" id="custom-button">Choose a file</button>
+                                    <span id="custom-text">No file chosen, yet.</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group border-0 m-0">
+                                <button type="button" id="btn-reset-filter" class="btn btn--hover btn--gray">
+                                    <span class="btn__text">ล้างช้อมูล</span>
+                                </button>
+                                <button type="button" id="btn-send" class="btn btn--hover btn--pink">
+                                    <span class="btn__text">ส่งข้อมูล</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+}
+@section Scripts {
+    <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
+    <script>
+        // --- ส่วนที่ 2: Logic เมื่อกดปุ่มส่งข้อมูล ---
+        document.getElementById('btn-send').addEventListener('click', function() {
+            const name = document.getElementById('applyName').value;
+            const email = document.getElementById('applyEmail').value;
+            const website = document.getElementById('applyWebsite').value;
+
+            // 1. ตรวจสอบข้อมูลทั่วไป
+            if (name === "" || email === "" || website === "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                    text: 'ตรวจสอบชื่อ, อีเมล และเว็บไซต์',
+                    customClass: {
+                        confirmButton: 'btn btn--gray',
+                    },
+                    buttonsStyling: false,
+                    confirmButtonText: 'ตกลง',
+                });
+                return;
+            }
+
+            // 2. แสดง SweetAlert เมื่อส่งสำเร็จ
+            Swal.fire({
+                title: 'ส่งข้อมูลสำเร็จ!',
+                text: 'เราได้รับข้อมูลการแลกเปลี่ยนเว็บไซต์ของคุณเรียบร้อยแล้ว',
+                icon: 'success',
+                customClass: {
+                    confirmButton: 'btn btn--green',
+                },
+                buttonsStyling: false,
+                confirmButtonText: 'ตกลง',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.querySelector('.form--exchange').reset();
+                    document.getElementById('custom-text').innerHTML = "No file chosen, yet.";
+                }
+            });
+        });
+
+        document.getElementById('btn-reset-filter').addEventListener('click', function() {
+            Swal.fire({
+                title: 'คุณต้องการล้างข้อมูลใช่หรือไม่?',
+                icon: 'warning',
+                showCancelButton: true,
+                customClass: {
+                        confirmButton: 'btn btn--red',
+                        cancelButton: 'btn btn--gray'
+                    },
+                    buttonsStyling: false,
+                    confirmButtonText: 'ตกลง',
+                    cancelButtonText: 'ยกเลิก'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.querySelector('.form--exchange').reset();
+                    document.getElementById('custom-text').innerHTML = "No file chosen, yet.";
+                }
+            });
+        });
+
+        const realFileBtn = document.getElementById("real-file");
+        const customBtn = document.getElementById("custom-button");
+        const customTxt = document.getElementById("custom-text");
+
+        customBtn.addEventListener("click", function() {
+            realFileBtn.click();
+        });
+
+        realFileBtn.addEventListener("change", function() {
+            if (realFileBtn.value) {
+                // ตัดเส้นทางไฟล์เพื่อให้เหลือแค่ชื่อไฟล์
+                customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+            } else {
+                customTxt.innerHTML = "No file chosen, yet.";
+            }
+        });
+    </script>
+}

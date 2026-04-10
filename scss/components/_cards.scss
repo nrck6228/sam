@@ -593,9 +593,10 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
         justify-content: center;
         gap: 1rem;
         align-items: center;
+        border-radius: var(--blur-sm);
         backdrop-filter: blur(var(--blur-md));
         -webkit-backdrop-filter: blur(var(--blur-md));
-        background-color: rgba(0, 0, 0, var(--opacity-50));
+        background-color: rgba(255, 255, 255, var(--opacity-50));
         transition: all var(--transition);
         opacity: 0;
         visibility: hidden;
@@ -837,6 +838,126 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
         color: var(--clr-danger);
         font-size: var(--fs-body);
         cursor: pointer;
+    }
+}
+
+.card--announcement {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    background-color: rgba(255, 255, 255, var(--opacity-50));
+    transition: all var(--transition);
+
+    .card__title {
+        margin-bottom: 15px;
+        font-weight: 400;
+        font-size: var(--fs-body);
+        line-height: 1.4;
+        color: var(--black);
+    }
+
+    .card__text {
+        margin-bottom: 5px;
+        font-weight: 400;
+        font-size: var(--fs-small);
+        line-height: 1.4;
+        color: var(--text-muted);
+    }
+
+    .card__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .card__date {
+        display: block;
+        margin-bottom: 15px;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1.4;
+        color: var(--clr-primary-dark);
+    }
+}
+
+.card--suggestion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    gap: 10px;
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    background-color: var(--neutral-200);
+    transition: all var(--transition);
+
+    .card__figure {
+        width: 60px;
+        height: 50px;
+        flex: 0 0 60px;
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+
+    .card__title {
+        margin-bottom: 0;
+        font-weight: 400;
+        font-size: var(--fs-h5);
+        line-height: 1.4;
+        color: var(--black);
+    }
+
+    .card__text {
+        margin-bottom: 0;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.4;
+        color: var(--text-muted);
+    }
+}
+
+.card--banner {
+    display: block;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    background-color: var(--white);
+    transition: all var(--transition);
+
+    .card__figure {
+        width: 10rem;
+        height: 10rem;
+        margin: auto;
+    }
+
+    .card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card__title {
+        margin-top: 3rem;
+        font-weight: 400;
+        font-size: 1.25rem;
+        line-height: 1.4;
+        color: var(--black);
+        transition: transform var(--transition);
+    }
+
+    &:hover {
+        .card__title {
+            transform: translateY(-5px);
+        }
     }
 }
 /* Container สำหรับรูปที่ลอยตามเมาส์ */

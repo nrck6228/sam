@@ -5,3 +5,7 @@ C:\Works\asp.net\sam\obj\Release\net9.0\PubTmp\Out\sam.dll
 C:\Works\asp.net\sam\obj\Release\net9.0\PubTmp\Out\sam.deps.json
 C:\Works\asp.net\sam\obj\Release\net9.0\PubTmp\Out\sam.runtimeconfig.json
 C:\Works\asp.net\sam\obj\Release\net9.0\PubTmp\Out\sam.pdb
+C:\Works\asp.net\sam\obj\Release\net9.0\PubTmp\Out\Microsoft.AspNetCore.JsonPatch.dll
+C:\Works\asp.net\sam\obj\Release\net9.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Works\asp.net\sam\obj\Release\net9.0\PubTmp\Out\Newtonsoft.Json.dll
+C:\Works\asp.net\sam\obj\Release\net9.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
