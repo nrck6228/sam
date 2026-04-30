@@ -96,6 +96,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXENvbXBhcmVSZXN1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Works/asp.net/sam/Views/Assets/Download.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXERvd25sb2FkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Assets/Process.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXFByb2Nlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Works/asp.net/sam/Views/Assets/Promotion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXFByb21vdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -124,12 +132,76 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxTdWdnZXN0aW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Works/asp.net/sam/Views/Debt/Benefits.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidFxCZW5lZml0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Debt/Download.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidFxEb3dubG9hZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Debt/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Debt/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Debt/Restructuring.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidFxSZXN0cnVjdHVyaW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Document/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRcaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Faq/Corporate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFxXENvcnBvcmF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Faq/DataIntegrity.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFxXERhdGFJbnRlZ3JpdHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Faq/Npa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFxXE5wYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Faq/Npl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFxXE5wbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Works/asp.net/sam/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Home/Survey.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdXJ2ZXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Home/SurveyPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdXJ2ZXlQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Member/Calculator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXENhbGN1bGF0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Member/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Member/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXFJlZ2lzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Member/Staff.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXFN0YWZmLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/News/Detail.cshtml]

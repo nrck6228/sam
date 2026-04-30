@@ -1,0 +1,312 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item"><a href="/survey">แบบสำรวจ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>แบบสำรวจเว็บไซต์</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            แบบสำรวจเว็บไซต์
+        </h1>
+    </div>
+</section>
+
+<section>
+    <div class="section section--content">
+        <div class="container">
+            <div id="survey-form-wrapper">
+                <form id="form-survey" class="form">
+                    <div class="shadow-sm p-4">
+                        <h4 class="mb-4">ส่วนที่ 1: ความพึงพอใจต่อการใช้งาน</h4>
+                        <div class="card card--survey mb-4">
+                            <div class="card__header">
+                                <div class="card__title">
+                                    1. ความสวยงามและการจัดวางองค์ประกอบเว็บไซต์
+                                </div>
+                            </div>
+                            <div class="card__body">
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q1-1" name="q1" value="4" class="radio-button--dark"
+                                               required />
+                                        <label for="q1-1" class="radio-button--label-dark">ดีมาก</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q1-2" name="q1" value="3" class="radio-button--dark" />
+                                        <label for="q1-2" class="radio-button--label-dark">ดี</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q1-3" name="q1" value="2" class="radio-button--dark" />
+                                        <label for="q1-3" class="radio-button--label-dark">ปานกลาง</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q1-4" name="q1" value="1" class="radio-button--dark" />
+                                        <label for="q1-4" class="radio-button--label-dark">ควรปรับปรุง</label>
+                                    </div>
+                                </div>
+                                @* <div class="table-responsive">
+                                    <table class="table table--survey">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th class="text-start">หัวข้อการประเมิน</th>
+                                                <th width="12%">ดีมาก</th>
+                                                <th width="12%">ดี</th>
+                                                <th width="12%">ปานกลาง</th>
+                                                <th width="15%">ควรปรับปรุง</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1. ความสวยงามและการจัดวางองค์ประกอบเว็บไซต์</td>
+                                                <td class="text-center"><input type="radio" name="q1" value="4" required>
+                                                </td>
+                                                <td class="text-center"><input type="radio" name="q1" value="3"></td>
+                                                <td class="text-center"><input type="radio" name="q1" value="2"></td>
+                                                <td class="text-center"><input type="radio" name="q1" value="1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2. ความรวดเร็วในการแสดงผลข้อมูล</td>
+                                                <td class="text-center"><input type="radio" name="q2" value="4" required>
+                                                </td>
+                                                <td class="text-center"><input type="radio" name="q2" value="3"></td>
+                                                <td class="text-center"><input type="radio" name="q2" value="2"></td>
+                                                <td class="text-center"><input type="radio" name="q2" value="1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3. ความง่ายในการค้นหาข้อมูลทรัพย์สิน/ข่าวสาร</td>
+                                                <td class="text-center"><input type="radio" name="q3" value="4" required>
+                                                </td>
+                                                <td class="text-center"><input type="radio" name="q3" value="3"></td>
+                                                <td class="text-center"><input type="radio" name="q3" value="2"></td>
+                                                <td class="text-center"><input type="radio" name="q3" value="1"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div> *@
+
+                                @* <div class="mt-4">
+                                    <label class="form-label font-weight-bold">ข้อเสนอแนะเพิ่มเติม</label>
+                                    <textarea class="form-control" name="comment" rows="4"
+                                            placeholder="ระบุข้อเสนอแนะของท่าน..."></textarea>
+                                </div> *@
+                            </div>
+                        </div>
+
+                        <div class="card card--survey mb-4">
+                            <div class="card__header">
+                                <div class="card__title">
+                                    2. ความรวดเร็วในการแสดงผลข้อมูล
+                                </div>
+                            </div>
+                            <div class="card__body">
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q2-1" name="q2" value="4" class="radio-button--dark"
+                                               required />
+                                        <label for="q2-1" class="radio-button--label-dark">ดีมาก</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q2-2" name="q2" value="3" class="radio-button--dark" />
+                                        <label for="q2-2" class="radio-button--label-dark">ดี</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q2-3" name="q2" value="2" class="radio-button--dark" />
+                                        <label for="q2-3" class="radio-button--label-dark">ปานกลาง</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q2-4" name="q2" value="1" class="radio-button--dark" />
+                                        <label for="q2-4" class="radio-button--label-dark">ควรปรับปรุง</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card--survey mb-4">
+                            <div class="card__header">
+                                <div class="card__title">
+                                    3. ความง่ายในการค้นหาข้อมูลทรัพย์สิน/ข่าวสาร
+                                </div>
+                            </div>
+                            <div class="card__body">
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q3-1" name="q3" value="4" class="radio-button--dark"
+                                               required />
+                                        <label for="q3-1" class="radio-button--label-dark">ดีมาก</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q3-2" name="q3" value="3" class="radio-button--dark" />
+                                        <label for="q3-2" class="radio-button--label-dark">ดี</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q3-3" name="q3" value="2" class="radio-button--dark" />
+                                        <label for="q3-3" class="radio-button--label-dark">ปานกลาง</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input type="radio" id="q3-4" name="q3" value="1" class="radio-button--dark" />
+                                        <label for="q3-4" class="radio-button--label-dark">ควรปรับปรุง</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <label class="form-label font-weight-bold">ข้อเสนอแนะเพิ่มเติม</label>
+                        <textarea class="form-control" name="comment" rows="4"
+                                  placeholder="ระบุข้อเสนอแนะของท่าน..."></textarea>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn--sam-pink px-5">
+                            <span class="btn__text">ส่งแบบสำรวจ</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="survey-result-wrapper" style="display: none;">
+                <div class="card shadow-sm border-0 p-4 p-md-5">
+                    <div class="mb-4">
+                        <span class="text-muted small">โหวตทั้งหมด <span id="res_total_votes">0</span> ครั้ง</span><br>
+                        <span class="text-muted small">วันที่ 14 กุมภาพันธ์ 2569</span>
+                    </div>
+
+                    <div class="poll-results">
+                        <div class="poll-item mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">ดีมาก</span>
+                                <span><span id="count_v4">0</span> โหวต</span>
+                            </div>
+                            <div class="progress" style="height: 45px; border-radius: 8px;">
+                                <div id="bar_v4" class="progress-bar" style="width: 0%; background-color: #285e3e;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="poll-item mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">ดี</span>
+                                <span><span id="count_v3">0</span> โหวต</span>
+                            </div>
+                            <div class="progress" style="height: 45px; border-radius: 8px;">
+                                <div id="bar_v3" class="progress-bar" style="width: 0%; background-color: #df9faa;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="poll-item mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">ปานกลาง</span>
+                                <span><span id="count_v2">0</span> โหวต</span>
+                            </div>
+                            <div class="progress" style="height: 45px; border-radius: 8px;">
+                                <div id="bar_v2" class="progress-bar" style="width: 0%; background-color: #f4d96b;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="poll-item mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">ควรปรับปรุง</span>
+                                <span><span id="count_v1">0</span> โหวต</span>
+                            </div>
+                            <div class="progress" style="height: 45px; border-radius: 8px;">
+                                <div id="bar_v1" class="progress-bar" style="width: 0%; background-color: #cbd5e0;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <a href="/home" class="btn btn--sam-pink px-5">กลับหน้าหลัก</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <style>
+        .table--survey thead th {
+            background-color: #1d543a;
+            /* สีเขียว SAM */
+            color: white;
+            border: none;
+            padding: 15px;
+        }
+
+        .table--survey tbody td {
+            padding: 15px;
+            vertical-align: middle;
+            border-bottom: 1px solid #eee;
+        }
+
+        .table--survey tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* ปรับแต่ง Radio Button ให้ดูใหญ่ขึ้น */
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .btn--sam-pink {
+            background-color: #df9faa;
+            color: white;
+            border-radius: 30px;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn--sam-pink:hover {
+            background-color: #c98a95;
+            transform: translateY(-2px);
+        }
+    </style>
+}
+@section Scripts {
+    <script type="module" src="~/js/features/home/survey.js"></script>
+}

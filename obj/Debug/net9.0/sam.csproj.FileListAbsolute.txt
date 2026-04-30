@@ -83,7 +83,6 @@ C:\Works\asp.net\sam\obj\Debug\net9.0\staticwebassets.build.json
 C:\Works\asp.net\sam\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Works\asp.net\sam\obj\Debug\net9.0\staticwebassets.development.json
 C:\Works\asp.net\sam\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Works\asp.net\sam\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Works\asp.net\sam\obj\Debug\net9.0\sam.dll
 C:\Works\asp.net\sam\obj\Debug\net9.0\refint\sam.dll
 C:\Works\asp.net\sam\obj\Debug\net9.0\sam.pdb
@@ -295,7 +294,6 @@ C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\5ckypwboxu-uophr3zvxl.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\zwvgcky0iz-jrkp7ljiyu.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\n7q23owyar-8ls4mnk7ri.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\jbqn8ojorj-fu6620mxfq.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\2zd27wlf3t-dkr3kzl2yj.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\fh6zcjzzpi-2txjowbtsq.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\4m7ua84fdd-08o63nyleq.gz
 C:\Works\asp.net\sam\bin\Debug\net9.0\Microsoft.AspNetCore.JsonPatch.dll
@@ -304,5 +302,12 @@ C:\Works\asp.net\sam\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Works\asp.net\sam\bin\Debug\net9.0\Newtonsoft.Json.Bson.dll
 C:\Works\asp.net\sam\obj\Debug\net9.0\sam.csproj.AssemblyReference.cache
 C:\Works\asp.net\sam\obj\Debug\net9.0\sam.csproj.Up2Date
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-cudb57ud0w.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-gqs7k2t9tj.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\ug372f8bk9-9s7ddrwcj0.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\2oabil9sap-0quf0z54jw.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\id3u63s1iu-94wtviv44v.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\2zd27wlf3t-yiw2hutm0i.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-1r6fy1c17d.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\66leq0x4e4-acesmm7uvs.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-hbppl707bu.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\i69xsjvrzp-44ncwjbbdp.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\0m3smjy2w7-kf1k7kuxia.gz

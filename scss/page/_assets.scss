@@ -538,6 +538,37 @@
     }
 }
 
+.grid--process {
+    // display: grid;
+    // grid-template-columns: repeat(5, 1fr);
+    // gap: 1rem;
+
+    .grid--process-item {
+        display: block;
+
+        &__icon {
+            font-size: 3rem;
+            color: var(--black);
+        }
+
+        &__title, h5 {
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+
+        &__text, p {
+            font-weight: 300;
+            font-size: 1rem;
+            color: var(--black);
+        }
+    }
+
+    @include media.media-down(md) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .share-options {
     display: flex;
     align-items: center;

@@ -1,0 +1,90 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>สำหรับเจ้าหน้าที่</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            สำหรับเจ้าหน้าที่
+        </h1>
+    </div>
+</section>
+
+<section>
+    <div class="section section--content section--vision bg-attachment-fixed"
+         style="background-image:url(/media/images/bg/bg-debt.jpg)">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-10">
+                    <form class="form form--dark vacancies--form">
+                        <div class="form-group border-0 mb-4">
+                            <label class="h3 text-white m-0">เข้าสู่ระบบ</label>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <input type="text" class="form-control w-100" id="applyUsername" placeholder="ชื่อผู้ใช้" />
+                        </div>
+
+                        <div class="form-group mb-4" style="position: relative;">
+                            <input type="password" class="form-control w-100" id="applyPassword" placeholder="รหัสผ่าน"
+                                   style="padding-right: 45px;" />
+                            
+                            <i class="bi bi-eye" id="togglePassword" role="button" aria-label="แสดงรหัสผ่าน"
+                                   style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #ccc; font-size: 1.2rem;">
+                            </i>
+                        </div>
+
+                        <div class="form-group border-0 m-0">
+                            <button type="button" id="btn-reset-filter" class="btn btn--hover btn--gray">
+                                <span class="btn__text">ล้างช้อมูล</span>
+                            </button>
+                            <button type="button" id="btn-send" class="btn btn--hover btn--pink">
+                                <span class="btn__text">ส่งข้อมูล</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+}
+
+@section Scripts {
+    <script>
+        const passwordInput = document.querySelector('#applyPassword');
+        const toggleIcon = document.querySelector('#togglePassword');
+
+        toggleIcon.addEventListener('click', function () {
+            // 1. ตรวจสอบสถานะปัจจุบัน
+            const isPassword = passwordInput.getAttribute('type') === 'password';
+
+            // 2. สลับ Type ของ Input
+            passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+
+            // 3. สลับ Class ของไอคอน
+            this.classList.toggle('bi-eye');
+            this.classList.toggle('bi-eye-slash');
+
+            // 4. อัปเดต aria-label ให้สอดคล้องกับสถานะใหม่ (Action-Oriented)
+            // ถ้าตอนนี้เป็น text (แสดงอยู่) -> บอกผู้ใช้ว่ากดเพื่อ "ซ่อน"
+            // ถ้าตอนนี้เป็น password (ซ่อนอยู่) -> บอกผู้ใช้ว่ากดเพื่อ "แสดง"
+            const newLabel = isPassword ? 'ซ่อนรหัสผ่าน' : 'แสดงรหัสผ่าน';
+            this.setAttribute('aria-label', newLabel);
+        });
+    </script>
+}

@@ -1,0 +1,178 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+.debt--page {
+    display: block;
+
+    .stats {
+            position: relative;
+
+            &__grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center; /* Centers the row */
+                gap: 1rem;               /* Adds space between columns */
+            }
+
+            &__card {
+                flex: 0 0 calc(33.33% - 1rem); /* 3 columns minus gap space */
+
+                &:nth-child(1) {
+                    .stats__content:before {
+                        background-image: var(--grad-green);
+                    }
+                }
+
+                &:nth-child(2) {
+                    .stats__content:before {
+                        background-image: var(--grad-pink);
+                    }
+                }
+
+                &:nth-child(3) {
+                    color: #333;
+
+                    .stats__number, .stats__desc {
+                        color: var(--clr-earth-deep);
+                    }
+
+                    .stats__content:before {
+                        background-image: var(--grad-yellow);
+                    }
+                }
+
+                &:nth-child(4) {
+                    color: #333;
+
+                    .stats__number, .stats__desc {
+                        color: var(--neutral-900);
+                    }
+
+                    .stats__content:before {
+                        background-image: var(--grad-gray);
+                    }
+                }
+
+                &:nth-child(5) {
+                    .stats__number, .stats__desc {
+                        color: var(--clr-primary-dark);
+                    }
+
+                    .stats__content:before {
+                        background-image: var(--grad-nature);
+                    }
+                }
+            }
+
+            &__content {
+                position: relative;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: var(--shadow-sm);
+                transition: all var(--transition);
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    border-radius: 8px;
+                    z-index: 1;
+                    background-size: 300% 100%;
+                    background-position: left center;
+                }
+            }
+
+            &__text {
+                position: relative;
+                border-radius: 8px;
+                /*aspect-ratio: 4 / 3;*/
+                width: 100%;
+                height: 360px;
+                padding: 2rem;
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                z-index: 2; /* ดันเนื้อหาขึ้นมาเหนือพื้นหลัง */
+            }
+
+            &__number {
+                margin-bottom: 1rem;
+                font-size: var(--fs-display-2);
+                line-height: 1.1;
+                font-weight: 600;
+                color: var(--neutral-100);
+            }
+
+            &__counter {
+                display: inline-flex;
+                align-items: flex-start;
+                overflow: hidden;
+                height: 1.2em; /* ปรับให้ครอบคลุมตัวเลข */
+                line-height: 1.2em;
+            }
+
+            &__desc {
+                font-weight: 400;
+                font-size: var(--fs-body);
+                color: var(--neutral-100);
+            }
+
+            .digit-col {
+                display: flex;
+                flex-direction: column;
+                transition: transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+                width: 0.65em; /* กำหนดความกว้างคงที่ต่อหลักเพื่อไม่ให้ตัวเลขส่ายไปมา */
+                text-align: center;
+            }
+
+            .digit-col span,
+            .digit-static {
+                height: 1.2em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .digit-static {
+                width: auto;
+                padding: 0 2px;
+            }
+            @include media.media-down(lg) {
+                &__grid {
+                    aspect-ratio: auto;
+                    display: flex; /* Turns the container into a flex container */
+                    flex-wrap: wrap; /* Allows items to wrap onto new lines */
+                    justify-content: space-around; /* Optional: distributes items evenly with space around them */
+                    gap: 1rem; /* Optional: adds space between items */
+                    min-height: 1px;
+                }
+
+                &__card {
+                    position: static;
+                    width: auto;
+                    flex: 1 1 calc(33.333% - 1rem);
+                    box-sizing: border-box;
+                }
+
+                &__text {
+                    height: auto;
+                }
+            }
+
+            @include media.media-down(sm) {
+                &__grid {
+                    display: block;
+                }
+
+                &__card {
+                    position: static;
+                    width: 100%;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+}

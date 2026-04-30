@@ -538,6 +538,13 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
         line-height: 1.4;
         color: var(--neutral-100);
     }
+
+    .card__text {
+        font-size: var(--fs-body);
+        font-weight: 300;
+        line-height: 1.4;
+        color: var(--neutral-100);
+    }
 }
 
 .card--annual {
@@ -958,6 +965,36 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
         .card__title {
             transform: translateY(-5px);
         }
+    }
+}
+
+.card--survey {
+    display: block;
+    padding: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+    border-top: 1px solid var(--neutral-300);
+    transition: all var(--transition);
+
+    .card__header{
+        margin-bottom: 1rem;
+    }
+
+    .card__title {
+        font-weight: 400;
+        font-size: 1.25rem;
+        line-height: 1.4;
+        color: var(--black);
+        transition: transform var(--transition);
+    }
+
+    .card__body {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card__footer {
+        display: block;
     }
 }
 /* Container สำหรับรูปที่ลอยตามเมาส์ */

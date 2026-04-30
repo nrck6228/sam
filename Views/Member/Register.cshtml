@@ -1,0 +1,389 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>สมัครสมาชิก</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            สมัครสมาชิก
+        </h1>
+    </div>
+</section>
+
+<section class="section section--content bg-attachment-fixed mb-0"
+         style="background-image:url(/media/images/bg/bg-debt.jpg); min-height: 80vh; display: flex; align-items: center; padding: 40px 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- ปรับขนาดคอลัมน์ให้กว้างขึ้นเพื่อให้เหมาะกับฟอร์มที่อยู่ -->
+            <div class="col-lg-8 col-md-10 col-12">
+                <form class="form form--dark p-4 p-md-5" id="registrationForm" style="background-color: rgba(0,0,0,0.8); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+    
+                    <!-- STEP 1: ข้อกำหนดและเงื่อนไข -->
+                    <div class="step-content" id="step1">
+                        <div class="mb-4 text-start">
+                            <label class="h6 font-weight-normal text-white-50 m-0">ขั้นตอนที่ 1</label>
+                            <h2 class="h2 text-white m-0">ข้อกำหนดและเงื่อนไข</h2>
+                        </div>
+                        <div class="mb-4">
+                            <div class="terms-container p-3 text-white-50 small" style="height: 250px; overflow-y: auto; background: rgba(0,0,0,0.3); border: 1px solid #444;">
+                                <p>1. ข้อมูลส่วนบุคคลจะถูกเก็บรักษาตามนโยบาย PDPA...</p>
+                                <!-- เพิ่มเนื้อหาตามความเหมาะสม -->
+                            </div>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="acceptTerms">
+                            <label class="form-check-label text-white small" for="acceptTerms" role="button">ข้าพเจ้าได้อ่านและยอมรับเงื่อนไขทุกประการ</label>
+                        </div>
+                        <button type="button" class="btn btn--sam-pink px-5 rounded-pill" onclick="goToStep(2)">ดำเนินการต่อ</button>
+                    </div>
+
+                    <!-- STEP 2: ข้อมูลบัญชีผู้ใช้ -->
+                    <div class="step-content" id="step2" style="display:none;">
+                        <div class="mb-4 text-start">
+                            <label class="h6 font-weight-normal text-white-50 m-0">ขั้นตอนที่ 2</label>
+                            <h2 class="h2 text-white m-0">สร้างบัญชีเข้าใช้งาน</h2>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control form-control--underline" placeholder="อีเมล / ชื่อผู้ใช้ *">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="tel" class="form-control form-control--underline" placeholder="เบอร์โทรศัพท์มือถือ *">
+                            </div>
+                            <div class="col-md-6 mb-3" style="position: relative;">
+                                <input type="password" class="form-control form-control--underline" id="applyPassword" placeholder="รหัสผ่าน *">
+                                <i class="bi bi-eye password-toggle" id="togglePassword"></i>
+                            </div>
+                            <div class="col-md-6 mb-3" style="position: relative;">
+                                <input type="password" class="form-control form-control--underline" id="applyPassword2" placeholder="ยืนยันรหัสผ่าน *">
+                                <i class="bi bi-eye password-toggle" id="togglePassword2"></i>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 mt-4">
+                            <button type="button" class="btn btn-outline-light px-4 rounded-pill" onclick="goToStep(1)">ย้อนกลับ</button>
+                            <button type="button" class="btn btn--sam-pink px-4 rounded-pill" onclick="goToStep(3)">ถัดไป</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: ข้อมูลส่วนตัวและที่อยู่ (ตามภาพ 1) -->
+                    <div class="step-content" id="step3" style="display:none;">
+                        <h4 class="text-white mb-4">กรอกข้อมูลบุคคลธรรมดา</h4>
+                        
+                        <!-- คำนำหน้าชื่อ -->
+                        <div class="d-flex gap-3 mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="title" id="titleMr" checked>
+                                <label class="form-check-label text-white-50" for="titleMr">นาย</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="title" id="titleMrs">
+                                <label class="form-check-label text-white-50" for="titleMrs">นาง</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="title" id="titleMs">
+                                <label class="form-check-label text-white-50" for="titleMs">นางสาว</label>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="ชื่อ *"></div>
+                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="นามสกุล *"></div>
+                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="หมายเลขบัตรประชาชน *"></div>
+                            
+                            <div class="col-12 mt-5"><h6 class="text-white">ที่อยู่ตามบัตรประชาชน</h6></div>
+                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="เลขที่ *"></div>
+                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="หมู่ที่"></div>
+                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="ตรอก / ซอย"></div>
+                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="ถนน"></div>
+                            <div class="col-md-4">
+                                <select class="form-select form-control--underline"><option selected>จังหวัด *</option></select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select form-control--underline"><option selected>เขต / อำเภอ *</option></select>
+                            </div>
+
+                            <div class="col-12 mt-5">
+                                <h6 class="text-white">ที่อยู่สำหรับการติดต่อ</h6>
+                                <div class="form-check mb-3">
+                                    <!-- ลบ checked ออกเพื่อให้แสดงฟอร์มเป็นค่าเริ่มต้น -->
+                                    <input class="form-check-input" type="checkbox" id="sameAddress" onchange="toggleContactAddress()">
+                                    <label class="form-check-label text-white-50 small" for="sameAddress" role="button">
+                                        ที่อยู่เดียวกับที่อยู่ตามบัตรประชาชน
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ส่วนฟอร์มที่อยู่ติดต่อที่จะถูกซ่อน/แสดง -->
+                        <div id="contactAddressForm" class="row g-4">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control form-control--underline" placeholder="เลขที่ *">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control form-control--underline" placeholder="หมู่ที่">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control form-control--underline" placeholder="ตรอก / ซอย">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control form-control--underline" placeholder="ถนน">
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select form-control--underline">
+                                    <option selected disabled>จังหวัด *</option>
+                                    <!-- ใส่รายชื่อจังหวัด -->
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select form-control--underline">
+                                    <option selected disabled>เขต / อำเภอ *</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 mt-5">
+                            <button type="button" class="btn btn-outline-light px-4 rounded-pill" onclick="goToStep(2)">ย้อนกลับ</button>
+                            <button type="button" class="btn btn--sam-pink px-4 rounded-pill" onclick="goToStep(4)">ถัดไป</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: แนบเอกสารและหมายเหตุ (ตามภาพ 2) -->
+                    <div class="step-content" id="step4" style="display:none;">
+                        <h4 class="text-white mb-4">กรอกข้อมูลบุคคลธรรมดา (ต่อ)</h4>
+                        
+                        <div class="mb-4">
+                            <label class="text-white-50 small mb-2">สำเนาบัตรประจำตัวประชาชน *</label>
+                            <input type="file" class="form-control bg-dark border-secondary text-white-50">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="text-white-50 small mb-2 lh-base">
+                                สำเนาบัตรตัวแทนจำหน่ายอสังหาริมทรัพย์ไทย จากสมาคมนายหน้าอสังหาริมทรัพย์ไทย หรือเป็นสมาชิกของหน่วยงานสมาคมที่เกี่ยวข้อง... (เฉพาะผู้แนะนำทรัพย์ 20 ล้านขึ้นไป)
+                            </label>
+                            <input type="file" class="form-control bg-dark border-secondary text-white-50">
+                        </div>
+
+                        <div class="remark-section text-white-50 x-small p-3 mt-4" style="background: rgba(0,0,0,0.2); border-radius: 5px; font-size: 0.75rem;">
+                            <p class="mb-1 text-white">หมายเหตุ</p>
+                            <ol class="ps-3 mb-0">
+                                <li>กรณีเอกสารไม่ถูกต้องครบถ้วน ขอให้ดำเนินการส่งเอกสารภายใน 15 วัน...</li>
+                                <li>บสส. ไม่เก็บข้อมูลส่วนบุคคลอ่อนไหว (ศาสนา เชื้อชาติ หมู่โลหิต) ขอให้ท่านขีดฆ่าหรือปิดทับข้อมูลดังกล่าว...</li>
+                                <li>หนังสือลงทะเบียนกิจกรรมส่งเสริมการขายนี้เป็นการกำหนดให้ผู้แนะนำนำลงทะเบียนโครงการ "SAM ทรัพย์มือสองต้องบอกต่อ" เท่านั้น...</li>
+                            </ol>
+                        </div>
+
+                        <div class="d-flex gap-3 mt-5">
+                            <button type="button" class="btn btn-outline-light px-4 rounded-pill" onclick="goToStep(3)">ย้อนกลับ</button>
+                            <button type="button" class="btn btn--sam-pink px-5 rounded-pill" onclick="goToStep(5)">ยืนยันการสมัคร</button>
+                        </div>
+                    </div>
+
+
+                    <!-- STEP 5: เลือกทรัพย์ที่ต้องการแนะนำ -->
+                    <div class="step-content" id="step5" style="display:none;">
+                        <h5 class="text-white mb-2">เลือกทรัพย์ได้สูงสุด 10 รายการ โดยให้ระบุเป็นรหัสทรัพย์ หรือ ชื่อโครงการ</h5>
+                        <p class="text-white-50 small mb-4">หากต้องการแนะนำหลายรหัสทรัพย์ ที่อยู่ในโครงการเดียวกัน ให้ระบุ ชื่อโครงการ</p>
+
+                        <!-- ปุ่มเพิ่มรายการ -->
+                        <div class="mb-4">
+                            <button type="button" class="btn btn-outline-info rounded-pill px-4 btn-sm" onclick="addAssetField()">
+                                <i class="bi bi-plus-circle me-1"></i> เพิ่มรายการทรัพย์
+                            </button>
+                        </div>
+
+                        <!-- พื้นที่สำหรับแสดงรายการทรัพย์ -->
+                        <div id="assetContainer">
+                            <!-- รายการจะถูกสร้างผ่าน JavaScript -->
+                        </div>
+
+                        <div class="d-flex gap-3 mt-5">
+                            <button type="button" class="btn btn-outline-light px-4 rounded-pill" onclick="goToStep(4)">ย้อนกลับ</button>
+                            <button type="button" class="btn btn-success px-5 rounded-pill" onclick="finishRegistration()" style="background: linear-gradient(90deg, #28a745 0%, #218838 100%); border: none;">
+                                ตกลง
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+    @section Styles {
+        <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+        <style>
+            /* Social Icons Hover */
+            .social-icons a { transition: 0.2s; opacity: 0.8; }
+            .social-icons a:hover { opacity: 1; transform: translateY(-3px); }
+
+            /* ปรับแต่ง Checkbox */
+            .form-check-input:checked {
+                background-color: #444 !important;
+                border-color: white !important;
+            }
+        </style>
+    }
+
+    @section Scripts {
+        <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
+        <script>
+            function goToStep(stepNumber) {
+                // Validation หน้า 1 (ข้อกำหนดและเงื่อนไข)
+                if (stepNumber === 2) {
+                    if (!document.getElementById('acceptTerms').checked) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'กรุณายอมรับเงื่อนไข',
+                            text: 'คุณต้องยอมรับเงื่อนไขก่อนดำเนินการต่อ',
+                            confirmButtonColor: '#df9faa'
+                        });
+                        return;
+                    }
+                }
+
+                // ซ่อนทุกหน้า
+                document.querySelectorAll('.step-content').forEach(el => {
+                    el.style.display = 'none';
+                });
+
+                // แสดงหน้าเป้าหมาย
+                const target = document.getElementById('step' + stepNumber);
+                if (target) {
+                    target.style.display = 'block';
+                    window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+                }
+            }
+
+            function toggleContactAddress() {
+                const checkbox = document.getElementById('sameAddress');
+                const addressForm = document.getElementById('contactAddressForm');
+                
+                if (checkbox.checked) {
+                    // ถ้าติ๊กเลือก (ใช้ที่อยู่เดียวกัน) ให้ซ่อนฟอร์ม
+                    addressForm.style.display = 'none';
+                    // เพิ่มเติม: คุณอาจจะส่งค่าจากที่อยู่ตามบัตรฯ มาใส่ในตัวแปรเพื่อบันทึกลง Database ได้ที่นี่
+                } else {
+                    // ถ้าไม่ติ๊ก ให้แสดงฟอร์มเพื่อให้กรอกใหม่
+                    addressForm.style.display = 'flex';
+                }
+            }
+
+            // เรียกฟังก์ชันครั้งแรกตอนโหลด เพื่อตรวจสอบสถานะเริ่มต้น
+            document.addEventListener('DOMContentLoaded', function() {
+                toggleContactAddress();
+            });
+
+            let assetCount = 0;
+            const MAX_ASSETS = 10;
+
+            // ฟังก์ชันเพิ่มช่องกรอกทรัพย์
+            function addAssetField() {
+                if (assetCount >= MAX_ASSETS) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'ขออภัย',
+                        text: 'สามารถเพิ่มได้สูงสุด 10 รายการเท่านั้น',
+                        confirmButtonColor: '#df9faa'
+                    });
+                    return;
+                }
+
+                assetCount++;
+                const container = document.getElementById('assetContainer');
+                const div = document.createElement('div');
+                div.className = 'asset-item mb-4 animate__animated animate__fadeIn'; // เพิ่ม animation ถ้ามี
+                div.id = `asset-group-${assetCount}`;
+                
+                div.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <label class="text-white-50 small m-0">ทรัพย์ NPA ที่ประสงค์แนะนำ รายการที่ <span class="row-number">${assetCount}</span></label>
+                        ${assetCount > 1 ? `<button type="button" class="btn btn-link btn-sm text-danger p-0 text-decoration-none" onclick="removeAssetField(${assetCount})">ลบรายการ</button>` : ''}
+                    </div>
+                    <div class="position-relative">
+                        <input type="text" class="form-control form-control--underline pe-5" placeholder="ระบุรหัสทรัพย์ หรือ ชื่อโครงการ">
+                        <i class="bi bi-search position-absolute end-0 top-50 translate-middle-y text-white-50"></i>
+                    </div>
+                `;
+                
+                container.appendChild(div);
+                updateRowNumbers();
+            }
+
+            // ฟังก์ชันลบช่องกรอกทรัพย์
+            function removeAssetField(id) {
+                const element = document.getElementById(`asset-group-${id}`);
+                if (element) {
+                    element.remove();
+                    assetCount--;
+                    updateRowNumbers();
+                }
+            }
+
+            // ฟังก์ชันรันเลขลำดับใหม่หลังจากมีการลบ
+            function updateRowNumbers() {
+                const rows = document.querySelectorAll('.asset-item');
+                rows.forEach((row, index) => {
+                    const currentNum = index + 1;
+                    // อัปเดตตัวเลขลำดับใน Label
+                    row.querySelector('.row-number').innerText = currentNum;
+                    // อัปเดต ID และฟังก์ชันลบ เพื่อให้เลขสัมพันธ์กัน
+                    row.id = `asset-group-${currentNum}`;
+                    const deleteBtn = row.querySelector('.text-danger');
+                    if (deleteBtn) {
+                        deleteBtn.setAttribute('onclick', `removeAssetField(${currentNum})`);
+                    }
+                });
+                assetCount = rows.length;
+            }
+
+            // เรียกฟังก์ชันครั้งแรกเพื่อให้มี 1 รายการเริ่มต้น
+            document.addEventListener('DOMContentLoaded', function() {
+                addAssetField();
+            });
+
+            // ฟังก์ชันจบการทำงานและแสดง SweetAlert
+            function finishRegistration() {
+                Swal.fire({
+                    title: 'ลงทะเบียนสำเร็จ!',
+                    text: 'ระบบได้รับข้อมูลการสมัครสมาชิกของคุณเรียบร้อยแล้ว',
+                    icon: 'success',
+                    confirmButtonText: 'ตกลง',
+                    confirmButtonColor: '#df9faa',
+                    background: '#2c2c2c',
+                    color: '#fff',
+                    customClass: {
+                        confirmButton: 'rounded-pill px-4'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // ส่งฟอร์ม หรือ ไปที่หน้า Login
+                        // document.getElementById('registrationForm').submit();
+                        window.location.href = '/login'; 
+                    }
+                });
+            }
+
+            // เปิด/ปิดตาดูรหัสผ่าน
+            document.querySelectorAll('.password-toggle').forEach(icon => {
+                icon.addEventListener('click', function() {
+                    const input = this.previousElementSibling;
+                    const isPass = input.type === 'password';
+                    input.type = isPass ? 'text' : 'password';
+                    this.classList.toggle('bi-eye');
+                    this.classList.toggle('bi-eye-slash');
+                });
+            });
+        </script>
+    }

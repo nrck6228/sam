@@ -65,6 +65,10 @@
                 }
             }
         }
+
+        @include media.media-down(md) {
+            height: auto;
+        }
     }
 
     &.home--highlight {
@@ -521,10 +525,15 @@
             display: flex;
             align-items: center;
             gap: 2rem;
+            @include media.media-down(md) {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
         }
 
         .home__title {
-            margin-bottom: 1rem;
+            margin-bottom: 0;
             width: max-content; /* ขยายกว้างเท่ากับเนื้อหาภายใน */
             flex-shrink: 0; /* สำคัญมาก: ป้องกันไม่ให้โดนฝั่งขวา (desc) ดันจนหด */
 

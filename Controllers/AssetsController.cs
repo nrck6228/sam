@@ -104,5 +104,17 @@ namespace sam.Controllers
 
             return View("~/Views/Assets/PromotionDetail.cshtml");
         }
+
+        [Route("asset-process")]
+        public IActionResult Process()
+        {
+            return View("~/Views/Assets/Process.cshtml");
+        }
+
+        [Route("npa/download")]
+        public IActionResult Download()
+        {
+            return View("~/Views/Assets/Download.cshtml");
+        }
     }
 }

@@ -1,0 +1,152 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>คำนวณสินเชื่อโดยประมาณ</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            คำนวณสินเชื่อโดยประมาณ
+        </h1>
+    </div>
+</section>
+
+<section>
+    <div class="section section--content loan-calculator mb-0"
+         style="background-image:url(/media/images/bg/bg-debt.jpg)">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="calculator-card shadow-sm h-100">
+                        <div class="form">
+                            <div class="mb-3">
+                                <label class="text-white-50 small">ราคาทรัพย์สิน (บาท)</label>
+                                <div class="form-group">
+                                    <input type="tel" maxlength="18" id="loan_asset_price" class="form-control"
+                                           placeholder="ระบุราคาทรัพย์สิน">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="text-white-50 small">วงเงินกู้ที่ต้องการ (บาท)</label>
+                                <div class="form-group">
+                                    <input type="tel" maxlength="18" id="loan_amount" class="form-control"
+                                           placeholder="ระบุจำนวนเงินกู้ (ไม่เกินราคาทรัพย์สิน)">
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <label class="text-white-50 small">อัตราดอกเบี้ย (%)</label>
+                                    <div class="form-group">
+                                        <input type="number" id="loan_interest" class="form-control" value="3.0"
+                                               step="0.1">
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="text-white-50 small">ระยะเวลากู้ (ปี)</label>
+                                    <div class="form-group">
+                                        <input type="number" id="loan_years" class="form-control" value="30">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-4">
+                                    <button type="button" class="btn btn--sam-pink btn-calculate-loan">
+                                        <span class="btn__text">
+                                            คำนวณสินเชื่อ
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-white-50 small m-0">
+                                * ข้อมูลทั้งหมดจากการคำนวณในหน้านี้ เป็นข้อมูลที่คำนวณให้เห็นภาพรวมเบื้องต้น
+                                ไม่สามารถใช้อ้างอิงใดๆ ทางกฏหมายได้ หากต้องการข้อมูลเพิ่มเติม กรุณาติดต่อที่เบอร์
+                                02-686-1888
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="result-card shadow-sm h-100">
+                        <div class="mb-4">
+                            <h5 class="result-card__title">รายละเอียดสินเชื่อ</h5>
+                            <div class="d-flex justify-content-between align-items-end mt-3">
+                                <span class="result-card__label">ยอดสินเชื่อที่ต้องชำระต่อเดือนโดยประมาณ</span>
+                                <span class="result-card__value"><span id="res_monthly_pay">0</span> บาท / เดือน</span>
+                            </div>
+
+                            <div class="mt-2">
+                                <div class="progress"
+                                     style="height: 12px; border-radius: 10px; background-color: #286140;">
+                                    <div id="bar_principal" class="progress-bar"
+                                         style="width: 0%; background-color: #df9faa; transition: width 0.5s ease;">
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <span class="small"><i class="bi bi-circle-fill me-1" style="color: #df9faa"></i>
+                                        เงินต้น <span id="res_principal_val">0</span> บาท (<span
+                                        id="res_principal_percent">0</span>%)</span>
+                                        <span class="small"><i class="bi bi-circle-fill me-1" style="color: #286140"></i>
+                                            ดอกเบี้ย <span id="res_interest_val">0</span> บาท (<span
+                                            id="res_interest_percent">0</span>%)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="mt-4">
+                                    <h5 class="result-card__title">ค่าใช้จ่ายที่อาจต้องมีเบื้องต้น</h5>
+                                    <div class="d-flex justify-content-between align-items-end mt-3">
+                                        <span class="result-card__label">เงินดาวน์ทั้งหมด</span>
+                                        <span class="result-card__value"><span id="res_down_payment">0</span> บาท</span>
+                                    </div>
+
+                                    <div class="mt-2">
+                                        <div class="progress"
+                                             style="height: 12px; border-radius: 10px; background-color: #286140;">
+                                            <div id="bar_down" class="progress-bar"
+                                                 style="width: 0%; background-color: #df9faa; transition: width 0.5s ease;">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <span class="small"><i class="bi bi-circle-fill me-1" style="color: #df9faa"></i>
+                                                เงินดาวน์ <span id="res_down_percent">0</span>%</span>
+                                                <span class="small"><i class="bi bi-circle-fill me-1" style="color: #286140"></i>
+                                                    จำนวนสินเชื่อ <span id="res_loan_val">0</span> บาท ในอัตรา <span
+                                                    id="res_loan_percent">0</span>% ของราคาบ้าน</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                @section Styles {
+                    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+                    <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+                }
+
+                @section Scripts {
+                    <script src="https://unpkg.com/@@popperjs/core@@2"></script>
+                    <script src="https://unpkg.com/tippy.js@@6"></script>
+                    <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
+                    <script type="module" src="~/js/features/debt/calculator.js"></script>
+                }

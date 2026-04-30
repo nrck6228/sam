@@ -1,0 +1,11 @@
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\sam.exe
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\appsettings.Development.json
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\appsettings.json
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\sam.dll
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\sam.deps.json
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\sam.runtimeconfig.json
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\sam.pdb
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\Microsoft.AspNetCore.JsonPatch.dll
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\Newtonsoft.Json.dll
+c:\Works\asp.net\sam\bin\Release\net9.0\publish\Newtonsoft.Json.Bson.dll

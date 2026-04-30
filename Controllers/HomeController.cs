@@ -18,6 +18,18 @@ namespace sam.Controllers
             return View();
         }
 
+        [Route("survey")]
+        public IActionResult Survey()
+        {
+            return View();
+        }
+
+        [Route("/survey/website-usage")]
+        public IActionResult SurveyPage()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

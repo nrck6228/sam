@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>คำถามที่พบบ่อย</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            คำถามที่พบบ่อย
+        </h1>
+    </div>
+</section>
+
+<section>
+    <div class="section section--content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-pills sam-tabs sam-tabs--primary" role="tablist">
+                        <li class="nav-item">
+                            <a href="/faqs/corporate" class="nav-link sam-tabs__link">ด้านองค์กร (Corporate)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/faqs/npl" class="nav-link sam-tabs__link">ด้านปรับปรุงโครงสร้างหนี้ (NPL)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/faqs/npa" class="nav-link sam-tabs__link active">ด้านทรัพย์สินรอการขาย (NPA)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="accordion accordion--faq" id="accordionFaqs">
+                        <div class="accordion--item">
+                            <div data-bs-toggle="collapse" data-bs-target="#faq-1" aria-expanded="true" aria-controls="faq-1" class="accordion__header">
+                                <h4 class="accordion__title">
+                                    SAM คือใคร ?
+                                </h4>
+                                <div class="accordion__right">
+                                    <span class="accordion__icon">
+                                        <em class=" bi bi-chevron-down"></em>
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="faq-1" class="accordion-collapse collapse show" aria-labelledby="faq-1" data-bs-parent="#accordionFaqs">
+                                <div class="accordion__content ck-content">
+                                    <p>SAM คือ บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด (บสส. / SAM) เป็นหน่วยงานภาครัฐที่อยู่ภายใต้การกำกับดูแลของธนาคารแห่งประเทศไทย ดำเนินธุรกิจในด้านการบริหารสินทรัพย์ด้อยคุณภาพของระบบสถาบันการเงิน โดยทำหน้าที่แก้ไขหนี้ด้อยคุณภาพ เจรจาหาข้อยุติกับลูกค้าด้วยการปรับปรุงโครงสร้างหนี้ NPL  พัฒนาการจำหน่ายทรัพย์สินรอการขาย NPA เพื่อช่วยฟื้นฟูระบบเศรษฐกิจของประเทศ และสนับสนุนให้ประชาชนและภาคธุรกิจฟื้นตัวได้อย่างยั่งยืน</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion--item">
+                            <div data-bs-toggle="collapse" data-bs-target="#faq-2" aria-expanded="false" aria-controls="faq-2" class="accordion__header">
+                                <h4 class="accordion__title">
+                                    SAM ทำหน้าที่อะไร ?
+                                </h4>
+                                <span class="accordion__icon">
+                                    <em class=" bi bi-chevron-down"></em>
+                                </span>
+                            </div>
+                            <div id="faq-2" class="accordion-collapse collapse" aria-labelledby="faq-2" data-bs-parent="#accordionFaqs">
+                                <div class="accordion__content ck-content">
+                                    <p>SAM ทำหน้าที่ ดังนี้</p>
+                                    <ul>
+                                        <li>
+                                            การบริหารจัดการสินทรัพย์ด้วยคุณภาพ (NPL) : ให้โอกาสลูกค้าที่เป็นหนี้ด้อยคุณภาพ หรือหนี้เสีย (NPL) ที่อยู่ภายใต้การบริหารจัดการของ SAM สามารถเข้ามาเจรจาปรับโครงสร้างหนี้กับ SAM ได้
+                                        </li>
+                                        <li>
+                                            การบริหารและจำหน่ายอสังหาริมทรัพย์มือสอง หรือ ทรัพย์สินรอการขาย (NPA) : เพื่อสร้างโอกาสให้คนไทยมีบ้าน หรืออสังหาริมทรัพย์เพื่อการอยู่อาศัย และการลงทุนในทำเลดีทั่วประเทศ
+                                        </li>
+                                        <li>
+                                            โครงการ “คลินิกแก้หนี้ by SAM” : ให้โอกาสลูกค้าที่เป็นหนี้เสียส่วนบุคคลที่ไม่มีหลักประกัน ที่เกิดจากบัตรเครดิต บัตรกดเงินสด สินเชื่อส่วนบุคคล ได้แก้ไขปัญหาหนี้โดย บสส. ได้รับมอบหมายให้เป็นตัวกลางในการติดต่อกับเจ้าหนี้ทุกราย เพื่อให้ได้ข้อยุติในคราวเดียว และลูกค้าได้รับบริการแบบครบวงจร (one-stop service) พร้อมได้รับความรู้ทางการเงิน
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion--item">
+                            <div data-bs-toggle="collapse" data-bs-target="#faq-3" aria-expanded="false" aria-controls="faq-3" class="accordion__header">
+                                <h4 class="accordion__title">
+                                    SAM มีนโยบายด้านการปล่อยสินเชื่อ / เงินกู้หรือไม่ ?
+                                </h4>
+                                <span class="accordion__icon">
+                                    <em class=" bi bi-chevron-down"></em>
+                                </span>
+                            </div>
+                            <div id="faq-3" class="accordion-collapse collapse" aria-labelledby="faq-3" data-bs-parent="#accordionFaqs">
+                                <div class="accordion__content ck-content">
+                                    <p>
+                                        SAM ไม่มีนโยบายในด้านการปล่อยสินเชื่อ / เงินกู้ และไม่มีการเรียกรับผลประโยชน์ใดๆ จากลูกค้า โปรดระมัดระวังมิจฉาชีพที่แอบแฝงใช้ชื่อ บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด หรือ SAM หรือ บสส. หลอกลวง แอบอ้าง ผ่านช่องทางการสื่อสารต่างๆ
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+}
+@section Scripts {
+}

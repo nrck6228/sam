@@ -20,16 +20,26 @@ body {
 
         &-search {
             padding: 0;
-            display: flex;
+
+            @include media.media-down(md) {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
 
         .page--banner {
             position: relative;
             overflow: hidden;
+
+            .banner__image {
+                max-width: 100%;
+            }
         }
 
         .page--search {
             margin-top: 2rem;
+            width: 100%;
+            height: auto;
 
             @include media.media-up(md) {
                 position: absolute;
