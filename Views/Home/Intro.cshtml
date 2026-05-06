@@ -1,0 +1,50 @@
+@{
+    Layout = "_LayoutIntro";
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="cover--page" style="background-color: #000;">
+    <div class="cover--header">
+        <a href="/" class="cover--header__logo" aria-label="Home" style="display: none;">
+            <img src="/media/images/logo/logo-main.webp" alt="Logo" class="cover--header__logo-image">
+        </a>
+    </div>
+    <div class="cover--picture">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-11">
+                    <picture>
+                        <source media="(min-width: 1200px)" srcset="/media/images/intro/demo-image-01.jpg">
+                        <source media="(min-width: 320px)" srcset="/media/images/intro/demo-image-01.jpg"">
+                        <img alt=" Placeholder Image" class="cover--picture__image"
+                             src="/media/images/intro/demo-image-01.jpg"">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=" cover--button">
+        <a href="/" title="" class="btn">
+            <img src="/media/images/clear-debt-button.png" alt="Logo" class="img-fluid">
+        </a>
+        <a href="/" title="" class="btn btn--hover btn--green">
+            <span class="btn__text">เข้าสู่เว็บไซต์</span>
+            <span class="btn__icon"><svg class="icon">
+                <use xlink:href="#icon-arrow-explore"></use>
+            </svg></span>
+        </a>
+        <a href="/" title="" class="btn btn--hover btn--pink">
+            <span class="btn__text">Enter Site</span>
+            <span class="btn__icon"><svg class="icon">
+                <use xlink:href="#icon-arrow-explore"></use>
+            </svg></span>
+        </a>
+    </div>
+</section>
+
+@section Styles {
+}
+@section Scripts {
+}

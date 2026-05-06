@@ -147,6 +147,26 @@ export const goToComparePage = () => {
     }
 };
 
+/**
+ * เปิดหน้าแสดง e-brochure
+ */
+export const createBrochurePage = () => {
+    if (compareList.length < 1) {
+        notify('กรุณาเลือกทรัพย์สินอย่างน้อย 1 รายการเพื่อสร้างโบรชัวร์', 'question');
+        return;
+    }
+
+    const ids = compareList.join(',');
+    const url = `/npa/e-brochure?ids=${ids}`;
+    const newTab = window.open(url, '_blank');
+
+    if (newTab) {
+        newTab.focus();
+    } else {
+        notify('เบราว์เซอร์บล็อกหน้าต่างใหม่', 'กรุณาอนุญาตให้เปิด Pop-up เพื่อดูผลการเปรียบเทียบ', 'info');
+    }
+};
+
 // --- 4. Event Listeners & Window Binding ---
 
 // ดักฟังการเปลี่ยนแปลงจากแท็บอื่น (Cross-tab Sync)
@@ -170,4 +190,5 @@ window.removeCompareItem = (id) => {
 // ผูกฟังก์ชันเข้ากับ Global window เพื่อให้ HTML onclick เรียกใช้ได้
 window.clearAllCompare = clearAllCompare;
 window.goToComparePage = goToComparePage;
+window.createBrochurePage = createBrochurePage;
 window.toggleCompareAsset = toggleCompareAsset;

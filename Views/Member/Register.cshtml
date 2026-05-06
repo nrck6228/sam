@@ -57,23 +57,41 @@
                         </div>
                         <div class="row g-3">
                             <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control form-control--underline" placeholder="อีเมล / ชื่อผู้ใช้ *">
+                                <div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">อีเมล / ชื่อผู้ใช้ *</label>
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <input type="tel" class="form-control form-control--underline" placeholder="เบอร์โทรศัพท์มือถือ *">
+                                <div class="form-group mb-0">
+                                    <input type="tel" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">เบอร์โทรศัพท์มือถือ *</label>
+                                </div>
                             </div>
-                            <div class="col-md-6 mb-3" style="position: relative;">
-                                <input type="password" class="form-control form-control--underline" id="applyPassword" placeholder="รหัสผ่าน *">
-                                <i class="bi bi-eye password-toggle" id="togglePassword"></i>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group mb-0" style="position: relative;">
+                                    <input type="password" class="form-control w-100" id="applyPassword"
+                                        placeholder=" " style="padding-right: 45px;" />
+                                        <label class="form-label">รหัสผ่าน *</label>
+                                    <i class="bi bi-eye password-toggle" id="togglePassword" role="button" aria-label="แสดงรหัสผ่าน"
+                                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #ccc; font-size: 1.2rem;">
+                                    </i>
+                                </div>
                             </div>
-                            <div class="col-md-6 mb-3" style="position: relative;">
-                                <input type="password" class="form-control form-control--underline" id="applyPassword2" placeholder="ยืนยันรหัสผ่าน *">
-                                <i class="bi bi-eye password-toggle" id="togglePassword2"></i>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group mb-0" style="position: relative;">
+                                    <input type="password" class="form-control w-100" id="applyPassword2"
+                                        placeholder=" " style="padding-right: 45px;" />
+                                        <label class="form-label">ยืนยันรหัสผ่าน *</label>
+                                    <i class="bi bi-eye password-toggle" id="togglePassword2" role="button" aria-label="แสดงรหัสผ่าน"
+                                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #ccc; font-size: 1.2rem;">
+                                    </i>
+                                </div>
                             </div>
                         </div>
                         <div class="d-flex gap-3 mt-4">
-                            <button type="button" class="btn btn-outline-light px-4 rounded-pill" onclick="goToStep(1)">ย้อนกลับ</button>
-                            <button type="button" class="btn btn--sam-pink px-4 rounded-pill" onclick="goToStep(3)">ถัดไป</button>
+                            <button type="button" class="btn btn--outline-white" onclick="goToStep(1)">ย้อนกลับ</button>
+                            <button type="button" class="btn btn--sam-pink" onclick="goToStep(3)">ถัดไป</button>
                         </div>
                     </div>
 
@@ -83,36 +101,80 @@
                         
                         <!-- คำนำหน้าชื่อ -->
                         <div class="d-flex gap-3 mb-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="title" id="titleMr" checked>
-                                <label class="form-check-label text-white-50" for="titleMr">นาย</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="title" id="titleMrs">
-                                <label class="form-check-label text-white-50" for="titleMrs">นาง</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="title" id="titleMs">
-                                <label class="form-check-label text-white-50" for="titleMs">นางสาว</label>
-                            </div>
+                            <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input class="radio-button" type="radio" name="title" id="titleMr" checked>
+                                        <label class="radio-button--label text-white" for="titleMr">นาย</label>
+                                    </div>
+                                </div>
+                            <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input class="radio-button" type="radio" name="title" id="titleMrs">
+                                        <label class="radio-button--label text-white" for="titleMrs">นาง</label>
+                                    </div>
+                                </div>
+                            <div class="form-group border-0">
+                                    <div class="radio-buttons">
+                                        <input class="radio-button" type="radio" name="title" id="titleMs">
+                                        <label class="radio-button--label text-white" for="titleMs">นางสาว</label>
+                                    </div>
+                                </div>
                         </div>
 
                         <div class="row g-4">
-                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="ชื่อ *"></div>
-                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="นามสกุล *"></div>
-                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="หมายเลขบัตรประชาชน *"></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">ชื่อ *</label>
+                                </div></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">นามสกุล *</label>
+                                </div></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">หมายเลขบัตรประชาชน *</label>
+                                </div></div>
                             
                             <div class="col-12 mt-5"><h6 class="text-white">ที่อยู่ตามบัตรประชาชน</h6></div>
-                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="เลขที่ *"></div>
-                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="หมู่ที่"></div>
-                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="ตรอก / ซอย"></div>
-                            <div class="col-md-4"><input type="text" class="form-control form-control--underline" placeholder="ถนน"></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">เลขที่ *</label>
+                                </div></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">หมู่ที่ *</label>
+                                </div></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">ตรอก/ซอย *</label>
+                                </div></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">ถนน</label>
+                                </div></div>
                             <div class="col-md-4">
-                                <select class="form-select form-control--underline"><option selected>จังหวัด *</option></select>
+                                <div class="form-group mb-0">
+                                    <select class="form-select w-100"><option selected>จังหวัด *</option></select>
+                                </div>
                             </div>
                             <div class="col-md-4">
-                                <select class="form-select form-control--underline"><option selected>เขต / อำเภอ *</option></select>
+                                <div class="form-group mb-0">
+                                    <select class="form-select w-100"><option selected>เขต / อำเภอ *</option></select>
+                                </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-0">
+                                    <select class="form-select w-100"><option selected>เขต / อำเภอ *</option></select>
+                                </div>
+                            </div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">รหัสไปรษณีย์ *</label>
+                                </div></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="tel" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">โทรศัพท์ *</label>
+                                </div></div>
 
                             <div class="col-12 mt-5">
                                 <h6 class="text-white">ที่อยู่สำหรับการติดต่อ</h6>
@@ -128,34 +190,50 @@
 
                         <!-- ส่วนฟอร์มที่อยู่ติดต่อที่จะถูกซ่อน/แสดง -->
                         <div id="contactAddressForm" class="row g-4">
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">เลขที่ *</label>
+                                </div></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">หมู่ที่ *</label>
+                                </div></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">ตรอก/ซอย *</label>
+                                </div></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">ถนน</label>
+                                </div></div>
                             <div class="col-md-4">
-                                <input type="text" class="form-control form-control--underline" placeholder="เลขที่ *">
+                                <div class="form-group mb-0">
+                                    <select class="form-select w-100"><option selected>จังหวัด *</option></select>
+                                </div>
                             </div>
                             <div class="col-md-4">
-                                <input type="text" class="form-control form-control--underline" placeholder="หมู่ที่">
+                                <div class="form-group mb-0">
+                                    <select class="form-select w-100"><option selected>เขต / อำเภอ *</option></select>
+                                </div>
                             </div>
                             <div class="col-md-4">
-                                <input type="text" class="form-control form-control--underline" placeholder="ตรอก / ซอย">
+                                <div class="form-group mb-0">
+                                    <select class="form-select w-100"><option selected>เขต / อำเภอ *</option></select>
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control form-control--underline" placeholder="ถนน">
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select form-control--underline">
-                                    <option selected disabled>จังหวัด *</option>
-                                    <!-- ใส่รายชื่อจังหวัด -->
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select form-control--underline">
-                                    <option selected disabled>เขต / อำเภอ *</option>
-                                </select>
-                            </div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">รหัสไปรษณีย์ *</label>
+                                </div></div>
+                            <div class="col-md-4"><div class="form-group mb-0">
+                                    <input type="tel" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">โทรศัพท์ *</label>
+                                </div></div>
                         </div>
 
                         <div class="d-flex gap-3 mt-5">
-                            <button type="button" class="btn btn-outline-light px-4 rounded-pill" onclick="goToStep(2)">ย้อนกลับ</button>
-                            <button type="button" class="btn btn--sam-pink px-4 rounded-pill" onclick="goToStep(4)">ถัดไป</button>
+                            <button type="button" class="btn btn--outline-white" onclick="goToStep(2)">ย้อนกลับ</button>
+                            <button type="button" class="btn btn--sam-pink" onclick="goToStep(4)">ถัดไป</button>
                         </div>
                     </div>
 
@@ -185,8 +263,8 @@
                         </div>
 
                         <div class="d-flex gap-3 mt-5">
-                            <button type="button" class="btn btn-outline-light px-4 rounded-pill" onclick="goToStep(3)">ย้อนกลับ</button>
-                            <button type="button" class="btn btn--sam-pink px-5 rounded-pill" onclick="goToStep(5)">ยืนยันการสมัคร</button>
+                            <button type="button" class="btn btn--outline-white" onclick="goToStep(3)">ย้อนกลับ</button>
+                            <button type="button" class="btn btn--sam-pink" onclick="goToStep(5)">ยืนยันการสมัคร</button>
                         </div>
                     </div>
 
@@ -198,7 +276,7 @@
 
                         <!-- ปุ่มเพิ่มรายการ -->
                         <div class="mb-4">
-                            <button type="button" class="btn btn-outline-info rounded-pill px-4 btn-sm" onclick="addAssetField()">
+                            <button type="button" class="btn btn--outline-info" onclick="addAssetField()">
                                 <i class="bi bi-plus-circle me-1"></i> เพิ่มรายการทรัพย์
                             </button>
                         </div>
@@ -209,8 +287,8 @@
                         </div>
 
                         <div class="d-flex gap-3 mt-5">
-                            <button type="button" class="btn btn-outline-light px-4 rounded-pill" onclick="goToStep(4)">ย้อนกลับ</button>
-                            <button type="button" class="btn btn-success px-5 rounded-pill" onclick="finishRegistration()" style="background: linear-gradient(90deg, #28a745 0%, #218838 100%); border: none;">
+                            <button type="button" class="btn btn--outline-white" onclick="goToStep(4)">ย้อนกลับ</button>
+                            <button type="button" class="btn btn--sam-green" onclick="finishRegistration()">
                                 ตกลง
                             </button>
                         </div>
@@ -311,9 +389,11 @@
                         <label class="text-white-50 small m-0">ทรัพย์ NPA ที่ประสงค์แนะนำ รายการที่ <span class="row-number">${assetCount}</span></label>
                         ${assetCount > 1 ? `<button type="button" class="btn btn-link btn-sm text-danger p-0 text-decoration-none" onclick="removeAssetField(${assetCount})">ลบรายการ</button>` : ''}
                     </div>
-                    <div class="position-relative">
+                    <div class="form-group mb-3 position-relative">
                         <input type="text" class="form-control form-control--underline pe-5" placeholder="ระบุรหัสทรัพย์ หรือ ชื่อโครงการ">
-                        <i class="bi bi-search position-absolute end-0 top-50 translate-middle-y text-white-50"></i>
+                        <i class="bi bi-search" role="button" aria-label="ค้นหาทรัพย์"
+                            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #ccc; font-size: 1.2rem;">
+                        </i>
                     </div>
                 `;
                 

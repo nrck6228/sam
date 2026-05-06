@@ -36,8 +36,97 @@
     }
 }
 
-// asset-detail.scss
+.compare--container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* ให้ไถลื่นใน iOS */
+    border: 1px solid var(--neutral-300);
+    border-radius: var(--radius-sm);
 
+    .compare--grid {
+        display: block;
+        width: 100%;
+
+        &__row {
+            display: grid;
+            /* 160px สำหรับ Label และที่เหลือแบ่งเท่าๆ กันตามจำนวนทรัพย์ */
+            grid-template-columns: 160px repeat(auto-fit, minmax(200px, 1fr));
+            border-bottom: 1px solid var(--neutral-300);
+        }
+
+        &__cell {
+            padding: 15px;
+            background-color: var(--white);
+        }
+
+        &__label {
+            background-color: var(--neutral-150);
+            font-weight: 700;
+            position: sticky;
+            /* ทำ sticky column เฉพาะหัวข้อได้ง่ายขึ้น */
+            left: 0;
+            z-index: 5;
+        }
+
+        &__image {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+
+            img {
+                width: 100%;
+                aspect-ratio: 4/3;
+                object-fit: cover;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+        }
+
+        &__badge {
+            background-color: var(--clr-primary-dark);
+            
+            /* สีตามสถานะ */
+            &--direct {
+                background-color: var(--clr-primary-dark);
+                color: var(--white);
+                padding: 10px;
+                font-weight: 500;
+                font-size: 0.875rem;
+            }
+
+            &--auction {
+                background-color: var(--clr-accent-yellow);
+                color: #4b3621;
+                padding: 10px;
+                font-weight: 500;
+                font-size: 0.875rem;
+            }
+
+            &--waiting {
+                background-color: var(--clr-accent-pink);
+                color: var(--white);
+                padding: 10px;
+                font-weight: 500;
+                font-size: 0.875rem;
+            }
+        }
+    }
+
+    .btn--pink {
+        min-height: 24px;
+        padding: 5px 15px;
+        font-size: 0.875rem;
+    }
+
+    .btn--remove {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+}
+
+// asset-detail.scss
 .asset-detail {
     padding: 5rem 0;
     min-height: 100vh;

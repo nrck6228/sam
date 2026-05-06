@@ -92,12 +92,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXEFzc2V0TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Works/asp.net/sam/Views/Assets/Brochure.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXEJyb2NodXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Works/asp.net/sam/Views/Assets/CompareResult.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXENvbXBhcmVSZXN1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/Assets/Download.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXERvd25sb2FkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Assets/LegalList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXExlZ2FsTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Assets/Matching.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXE1hdGNoaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/Assets/Process.cshtml]
@@ -110,6 +122,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Works/asp.net/sam/Views/Assets/PromotionDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXFByb21vdGlvbkRldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Assets/Purchasing.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXFB1cmNoYXNpbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/Career/Index.cshtml]
@@ -152,8 +168,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidFxSZXN0cnVjdHVyaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Works/asp.net/sam/Views/Document/index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRcaW5kZXguY3NodG1s
+[C:/Works/asp.net/sam/Views/Document/Download.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRcRG93bmxvYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Document/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/Faq/Corporate.cshtml]
@@ -174,6 +194,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Works/asp.net/sam/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Home/Intro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbnRyby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/Home/Privacy.cshtml]
@@ -226,6 +250,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Works/asp.net/sam/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Works/asp.net/sam/Views/Shared/_LayoutIntro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRJbnRyby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Works/asp.net/sam/Views/Shared/_offcanvasSearch.cshtml]

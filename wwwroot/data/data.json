@@ -558,66 +558,26 @@
     }
   ],
   "assetFormData": [
-    {
-      "id": "001",
-      "title": "แบบคำขอใช้สิทธิของเจ้าของข้อมูล ส่วนบุคคล",
-      "publishedDate": "2026-05-22",
-      "displayDate": "พ.ค. 22, 2026",
-      "file": {
-        "th": "001-2569-th",
-        "en": "001-2569-en"
-      }
-    },
-    {
-      "id": "002",
-      "title": "แบบคำขอใช้สิทธิของเจ้าของข้อมูล ส่วนบุคคล",
-      "publishedDate": "2026-01-15",
-      "displayDate": "ม.ค. 15, 2026",
-      "file": {
-        "th": "002-2569-th",
-        "en": "002-2569-en"
-      }
-    },
-    {
-      "id": "012-2568",
-      "title": "แบบคำขอใช้สิทธิของเจ้าของข้อมูล ส่วนบุคคล",
-      "publishedDate": "2025-12-20",
-      "displayDate": "ธ.ค. 20, 2025",
-      "file": {
-        "th": "012-2568-th",
-        "en": "012-2568-en"
-      }
-    },
-    {
-      "id": "009-2568",
-      "title": "แบบคำขอใช้สิทธิของเจ้าของข้อมูล ส่วนบุคคล",
-      "publishedDate": "2025-09-05",
-      "displayDate": "ก.ย. 05, 2025",
-      "file": {
-        "th": "009-2568-th",
-        "en": "009-2568-en"
-      }
-    },
-    {
-      "id": "005-2568",
-      "title": "แบบคำขอใช้สิทธิของเจ้าของข้อมูล ส่วนบุคคล",
-      "publishedDate": "2025-05-12",
-      "displayDate": "พ.ค. 12, 2025",
-      "file": {
-        "th": "005-2568-th",
-        "en": "005-2568-en"
-      }
-    },
-    {
-      "id": "002-2568",
-      "title": "แบบคำขอใช้สิทธิของเจ้าของข้อมูล ส่วนบุคคล",
-      "publishedDate": "2025-02-10",
-      "displayDate": "ก.พ. 10, 2025",
-      "file": {
-        "th": "002-2568-th",
-        "en": "002-2568-en"
-      }
-    }
+    { "id": "G-01", "category": "guide", "title": "คู่มือการปรับโครงสร้างหนี้เบื้องต้น", "publishedDate": "2026-05-01", "displayDate": "1 พ.ค. 69", "file": { "th": "f-01" } },
+    { "id": "G-02", "category": "guide", "title": "ขั้นตอนการยื่นเอกสารผ่านช่องทางออนไลน์", "publishedDate": "2026-04-15", "displayDate": "15 เม.ย. 69", "file": { "th": "f-02" } },
+    { "id": "G-03", "category": "guide", "title": "แนวทางการเจรจาประนอมหนี้ 2569", "publishedDate": "2026-04-10", "displayDate": "10 เม.ย. 69", "file": { "th": "f-03" } },
+    { "id": "G-04", "category": "guide", "title": "คู่มือการคำนวณอัตราดอกเบี้ยใหม่", "publishedDate": "2026-03-20", "displayDate": "20 มี.ค. 69", "file": { "th": "f-04" } },
+    { "id": "G-05", "category": "guide", "title": "เกณฑ์การพิจารณาลูกหนี้รายย่อย", "publishedDate": "2026-03-05", "displayDate": "5 มี.ค. 69", "file": { "th": "f-05" } },
+    { "id": "G-06", "category": "guide", "title": "คำถามที่พบบ่อย (FAQ) เรื่องการปรับโครงสร้าง", "publishedDate": "2026-02-15", "displayDate": "15 ก.พ. 69", "file": { "th": "f-06" } },
+    { "id": "G-07", "category": "guide", "title": "วิดีโอแนะนำขั้นตอนการทำงาน (Script)", "publishedDate": "2026-01-10", "displayDate": "10 ม.ค. 69", "file": { "th": "f-07" } },
+    { "id": "F-01", "category": "form", "title": "แบบคำขอใช้สิทธิ PDPA", "publishedDate": "2026-05-20", "displayDate": "20 พ.ค. 69", "file": { "th": "f-08" } },
+    { "id": "F-02", "category": "form", "title": "หนังสือยินยอมเปิดเผยข้อมูลเครดิต", "publishedDate": "2026-05-18", "displayDate": "18 พ.ค. 69", "file": { "th": "f-09" } },
+    { "id": "F-03", "category": "form", "title": "แบบฟอร์มลงทะเบียนลูกหนี้ใหม่", "publishedDate": "2026-04-25", "displayDate": "25 เม.ย. 69", "file": { "th": "f-10" } },
+    { "id": "F-04", "category": "form", "title": "คำร้องขอระงับการขายทอดตลาด", "publishedDate": "2026-04-01", "displayDate": "1 เม.ย. 69", "file": { "th": "f-11" } },
+    { "id": "F-05", "category": "form", "title": "หนังสือมอบอำนาจบุคคลธรรมดา", "publishedDate": "2026-03-12", "displayDate": "12 มี.ค. 69", "file": { "th": "f-12" } },
+    { "id": "F-06", "category": "form", "title": "แบบฟอร์มขอชำระหนี้ปิดบัญชี", "publishedDate": "2026-02-28", "displayDate": "28 ก.พ. 69", "file": { "th": "f-13" } },
+    { "id": "F-07", "category": "form", "title": "คำร้องขอลดอัตราดอกเบี้ยพิเศษ", "publishedDate": "2026-02-10", "displayDate": "10 ก.พ. 69", "file": { "th": "f-14" } },
+    { "id": "F-08", "category": "form", "title": "ใบคำขอเปลี่ยนแปลงงวดชำระ", "publishedDate": "2026-01-05", "displayDate": "5 ม.ค. 69", "file": { "th": "f-15" } },
+    { "id": "D-01", "category": "document", "title": "รายการเอกสารสำหรับพนักงานบริษัท", "publishedDate": "2026-05-05", "displayDate": "5 พ.ค. 69", "file": { "th": "f-16" } },
+    { "id": "D-02", "category": "document", "title": "รายการเอกสารสำหรับเจ้าของธุรกิจ", "publishedDate": "2026-04-20", "displayDate": "20 เม.ย. 69", "file": { "th": "f-17" } },
+    { "id": "D-03", "category": "document", "title": "เอกสารยืนยันรายได้เกษตรกร", "publishedDate": "2026-03-30", "displayDate": "30 มี.ค. 69", "file": { "th": "f-18" } },
+    { "id": "D-04", "category": "document", "title": "Checklist เอกสารหลักประกัน", "publishedDate": "2026-02-25", "displayDate": "25 ก.พ. 69", "file": { "th": "f-19" } },
+    { "id": "D-05", "category": "document", "title": "ตัวอย่างการรับรองสำเนาถูกต้อง", "publishedDate": "2026-01-15", "displayDate": "15 ม.ค. 69", "file": { "th": "f-20" } }
   ],
   "surveyListData": [
     {

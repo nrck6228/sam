@@ -3,9 +3,9 @@ import { assetListData, allAssetTypeData } from '/js/data/data.js';
 
 // --- Configuration & Helpers ---
 const STATUS_CONFIG = {
-    1: { label: 'ซื้อตรง', class: 'card__badge--direct' },
-    2: { label: 'ขายทอดตลาด', class: 'card__badge--auction' },
-    3: { label: 'รอประกาศราคา', class: 'card__badge--waiting' }
+    1: { label: 'ซื้อตรง', class: 'compare--grid__badge--direct' },
+    2: { label: 'ขายทอดตลาด', class: 'compare--grid__badge--auction' },
+    3: { label: 'รอประกาศราคา', class: 'compare--grid__badge--waiting' }
 };
 
 const typeMap = allAssetTypeData.reduce((acc, curr) => {
@@ -52,18 +52,18 @@ function renderCompareTable() {
     ];
 
     // สร้าง Grid Container (ใช้ Inline Style สำหรับจำนวน Column)
-    let html = `<div class="compare-grid" style="grid-template-columns: 200px repeat(${assets.length}, minmax(200px, 1fr));">`;
+    let html = `<div class="compare--grid" style="grid-template-columns: 200px repeat(${assets.length}, minmax(200px, 1fr));">`;
 
     rows.forEach(row => {
         // เปิด Row
-        html += `<div class="compare-row">`;
+        html += `<div class="compare--grid__row">`;
 
         // 1. Label Cell
-        html += `<div class="compare-cell compare-label">${row.label}</div>`;
+        html += `<div class="compare--grid__cell compare--grid__label">${row.label}</div>`;
 
         // 2. Data Cells
         assets.forEach(asset => {
-            html += `<div class="compare-cell">`;
+            html += `<div class="compare--grid__cell">`;
             html += renderCellContent(row, asset);
             html += `</div>`;
         });
@@ -83,11 +83,11 @@ function renderCellContent(row, asset) {
     switch (row.type) {
         case 'image':
             return `
-                <div class="compare-image-cell w-100">
+                <div class="compare--grid__image">
                     <button class="btn btn--remove" onclick="removeAndRefresh(${asset.id})">
                         <span class="btn__icon"><i class="bi bi-x"></i></span>
                     </button>
-                    <img src="${asset.img}" class="compare-img">
+                    <img src="${asset.img}" class="img-fluid">
                     <a href="/asset-detail/${asset.assetCode}" target="_blank" class="btn btn--hover btn--pink mt-2">
                         <span class="btn__text">รายละเอียด</span>
                     </a>
@@ -102,13 +102,13 @@ function renderCellContent(row, asset) {
 
         case 'price':
             if (asset.statusId === 3) return `<span class="text-muted fw-bold">ติดต่อเจ้าหน้าที่</span>`;
-            return `<span class="text-pink fw-bold">${(asset.totalPrice || 0).toLocaleString()} บาท</span>`;
+            return `<span class="fw-bold">${(asset.totalPrice || 0).toLocaleString()} บาท</span>`;
 
         case 'area':
             return `${asset.area} ${asset.unit || ''}`;
 
         case 'description':
-            return `<div class="compare-desc-text">${asset[row.field] || '-'}</div>`;
+            return `<div class="compare--grid__description">${asset[row.field] || '-'}</div>`;
 
         default:
             return asset[row.field] || '-';

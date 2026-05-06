@@ -118,6 +118,32 @@
         //}
     };
 
+const AnnouncementModule = (() => {
+    const setCookie = (n, v, d) => {
+        const date = new Date();
+        date.setTime(date.getTime() + (d * 24 * 60 * 60 * 1000));
+        document.cookie = `${n}=${v};expires=${date.toUTCString()};path=/`;
+    };
+
+    const getCookie = (n) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${n}=`);
+        return parts.length === 2 ? parts.pop().split(';').shift() : null;
+    };
+
+    return {
+        init: () => {
+            const modalEl = document.getElementById('announcementModal');
+            const cookieName = "hide_announcement_2026";
+            if (!modalEl || getCookie(cookieName)) return;
+
+            const myModal = new bootstrap.Modal(modalEl);
+            setTimeout(() => myModal.show(), 500);
+            modalEl.addEventListener('hidden.bs.modal', () => setCookie(cookieName, "true", 1));
+        }
+    };
+})();
+
     const initResizeHandler = () => {
         let timer;
         window.addEventListener('resize', () => {
@@ -131,6 +157,7 @@
         initMegaMenu();
         initScrollEffects();
         initResizeHandler();
+        AnnouncementModule.init();
 
         UI.mobileBtn?.addEventListener('click', (e) => {
             e.preventDefault();

@@ -30,6 +30,12 @@ namespace sam.Controllers
             return View();
         }
 
+        [Route("/intropage")]
+        public IActionResult Intro()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

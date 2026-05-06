@@ -70,6 +70,39 @@ namespace sam.Controllers
             return View("~/Views/Assets/AssetList.cshtml");
         }
 
+        [HttpGet]
+        [Route("npa/legal-execution")]
+        [Route("npa/legal-execution/page/{page:int?}")] // เพิ่มบรรทัดนี้เพื่อรองรับ /page/2
+        public IActionResult LegalExxcution(
+            int? page, // รับค่าเลขหน้า (Optional)
+            string mode,
+            string keyword,
+            string types,
+            string provinces,
+            string district,
+            string minPrice,
+            string maxPrice)
+        {
+            // เก็บค่าหน้าปัจจุบันไว้ (ถ้าไม่ส่งมาให้เริ่มที่หน้า 1)
+            ViewBag.CurrentPage = page ?? 1;
+
+            // ส่งค่าที่ Search มาจากหน้าแรกผ่าน ViewBag เพื่อให้ JS ในหน้า AssetList นำไปกรองข้อมูล
+            ViewBag.IsSearchMode = true;
+            ViewBag.SearchMode = mode;
+            ViewBag.Keyword = keyword;
+            ViewBag.Types = types;
+            ViewBag.Provinces = provinces;
+            ViewBag.District = district;
+            ViewBag.MinPrice = minPrice;
+            ViewBag.MaxPrice = maxPrice;
+
+            // ตั้งชื่อหัวข้อหน้าให้ดู Premium
+            ViewBag.Title = !string.IsNullOrEmpty(keyword) ? $"ผลการค้นหา: {keyword} - SAM" : "ค้นหาทรัพย์สิน - SAM";
+
+            // ส่งกลับไปที่ View เดิม
+            return View("~/Views/Assets/LegalList.cshtml");
+        }
+
         // เพิ่ม Route สำหรับหน้าเปรียบเทียบทรัพย์สิน
         [Route("npa/compare-results")]
         public IActionResult CompareResults()
@@ -79,6 +112,16 @@ namespace sam.Controllers
             ViewBag.Title = "เปรียบเทียบทรัพย์สิน - SAM";
 
             return View("~/Views/Assets/CompareResult.cshtml");
+        }
+
+        [Route("npa/e-brochure")]
+        public IActionResult Brochure()
+        {
+            // เนื่องจากเราใช้ JavaScript ดึงข้อมูลจาก LocalStorage 
+            // เราจึงแค่ส่ง Title และจัดการ Breadcrumb เบื้องต้น
+            ViewBag.Title = "E-Brochure - SAM";
+
+            return View("~/Views/Assets/Brochure.cshtml");
         }
 
         [Route("asset-detail/{code}")]
@@ -115,6 +158,22 @@ namespace sam.Controllers
         public IActionResult Download()
         {
             return View("~/Views/Assets/Download.cshtml");
+        }
+
+        [Route("npa/asset-matching")]
+        public IActionResult Matching()
+        {
+            ViewBag.Title = "จับคู่ทรัพย์สินรอการขาย - SAM";
+
+            return View("~/Views/Assets/Matching.cshtml");
+        }
+
+        [Route("npa/asset-purchasing")]
+        public IActionResult Purchasing()
+        {
+            ViewBag.Title = "แจ้งความประสงค์ซื้อทรัพย์ - SAM";
+
+            return View("~/Views/Assets/Purchasing.cshtml");
         }
     }
 }

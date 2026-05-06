@@ -1,0 +1,261 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <span>ทรัพย์สินรอการขาย</span>
+                </li>
+                <li class="breadcrumb-item active">
+                    <span>จับคู่ทรัพย์สินรอการขาย</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            จับคู่ทรัพย์สินรอการขาย
+        </h1>
+    </div>
+</section>
+
+<section class="section section--content py-5 py-lg-6 mb-0"
+         style="background-color: #DDE6E6; min-height: 100vh; display: flex; align-items: center;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <form id="appointmentForm" class="form form--dark p-4 p-md-5"
+                      style="background-color: rgba(0,0,0,0.8); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div class="step-content">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="text-white mb-4">กรอกรายละเอียดของทรัพย์สินที่ต้องการจับคู่</h4>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">ชื่อ - นามสกุล *</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <input id="app_phone" type="tel" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">โทรศัพท์ *</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <input id="app_email" type="text" class="form-control w-100" placeholder=" " />
+                                    <label class="form-label">อีเมล *</label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mt-5">
+                                <h6 class="text-white">ข้อมูลสำหรับส่งรายงานผลการจับคู่</h6>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="search__select-group mb-3">
+                                    <select id="search-property-type" name="types" multiple>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="search__select-group mb-3">
+                                    <select id="search-province" name="provinces" multiple>
+                                        <option value="select-all">-- เลือกทั้งหมด --</option>
+                                        <option value="bkk">กรุงเทพฯ</option>
+                                        <option value="nonthaburi">นนทบุรี</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="search__select-group mb-3">
+                                    <select id="search-district" name="districts" multiple disabled>
+                                        <option value="select-all">-- เลือกทั้งหมด --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <select class="form-select w-100">
+                                        <option selected>ราคาขั้นต่ำ *</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <select class="form-select w-100">
+                                        <option selected>เนื้อที่ *</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-5">
+                                <p class="text-white mb-3">ข้าพเจ้าตกลงและยินยอมให้ บสส. เก็บรวบรวม ใช้
+                                    และเปิดเผยข้อมูลส่วนบุคคลเพิ่อวัตถุประสงค์ในการรับข่าวสาร
+                                    และข้อมูลประชาสัมพันธ์ทรัพย์สินรอการขายจาก บสส.</p>
+
+                                    <div class="form-group border-0">
+                                        <div class="radio-buttons">
+                                            <input type="radio" id="accept" name="consent" class="radio-button" />
+                                            <label for="accept" class="radio-button--label text-white">ยินยอม</label>
+                                        </div>
+
+                                        <div class="radio-buttons">
+                                            <input type="radio" id="deny" name="consent" class="radio-button" />
+                                            <label for="deny" class="radio-button--label text-white">ไม่ยินยอม</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mt-5">
+                                    <p class="text-white mb-0">หากท่านต้องการเปลี่ยแปลงอีเมลหรือยกเลิกการรับข่าวสาร
+                                        สามารถแจ้งความประสงค์โดยระบุ ชื่อ-นามสกุล และอีเมลของท่านมาที่ (sales@sam.or.th)
+                                        หรือ โทรศัพท์ 02 686 1888</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3 pt-4 mt-4" style="border-top: 1px solid white">
+                                    <button type="button" class="btn btn--outline-white">
+                                        <span class="btn__text">ล้างข้อมูล</span>
+                                    </button>
+                                    <!-- เปลี่ยนจาก onclick เป็น type="submit" -->
+                                    <button type="submit" class="btn btn--sam-pink">
+                                        <span class="btn__text">ตกลง</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @section Styles {
+            <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+        }
+
+        @section Scripts {
+            <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
+            <script type="module" src="~/js/features/search/search-handler.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const form = document.getElementById('appointmentForm');
+                    @* const dateInput = document.getElementById('app_date'); *@
+                                                    const phoneInput = document.getElementById('app_phone');
+                    const emailInput = document.getElementById('app_email');
+                    const clearBtn = document.querySelector('.btn--outline-white');
+
+                    // 2. Format เบอร์โทรศัพท์ขณะพิมพ์
+                    phoneInput.oninput = function () {
+                        let value = this.value.replace(/\D/g, '');
+                        if (value.length > 10) value = value.slice(0, 10);
+                        
+                        let formattedValue = '';
+                        if (value.length > 0) {
+                            formattedValue = value.substring(0, 3);
+                            if (value.length > 3) formattedValue += '-' + value.substring(3, 6);
+                            if (value.length > 6) formattedValue += '-' + value.substring(6, 10);
+                        }
+                        this.value = formattedValue;
+                    };
+
+                    // 3. ปุ่มล้างข้อมูล
+                    clearBtn.addEventListener('click', function () {
+                        form.reset();
+                        fp.clear();
+                    });
+
+                    // 4. จัดการการ Submit (Validation + Success Alert)
+                    form.onsubmit = function (e) {
+                        e.preventDefault();
+
+                        const phone = phoneInput.value.replace(/-/g, '');
+                        const email = emailInput.value.trim();
+                        const consent = form.querySelector('input[name="consent"]:checked');
+
+                        // ตรวจสอบเบอร์โทร
+                        if (phone.length < 10) {
+                            showWarning('เบอร์โทรศัพท์ไม่ถูกต้อง', 'กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก');
+                            return;
+                        }
+
+                        // ตรวจสอบ Email
+                        const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+                        if (email && !emailRegex.test(email)) {
+                            showWarning('อีเมลไม่ถูกต้อง', 'กรุณากรอกรูปแบบอีเมลให้ถูกต้อง');
+                            return;
+                        }
+
+                        // ตรวจสอบความยินยอม
+                        if (!consent) {
+                            showWarning('กรุณาเลือกความยินยอม', 'กรุณาเลือกว่ายินยอมหรือไม่ยินยอมให้เก็บข้อมูล');
+                            return;
+                        }
+
+                        // แสดง Success (รวมฟังก์ชัน finishRegistration เดิมมาไว้ที่นี่)
+                        Swal.fire({
+                            width: '50%',
+                            icon: 'success',
+                            title: 'ขอบคุณสําหรับข้อมูลความต้องการของคุณ!',
+                            text: 'บสส. ขออนุญาตทำการติดต่อกลับ เพื่อหาบ้านที่คุณมองหาตามความสนใจของคุณให้ดีที่สุด',
+                            confirmButtonText: 'ตกลง',
+                            confirmButtonColor: '#df9faa',
+                            background: '#2c2c2c',
+                            color: '#fff',
+                            customClass: { confirmButton: 'rounded-pill px-4' }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = '/';
+                            }
+                        });
+                    };
+
+                    function showWarning(title, text) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: title,
+                            text: text,
+                            confirmButtonColor: '#df9faa'
+                        });
+                    }
+                });
+            </script>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const dropdownGroups = document.querySelectorAll('.search__select-group');
+
+                    dropdownGroups.forEach(group => {
+                        const items = group.querySelectorAll('.dropdown-item');
+                        const buttonText = group.querySelector('button span');
+                        const hiddenInput = group.querySelector('.dropdown-value-storage');
+
+                        items.forEach(item => {
+                            item.addEventListener('click', function (e) {
+                                e.preventDefault();
+
+                                // ดึงค่าจาก data-value หรือข้อความใน item
+                                const selectedText = this.innerText;
+                                const selectedValue = this.getAttribute('data-value') || selectedText;
+
+                                // 1. อัปเดตหน้าตาปุ่ม
+                                buttonText.innerText = selectedText;
+
+                                // 2. อัปเดตค่าใน Hidden Input (เสมือนค่าของ <select>)
+                                hiddenInput.value = selectedValue;
+
+                                // 3. (Optional) ลบคลาส active จากตัวอื่นและเพิ่มให้ตัวที่เลือก
+                                items.forEach(i => i.classList.remove('active'));
+                                this.classList.add('active');
+
+                                console.log(`Updated ${hiddenInput.name}: ${selectedValue}`);
+                            });
+                        });
+                    });
+                });
+            </script>
+        }

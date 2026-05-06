@@ -1,0 +1,97 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item"><a href="/npa/search-results">ทรัพย์สินรอการขาย</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>แบบฟอร์ม/เอกสารที่เกี่ยวข้อง</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            แบบฟอร์ม/เอกสารที่เกี่ยวข้อง
+        </h1>
+    </div>
+</section>
+
+<section class="section section--content">
+    <div class="section--content-announcement">
+        <div class="container-fluid">
+            <div class="row justify-content-between align-items-center mb-4">
+                <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                    <div class="form form--filter">
+                        <div class="form-group d-flex gap-2">
+                            <div class="select">
+                                <select id="filter-month" class="select__input">
+                                    <option value="all">ทุกเดือน</option>
+                                    <option value="1">มกราคม</option>
+                                    <option value="2">กุมภาพันธ์</option>
+                                    <option value="3">มีนาคม</option>
+                                    <option value="4">เมษายน</option>
+                                    <option value="5">พฤษภาคม</option>
+                                    <option value="6">มิถุนายน</option>
+                                    <option value="7">กรกฎาคม</option>
+                                    <option value="8">สิงหาคม</option>
+                                    <option value="9">กันยายน</option>
+                                    <option value="10">ตุลาคม</option>
+                                    <option value="11">พฤศจิกายน</option>
+                                    <option value="12">ธันวาคม</option>
+                                </select>
+                            </div>
+                            <div class="select">
+                                <select id="filter-year" class="select__input">
+                                    <option value="all">ทุกปี</option>
+                                    <option value="2026">2569</option>
+                                    <option value="2025">2568</option>
+                                    <option value="2024">2567</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="mb-3">คู่มือและขั้นตอนการปรับโครงสร้างหนี้</h3>
+                <div id="container-guide" class="row"></div> <!-- รายการจะลงที่นี่ -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center pagination--primary mt-3" id="pager-guide">
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="mb-3">แบบฟอร์มคำขอและคำร้อง</h3>
+                <div id="container-form" class="row"></div>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center pagination--primary mt-3" id="pager-form">
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="mb-3">รายการเอกสารที่ต้องเตรียม</h3>
+                <div id="container-doc" class="row"></div>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center pagination--primary mt-3" id="pager-doc">
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+}
+@section Scripts {
+    <script type="module" src="~/js/features/document/download.js"></script>
+}

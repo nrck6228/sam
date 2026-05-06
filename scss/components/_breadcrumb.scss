@@ -58,4 +58,8 @@
             text-transform: uppercase;
         }
     }
+
+    @include media.media-down(lg) {
+        top: 5.5rem;
+    }
 }

@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item">
                     <span>ทรัพย์สินรอการขาย</span>
                 </li>
-                <li class="breadcrumb-item"><a href="/npa/asset-category">ประเภททรัพย์</a></li>
+                <li class="breadcrumb-item"><a href="/npa/search-result">ค้นหาทรัพย์สิน</a></li>
             </ol>
         </nav>
     </div>
@@ -41,11 +41,11 @@
                 </button>
             </div>
             <div class="print-header">
-                <img src="~/media/images/logo/logo-main.webp" style="width: 120px;"/>
+                <img src="~/media/images/logo/logo-main.webp" style="width: 120px;" />
                 <h4>เอกสารเปรียบเทียบทรัพย์สิน NPA</h4>
                 <p>วันที่พิมพ์: @DateTime.Now.ToString("dd/MM/yyyy")</p>
             </div>
-            <div id="compare-result-wrapper" class="compare-container">
+            <div id="compare-result-wrapper" class="compare--container">
                 <div class="text-center py-5">
                     <div class="spinner-border text-pink" role="status">
                         <span class="visually-hidden">Loading...</span>
@@ -62,10 +62,12 @@
     <style>
         .compare-container {
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch; /* ให้ไถลื่นใน iOS */
+            -webkit-overflow-scrolling: touch;
+            /* ให้ไถลื่นใน iOS */
             border: 1px solid #dee2e6;
             border-radius: 8px;
         }
+
         /* ตัวแม่ไม่ต้องเป็น grid แล้ว เป็นแค่ container ปกติ */
         .compare-grid {
             display: block;
@@ -88,7 +90,8 @@
         .compare-label {
             background-color: #f9f9f9;
             font-weight: bold;
-            position: sticky; /* ทำ sticky column เฉพาะหัวข้อได้ง่ายขึ้น */
+            position: sticky;
+            /* ทำ sticky column เฉพาะหัวข้อได้ง่ายขึ้น */
             left: 0;
             z-index: 5;
         }
@@ -124,16 +127,24 @@
         .compare-row--images .compare-cell {
             position: sticky;
             top: 0;
-            z-index: 11; /* ต้องสูงกว่า Sticky Left */
+            z-index: 11;
+            /* ต้องสูงกว่า Sticky Left */
             background: #fff;
-            border-bottom: 2px solid #E91E63; /* เส้นใต้เน้นธีม SAM */
+            border-bottom: 2px solid #E91E63;
+            /* เส้นใต้เน้นธีม SAM */
         }
 
         @@media print {
+
             /* 1. ซ่อนส่วนที่ไม่ต้องการให้ปรากฏในกระดาษ */
-            header, nav, footer, .btn, .section--banner {
+            header,
+            nav,
+            footer,
+            .btn,
+            .section--banner {
                 display: none !important;
             }
+
             /* 2. ยกเลิกการ Scroll และขยายตารางให้เต็มหน้ากระดาษ */
             body {
                 background-color: white !important;
@@ -149,7 +160,8 @@
             }
 
             .compare-container {
-                overflow: visible !important; /* ปิดการไถข้าง */
+                overflow: visible !important;
+                /* ปิดการไถข้าง */
                 border: none !important;
             }
 
@@ -157,34 +169,42 @@
                 display: table !important;
                 width: 100% !important;
                 border-collapse: collapse !important;
-                table-layout: fixed; /* บังคับให้ทุกคอลัมน์เฉลี่ยความกว้างเท่าๆ กัน */
+                table-layout: fixed;
+                /* บังคับให้ทุกคอลัมน์เฉลี่ยความกว้างเท่าๆ กัน */
             }
+
             /* บังคับให้ "ตัวหุ้มแถว" ทำหน้าที่เป็น Row ของตาราง */
             .compare-row {
                 display: table-row !important;
             }
+
             /* บังคับให้ "ข้อมูลข้างใน" ทำหน้าที่เป็น Cell ของตาราง */
-            .compare-cell, 
+            .compare-cell,
             .compare-label {
                 display: table-cell !important;
                 border: 1px solid #ddd !important;
                 padding: 8px !important;
                 vertical-align: top;
-                word-wrap: break-word; /* ป้องกันข้อความยาวทะลุช่อง */
+                word-wrap: break-word;
+                /* ป้องกันข้อความยาวทะลุช่อง */
             }
+
             /* ล็อกความกว้างคอลัมน์แรก (หัวข้อ) */
             .compare-label {
                 width: 120px !important;
                 background-color: #f8f9fa !important;
                 font-weight: bold;
-                -webkit-print-color-adjust: exact; /* บังคับให้พิมพ์สีพื้นหลังใน Chrome/Edge */
+                -webkit-print-color-adjust: exact;
+                /* บังคับให้พิมพ์สีพื้นหลังใน Chrome/Edge */
             }
+
             /* จัดการรูปภาพให้พอดีช่อง */
             .compare-img {
                 width: 100% !important;
                 max-width: 120px !important;
                 height: auto !important;
             }
+
             /* เพิ่มหัวกระดาษพิเศษ (Optional) */
             .print-header {
                 display: block !important;
@@ -197,7 +217,6 @@
         .print-header {
             display: none;
         }
-
     </style>
 }
 @section Scripts {
