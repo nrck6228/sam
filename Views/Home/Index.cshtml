@@ -186,8 +186,10 @@
                     </p>
                 </div>
             </div>
+        </div>
 
-            <div class="col-12 p-0">
+        <div class="row g-0">
+            <div class="col-12">
                 <div class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-4 gap-0">
                     <a href="nogo" class="card card--highlight h-100">
                         <div class="card__body">
@@ -688,7 +690,7 @@
     </div>
 </section>
 
-<section class="home home--assets bg-symbol bg-attachment-fixed min-vh-100" data-symbol="S"
+@* <section class="home home--assets bg-symbol bg-attachment-fixed min-vh-100" data-symbol="S"
          style="background-image:url(/media/images/bg/bg-recommend.jpg)">
     <div class="container-fluid">
         <div class="home__header">
@@ -735,12 +737,168 @@
                     <div id="asset-list"
                          class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3">
                     </div>
-                    @* <a href="/" title="" class="btn btn--hover btn--gray">
-                        <span class="btn__text">ดูทั้งหมด</span>
-                        <span class="btn__icon">
-                            <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
-                        </span>
-                    </a> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</section> *@
+
+<!-- ชุดที่ 1: แบบ Card แนวตั้ง (Default) -->
+<section class="home home--assets bg-symbol bg-attachment-fixed min-vh-100" data-symbol="S"
+         style="background-image:url(/media/images/bg/bg-recommend.jpg)">
+        
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="home__header">
+                    <h2 class="home__title text-black-1">
+                        ทรัพย์เด่น<br />และน่าสนใจ
+                    </h2>
+                </div>
+
+                <div class="home__body">
+                    <div class="d-block d-md-flex justify-content-lg-end">
+                        <ul class="nav nav-pills sam-tabs" id="assetTab1" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link active" data-province-id="10"
+                                        data-bs-toggle="tab" data-bs-target="#content1">กรุงเทพมหานคร</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="13" data-bs-toggle="tab"
+                                        data-bs-target="#content1">ปทุมธานี</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="20" data-bs-toggle="tab"
+                                        data-bs-target="#content1">ชลบุรี</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="83" data-bs-toggle="tab"
+                                        data-bs-target="#content1">ภูเก็ต</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="50" data-bs-toggle="tab"
+                                        data-bs-target="#content1">เชียงใหม่</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="21" data-bs-toggle="tab"
+                                        data-bs-target="#content1">ระยอง</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="30" data-bs-toggle="tab"
+                                        data-bs-target="#content1">นครราชสีมา</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="asset-list-1"
+                         class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ชุดที่ 2: แบบ List แนวนอน (Compact) -->
+<section class="home home--assets bg-symbol min-vh-100" data-symbol="S"
+         style="background-image: linear-gradient(0deg, #fff, #F5F5F5);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="home__header">
+                    <h2 class="home__title text-black-1">
+                        ทรัพย์เด่นและน่าสนใจ
+                    </h2>
+                </div>
+
+                <div class="home__body">
+                    <div class="d-block d-md-flex">
+                        <ul class="nav nav-pills sam-tabs--green" id="assetTab2" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link active" data-province-id="10"
+                                        data-bs-toggle="tab" data-bs-target="#content2">กรุงเทพมหานคร</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="13" data-bs-toggle="tab"
+                                        data-bs-target="#content2">ปทุมธานี</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="20" data-bs-toggle="tab"
+                                        data-bs-target="#content2">ชลบุรี</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="83" data-bs-toggle="tab"
+                                        data-bs-target="#content2">ภูเก็ต</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="50" data-bs-toggle="tab"
+                                        data-bs-target="#content2">เชียงใหม่</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="21" data-bs-toggle="tab"
+                                        data-bs-target="#content2">ระยอง</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="30" data-bs-toggle="tab"
+                                        data-bs-target="#content2">นครราชสีมา</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="asset-list-2"
+                         class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-xl-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ชุดที่ 3: แบบเน้นภาพใหญ่ (Premium) -->
+<section class="home home--assets min-vh-100" style="background-image: linear-gradient(120deg, #F5F5F5, #fff);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="home__header">
+                    <h2 class="home__title text-black-1">
+                        ทรัพย์เด่นและน่าสนใจ
+                    </h2>
+                </div>
+
+                <div class="home__body">
+                    <div class="d-block d-md-flex">
+                        <ul class="nav nav-pills sam-tabs--green" id="assetTab3" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link active" data-province-id="10"
+                                        data-bs-toggle="tab" data-bs-target="#content3">กรุงเทพมหานคร</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="13" data-bs-toggle="tab"
+                                        data-bs-target="#content3">ปทุมธานี</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="20" data-bs-toggle="tab"
+                                        data-bs-target="#content3">ชลบุรี</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="83" data-bs-toggle="tab"
+                                        data-bs-target="#content3">ภูเก็ต</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="50" data-bs-toggle="tab"
+                                        data-bs-target="#content3">เชียงใหม่</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="21" data-bs-toggle="tab"
+                                        data-bs-target="#content3">ระยอง</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-province-id="30" data-bs-toggle="tab"
+                                        data-bs-target="#content3">นครราชสีมา</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="asset-list-3"
+                         class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-3"></div>
                 </div>
             </div>
         </div>
@@ -772,6 +930,196 @@
                     </svg>
                 </span>
             </a>
+        </div>
+    </div>
+</section>
+
+<section class="home home--assets bg-symbol" data-symbol="A"
+         style="background-image: linear-gradient(120deg, #F5F5F5, #fff);">
+    <div class="container-fluid">
+        <div class="home__header">
+            <h2 class="home__title text-black-1">
+                คุณกำลังมองหาอะไร
+            </h2>
+            <a href="/" title="" class="btn btn--hover btn--gray">
+                <span class="btn__text">ดูทั้งหมด</span>
+                <span class="btn__icon">
+                    <svg class="icon">
+                        <use xlink:href="#icon-arrow-explore"></use>
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="home__body">
+            <div id="asset-type" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-4">
+                <a href="/npa/8/condo" title="ห้องชุดพักอาศัย" class="card card--type-full">
+                    <div class="card__figure">
+                        <img src="/media/images/asset/sample-property-1.webp" class="card__image" />
+                    </div>
+                    <div class="card__wrap">
+                        <div class="card__header">
+                            <svg class="icon-xl">
+                                <use xlink:href="#icon-condo"></use>
+                            </svg>
+                            <div class="card__type">ห้องชุดพักอาศัย</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__count">17,232</div>
+                            <div class="card__unit">รายการ</div>
+                        </div>
+                    </div>
+                </a>
+            
+                <a href="/npa/26/apartment" title="อพาร์ทเมนท์" class="card card--type-full">
+                    <div class="card__figure">
+                        <img src="/media/images/asset/sample-property-1.webp" class="card__image" />
+                    </div>
+                    <div class="card__wrap">
+                        <div class="card__header">
+                            <svg class="icon-xl">
+                                <use xlink:href="#icon-apartment"></use>
+                            </svg>
+                            <div class="card__type">อพาร์ทเมนท์</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__count">12,479</div>
+                            <div class="card__unit">รายการ</div>
+                        </div>
+                    </div>
+                </a>
+            
+                <a href="/npa/4/land" title="ที่ดินเปล่า" class="card card--type-full">
+                    <div class="card__figure">
+                        <img src="/media/images/asset/sample-property-1.webp" class="card__image" />
+                    </div>
+                    <div class="card__wrap">
+                        <div class="card__header">
+                            <svg class="icon-xl">
+                                <use xlink:href="#icon-land"></use>
+                            </svg>
+                            <div class="card__type">ที่ดินเปล่า</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__count">9,783</div>
+                            <div class="card__unit">รายการ</div>
+                        </div>
+                    </div>
+                </a>
+            
+                <a href="/npa/9/detached-house" title="บ้านเดี่ยว" class="card card--type-full">
+                    <div class="card__figure">
+                        <img src="/media/images/asset/sample-property-1.webp" class="card__image" />
+                    </div>
+                    <div class="card__wrap">
+                        <div class="card__header">
+                            <svg class="icon-xl">
+                                <use xlink:href="#icon-house"></use>
+                            </svg>
+                            <div class="card__type">บ้านเดี่ยว</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__count">7,890</div>
+                            <div class="card__unit">รายการ</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home home--assets bg-symbol" data-symbol="A"
+         style="background-image: linear-gradient(120deg, #F5F5F5, #fff);">
+    <div class="container-fluid">
+        <div class="home__header">
+            <h2 class="home__title text-black-1">
+                คุณกำลังมองหาอะไร
+            </h2>
+            <a href="/" title="" class="btn btn--hover btn--gray">
+                <span class="btn__text">ดูทั้งหมด</span>
+                <span class="btn__icon">
+                    <svg class="icon">
+                        <use xlink:href="#icon-arrow-explore"></use>
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="home__body">
+            <div id="asset-type" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-4">
+                <a href="/npa/8/condo" title="ห้องชุดพักอาศัย" class="card card--type-full">
+                    <div class="card__figure">
+                        <img src="/media/images/asset/sample-property-1.webp" class="card__image" />
+                    </div>
+                    <div class="card__wrap">
+                        <div class="card__header text-center">
+                            <svg class="icon-xl">
+                                <use xlink:href="#icon-condo"></use>
+                            </svg>
+                            <div class="card__type">ห้องชุดพักอาศัย</div>
+                        </div>
+                        <div class="card__body text-center">
+                            <div class="card__count">17,232</div>
+                            <div class="card__unit">รายการ</div>
+                        </div>
+                    </div>
+                </a>
+            
+                <a href="/npa/26/apartment" title="อพาร์ทเมนท์" class="card card--type-full">
+                    <div class="card__figure">
+                        <img src="/media/images/asset/sample-property-1.webp" class="card__image" />
+                    </div>
+                    <div class="card__wrap">
+                        <div class="card__header text-center">
+                            <svg class="icon-xl">
+                                <use xlink:href="#icon-apartment"></use>
+                            </svg>
+                            <div class="card__type">อพาร์ทเมนท์</div>
+                        </div>
+                        <div class="card__body text-center">
+                            <div class="card__count">12,479</div>
+                            <div class="card__unit">รายการ</div>
+                        </div>
+                    </div>
+                </a>
+            
+                <a href="/npa/4/land" title="ที่ดินเปล่า" class="card card--type-full">
+                    <div class="card__figure">
+                        <img src="/media/images/asset/sample-property-1.webp" class="card__image" />
+                    </div>
+                    <div class="card__wrap">
+                        <div class="card__header text-center">
+                            <svg class="icon-xl">
+                                <use xlink:href="#icon-land"></use>
+                            </svg>
+                            <div class="card__type">ที่ดินเปล่า</div>
+                        </div>
+                        <div class="card__body text-center">
+                            <div class="card__count">9,783</div>
+                            <div class="card__unit">รายการ</div>
+                        </div>
+                    </div>
+                </a>
+            
+                <a href="/npa/9/detached-house" title="บ้านเดี่ยว" class="card card--type-full">
+                    <div class="card__figure">
+                        <img src="/media/images/asset/sample-property-1.webp" class="card__image" />
+                    </div>
+                    <div class="card__wrap">
+                        <div class="card__header text-center">
+                            <svg class="icon-xl">
+                                <use xlink:href="#icon-house"></use>
+                            </svg>
+                            <div class="card__type">บ้านเดี่ยว</div>
+                        </div>
+                        <div class="card__body text-center">
+                            <div class="card__count">7,890</div>
+                            <div class="card__unit">รายการ</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -819,37 +1167,176 @@
     </div>
 </section>
 
-<section class="home home--news bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol=""
-         style="background-image:url(/media/images/bg/bg-news.jpg)">
+<section class="home home--assets bg-symbol" data-symbol="M"
+         style="background-image: linear-gradient(120deg, #F5F5F5, #fff);">
     <div class="container-fluid">
-        <div class="home__header">
-            <h2 class="home__title text-black-1">
-                ข่าวสาร
-            </h2>
-        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="home__header">
+                    <h2 class="home__title text-gradient text-gradient--green">
+                        บ้านเด่นทำเลดี
+                    </h2>
+                </div>
+                <div class="home__body">
+                    <div class="asset-area--template1">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="asset-area--template1__group bg--grad-gray h-100">
+                                    <h3 class="asset-area--template1__title">
+                                        ย่าน
+                                    </h3>
+                                    <ul class="asset-area--template1__list">
+                    
+                                        <li><a href="#nogo" class="asset-area--template1__link">ถนนเพชรเกษม</a></li>
+                                    
+                                        <li><a href="#nogo" class="asset-area--template1__link">ถนนรามอินทรา</a></li>
+                                    
+                                        <li><a href="#nogo" class="asset-area--template1__link">ถนนลาดกระบัง</a></li>
+                                    
+                                        <li><a href="#nogo" class="asset-area--template1__link">ถนนลาดพร้าว</a></li>
+                                    
+                                        <li><a href="#nogo" class="asset-area--template1__link">ถนนวัชรพล</a></li>
+                                    
+                                        <li><a href="#nogo" class="asset-area--template1__link">ถนนสายไหม</a></li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
 
-        <div class="home__body">
-            <div class="d-block d-md-flex justify-content-lg-end">
-                <ul class="nav nav-pills sam-tabs sam-tabs--primary" id="newsTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link active" data-type="pressReleases" data-bs-toggle="tab"
-                                data-bs-target="#news-content">ข่าวสารประชาสัมพันธ์</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link" data-type="articles" data-bs-toggle="tab"
-                                data-bs-target="#news-content">บทความและวารสาร</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link sam-tabs__link" data-type="media" data-bs-toggle="tab"
-                                data-bs-target="#news-content">วีดิโอ/สื่อประชาสัมพันธ์</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="tab-content sam-tab-content" id="newsTabContent">
-                <div class="tab-pane fade show active" id="news-content" role="tabpanel">
-                    <div id="news-list" class="card-deck card-deck--cards-1 card-deck--cards-md-3">
+                            <div class="col-lg-6">
+                                <div class="asset-area--template1__group bg--grad-green h-100">
+                                    <h3 class="asset-area--template1__title text-white">
+                                        ใกล้
+                                    </h3>
+                                    <ul class="asset-area--template1__list">
+                    
+                                        <li><a href="#nogo" class="asset-area--template1__link">รถไฟสายสีเขียว</a></li>
+                                        
+                                        <li><a href="#nogo" class="asset-area--template1__link">รถไฟสายสีแดง</a></li>
+                                        
+                                        <li><a href="#nogo" class="asset-area--template1__link">รถไฟสายสีน้ำเงิน</a>
+                                        </li>
+                                        
+                                        <li><a href="#nogo" class="asset-area--template1__link">รถไฟสายสีม่วง</a></li>
+                                        
+                                        <li><a href="#nogo" class="asset-area--template1__link">รถไฟสายสีลม
+                                            และส่วนต่อขยาย</a></li>
+                                        
+                                            <li><a href="#nogo" class="asset-area--template1__link">รถไฟสายสีเหลือง</a></li>
+                                        
+                                            <li><a href="#nogo" class="asset-area--template1__link">แอร์พอร์ตลิ้งค์</a></li>
+                                        
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home home--assets bg-symbol bg-attachment-fixed" data-symbol="M"
+             style="background-image:url(/media/images/bg/bg-location.jpg)">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="home__header">
+                        <h2 class="home__title text-gradient text-gradient--green">
+                            บ้านเด่นทำเลดี
+                        </h2>
+                    </div>
+                    <div class="home__body">
+                        <div class="asset-area--template2">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="asset-area--template2__group bg--grad-gray h-100">
+                                        <h3 class="asset-area--template2__title">
+                                            ย่าน
+                                        </h3>
+                                        <ul class="asset-area--template2__list">
+                    
+                                            <li><a href="#nogo" class="asset-area--template2__link">ถนนเพชรเกษม</a></li>
+                                    
+                                            <li><a href="#nogo" class="asset-area--template2__link">ถนนรามอินทรา</a></li>
+                                    
+                                            <li><a href="#nogo" class="asset-area--template2__link">ถนนลาดกระบัง</a></li>
+                                    
+                                            <li><a href="#nogo" class="asset-area--template2__link">ถนนลาดพร้าว</a></li>
+                                    
+                                            <li><a href="#nogo" class="asset-area--template2__link">ถนนวัชรพล</a></li>
+                                    
+                                            <li><a href="#nogo" class="asset-area--template2__link">ถนนสายไหม</a></li>
+                                        
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="asset-area--template2__group bg--grad-green h-100">
+                                        <h3 class="asset-area--template2__title">
+                                            ใกล้
+                                        </h3>
+                                        <ul class="asset-area--template2__list">
+                    
+                                            <li><a href="#nogo" class="asset-area--template2__link">รถไฟสายสีเขียว</a></li>
+                                        
+                                            <li><a href="#nogo" class="asset-area--template2__link">รถไฟสายสีแดง</a></li>
+                                        
+                                            <li><a href="#nogo" class="asset-area--template2__link">รถไฟสายสีน้ำเงิน</a>
+                                            </li>
+                                        
+                                            <li><a href="#nogo" class="asset-area--template2__link">รถไฟสายสีม่วง</a></li>
+                                        
+                                            <li><a href="#nogo" class="asset-area--template2__link">รถไฟสายสีลม
+                                                และส่วนต่อขยาย</a></li>
+                                        
+                                                <li><a href="#nogo" class="asset-area--template2__link">รถไฟสายสีเหลือง</a></li>
+                                        
+                                                <li><a href="#nogo" class="asset-area--template2__link">แอร์พอร์ตลิ้งค์</a></li>
+                                        
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="home home--news bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol=""
+                 style="background-image:url(/media/images/bg/bg-news.jpg)">
+            <div class="container-fluid">
+                <div class="home__header">
+                    <h2 class="home__title text-black-1">
+                        ข่าวสาร
+                    </h2>
+                </div>
+
+                <div class="home__body" id="group-1">
+                    <div class="d-block d-md-flex justify-content-lg-end">
+                        <ul class="nav nav-pills sam-tabs sam-tabs--primary" id="tab-group-1" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link active" data-type="pressReleases" data-group="1"
+                                        data-style="STYLE_A">ข่าวสารประชาสัมพันธ์</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-type="articles" data-group="1"
+                                        data-style="STYLE_A">บทความและวารสาร</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-type="media" data-group="1"
+                                        data-style="STYLE_A">วีดิโอ/สื่อประชาสัมพันธ์</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="news-list-1" class="card-deck card-deck--cards-1 card-deck--cards-md-3"></div>
+
+                    <a href="#" title="" id="btn-news-all-1" class="btn btn--hover btn--gray">
                         <span class="btn__text">ดูข่าวสารทั้งหมด</span>
                         <span class="btn__icon">
                             <svg class="icon">
@@ -859,121 +1346,260 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<section class="home home--about">
-    <div class="container-fluid">
-        <div class="row justify-content-between align-items-center">
-            <div class="col-lg-9">
+        <section class="home home--news bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol=""
+                 style="background-image:url(/media/images/bg/bg-news.jpg)">
+            <div class="container-fluid">
                 <div class="home__header">
                     <h2 class="home__title text-black-1">
-                        วิสัยทัศน์
+                        ข่าวสาร
                     </h2>
+                </div>
 
-                    <div class="home__content">
-                        เป็นบริษัทบริหารสินทรัพย์แห่งรัฐ
-                        ที่มีบทบาทสนับสนุนให้ประชาชนและภาคธุรกิจฟื้นตัวอย่างยั่งยืน
+                <div class="home__body" id="group-2">
+                    <div class="d-block d-md-flex justify-content-lg-end">
+                        <ul class="nav nav-pills sam-tabs sam-tabs--primary" id="tab-group-2" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link active" data-type="pressReleases" data-group="2"
+                                        data-style="STYLE_B">ข่าวสารประชาสัมพันธ์</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-type="articles" data-group="2"
+                                        data-style="STYLE_B">บทความและวารสาร</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-type="media" data-group="2"
+                                        data-style="STYLE_B">วีดิโอ/สื่อประชาสัมพันธ์</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="news-list-2" class="card-deck card-deck--cards-1 card-deck--cards-md-3"></div>
+
+                    <a href="#" title="" id="btn-news-all-2" class="btn btn--hover btn--gray">
+                        <span class="btn__text">ดูข่าวสารทั้งหมด</span>
+                        <span class="btn__icon">
+                            <svg class="icon">
+                                <use xlink:href="#icon-arrow-explore"></use>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="home home--news bg-symbol bg-attachment-fixed min-vh-100 py-5 py-lg-7" data-symbol=""
+                 style="background-image:url(/media/images/bg/bg-news.jpg)">
+            <div class="container-fluid">
+                <div class="home__header">
+                    <h2 class="home__title text-black-1">
+                        ข่าวสาร
+                    </h2>
+                </div>
+
+                <div class="home__body" id="group-3">
+                    <div class="d-block d-md-flex justify-content-lg-end">
+                        <ul class="nav nav-pills sam-tabs sam-tabs--primary" id="tab-group-3" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link active" data-type="pressReleases" data-group="3"
+                                        data-style="STYLE_B">ข่าวสารประชาสัมพันธ์</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-type="articles" data-group="3"
+                                        data-style="STYLE_B">บทความและวารสาร</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sam-tabs__link" data-type="media" data-group="3"
+                                        data-style="STYLE_B">วีดิโอ/สื่อประชาสัมพันธ์</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="news-list-3"></div>
+
+                    <a href="#" title="" id="btn-news-all-3" class="btn btn--hover btn--gray">
+                        <span class="btn__text">ดูข่าวสารทั้งหมด</span>
+                        <span class="btn__icon">
+                            <svg class="icon">
+                                <use xlink:href="#icon-arrow-explore"></use>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="home home--about">
+            <div class="container-fluid">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-9">
+                        <div class="home__header">
+                            <h2 class="home__title text-black-1">
+                                วิสัยทัศน์
+                            </h2>
+
+                            <div class="home__content">
+                                เป็นบริษัทบริหารสินทรัพย์แห่งรัฐ
+                                ที่มีบทบาทสนับสนุนให้ประชาชนและภาคธุรกิจฟื้นตัวอย่างยั่งยืน
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 justify-content-lg-end">
+                        <a href="/news" title="" class="btn btn--hover btn--gray">
+                            <span class="btn__text">เกี่ยวกับเรา</span>
+                            <span class="btn__icon">
+                                <svg class="icon">
+                                    <use xlink:href="#icon-arrow-explore"></use>
+                                </svg>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 justify-content-lg-end">
-                <a href="/news" title="" class="btn btn--hover btn--gray">
-                    <span class="btn__text">เกี่ยวกับเรา</span>
-                    <span class="btn__icon">
-                        <svg class="icon">
-                            <use xlink:href="#icon-arrow-explore"></use>
-                        </svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<div class="modal fade" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content bg-dark border-0">
-            <div class="modal-header border-0 pb-0">
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+        <section class="home home--about" style="background-color: white;">
+            <div class="container-fluid">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-9">
+                        <div class="home__header">
+                            <h2 class="home__title text-black-1">
+                                วิสัยทัศน์
+                            </h2>
+
+                            <div class="home__content">
+                                เป็นบริษัทบริหารสินทรัพย์แห่งรัฐ
+                                ที่มีบทบาทสนับสนุนให้ประชาชนและภาคธุรกิจฟื้นตัวอย่างยั่งยืน
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 justify-content-lg-end">
+                        <a href="/news" title="" class="btn btn--hover btn--gray">
+                            <span class="btn__text">เกี่ยวกับเรา</span>
+                            <span class="btn__icon">
+                                <svg class="icon">
+                                    <use xlink:href="#icon-arrow-explore"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body p-0">
-                <div class="ratio ratio-16x9">
-                    <iframe src="" title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
+        </section>
+
+        <section class="home home--about">
+            <div class="container-fluid">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-8">
+                        <div class="home__header justify-content-center">
+                            <h2 class="home__title text-black-1">
+                                วิสัยทัศน์
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="home__content text-center p-0 border-0">
+                            เป็นบริษัทบริหารสินทรัพย์แห่งรัฐ
+                            ที่มีบทบาทสนับสนุนให้ประชาชนและภาคธุรกิจฟื้นตัวอย่างยั่งยืน
+                        </div>
+                    </div>
+                    <div class="col-lg-8 text-center">
+                        <a href="/news" title="" class="btn btn--hover btn--gray">
+                            <span class="btn__text">เกี่ยวกับเรา</span>
+                            <span class="btn__icon">
+                                <svg class="icon">
+                                    <use xlink:href="#icon-arrow-explore"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal fade" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content bg-dark border-0">
+                    <div class="modal-header border-0 pb-0">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="" title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-@section Styles {
-    <link href="~/vendors/swiper/swiper-bundle.min.css" rel="stylesheet" />
+        @section Styles {
+            <link href="~/vendors/swiper/swiper-bundle.min.css" rel="stylesheet" />
     
-    <style>
-        .swiper-notification {
-            pointer-events: none;
+            <style>
+                .swiper-notification {
+                    pointer-events: none;
+                }
+
+                /* ตกแต่งชื่อกลุ่มใน Select2 */
+                .select2-results__group {
+                    padding: 8px 12px !important;
+                    background-color: #f8f9fa;
+                    /* สีพื้นหลังอ่อนๆ ให้เห็นขอบเขตกลุ่ม */
+                    color: #666 !important;
+                    font-size: 0.85rem !important;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+
+                /* ปรับระยะห่างของตัวเลือกข้างในกลุ่ม */
+                .select2-results__option[aria-selected] {
+                    padding-left: 20px !important;
+                }
+            </style>
         }
+        @section Scripts {
+            <script src="~/vendors/swiper/swiper-bundle.min.js"></script>
+            <script type="module" src="~/js/features/search/search-handler.js"></script>
+            <script type="module" src="~/js/features/home/home-renderer.js"></script>
+            <script type="module" src="~/js/shared/video-util.js"></script>
+            <script>
+                const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-        /* ตกแต่งชื่อกลุ่มใน Select2 */
-        .select2-results__group {
-            padding: 8px 12px !important;
-            background-color: #f8f9fa;
-            /* สีพื้นหลังอ่อนๆ ให้เห็นขอบเขตกลุ่ม */
-            color: #666 !important;
-            font-size: 0.85rem !important;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+                document.addEventListener('DOMContentLoaded', function () {
+                    const dropdownGroups = document.querySelectorAll('.search__select-group');
 
-        /* ปรับระยะห่างของตัวเลือกข้างในกลุ่ม */
-        .select2-results__option[aria-selected] {
-            padding-left: 20px !important;
-        }
-    </style>
-}
-@section Scripts {
-    <script src="~/vendors/swiper/swiper-bundle.min.js"></script>
-    <script type="module" src="~/js/features/search/search-handler.js"></script>
-    <script type="module" src="~/js/features/home/home-renderer.js"></script>
-    <script type="module" src="~/js/shared/video-util.js"></script>
-    <script>
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+                    dropdownGroups.forEach(group => {
+                        const items = group.querySelectorAll('.dropdown-item');
+                        const buttonText = group.querySelector('button span');
+                        const hiddenInput = group.querySelector('.dropdown-value-storage');
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const dropdownGroups = document.querySelectorAll('.search__select-group');
+                        items.forEach(item => {
+                            item.addEventListener('click', function (e) {
+                                e.preventDefault();
 
-            dropdownGroups.forEach(group => {
-                const items = group.querySelectorAll('.dropdown-item');
-                const buttonText = group.querySelector('button span');
-                const hiddenInput = group.querySelector('.dropdown-value-storage');
+                                // ดึงค่าจาก data-value หรือข้อความใน item
+                                const selectedText = this.innerText;
+                                const selectedValue = this.getAttribute('data-value') || selectedText;
 
-                items.forEach(item => {
-                    item.addEventListener('click', function (e) {
-                        e.preventDefault();
+                                // 1. อัปเดตหน้าตาปุ่ม
+                                buttonText.innerText = selectedText;
 
-                        // ดึงค่าจาก data-value หรือข้อความใน item
-                        const selectedText = this.innerText;
-                        const selectedValue = this.getAttribute('data-value') || selectedText;
+                                // 2. อัปเดตค่าใน Hidden Input (เสมือนค่าของ <select>)
+                                hiddenInput.value = selectedValue;
 
-                        // 1. อัปเดตหน้าตาปุ่ม
-                        buttonText.innerText = selectedText;
+                                // 3. (Optional) ลบคลาส active จากตัวอื่นและเพิ่มให้ตัวที่เลือก
+                                items.forEach(i => i.classList.remove('active'));
+                                this.classList.add('active');
 
-                        // 2. อัปเดตค่าใน Hidden Input (เสมือนค่าของ <select>)
-                        hiddenInput.value = selectedValue;
-
-                        // 3. (Optional) ลบคลาส active จากตัวอื่นและเพิ่มให้ตัวที่เลือก
-                        items.forEach(i => i.classList.remove('active'));
-                        this.classList.add('active');
-
-                        console.log(`Updated ${hiddenInput.name}: ${selectedValue}`);
+                                console.log(`Updated ${hiddenInput.name}: ${selectedValue}`);
+                            });
+                        });
                     });
                 });
-            });
-        });
-    </script>
-}
+            </script>
+        }
