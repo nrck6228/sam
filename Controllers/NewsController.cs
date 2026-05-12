@@ -43,5 +43,13 @@ namespace sam.Controllers
             ViewBag.Slug = slug;
             return View("~/Views/News/VideoDetail.cshtml");
         }
+
+        [HttpGet("/article")]
+        [HttpGet("/article/page/{page:int}")]
+        public IActionResult General(int page = 1)
+        {
+            ViewBag.CurrentPage = page;
+            return View("~/Views/News/Article.cshtml");
+        }
     }
 }

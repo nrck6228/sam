@@ -1,0 +1,172 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+.microsite--wrapper {
+    overflow: hidden;
+
+    .fixed--banner {
+        position: relative;
+        height: 100dvh;
+        min-height: 500px;
+        width: 100%;
+        overflow: hidden;
+
+        &__picture {
+            width: 100%;
+            height: 100%;
+        }
+
+        &__image {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        &__body {
+            width: 100%;
+            height: auto;
+            @include media.media-up(md) {
+                position: absolute;
+                bottom: 3rem;
+                left: 0;
+            }
+        }
+
+        &__title {
+            font-weight: 700;
+            font-size: var(--fs-display-2);
+            line-height: 1.2;
+            color: var(--clr-primary-dark);
+        }
+
+        &__text {
+            font-weight: 400;
+            font-size: var(--fs-h5);
+            line-height: 1.4;
+            color: var(--neutral-900);
+        }
+
+        &__button {
+            margin-top: 3rem;
+        }
+
+        &-half {
+            position: relative;
+            background-color: var(--clr-primary-dark);
+            background-image: url('/media/images/bg/bg-logo-green.jpg');
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            overflow: hidden;
+
+            &__picture {
+                width: 100%;
+                height: 100%;
+            }
+
+            &__image {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+
+            &__body {
+                width: 100%;
+                height: 100%;
+                padding: 1.5rem;
+            }
+
+            &__title {
+                font-weight: 700;
+                font-size: var(--fs-h1);
+                line-height: 1.2;
+                color: var(--white);
+            }
+
+            &__text {
+                font-weight: 400;
+                font-size: var(--fs-h5);
+                line-height: 1.4;
+                color: var(--white);
+            }
+
+            &__button {
+                margin-top: 3rem;
+            }
+        }
+    }
+
+    .counter--list {
+        overflow: hidden;
+
+        .counter--grid {
+            @include media.media-up(lg) {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            &__item {
+                padding: 1.5rem 0;
+
+                @include media.media-up(lg) {
+                    padding: 1.5rem 3rem;
+
+                    &:nth-child(1), &:nth-child(2) {
+                        border-right: 1px solid var(--neutral-600);
+                    }
+                }
+            }
+
+            &__title {
+                font-weight: 600;
+                font-size: 3rem;
+                line-height: 1.4;
+                color: var(--neutral-900);
+                @include media.media-up(md) {
+                    font-size: 5rem;
+                }
+            }
+
+            &__text {
+                font-weight: 400;
+                font-size: 1.25rem;
+                line-height: 1.4;
+                color: var(--neutral-700);
+            }
+        }
+    }
+
+    .table-custom-green {
+        border: 1px solid #dee2e6;
+
+        thead {
+            th {
+                background-color: #9cdba6 !important;
+                color: #2e5a39;
+                text-align: center;
+                vertical-align: middle;
+                border: 1px solid var(--neutral-300);
+            }
+        }
+
+        tbody {
+            td {
+                text-align: center;
+                vertical-align: middle;
+                border: 1px solid var(--neutral-300);
+            }
+        }
+    }
+
+    .plan-table { border-collapse: separate; border-spacing: 0; border: 1px solid #dee2e6; border-radius: 10px; overflow: hidden; }
+    .plan-table thead th { background-color: #9e9e9e; color: white; text-align: center; border: none; padding: 20px; font-size: 1.2rem; }
+    .plan-table thead th:not(:first-child) { background-color: #f8f9fa; color: #000; border-left: 1px solid #dee2e6; }
+    .plan-table tbody th { background-color: #9e9e9e; color: white; vertical-align: middle; padding-left: 20px; width: 15%; border-top: 1px solid #dee2e6; }
+    .plan-table tbody td { padding: 20px; border-top: 1px solid #dee2e6; border-left: 1px solid #dee2e6; font-size: 0.95rem; line-height: 1.6; }
+
+
+    // Background Color
+    .bg-grad-green { background-image: linear-gradient(120deg, var(--clr-primary-dark), var(--clr-primary)) !important}
+    .bg-grad-pink {background-image: linear-gradient(120deg, var(--clr-accent-pink), var(--clr-accent-pink-light)) !important}
+    .bg-grad-grey { background-image: linear-gradient(0deg, var(--neutral-300), var(--neutral-100)) !important;}
+    .bg-light-grey { background-color: var(--neutral-200) !important; }
+}

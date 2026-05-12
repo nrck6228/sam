@@ -1,0 +1,513 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>ระบบสมาชิก</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h3 class="m-0">
+            ยินดีต้อนรับ คุณอนุรักษ์
+        </h3>
+    </div>
+</section>
+
+<section class="section section--content py-5 py-lg-6 m-0" style="background-color: #f5f5f5">
+    <div class="dashboard--container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="notification mb-4">
+                        <div class="notification__icon">
+                            <i class="bi bi-megaphone"></i>
+                        </div>
+                        <div class="notification__text">
+                            <div class="notification__text--slide">
+                                <span>แจ้งเปลี่ยนช่องทางการชำระเงินค่างวดทรัพย์สินผ่านทาง Mobile Banking</span>
+                                <span>แจ้งเปลี่ยนช่องทางการชำระเงินค่างวดทรัพย์สินผ่านทาง Mobile Banking</span>
+                                <span>แจ้งเปลี่ยนช่องทางการชำระเงินค่างวดทรัพย์สินผ่านทาง Mobile Banking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card card--dashboard h-100">
+                        <div class="card__title">
+                            รายได้
+                        </div>
+                        <div class="card__income">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="card__income--value">150,000 บาท</div>
+                                <div class="card__income--icon up">
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </div>
+                                <div class="card__income--icon down">
+                                    <i class="bi bi-arrow-down-right"></i>
+                                </div>
+                            </div>
+                            <p class="m-0">เพิ่มขึ้น เมื่อเทียบกับเดือนที่แล้ว</p>
+                            <p class="m-0">ลดลง เมื่อเทียบกับเดือนที่แล้ว</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card card--dashboard h-100">
+                        <div class="card__title">
+                            ยอดขายตามประเภททรัพย์สิน
+                        </div>
+                        <div class="card__chart">
+                            <div id="bar_chart_div" class="chart--div">
+                            </div>
+                            <div id="custom_legend">
+                                <div class="legend-item">
+                                    <span class="circle" style="background-color: #2e5a39;"></span> บ้าน
+                                </div>
+                                <div class="legend-item">
+                                    <span class="circle" style="background-color: #df9faa;"></span> คอนโด
+                                </div>
+                                <div class="legend-item">
+                                    <span class="circle" style="background-color: #f2d65f;"></span> ที่ดิน
+                                </div>
+                                <div class="legend-item">
+                                    <span class="circle" style="background-color: #ced4da;"></span> อื่นๆ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card card--dashboard h-100">
+                        <div class="card__title">
+                            สัดส่วนสถานะทรัพย์สิน
+                        </div>
+                        <div class="card__chart">
+                            <div id="donut_chart_div" class="chart--div">
+                            </div>
+                            <div id="custom_legend">
+                                <div class="legend-item">
+                                    <span class="circle" style="background-color: #2e5a39;"></span> ว่าง
+                                </div>
+                                <div class="legend-item">
+                                    <span class="circle" style="background-color: #df9faa;"></span> จองแล้ว
+                                </div>
+                                <div class="legend-item">
+                                    <span class="circle" style="background-color: #f2d65f;"></span> ขายแล้ว
+                                </div>
+                                <div class="legend-item">
+                                    <span class="circle" style="background-color: #ced4da;"></span> อื่นๆ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mb-4">
+                    <div class="card card--dashboard h-100">
+                        <div class="d-flex justify-content-between">
+                            <div class="card__title">
+                                ยอดขายรายปี
+                            </div>
+                            <select id="yearPicker" class="year-select" onchange="updateLineChart()">
+                                <option value="2025">2025</option>
+                                <option value="2024">2024</option>
+                            </select>
+                        </div>
+
+                        <div class="card__chart">
+                            <div class="unit-label">หน่วย : ล้านบาท</div>
+                            <div id="line_chart_div" style="width: 100%; height: 300px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6">
+                            <div class="card card--dashboard py-4 mb-4">
+                                <div class="card__title">
+                                    พฤศจิกายน 2568
+                                </div>
+                                <p class="m-0">เดือนที่มียอดขายสูงที่สุด</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-6">
+                            <div class="card card--dashboard py-4 mb-4">
+                                <div class="card__title">
+                                    2568
+                                </div>
+                                <p class="m-0">ปีที่มียอดขายสูงที่สุด</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-6">
+                            <div class="card card--dashboard py-4 m-0">
+                                <div class="card__title">
+                                    คอนโด
+                                </div>
+                                <p class="m-0">ประเภททรัพย์สินที่มียอดขายสูงที่สุด</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="card card--dashboard">
+                        <div class="card__title">
+                            สถิติการขาย
+                        </div>
+
+                        <div class="card__table">
+                            <div class="table-raponsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>เดือน</th>
+                                            <th>รายการใหม่ (หน่วย)</th>
+                                            <th>รายการที่ขายได้ (หน่วย)</th>
+                                            <th>ยอดขายรวม (ล้านบาท)</th>
+                                            <th>ราคาขายเฉลี่ย (ล้านบาท)</th>
+                                            <th>เฉลี่ยวันประกาศ (วัน)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>ธันวาคม 2568</td>
+                                            <td>120</td>
+                                            <td>85</td>
+                                            <td>425.5</td>
+                                            <td>5.0</td>
+                                            <td>42</td>
+                                        </tr>
+                                        <tr>
+                                            <td>มกราคม 2569</td>
+                                            <td>135</td>
+                                            <td>98</td>
+                                            <td>510.2</td>
+                                            <td>5.2</td>
+                                            <td>39</td>
+                                        </tr>
+                                        <tr>
+                                            <td>กุมภาพันธ์ 2569</td>
+                                            <td>120</td>
+                                            <td>83</td>
+                                            <td>470.0</td>
+                                            <td>5.3</td>
+                                            <td>39</td>
+                                        </tr>
+                                        <tr>
+                                            <td>มีนาคม 2569</td>
+                                            <td>125</td>
+                                            <td>96</td>
+                                            <td>405.0</td>
+                                            <td>5.0</td>
+                                            <td>36</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="card__button">
+                            <a href="/files/f-03.pdf" download="" class="btn btn--file btn--file-download">
+                                <span class="btn__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-download"></use>
+                                    </svg>
+                                </span>
+                                <span class="btn__text">ดาวน์โหลดรายงานสถิติการขาย</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="card card--dashboard">
+                        <div class="card__title">
+                            ค่าคอมมิชชั่น
+                        </div>
+
+                        <div class="card__table">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ชื่อ</th>
+                                            <th>ประเภททรัพย์สิน</th>
+                                            <th>ราคาขาย (ล้านบาท)</th>
+                                            <th>ค่าคอมมิชชั่น</th>
+                                            <th>ยอดจ่ายจริง (บาท)</th>
+                                            <th>สถานะ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>ภัทร</td>
+                                            <td>บ้านเดี่ยว</td>
+                                            <td>8.5</td>
+                                            <td>3.0%</td>
+                                            <td>255,000</td>
+                                            <td>จ่ายแล้ว</td>
+                                        </tr>
+                                        <tr>
+                                            <td>สินชัย</td>
+                                            <td>คอนโด</td>
+                                            <td>4.2</td>
+                                            <td>3.5%</td>
+                                            <td>147,000</td>
+                                            <td>รอจ่าย</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ศรีสวัสดิ์</td>
+                                            <td>ที่ดิน</td>
+                                            <td>15.0</td>
+                                            <td>2.5%</td>
+                                            <td>375,000</td>
+                                            <td>ตรวจสอบ</td>
+                                        </tr>
+                                        <tr>
+                                            <td>นภัทร</td>
+                                            <td>บ้านเดี่ยว</td>
+                                            <td>8.5</td>
+                                            <td>3.0%</td>
+                                            <td>255,000</td>
+                                            <td>จ่ายแล้ว</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="card__button">
+                            <a href="/files/f-03.pdf" download="" class="btn btn--file btn--file-download">
+                                <span class="btn__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-download"></use>
+                                    </svg>
+                                </span>
+                                <span class="btn__text">ดาวน์โหลดรายงานค่าคอมมิชชั่น</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <style>
+        .chart--div {
+            width: 100%;
+            height: 350px;
+        }
+
+        /* Custom Legend Styles */
+        #custom_legend {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding-left: 20px;
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1rem;
+            color: #363636;
+        }
+
+        .circle {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            /* ทำให้เป็นวงกลม */
+            display: inline-block;
+        }
+
+        /* Dropdown Style */
+        .year-select {
+            padding: 8px 35px 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Noto Sans Thai';
+            font-size: 16px;
+            color: #666;
+            appearance: none;
+            background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="%23999" d="M5 7l5 5 5-5z"/></svg>') no-repeat right 10px center;
+            background-color: white;
+            cursor: pointer;
+            min-width: 120px;
+        }
+
+        .unit-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawCharts);
+
+        // ข้อมูลยอดขายรายเดือน (จำลอง)
+        const yearlyData = {
+        '2025': [
+        ['JAN', 500], ['FEB', 120], ['MAR', 620], ['APR', 450], ['MAY', 730], ['JUN', 400],
+        ['JUL', 140], ['AUG', 220], ['SEP', 600], ['OCT', 260], ['NOV', 300], ['DEC', 580]
+        ],
+        '2024': [
+        ['JAN', 300], ['FEB', 400], ['MAR', 200], ['APR', 550], ['MAY', 430], ['JUN', 600],
+        ['JUL', 540], ['AUG', 320], ['SEP', 400], ['OCT', 560], ['NOV', 700], ['DEC', 480]
+        ]
+        };
+
+        function drawCharts() {
+        drawBarChart();
+        drawDonutChart();
+        updateLineChart();
+        }
+
+        // ฟังก์ชันวาดกราฟแท่ง
+        function drawBarChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['ประเภท', 'ยอดขาย', { role: 'style' }, { role: 'annotation' }],
+        ['บ้าน', 320, '#2e5a39', '320 ล้านบาท'],
+        ['คอนโด', 560, '#df9faa', '560 ล้านบาท'],
+        ['ที่ดิน', 240, '#f2d65f', '240 ล้านบาท'],
+        ['อื่นๆ', 480, '#ced4da', '480 ล้านบาท']
+        ]);
+
+        var options = {
+        fontSize: 16,
+        fontName: 'Noto Sans Thai',
+        chartArea: { width: '70%', height: '70%' },
+        hAxis: {
+        title: '',
+        minValue: 0,
+        gridlines: { color: 'transparent' }, // ซ่อนเส้นตารางแนวตั้ง
+        textPosition: 'none' // ซ่อนตัวเลขแกน X
+        },
+        vAxis: {
+        title: '',
+        textStyle: { fontSize: 0 } // ซ่อนชื่อแกน Y เพื่อเลียนแบบตามภาพ
+        },
+        legend: { position: 'none' },
+        bar: { groupWidth: '75%' }, // ความหนาของแท่ง
+        annotations: {
+        alwaysOutside: false,
+        textStyle: {
+        fontSize: 16,
+        color: '#fff', // ตัวเลขสีขาวในแท่ง
+        bold: false
+        }
+        },
+        backgroundColor: 'transparent'
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
+        chart.draw(data, options);
+        }
+
+        // ฟังก์ชันวาดกราฟโดนัท
+        function drawDonutChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['สถานะ', 'จำนวน'],
+        ['ว่าง', 45],
+        ['จองแล้ว', 20],
+        ['ขายแล้ว', 30],
+        ['อื่นๆ', 5]
+        ]);
+
+        var options = {
+        pieHole: 0.6, // กำหนดขนาดรูตรงกลางเพื่อให้เป็นโดนัท
+        fontSize: 16,
+        fontName: 'Noto Sans Thai',
+        chartArea: { width: '70%', height: '70%', left: 20 },
+        colors: ['#2e5a39', '#df9faa', '#f2d65f', '#ced4da'], // สีตามภาพ
+        legend: { position: 'none' },
+        pieSliceText: 'none', // ซ่อนตัวเลขบนแผ่นกราฟเพื่อให้คลีนเหมือนในรูป
+        backgroundColor: 'transparent'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donut_chart_div'));
+        chart.draw(data, options);
+        }
+
+        // ฟังก์ชันอัปเดตกราฟเส้นตามปีที่เลือก
+        function updateLineChart() {
+        const year = document.getElementById('yearPicker').value;
+        const rawData = yearlyData[year];
+            
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Month');
+        data.addColumn('number', 'ยอดขาย');
+        data.addRows(rawData);
+
+        var options = {
+        curveType: 'function', // ทำให้เส้นโค้ง
+        fontSize: 16,
+        fontName: 'Noto Sans Thai',
+        legend: { position: 'bottom', alignment: 'center', textStyle: { color: '#999', fontSize: 14 } },
+        colors: ['#df9faa'], // สีชมพูตามภาพ
+        lineWidth: 3,
+        pointSize: 7, // จุดวงกลมบนเส้น
+        dataOpacity: 0.8,
+        chartArea: { left: 50, right: 20, top: 20, bottom: 80, width: '90%', height: '70%' },
+        hAxis: {
+        textStyle: { color: '#666', fontSize: 12 },
+        gridlines: { color: 'transparent' }
+        },
+        vAxis: {
+        textStyle: { color: '#666', fontSize: 12 },
+        gridlines: { color: '#f3f3f3' }, // เส้นตารางแนวนอนบางๆ
+        viewWindow: { min: 0, max: 1000 }
+        },
+        backgroundColor: 'transparent',
+        animation: { startup: true, duration: 1000, easing: 'out' } // เพิ่ม Animation ตอนเปลี่ยนปี
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('line_chart_div'));
+        chart.draw(data, options);
+        }
+
+        // 2. ฟีเจอร์ Resize: ดักจับการเปลี่ยนขนาดหน้าจอ
+        let resizeTimer;
+        window.addEventListener('resize', function () {
+        // ใช้ Debounce เพื่อไม่ให้วาดใหม่ถี่ยิบขณะลากหน้าจอ
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+        console.log("Resizing and redrawing charts...");
+        drawCharts();
+        }, 200); // รอ 200ms หลังจากหยุดลากแล้วค่อยวาดใหม่
+        });
+    </script>
+}

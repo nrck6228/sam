@@ -9,14 +9,44 @@ namespace sam.Controllers
             return View();
         }
 
-        [Route("login")]
+        [Route("member/login")]
         public IActionResult Login()
         {
             return View();
         }
 
-        [Route("register")]
+        [Route("member/register")]
         public IActionResult Register()
+        {
+            return View();
+        }
+
+        [Route("member/dashboard")]
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
+        [Route("member/manage")]
+        public IActionResult Manage()
+        {
+            return View();
+        }
+
+        [Route("member/rights")]
+        public IActionResult Rights()
+        {
+            return View();
+        }
+
+        [Route("yourdesign")]
+        public IActionResult YourDesign()
+        {
+            return View();
+        }
+
+        [Route("designByYourSelf")]
+        public IActionResult DesignPage()
         {
             return View();
         }

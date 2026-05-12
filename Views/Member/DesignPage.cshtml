@@ -1,0 +1,96 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>รวมไอเดียการออกแบบ</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            ออกแบบความลงตัวในสไตล์ที่เป็นคุณ
+        </h1>
+        <p class="text-muted mb-0"><strong style="color: #286140">เงื่อนไข</strong> : สร้างได้สูงสุด 3 รายการ</p>
+    </div>
+</section>
+
+<section class="section section--content py-5 py-lg-6 m-0" style="background-color: #f5f5f5;">
+    <div class="container">
+        <div class="design--container">
+            <div class="design--accordion" id="design-list"></div>
+
+            <div class="d-flex gap-3">
+                <button class="btn btn--sam-gray" id="btn-add" onclick="addNewItem()">
+                    <span class="btn__text">
+                        เพิ่มรายการ
+                    </span>
+                    <span class="btn__icon">
+                        <i class="bi bi-plus"></i>
+                    </span>
+                </button>
+                <button class="btn btn--sam-green" onclick="handleFinalSubmit()">
+                    <span class="btn__text">
+                        ยืนยันการออกแบบ
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="title">
+                        <h4 class="modal-title">
+                            เลือกรูปภาพทรัพย์สิน
+                        </h4>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-4"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" class="img-select-item" onclick="confirmSelectImage(this.src)"></div>
+                        <div class="col-4"><img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b" class="img-select-item" onclick="confirmSelectImage(this.src)"></div>
+                        <div class="col-4"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" class="img-select-item" onclick="confirmSelectImage(this.src)"></div>
+                        <div class="col-4"><img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b" class="img-select-item" onclick="confirmSelectImage(this.src)"></div>
+                        <div class="col-4"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" class="img-select-item" onclick="confirmSelectImage(this.src)"></div>
+                        <div class="col-4"><img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b" class="img-select-item" onclick="confirmSelectImage(this.src)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --sam-green: #286140;
+            --sam-pink: #df9faa;
+        }
+        .img-select-item { height: 150px; object-fit: cover; width: 100%; cursor: pointer; border-radius: 8px; transition: 0.3s; }
+        .img-select-item:hover { transform: scale(1.05); }
+
+        .swal2-input:focus {
+            box-shadow: none;
+            border-color: var(--sam-green);
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="~/js/features/assets/design.js"></script>
+}

@@ -1,0 +1,235 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>ระบบสมาชิก</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            จัดการบัญชี
+        </h1>
+    </div>
+</section>
+
+<section class="section section--content py-5 py-lg-6 m-0" style="background-color: #f5f5f5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <form class="form" style="background-color: white;">
+                    <div class="mb-4 d-flex justify-content-between align-items-center">
+                        <h2 class="h4 m-0">ข้อมูลสมาชิก</h2>
+                        <button type="button" id="btn-edit" class="btn btn--outline-black">
+                            <span class="btn__icon">
+                                <i class="bi bi-pencil-square"></i>
+                            </span>
+                            <span class="btn__text">
+                                แก้ไขข้อมูล
+                            </span>
+                        </button>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-5">
+                            <div class="form-group mb-0">
+                                <input type="text" class="form-control w-100" id="app_name" value="อนุรักษ์ รักษ์นิยม"
+                                       readonly />
+                                <label class="form-label">ชื่อ-นามสกุล</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-5">
+                            <div class="form-group mb-0">
+                                <input type="text" class="form-control w-100 edit-field" id="app_phone"
+                                       value="0955599555" maxlength="12" readonly />
+                                <label class="form-label">เบอร์โทรศัพท์</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group mb-0">
+                                <input type="email" class="form-control w-100 edit-field" id="app_email"
+                                       value="anurak.r@gmail.com" readonly />
+                                <label class="form-label">อีเมล</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <h2 class="h4 m-0">แก้ไขรหัสผ่าน</h2>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group mb-0" style="position: relative;">
+                                <input type="password" class="form-control w-100 edit-field" id="applyPassword1"
+                                       placeholder=" " style="padding-right: 45px;" readonly />
+                                <label class="form-label">รหัสผ่านใหม่</label>
+                                <i class="bi bi-eye password-toggle" id="togglePassword2" role="button"
+                                       aria-label="แสดงรหัสผ่าน"
+                                       style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #ccc; font-size: 1.2rem;">
+                                </i>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group mb-0" style="position: relative;">
+                                <input type="password" class="form-control w-100 edit-field" id="applyPassword2"
+                                       placeholder=" " style="padding-right: 45px;" readonly />
+                                <label class="form-label">ยืนยันรหัสผ่านใหม่</label>
+                                <i class="bi bi-eye password-toggle" id="togglePassword3" role="button"
+                                       aria-label="แสดงรหัสผ่าน"
+                                       style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #ccc; font-size: 1.2rem;">
+                                </i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 mt-4">
+                        <button type="button" class="btn btn--sam-gray px-4" onclick="window.location.reload()">
+                            <span class="btn__text">ยกเลิก</span>
+                        </button>
+                        <button type="button" id="btn-send" class="btn btn--sam-pink px-4" disabled>
+                            <span class="btn__text">ตกลง</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
+    <script>
+        const btnEdit = document.getElementById('btn-edit');
+        const btnSend = document.getElementById('btn-send');
+        const editFields = document.querySelectorAll('.edit-field');
+
+        // 1. ฟังก์ชันสลับโหมดการแก้ไข
+        btnEdit.addEventListener('click', function () {
+            const isReadonly = editFields[0].readOnly;
+
+            if (isReadonly) {
+                // เปลี่ยนเป็นโหมดแก้ไข
+                editFields.forEach(field => field.readOnly = false);
+                this.innerHTML = '<span class="btn__icon"><i class="bi bi-x-circle"></i></span><span class="btn__text">ยกเลิกการแก้ไข</span>';
+                this.classList.replace('btn--outline-black', 'btn--danger');
+                btnSend.disabled = false; // เปิดให้กดตกลงได้
+                editFields[0].focus(); // focus ที่ช่องแรก
+            } else {
+                // กลับเป็นโหมดอ่านอย่างเดียว
+                editFields.forEach(field => field.readOnly = true);
+                this.innerHTML = '<i class="bi bi-pencil-square"></i> แก้ไขข้อมูล';
+                this.classList.replace('btn--danger', 'btn--outline-black');
+                btnSend.disabled = true;
+            }
+        });
+
+        // 2. Format เบอร์โทรศัพท์ขณะพิมพ์
+        const phoneInput = document.getElementById('app_phone');
+        phoneInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 10) value = value.slice(0, 10);
+            let formatted = '';
+            if (value.length > 0) {
+                formatted = value.substring(0, 3);
+                if (value.length > 3) formatted += '-' + value.substring(3, 6);
+                if (value.length > 6) formatted += '-' + value.substring(6, 10);
+            }
+            e.target.value = formatted;
+        });
+
+        // 3. จัดการการส่งข้อมูล (Validate)
+        btnSend.addEventListener('click', function () {
+            const newPass = document.getElementById('applyPassword1').value;
+            const confirmPass = document.getElementById('applyPassword2').value;
+            const phone = document.getElementById('app_phone').value.replace(/-/g, '');
+            const email = document.getElementById('app_email').value.trim();
+
+            // 1. Validate ข้อมูลพื้นฐาน (ถ้ามี)
+            if (phone.length < 10) {
+                showWarning('เบอร์โทรศัพท์ไม่ถูกต้อง', 'กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก');
+                return;
+            }
+
+            // 2. Validate รหัสผ่านใหม่ (ตรวจสอบเฉพาะเมื่อมีการกรอกข้อมูล)
+            if (newPass !== "" || confirmPass !== "") {
+                // ตรวจสอบความยาวขั้นต่ำ (เช่น 6 ตัวอักษร)
+                if (newPass.length < 6) {
+                    showWarning('รหัสผ่านไม่ปลอดภัย', 'รหัสผ่านใหม่ควรมีความยาวอย่างน้อย 6 ตัวอักษร');
+                    return;
+                }
+
+                // ตรวจสอบว่ารหัสผ่านตรงกันหรือไม่
+                if (newPass !== confirmPass) {
+                    showWarning('รหัสผ่านไม่ตรงกัน', 'ยืนยันรหัสผ่านใหม่ไม่ตรงกับรหัสผ่านใหม่ที่คุณตั้งไว้');
+                    return;
+                }
+            }
+
+            // ตรวจสอบ Email
+            const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+            if (!emailRegex.test(email)) {
+                showWarning('อีเมลไม่ถูกต้อง', 'กรุณากรอกรูปแบบอีเมลให้ถูกต้อง');
+                return;
+            }
+
+            // แสดง Success Alert
+            Swal.fire({
+                icon: 'question',
+                title: 'ยืนยันการเปลี่ยนข้อมูล',
+                text: 'คุณต้องการบันทึกข้อมูลใหม่ใช่หรือไม่?',
+                showCancelButton: true,
+                confirmButtonText: 'ตกลง',
+                cancelButtonText: 'ยกเลิก',
+                confirmButtonColor: '#df9faa',
+                background: '#2c2c2c',
+                color: '#fff'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // ตรงนี้คือส่วนส่งข้อมูลไป Backend (AJAX/Fetch)
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'สำเร็จ!',
+                        text: 'ข้อมูลของคุณได้รับการอัปเดตแล้ว',
+                        confirmButtonColor: '#df9faa'
+                    }).then(() => {
+                        // กลับสู่โหมด Readonly หลังจากบันทึกสำเร็จ
+                        document.getElementById('btn-edit').click();
+                    });
+                }
+            });
+        });
+
+        function showWarning(title, text) {
+            Swal.fire({
+                icon: 'warning',
+                title: title,
+                text: text,
+                confirmButtonColor: '#df9faa'
+            });
+        }
+
+        // ตาเปิด/ปิดรหัสผ่าน (เหมือนเดิม)
+        document.querySelectorAll('.password-toggle').forEach(icon => {
+            icon.addEventListener('click', function () {
+                const input = this.closest('.form-group').querySelector('input');
+                if (input.readOnly) return; // ถ้าไม่อยู่ในโหมดแก้ไข ห้ามกดดูรหัสผ่าน (ตัวเลือก)
+                input.type = input.type === 'password' ? 'text' : 'password';
+                this.classList.toggle('bi-eye');
+                this.classList.toggle('bi-eye-slash');
+            });
+        });
+    </script>
+}

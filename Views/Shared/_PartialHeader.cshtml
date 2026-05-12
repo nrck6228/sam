@@ -105,7 +105,7 @@
                                     <h3 class="content-panel__title">ข่าวสาร</h3>
                                     <div class="content-panel__grid">
                                         <a href="/news" class="content-panel__link">ข่าวประชาสัมพันธ์</a>
-                                        <a href="#" class="content-panel__link">บทความ</a>
+                                        <a href="/article" class="content-panel__link">บทความ</a>
                                         <a href="/video" class="content-panel__link">วิดีโอ / สื่อประชาสัมพันธ์</a>
                                     </div>
                                 </div>
@@ -158,11 +158,11 @@
                 </li>
             </ul>
             <div class="search-panel--mobile">
-                <a href="/login" title="" class="d-flex d-lg-none btn btn--hover btn--gray">
+                <a href="/member/login" title="" class="d-flex d-lg-none btn btn--hover btn--gray">
                     <span class="btn__text">เข้าสู่ระบบ</span>
                     <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
                 </a>
-                <a href="/register" title="" class="d-flex d-lg-none btn btn--hover btn--green">
+                <a href="/member/register" title="" class="d-flex d-lg-none btn btn--hover btn--green">
                     <span class="btn__text">สมัครสมาชิก</span>
                     <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>
                 </a>
@@ -181,16 +181,6 @@
             </div>
         </div>
         <div class="nav-wrapper__right d-flex align-items-center gap-2">
-            @* <a href="/register" title="" class="d-none d-lg-flex btn btn--hover btn--green">
-                <span class="btn__text">สมัครสมาชิก</span>
-                <span class="btn__icon"><i class="bi bi-arrow-up-short"></i></span>
-            </a>
-            <a href="/login" title="" class="d-none d-lg-flex btn btn--hover btn--gray">
-                <span class="btn__text">เข้าสู่ระบบ</span>
-                <span class="btn__icon">
-                    <i class="bi bi-arrow-up-short"></i>
-                </span>
-            </a> *@
             <div class="member-panel d-none d-lg-block">
                 <button class="btn btn--hover btn--green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="btn__text">ระบบสมาชิก</span>
@@ -199,8 +189,8 @@
                     </span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/login">เข้าสู่ระบบ</a></li>
-                    <li><a class="dropdown-item" href="/register">สมัครสมาชิก</a></li>
+                    <li><a class="dropdown-item" href="/member/login">เข้าสู่ระบบ</a></li>
+                    <li><a class="dropdown-item" href="/member/register">สมัครสมาชิก</a></li>
                 </ul>
             </div>
             <div class="nav-switch bg-overlay-black-blur">

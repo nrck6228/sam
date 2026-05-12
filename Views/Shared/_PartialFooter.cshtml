@@ -11,6 +11,15 @@
                         </svg>
                     </span>
                 </a>
+                <button type="button" class="btn btn--hover btn--pink" data-bs-toggle="modal"
+                        data-bs-target="#subscribeModal">
+                    <span class="btn__text">สมัครรับข่าวสาร</span>
+                    <span class="btn__icon">
+                        <svg class="icon">
+                            <use xlink:href="#icon-arrow-explore"></use>
+                        </svg>
+                    </span>
+                </button>
                 <a href="/contact" class="btn btn--hover btn--gray">
                     <span class="btn__text">ติดต่อเรา</span>
                     <span class="btn__icon">
@@ -82,7 +91,7 @@
                 </div>
                 <div class="footer__nav-group">
                     <a href="javascript:void(0)" class="footer__nav-link" data-bs-toggle="modal"
-                       data-bs-target="#privacyModal">ประกาศความเป็นส่วนตัว</a>
+                       data-bs-target="#privacyModal">นโยบายความเป็นส่วนตัว</a>
                     <a href="javascript:void(0)" class="footer__nav-link" data-bs-toggle="modal"
                        data-bs-target="#disclaimerModal">ข้อตกลงและเงื่อนไขการใช้บริการอิเล็กทรอนิกส์</a>
                     <a href="/open-data-integrity-and-transparency"
@@ -236,6 +245,67 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade modal--custom" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="min-height: 1px; padding: 15px;">
+                <div class="title">
+                    <h4 class="modal-title text-white">
+                        ไม่พลาดโอกาสดีๆ และ ข่าวสารพิเศษจาก SAM
+                    </h4>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <form class="form form--dark">
+                    <div class="form-group mb-4">
+                        <input type="text" class="form-control w-100" id="applyUsername" placeholder=" " />
+                        <label class="form-label">ชื่อ - นามสกุล</label>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <input type="email" class="form-control w-100" id="applyMail" placeholder=" " />
+                        <label class="form-label">อีเมล</label>
+                    </div>
+
+                    <p class="text-white mb-4">ฉันยินยอมรับข่าวสารและยอมรับ นโยบายความเป็นส่วนตัวของ SAM</p>
+
+                    <div class="form-group border-0 mb-4">
+                        <div class="radio-buttons">
+                            <input type="radio" id="accept" name="subscribe" class="radio-button" checked />
+                            <label for="accept" class="radio-button--label text-white">ยินยอม</label>
+                        </div>
+
+                        <div class="radio-buttons">
+                            <input type="radio" id="deny" name="subscribe" class="radio-button" />
+                            <label for="deny" class="radio-button--label text-white">ไม่ยินยอม</label>
+                        </div>
+                    </div>
+                </form>
+
+                <p class="my-3 text-white" style="font-size: 0.875rem;">
+                    *คุณสามารถยกเลิกการรับข่าวสารได้ทุกเมื่อ
+                </span>
+            </div>
+
+            <div class="modal-footer justify-content-start">
+                <button type="button" class="btn btn--hover btn--gray" data-bs-dismiss="modal">
+                    <span class="btn__text">
+                        ยกเลิก
+                    </span>
+                </button>
+                <button type="button" onclick="acceptTerms()" class="btn btn--hover btn--pink">
+                    <span class="btn__text">
+                        ยืนยัน
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <div class="modal fade modal--custom" id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerModal"
@@ -561,7 +631,6 @@
     </div>
 </div>
 </div>
-
 
 <div class="modal fade modal--custom" id="privacyModal" tabindex="-1" aria-labelledby="privacyModal" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="@ViewData["MetaDescription"]" />
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:description" content="">
+    @await RenderSectionAsync("Meta", required: false)
+    <title>@ViewData["Title"]</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="~/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="~/favicon/favicon-32x32.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="~/favicon/favicon-16x16.png">
+                <link rel="manifest" href="~/favicon/site.webmanifest">
+                    <script type="importmap"></script>
+                    <link href="~/css/vendor.min.css" rel="stylesheet" asp-append-version="true" />
+                    <link href="~/css/bootstrap-icons.min.css" rel="stylesheet" />
+                    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+                    <link href="~/css/main.min.css" rel="stylesheet" asp-append-version="true" />
+                    @await RenderSectionAsync("Styles", required: false)
+                </head>
+
+                <body class="microsite">
+                    @await Html.PartialAsync("_SpriteIcons")
+                    @(await Component.InvokeAsync("HeaderMicrosite"))
+
+                    <main role="main" class="main">
+                        @RenderBody()
+                    </main>
+
+                    @(await Component.InvokeAsync("FooterMicrosite"))
+
+                    <script src="~/js/core/jquery.min.js"></script>
+                    <script src="~/js/core/vendor.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+                    <script src="~/js/core/main.js" asp-append-version="true"></script>
+                    @await RenderSectionAsync("Scripts", required: false)
+                    <div class="menu-overlay" id="overlay"></div>
+                </body>
+
+            </html>

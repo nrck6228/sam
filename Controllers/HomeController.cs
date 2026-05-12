@@ -36,6 +36,12 @@ namespace sam.Controllers
             return View();
         }
 
+        [Route("/microsite")]
+        public IActionResult Microsite1()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

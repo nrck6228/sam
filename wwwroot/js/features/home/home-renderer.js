@@ -58,7 +58,7 @@ const renderQuickLinks = (data) => {
     container.innerHTML = data.map((item, index) => `
         <div class="highlight__item" style="animation-delay: ${(index + 1) * 0.1}s">
             <a href="${item.url}" class="highlight__link">
-                <span class="highlight__number">${item.id}</span>
+                <div class="highlight__number">${item.id}</div>
                 <div class="highlight__content-wrapper">
                     <span class="highlight__label">${item.label}</span>
                     <span class="highlight__icon"><svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg></span>

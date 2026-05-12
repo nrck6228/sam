@@ -1,0 +1,124 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>รวมไอเดียการออกแบบ</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            รวมไอเดียการออกแบบ
+        </h1>
+    </div>
+</section>
+
+<section class="section section--content py-5 py-lg-6 m-0">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h3 class="mb-4">
+                    ออกแบบความลงตัว ในสไตล์ที่เป็นคุณ<br />เพียงเลือกภาพ-สไตล์-โทนสี
+                </h3>
+                <a href="/designByYourSelf" class="btn btn--hover btn--pink">
+                    <span class="btn__text">เริ่มออกแบบบ้าน</span>
+                    <span class="btn__icon">
+                        <svg class="icon">
+                            <use xlink:href="#icon-arrow-explore"></use>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="design-gallery">
+                    <div class="swiper swiper--design">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="/media/images/yourdesign/slide/thumbnail.jpg" />
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="/media/images/yourdesign/slide/thumbnail-1.jpg" />
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="/media/images/yourdesign/slide/thumbnail-2.jpg" />
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="/media/images/yourdesign/slide/thumbnail.jpg" />
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="/media/images/yourdesign/slide/thumbnail-1.jpg" />
+                            </div>
+                        </div>
+
+                        <div class="swiper--design__controls">
+                            <button class="nav-btn nav-btn--prev"><i class="bi bi-chevron-left"></i></button>
+                            <button class="nav-btn nav-btn--next"><i class="bi bi-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination swiper--design__pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link href="~/vendors/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <style>
+        .design-gallery {
+            width: 100%;
+            height: auto;
+            padding-bottom: 2rem;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="~/vendors/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".swiper--design", {
+            loop: true,
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+            },
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 400,
+                modifier: 1,
+                slideShadows: false,
+            },
+            navigation: {
+                nextEl: '.nav-btn--next',
+                prevEl: '.nav-btn--prev',
+            },
+            pagination: {
+                el: ".swiper--design__pagination",
+                clickable: true,
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+}

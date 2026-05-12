@@ -1,0 +1,79 @@
+<header class="header">
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-blur"></div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-item__link">ซื้อทรัพย์</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-item__link">แก้หนี้</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-item__link">ความยั่งยืน</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-item__link">ติดต่อเรา</a>
+                </li>
+            </ul>
+            <div class="search-panel--mobile">
+                <a href="/member/login" title="" class="d-flex d-lg-none btn btn--hover btn--gray">
+                    <span class="btn__text">เข้าสู่ระบบ</span>
+                    <span class="btn__icon"><svg class="icon">
+                        <use xlink:href="#icon-arrow-explore"></use>
+                    </svg></span>
+                </a>
+                <a href="/member/register" title="" class="d-flex d-lg-none btn btn--hover btn--green">
+                    <span class="btn__text">สมัครสมาชิก</span>
+                    <span class="btn__icon"><svg class="icon">
+                        <use xlink:href="#icon-arrow-explore"></use>
+                    </svg></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="nav-wrapper">
+        <div class="nav-wrapper__left d-flex align-items-center">
+            <button class="menu-toggle" id="mobile-menu-btn">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="logo-container">
+                <a href="/" title="" class="logo-container__link">
+                    <img src="~/media/images/logo/logo-main.webp" class="logo-container__image" />
+                </a>
+            </div>
+        </div>
+        <div class="nav-wrapper__right d-flex align-items-center gap-2">
+            <div class="member-panel d-none d-lg-block">
+                <button class="btn btn--hover btn--green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="btn__text">ระบบสมาชิก</span>
+                    <span class="btn__icon">
+                        <svg class="icon">
+                            <use xlink:href="#icon-arrow-explore"></use>
+                        </svg>
+                    </span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/member/login">เข้าสู่ระบบ</a></li>
+                    <li><a class="dropdown-item" href="/member/register">สมัครสมาชิก</a></li>
+                </ul>
+            </div>
+            <div class="nav-switch bg-overlay-black-blur">
+                <a href="/search" title="" class="nav-switch__link">
+                    <svg class="icon">
+                        <use xlink:href="#icon-search"></use>
+                    </svg>
+                </a>
+                <div class="language dropdown">
+                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        EN
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item active" href="#">EN</a></li>
+                        <li><a class="dropdown-item" href="#">TH</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

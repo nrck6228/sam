@@ -190,6 +190,143 @@
     }
 }
 
+.footer--microsite {
+    position: relative;
+    overflow: hidden;
+
+    .footer--top {
+        background-color: var(--white);
+    }
+
+    .footer--bottom {
+        padding: 1rem 0;
+        border-top: 1px solid var(--neutral-600);
+        background-color: var(--white);
+    }
+
+    .footer--grid {
+        @include media.media-up(md) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include media.media-up(lg) {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        &__item {
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--neutral-600);
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    margin-bottom: 5px;
+
+                    a {
+                        font-weight: 400;
+                        font-size: 1rem;
+                        line-height: 1.4;
+                        color: var(--neutral-900);
+                    }
+                }
+            }
+
+            @include media.media-up(md) {
+                &:nth-child(1), &:nth-child(3) {
+                    border-right: 1px solid var(--neutral-600);
+                }
+            }
+
+            @include media.media-up(lg) {
+                &:nth-child(2) {
+                    border-right: 1px solid var(--neutral-600);
+                }
+            }
+        }
+
+        &__title {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: var(--clr-primary-dark);
+        }
+
+        &__address {
+            margin-bottom: 0;
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 1.4;
+            color: var(--neutral-900);
+        }
+
+        &__socials {
+            display: flex;
+            gap: 15px;
+            margin-bottom: auto; /* ดันโลโก้ลงไปข้างล่างสุด */
+        }
+
+        &__social-link {
+            font-size: 1.5rem;
+            color: var(--black);
+            transition: all var(--transition);
+
+            .icon {
+                /* กำหนดขนาด */
+                width: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+                height: clamp(1.5rem, 1.32rem + 0.75vw, 2rem);
+                /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
+                fill: currentColor;
+                /* ป้องกันปัญหาสัดส่วนเพี้ยน */
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+
+        &__app-link {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        &__app-img {
+            @include media.media-down(md) {
+                width: auto;
+                height: 45px;
+            }
+        }
+    }
+
+    &__nav {
+        @include media.media-up(lg) {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 1rem;
+        }
+    }
+
+    &__nav-link {
+        font-weight: 400;
+        font-size: 0.875rem;
+        color: var(--neutral-900);
+    }
+
+    &__copyright {
+        font-weight: 400;
+        font-size: 0.875rem;
+        color: var(--neutral-900);
+    }
+}
+
 /* Mobile Responsive */
 @media (max-width: 992px) { /* สำหรับ Tablet และ Mobile */
     .footer {
