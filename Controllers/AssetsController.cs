@@ -175,5 +175,13 @@ namespace sam.Controllers
 
             return View("~/Views/Assets/Purchasing.cshtml");
         }
+
+        [Route("search-by-map")]
+        public IActionResult SearchByMap()
+        {
+            ViewBag.Title = "ค้นหาตามแผนที่ - SAM";
+
+            return View("~/Views/Assets/SearchByMap.cshtml");
+        }
     }
 }

@@ -128,6 +128,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXFB1cmNoYXNpbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Works/asp.net/sam/Views/Assets/SearchByMap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRzXFNlYXJjaEJ5TWFwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Works/asp.net/sam/Views/Career/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZWVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,108 @@
+@{
+    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <span>ทรัพย์สินรอการขาย</span>
+                </li>
+                <li class="breadcrumb-item active">
+                    <span>ค้นหาตามแผนที่</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            ค้นหาตามแผนที่
+        </h1>
+    </div>
+</section>
+
+<section class="section section--content mb-0">
+    <div class="search--wrapper">
+        <div id="map" class="map--container"></div>
+
+        <div class="search--overlay">
+            <div class="tab-buttons">
+                <button id="btn-current-loc" class="btn-tab active">ตำแหน่งของฉัน</button>
+                <button id="btn-select-map" class="btn-tab">เลือกจากแผนที่</button>
+            </div>
+            
+            <div class="form search-filters p-0">
+                <div class="row">
+                    <div class="col-lg-6 mb-3">
+                        <div class="form-group">
+                            <select id="asset-type" class="form-select">
+                                <option value="">ประเภททรัพย์</option>
+                                <option value="house">บ้านเดี่ยว</option>
+                                <option value="condo">คอนโด</option>
+                                <option value="townhouse">ทาวน์เฮ้าส์</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mb-3">
+                        <div class="form-group">
+                            <select id="asset-status" class="form-select">
+                                <option value="">สถานะทรัพย์</option>
+                                <option value="sale">ขาย</option>
+                                <option value="rent">เช่า</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mb-3">
+                        <div class="form-group">
+                            <select id="radius" class="form-select">
+                                <option value="1">ค้นหาตามระยะ (1 กม.)</option>
+                                <option value="3">ค้นหาตามระยะ (3 กม.)</option>
+                                <option value="5">ค้นหาตามระยะ (5 กม.)</option>
+                                <option value="10">ค้นหาตามระยะ (10 กม.)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex gap-2">
+                            <button class="btn btn--sam-gray btn-clear" id="btn-clear">
+                                <span class="btn__text">
+                                    ล้างข้อมูล
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn--sam-pink btn-search">
+                                <span class="btn__text">
+                                    ค้นหา
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="result--overlay" id="result-sidebar">
+            <div class="result--list" id="asset-results">
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJB3L0KXQAKq1S6GFq3ZxmBcyZrUEiG3Q&callback=initMap&libraries=geometry"
+    async defer></script>
+    <script src="~/js/features/search/search-by-map.js"></script>
+}

@@ -399,6 +399,119 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
     }
 }
 
+.card--asset-map {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    background-color: rgba(255, 255, 255, var(--opacity-50));
+    transition: all var(--transition);
+
+    .card__figure {
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+    }
+
+    .card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all var(--transition);
+    }
+
+    .card__badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: var(--clr-primary-dark);
+        color: var(--white);
+        padding: 5px 10px;
+        font-size: 0.875rem;
+        border-radius: var(--radius-sm);
+        /* สีตามสถานะ */
+        &--direct {
+            background-color: var(--clr-primary-dark);
+        }
+
+        &--auction {
+            color: #4b3621;
+            background-color: var(--clr-accent-yellow);
+        }
+
+        &--waiting {
+            background-color: var(--clr-accent-pink);
+        }
+    }
+
+    .card__body {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.64));
+    }
+
+    .card__title {
+        font-weight: 400;
+        font-size: var(--fs-body);
+        color: var(--white);
+    }
+
+    .card__location {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5px;
+
+        &-icon {
+            color: var(--white);
+
+            .icon {
+                /* กำหนดขนาด */
+                width: 1.125rem;
+                height: 1.125rem;
+            }
+        }
+
+        &-text {
+            font-weight: 400;
+            font-size: var(--fs-body);
+            color: var(--white);
+        }
+    }
+
+    .card__price {
+        font-size: var(--fs-h4);
+        font-weight: 600;
+        line-height: 1.2;
+        color: var(--white);
+    }
+
+    &:hover {
+        box-shadow: var(--shadow-md);
+        background-color: rgba(255, 255, 255, var(--opacity-70));
+
+        .card__image {
+            transform: scale(1.05);
+            -webkit-transform: scale(1.05);
+        }
+    }
+
+    @include media.media-down(sm) {
+        padding: 1rem;
+
+        .card__body {
+            margin-top: 1rem;
+        }
+    }
+}
+
 .card--type {
     position: relative;
     width: 100%;
