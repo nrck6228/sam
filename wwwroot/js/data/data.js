@@ -376,9 +376,9 @@ export const newsData = {
             displayMode: "playlist",
         },
         {
-            id: "VD007",
+            id: "VD008",
             slug: "renovation-on-tour-s2-ep3",
-            title: "ตอนที่ 4: เปลี่ยนบ้านร้างเป็นบ้านรัก",
+            title: "ตอนที่ 6: เปลี่ยนบ้านร้างเป็นบ้านรัก",
             shortDesc: "การเลือกวัสดุและการจัดสรรพื้นที่สำหรับบ้านเดี่ยวขนาด 50 ตร.ว.",
             date: "2026-02-15",
             displayDate: "ก.พ. 15, 2569",

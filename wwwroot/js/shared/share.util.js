@@ -1,4 +1,5 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+﻿// ฟังก์ชันสำหรับ Initialize Tippy (เรียกใช้เฉพาะหน้าที่ต้องการ)
+export const initShareTooltip = () => {
     const shareBtn = document.getElementById('btn-share-main');
     const template = document.getElementById('share-popover-content');
 
@@ -10,40 +11,36 @@
             trigger: 'click',
             theme: 'light-border',
             placement: 'top',
-            animation: 'shift-away',
-            // เพิ่มบรรทัดนี้: กำหนดความกว้างสูงสุด หรือใส่ 'none' เพื่อให้กว้างตาม Content
             maxWidth: 'none',
             appendTo: () => document.body,
         });
     }
-});
+};
 
-// ฟังก์ชันคัดลอกลิงก์ (Global Scope)
+// ตรวจสอบว่าถ้าไม่ใช่ Module ระบบก็ยังทำงานได้
 window.copyToClipboard = async (btn) => {
     try {
         await navigator.clipboard.writeText(window.location.href);
-
         const originalHTML = btn.innerHTML;
-        btn.classList.add('copied');
-        // เพิ่มสไตล์ Inline ชั่วคราวเพื่อให้เห็นความต่าง (หรือไปแก้ใน CSS)
         btn.innerHTML = '<span>คัดลอกแล้ว!</span> <i class="bi bi-check2"></i>';
+        btn.disabled = true; // กันกดซ้ำรัวๆ
 
         setTimeout(() => {
-            btn.classList.remove('copied');
-            btn.style.color = '';
             btn.innerHTML = originalHTML;
+            btn.disabled = false;
         }, 2000);
     } catch (err) {
         console.error('Failed to copy: ', err);
     }
 };
 
-// ฟังก์ชันแชร์ (ต้องเป็น window.shareTo เพื่อให้ onclick ใน HTML มองเห็น)
 window.shareTo = (platform) => {
     const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent(document.title);
+    // ฉลาดขึ้น: ลองหา h1 ก่อน ถ้าไม่มีค่อยเอา title
+    const pageHeading = document.querySelector('h1')?.innerText;
+    const title = encodeURIComponent(pageHeading || document.title);
+    
     let shareUrl = '';
-
     switch (platform) {
         case 'facebook':
             shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
@@ -55,10 +52,8 @@ window.shareTo = (platform) => {
             shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
             break;
         case 'email':
-            // ปรับปรุง Subject ให้ดึงชื่อจริงจาก <h1> ของหน้ามาใช้ (ถ้ามี)
-            const assetName = document.querySelector('.asset-info__title')?.innerText || document.title;
-            const subject = encodeURIComponent(`สนใจทรัพย์สิน: ${assetName}`);
-            const body = encodeURIComponent(`สวัสดีครับ,\n\nผมสนใจทรัพย์สินรายการนี้จากเว็บไซต์ SAM:\n${window.location.href}`);
+            const subject = encodeURIComponent(`แชร์เนื้อหาที่น่าสนใจ: ${decodeURIComponent(title)}`);
+            const body = encodeURIComponent(`ดูรายละเอียดเพิ่มเติมได้ที่ลิงก์นี้:\n${window.location.href}`);
             shareUrl = `mailto:?subject=${subject}&body=${body}`;
             break;
     }
@@ -67,15 +62,18 @@ window.shareTo = (platform) => {
         if (platform === 'email') {
             window.location.href = shareUrl;
         } else {
-            // คำนวณตำแหน่งกึ่งกลางหน้าจอสำหรับ Pop-up Window
-            const width = 600;
-            const height = 400;
-            const left = (window.innerWidth / 2) - (width / 2);
-            const top = (window.innerHeight / 2) - (height / 2);
-
-            window.open(shareUrl, 'shareWindow',
-                `width=${width},height=${height},left=${left},top=${top},toolbar=0,status=0`);
+            const width = 600, height = 450;
+            const left = (screen.width / 2) - (width / 2);
+            const top = (screen.height / 2) - (height / 2);
+            window.open(shareUrl, 'shareWindow', `width=${width},height=${height},left=${left},top=${top}`);
         }
     }
     return false;
 };
+
+// ถ้าโหลดแบบ Module ให้รัน init อัตโนมัติ (ถ้าพบ Element)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initShareTooltip);
+} else {
+    initShareTooltip();
+}
