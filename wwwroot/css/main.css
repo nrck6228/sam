@@ -5039,7 +5039,7 @@ text-big, .text-big {
   /* Navbar & Z-index layers */
 }
 .header .nav-bar {
-  z-index: 901;
+  z-index: 1060;
   flex-flow: column;
   justify-content: center;
   align-items: center;
@@ -6231,7 +6231,12 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  color: var(--neutral-700);
+  color: var(--white);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  background-color: rgba(0, 0, 0, var(--opacity-50));
 }
 .search--tags .tag--cloud {
   display: flex;
@@ -6246,14 +6251,12 @@ body {
   padding: 0.5rem 1rem;
   color: var(--text-main);
   border-radius: 20px;
-  backdrop-filter: blur(var(--blur-md));
-  -webkit-backdrop-filter: blur(var(--blur-md));
-  background-color: rgba(255, 255, 255, var(--opacity-50));
+  background-color: rgba(255, 255, 255, 0.9);
   cursor: pointer;
   transition: all var(--transition);
 }
 .search--tags .tag--cloud__tag:hover {
-  background-color: rgba(255, 255, 255, var(--opacity-20));
+  background-color: rgba(255, 255, 255, var(--opacity-70));
 }
 @media (max-width: calc(992px - 0.02px)) {
   .search--tags .tag--cloud {
@@ -8244,6 +8247,7 @@ svg.icon-xl {
   line-height: 1.4;
   color: var(--black);
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
@@ -8344,6 +8348,7 @@ svg.icon-xl {
   line-height: 1.4;
   color: var(--white);
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
@@ -8422,6 +8427,7 @@ svg.icon-xl {
   line-height: 1.4;
   color: var(--black);
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
@@ -8433,6 +8439,7 @@ svg.icon-xl {
   line-height: 1.4;
   color: var(--neutral-700);
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
@@ -8701,6 +8708,7 @@ svg.icon-xl {
   line-height: 1.4;
   color: var(--black);
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
@@ -8712,6 +8720,7 @@ svg.icon-xl {
   color: vard(--black);
   display: -webkit-box; /* ต้องใช้ display แบบ box */
   -webkit-line-clamp: 2; /* กำหนดจำนวนบรรทัดที่ต้องการ */
+  line-clamp: 2;
   -webkit-box-orient: vertical; /* กำหนดแนวการวางตัวเป็นแนวตั้ง */
   overflow: hidden; /* ซ่อนเนื้อหาที่เกินออกมา */
   text-overflow: ellipsis; /* แสดงจุดไข่ปลา (...) */
@@ -8932,6 +8941,14 @@ svg.icon-xl {
   line-height: 1.2;
   color: var(--white);
 }
+@media (max-width: calc(992px - 0.02px)) {
+  .card--banner .card__picture {
+    height: 240px;
+  }
+  .card--banner .card__title {
+    font-size: 2rem;
+  }
+}
 
 .card--highlight {
   position: relative;
@@ -8965,6 +8982,19 @@ svg.icon-xl {
   font-size: 3rem;
   line-height: 1.2;
   color: var(--clr-primary-dark);
+}
+@media (max-width: calc(992px - 0.02px)) {
+  .card--highlight {
+    border: none;
+    border-bottom: 1px solid var(--neutral-600);
+  }
+  .card--highlight .card__body {
+    padding: 1rem 0;
+    height: 240px;
+  }
+  .card--highlight .card__title {
+    font-size: 2rem;
+  }
 }
 
 .card--survey {
@@ -11489,7 +11519,7 @@ table .fund--name {
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-    padding: 0;
+    padding: 1rem;
     z-index: 9;
   }
   .home.home--banner .home__nav__group {
@@ -11645,6 +11675,11 @@ table .fund--name {
   justify-content: space-between;
   z-index: 2; /* ดันเนื้อหาขึ้นมาเหนือพื้นหลัง */
 }
+@media (max-width: calc(992px - 0.02px)) {
+  .home.home--stats .stats__text {
+    height: 240px;
+  }
+}
 .home.home--stats .stats__number {
   margin-bottom: 1rem;
   font-size: var(--fs-display-2);
@@ -11722,10 +11757,10 @@ table .fund--name {
 @media (max-width: calc(1200px - 0.02px)) {
   .home.home--stats .stats--wrapper {
     aspect-ratio: auto;
-    display: flex; /* Turns the container into a flex container */
-    flex-wrap: wrap; /* Allows items to wrap onto new lines */
-    justify-content: space-around; /* Optional: distributes items evenly with space around them */
-    gap: 1.25rem; /* Optional: adds space between items */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1.25rem;
     min-height: 1px;
   }
   .home.home--stats .stats--wrapper .stats__card {
@@ -11735,9 +11770,16 @@ table .fund--name {
     box-sizing: border-box;
   }
 }
-@media (max-width: calc(768px - 0.02px)) {
+@media (max-width: calc(992px - 0.02px)) {
+  .home.home--stats .stats--wrapper {
+    display: block;
+  }
   .home.home--stats .stats--wrapper .stats__card {
     width: 100%;
+    margin-bottom: 1rem;
+  }
+  .home.home--stats .stats--wrapper .stats__text {
+    height: 240px;
   }
 }
 .home.home--stats .stats--grid {
@@ -11859,17 +11901,30 @@ table .fund--name {
 }
 .home.home--assets .asset-area--template1 {
   position: relative;
-  border-radius: var(--radius-md);
   overflow: hidden;
 }
 .home.home--assets .asset-area--template1__group {
   padding: 2rem;
 }
 .home.home--assets .asset-area--template1__group.bg--grad-gray {
+  border-start-start-radius: var(--radius-md);
+  border-end-start-radius: var(--radius-md);
   background-image: linear-gradient(120deg, var(--neutral-400), var(--neutral-300));
 }
+@media (max-width: calc(992px - 0.02px)) {
+  .home.home--assets .asset-area--template1__group.bg--grad-gray {
+    border-radius: var(--radius-md);
+  }
+}
 .home.home--assets .asset-area--template1__group.bg--grad-green {
+  border-start-end-radius: var(--radius-md);
+  border-end-end-radius: var(--radius-md);
   background-image: linear-gradient(120deg, var(--clr-primary-dark), var(--clr-primary));
+}
+@media (max-width: calc(992px - 0.02px)) {
+  .home.home--assets .asset-area--template1__group.bg--grad-green {
+    border-radius: var(--radius-md);
+  }
 }
 .home.home--assets .asset-area--template1__title {
   font-size: var(--fs-h2);
@@ -11897,35 +11952,30 @@ table .fund--name {
   padding-left: 10px;
   color: var(--clr-primary-dark);
 }
-@media (max-width: calc(768px - 0.02px)) {
-  .home.home--assets .asset-area--template1__group {
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-md);
-    background-color: rgba(255, 255, 255, var(--opacity-70));
-  }
-}
 .home.home--assets .asset-area--template2 {
   position: relative;
   border-radius: 0;
   overflow: hidden;
 }
+.home.home--assets .asset-area--template2__group {
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  background-color: rgba(0, 0, 0, var(--opacity-50));
+}
 .home.home--assets .asset-area--template2__title {
   font-size: var(--fs-h2);
   font-weight: 600;
+  color: var(--white);
 }
 .home.home--assets .asset-area--template2__list {
   list-style: none;
-  padding: 1rem;
+  padding: 0;
   margin: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  border-radius: var(--radius-md);
-  backdrop-filter: blur(var(--blur-md));
-  -webkit-backdrop-filter: blur(var(--blur-md));
-  background-color: rgba(0, 0, 0, var(--opacity-20));
 }
 .home.home--assets .asset-area--template2__link {
   display: block;
@@ -11940,15 +11990,6 @@ table .fund--name {
 .home.home--assets .asset-area--template2__link:hover {
   padding-left: 10px;
   color: var(--clr-primary-dark);
-}
-@media (max-width: calc(768px - 0.02px)) {
-  .home.home--assets .asset-area--template2__group {
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-md);
-    background-color: rgba(255, 255, 255, var(--opacity-70));
-  }
 }
 @media (min-width: 768px) {
   .home.home--assets {

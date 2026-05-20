@@ -43,12 +43,16 @@ const renderAssetShowcase = (data) => {
     typeContainer.innerHTML = sortedData.map(asset => `
         <a href="/npa/${asset.id}/${asset.slug}" title="${asset.typeName}" class="card card--type">
             <div class="card__figure">
-                <svg class="icon-xl"><use xlink:href="#icon-${asset.icon || 'land'}"></use></svg>
-                <div class="card__type">${asset.typeName}</div>
             </div>
-            <div class="card__body">
-                <div class="card__count">${asset.count.toLocaleString()}</div>
-                <div class="card__unit">${asset.unit}</div>
+            <div class="card__wrap">
+                <div class="card__header">
+                    <svg class="icon-xl"><use xlink:href="#icon-${asset.icon || 'land'}"></use></svg>
+                    <div class="card__type">${asset.typeName}</div>
+                </div>
+                <div class="card__body">
+                    <div class="card__count">${asset.count.toLocaleString()}</div>
+                    <div class="card__unit">${asset.unit}</div>
+                </div>
             </div>
         </a>
     `).join('');

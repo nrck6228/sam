@@ -3,14 +3,27 @@
 
     <ul class="nav nav-pills search__tabs" id="searchTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link sam-tabs__link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal-search" type="button" onclick="setSearchMode('normal')">
-                <svg class="icon"><use xlink:href="#icon-search"></use></svg> ค้นหาปกติ
+            <button class="nav-link sam-tabs__link active" id="normal-tab" data-bs-toggle="tab"
+                    data-bs-target="#normal-search" type="button" onclick="setSearchMode('normal')">
+                <svg class="icon">
+                    <use xlink:href="#icon-search"></use>
+                </svg> ค้นหาปกติ
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link sam-tabs__link" id="ai-tab" data-bs-toggle="tab" data-bs-target="#ai-search" type="button" onclick="setSearchMode('ai')">
-                <svg class="icon"><use xlink:href="#icon-ai"></use></svg> ค้นหาจาก AI
+            <button class="nav-link sam-tabs__link" id="ai-tab" data-bs-toggle="tab" data-bs-target="#ai-search"
+                    type="button" onclick="setSearchMode('ai')">
+                <svg class="icon">
+                    <use xlink:href="#icon-ai"></use>
+                </svg> ค้นหาจาก AI
             </button>
+        </li>
+        <li class="nav-item">
+            <a href="search-by-map" class="nav-link sam-tabs__link">
+                <svg class="icon">
+                    <use xlink:href="#icon-placeholder"></use>
+                </svg> ค้นหาตามแผนที่
+            </a>
         </li>
     </ul>
 
@@ -19,12 +32,22 @@
             <div class="row">
                 <div class="col-md-12 d-flex gap-2">
                     <div class="input-group search__input-group">
-                        <input type="text" name="keyword" class="form-control search__input" id="keywordInput" placeholder="คำค้นหาทรัพย์สิน เช่น รหัสทรัพย์, ทำเล...">
-                        <button type="button" class="btn btn--square btn--transparent text-white d-none d-md-block" id="voice-btn"><svg class="icon"><use xlink:href="#icon-mic"></use></svg></button>
-                        <button type="button" class="btn btn--square btn--transparent text-white" id="image-btn"><svg class="icon"><use xlink:href="#icon-camera"></use></svg></button>
+                        <input type="text" name="keyword" class="form-control search__input" id="keywordInput"
+                               placeholder="คำค้นหาทรัพย์สิน เช่น รหัสทรัพย์, ทำเล...">
+                        <button type="button" class="btn btn--square btn--transparent text-white d-none d-md-block"
+                                id="voice-btn"><svg class="icon">
+                            <use xlink:href="#icon-mic"></use>
+                        </svg></button>
+                        <button type="button" class="btn btn--square btn--transparent text-white" id="image-btn"><svg
+                            class="icon">
+                            <use xlink:href="#icon-camera"></use>
+                        </svg></button>
                     </div>
-                    <button class="btn btn--square btn--white" type="button" data-bs-toggle="offcanvas" data-bs-target="#advancedSearch">
-                        <svg class="icon"><use xlink:href="#icon-slider"></use></svg>
+                    <button class="btn btn--square btn--white" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#advancedSearch">
+                        <svg class="icon">
+                            <use xlink:href="#icon-slider"></use>
+                        </svg>
                     </button>
                 </div>
 
@@ -68,8 +91,10 @@
         <div class="tab-pane fade" id="ai-search" role="tabpanel">
             <div class="ai-input-wrapper">
                 <div class="input-group search__input-group">
-                    <input type="text" name="ai_query" class="form-control search__input" id="keywordInputAi" placeholder="บอกสิ่งที่คุณต้องการ เช่น 'หาคอนโดโซนบางนา...'">
-                    <button type="button" class="btn search__btn" data-bs-toggle="tooltip" data-bs-title="การค้นหาจาก AI อาจใช้เวลานานขึ้น">
+                    <input type="text" name="ai_query" class="form-control search__input" id="keywordInputAi"
+                           placeholder="บอกสิ่งที่คุณต้องการ เช่น 'หาคอนโดโซนบางนา...'">
+                    <button type="button" class="btn search__btn" data-bs-toggle="tooltip"
+                            data-bs-title="การค้นหาจาก AI อาจใช้เวลานานขึ้น">
                         <i class="bi bi-info-circle"></i>
                     </button>
                 </div>

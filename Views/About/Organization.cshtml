@@ -1,0 +1,43 @@
+@using sam.Models
+@model List<ExecutiveViewModel>
+@{
+    ViewData["Title"] = "คณะผู้บริหาร | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+}
+
+<section class="section section--banner">
+    <div class="section__breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">หน้าแรก</a></li>
+                <li class="breadcrumb-item"><span>เกี่ยวกับ SAM</span></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>โครงสร้างองค์กร</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class="page__title">
+            โครงสร้างองค์กร
+        </h1>
+    </div>
+</section>
+
+<section>
+    <div class="section section--content py-5 py-lg-6 m-0">
+        <div class="container--fluid">
+            <div class="row">
+                <div class="col-12">
+                    <img src="/media/images/organization.png" alt="โครงสร้างองค์กร" class="w-100" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+}
+@section Scripts {
+}

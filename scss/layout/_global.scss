@@ -332,7 +332,12 @@ body {
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-    color: var(--neutral-700);
+    color: var(--white);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    background-color: rgba(0, 0, 0, var(--opacity-50));
 
     .tag--cloud {
         display: flex;
@@ -347,14 +352,15 @@ body {
             padding: 0.5rem 1rem;
             color: var(--text-main);
             border-radius: 20px;
-            backdrop-filter: blur(var(--blur-md));
-            -webkit-backdrop-filter: blur(var(--blur-md));
-            background-color: rgba(255, 255, 255, var(--opacity-50));
+            // backdrop-filter: blur(var(--blur-md));
+            // -webkit-backdrop-filter: blur(var(--blur-md));
+            // background-color: rgba(255, 255, 255, var(--opacity-50));
+            background-color: rgba(255, 255, 255, 0.9);
             cursor: pointer;
             transition: all var(--transition);
 
             &:hover {
-                background-color: rgba(255, 255, 255, var(--opacity-20));
+                background-color: rgba(255, 255, 255, var(--opacity-70));
             }
         }
 

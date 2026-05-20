@@ -67,9 +67,12 @@
                                     <h5 class="card__title">@file.name</h5>
                                 </div>
                                 <div class="card__footer">
-                                    <button type="button" onclick="checkDownloadPermission('@file.link')" class="btn btn--file btn--file-download">
+                                    <button type="button" onclick="checkDownloadPermission('@file.link')"
+                                            class="btn btn--file btn--file-download">
                                         <span class="btn__icon">
-                                            <svg class="icon"><use xlink:href="#icon-download"></use></svg>
+                                            <svg class="icon">
+                                                <use xlink:href="#icon-download"></use>
+                                            </svg>
                                         </span>
                                         <span class="btn__text">ดาวน์โหลด</span>
                                     </button>
@@ -84,7 +87,7 @@
                 <a href="/announcement/procurement" class="btn btn--hover btn--green">
                     <span class="btn__text">
                         กลับหน้าประกาศจัดซื้อจัดจ้าง
-                    </span>    
+                    </span>
                 </a>
             </div>
         </div>
@@ -138,7 +141,7 @@
                 </div>
             </div>
             <div class="modal-body p-4">
-                <form id="formOperator" class="form">
+                <form id="formOperator" class="form" style="background-color: white;">
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -231,7 +234,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์สำหรับติดต่อ*" required>
+                                <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์สำหรับติดต่อ*"
+                                       required>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -243,7 +247,8 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="รหัสยืนยัน*" required>
-                                    <span class="input-group-text bg-dark text-warning fw-bold border-0 rounded-0">4235</span>
+                                    <span
+                                    class="input-group-text bg-dark text-warning fw-bold border-0 rounded-0">4235</span>
                                 </div>
                             </div>
                         </div>

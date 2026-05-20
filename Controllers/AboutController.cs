@@ -106,7 +106,7 @@ namespace sam.Controllers
             {
                 new VicePresidentViewModel { Name = "นายอภิสิทธิ์ วงศ์วิลาสชัย", Position = "ผู้บริหารฝ่ายตรวจสอบธุรกิจ", ImageUrl = "/media/images/board/division/SAM_img-dm01_01.png", GroupName = "group-1" },
                 new VicePresidentViewModel { Name = "นายศิษฎ์วสุ ตุลยายน", Position = "ผู้บริหารฝ่ายตรวจสอบและพัฒนาระบบตรวจสอบเทคโนโลยีสารสนเทศ", ImageUrl = "/media/images/board/division/SAM_img-dm01_02.png", GroupName = "group-1" },
-        
+
                 new VicePresidentViewModel { Name = "นางสาวดิษยา สินศิริ", Position = "ผู้บริหารฝ่ายกำกับการปฏิบัติงาน", ImageUrl = "/media/images/board/division/SAM_img-dm02_02.png", GroupName = "group-2" },
 
                 new VicePresidentViewModel { Name = "นายภิทย อนุรักษ์ภราดร", Position = "ผู้บริหารฝ่ายกลยุทธ์และพัฒนาผลิตภัณฑ์องค์กร (รักษาการ)", ImageUrl = "/media/images/board/division/SAM_img-sm12.png", GroupName = "group-3" },
@@ -204,6 +204,13 @@ namespace sam.Controllers
         {
             // เราจะใช้ slug ในการระบุว่าจะเปิด Tab ไหน (จะอธิบายในส่วน JS)
             return View("~/Views/About/BusinessPolicy.cshtml");
+        }
+
+        [Route("about/organization-structure")] // เก็บไว้เผื่อคนพิมพ์แบบเต็ม
+        public IActionResult Organization()
+        {
+            // เราจะใช้ slug ในการระบุว่าจะเปิด Tab ไหน (จะอธิบายในส่วน JS)
+            return View("~/Views/About/Organization.cshtml");
         }
     }
 }
