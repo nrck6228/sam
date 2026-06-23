@@ -535,21 +535,19 @@
 
     .appointment-card {
         position: relative;
-        overflow: hidden;
-        // position: relative;
-        // padding: 2rem;
-        // margin-bottom: 1rem;
-        // border-radius: .5rem;
-        // backdrop-filter: blur(var(--blur-md));
-        // -webkit-backdrop-filter: blur(var(--blur-md));
-        // background-color: rgba(0, 0, 0, var(--opacity-50));
+        padding: 2rem;
+        margin-bottom: 1rem;
+        border-radius: .5rem;
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(0, 0, 0, var(--opacity-50));
 
-        // &__title {
-        //     font-weight: 500;
-        //     font-size: 2rem;
-        //     line-height: 1.4;
-        //     color: var(--white);
-        // }
+        &__title {
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 1.4;
+            color: var(--white);
+        }
     }
 }
 
@@ -569,14 +567,12 @@
 
     .calculator-card {
         position: relative;
-        overflow: hidden;
-        // position: relative;
-        // padding: 2rem;
-        // margin-bottom: 1rem;
-        // border-radius: .5rem;
-        // backdrop-filter: blur(var(--blur-md));
-        // -webkit-backdrop-filter: blur(var(--blur-md));
-        // background-color: rgba(0, 0, 0, var(--opacity-50));
+        padding: 2rem;
+        margin-bottom: 1rem;
+        border-radius: .5rem;
+        backdrop-filter: blur(var(--blur-md));
+        -webkit-backdrop-filter: blur(var(--blur-md));
+        background-color: rgba(0, 0, 0, var(--opacity-50));
 
         &__title {
             font-weight: 500;

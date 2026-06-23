@@ -49,7 +49,7 @@
                 align-items: center;
                 flex-wrap: wrap;
                 gap: 1rem;
-                padding: 1rem;
+                padding: 0;
                 z-index: 9;
 
                 &__group {
@@ -82,22 +82,16 @@
 
         .home__body {
             margin-bottom: 3rem;
-            font-size: var(--fs-h6);
+            font-size: var(--fs-h5);
             color: var(--black);
         }
 
         .highlight {
-            position: relative;
-            overflow: hidden;
+            width: 100%;
 
             &__grid {
                 display: grid;
                 grid-template-columns: 1fr; // แบ่ง 2 คอลัมน์บน Desktop
-
-                @include media.media-up(lg) {
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 1.5rem;
-                }
             }
 
             &__item {
@@ -108,14 +102,19 @@
             &__link {
                 display: flex;
                 text-decoration: none;
-                padding: 1.5rem 0.5rem;
+                padding: 1.5rem 1rem;
                 transition: all var(--transition);
                 // --- Mobile & Tablet First ---
                 flex-direction: column; // เรียงต่อกันเป็นแนวตั้ง
                 align-items: flex-start; // ให้ทุกอย่างชิดซ้าย
+                gap: 0.5rem;
 
                 &:hover {
-                    .highlight__icon {
+                    .quick-links__label {
+                        color: var(--clr-primary-dark); // เปลี่ยนสีข้อความตอน hover
+                    }
+
+                    .quick-links__icon {
                         transform: translate(8px, -8px); // เปลี่ยนสีข้อความตอน hover
                     }
                 }
@@ -136,24 +135,39 @@
 
             &__label {
                 flex: 1; // ดันให้ icon ไปอยู่ขวาสุด
-                font-size: var(--fs-h5);
+                font-size: var(--fs-h4);
                 color: var(--black);
             }
 
             &__icon {
-                color: var(--neutral-600);
-                font-size: var(--fs-h5);
+                color: var(--text-disabled);
+                font-size: 1rem;
                 transition: var(--transition);
 
                 .icon {
                     /* กำหนดขนาด */
-                    width: 1.5rem;
-                    height: 1.5rem;
+                    width: 16px;
+                    height: 16px;
                     /* ให้สีเปลี่ยนตามสีข้อความ (ถ้าใน SVG ตั้งเป็น fill="currentColor") */
                     fill: currentColor;
                     /* ป้องกันปัญหาสัดส่วนเพี้ยน */
                     display: inline-block;
                     vertical-align: middle;
+                }
+            }
+
+            @include media.media-up(md) {
+                &__grid {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 1.5rem;
+                }
+            }
+
+            @include media.media-up(lg) {
+                &__link {
+                    flex-direction: row; // กลับมาเรียงแนวนอน
+                    align-items: center; // จัดให้อยู่กลางแนวตั้ง
+                    gap: 1.5rem;
                 }
             }
         }
@@ -166,126 +180,18 @@
     &.home--stats {
         padding: 4rem 0;
 
-        .stats__card {
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            &--1 {
-                background-color: var(--clr-primary-dark);
-                background-image: linear-gradient(120deg, var(--clr-primary-dark), var(--clr-primary));
-
-                .stats__number, 
-                .stats__desc {
-                    color: var(--white);
-                }
-            }
-
-            &--2 {
-                background-image: var(--clr-accent-pink);
-                background-image: linear-gradient(120deg, var(--clr-accent-pink), var(--clr-accent-pink-light));
-
-                .stats__number, 
-                .stats__desc {
-                    color: var(--white);
-                }
-            }
-
-            &--3 {
-                background-image: var(--clr-accent-yellow);
-                background-image: linear-gradient(120deg, var(--clr-accent-yellow), var(--clr-accent-yellow-light));
-
-                .stats__number, 
-                .stats__desc {
-                    color: var(--clr-earth-deep);
-                }
-            }
-
-            &--4 {
-                background-image: var(--neutral-400);
-                background-image: linear-gradient(120deg, var(--neutral-400), var(--neutral-300));
-                .stats__number, 
-                .stats__desc {
-                    color: var(--neutral-900);
-                }
-            }
-
-            &--5 {
-                background-image: var(--clr-nature);
-                background-image: linear-gradient(120deg, var(--clr-nature), var(--clr-nature-light));
-
-                .stats__number, 
-                .stats__desc {
-                    color: var(--clr-primary-dark);
-                }
-            }
-        }
-
-        .stats__text {
+        .stats {
             position: relative;
-            /*aspect-ratio: 4 / 3;*/
-            width: 100%;
-            height: 360px;
-            padding: 1.5rem;
-            border-radius: var(--radius-sm);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            z-index: 2; /* ดันเนื้อหาขึ้นมาเหนือพื้นหลัง */
 
-            @include media.media-down(md) {
-                height: 240px;
+            &__grid {
+                position: relative;
+                width: 100%;
+                min-height: 100vh;
+                aspect-ratio: 16 / 8;
+                margin: 0 auto;
             }
-        }
 
-        .stats__number {
-            margin-bottom: 1rem;
-            font-size: var(--fs-display-2);
-            line-height: 1.1;
-            font-weight: 600;
-        }
-
-        .stats__counter {
-            display: inline-flex;
-            align-items: flex-start;
-            overflow: hidden;
-            height: 1.2em; /* ปรับให้ครอบคลุมตัวเลข */
-            line-height: 1.2em;
-        }
-
-        .stats__desc {
-            font-weight: 400;
-            font-size: var(--fs-h6);
-            color: var(--neutral-100);
-        }
-
-        .digit-col {
-            display: flex;
-            flex-direction: column;
-            transition: transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
-            width: 0.65em; /* กำหนดความกว้างคงที่ต่อหลักเพื่อไม่ให้ตัวเลขส่ายไปมา */
-            text-align: center;
-        }
-
-        .digit-col span,
-        .digit-static {
-            height: 1.2em;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .digit-static {
-            width: auto;
-            padding: 0 2px;
-        }
-
-        .stats--wrapper {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            aspect-ratio: 16 / 8;
-            margin: 0 auto;
-
-            .stats__card {
+            &__card {
                 position: absolute;
                 width: 39.75%;
 
@@ -293,12 +199,20 @@
                     top: 0;
                     left: 0;
                     z-index: 1;
+
+                    .stats__content:before {
+                        background-image: var(--grad-green);
+                    }
                 }
 
                 &:nth-child(2) {
                     top: 42.5%;
                     left: 0;
                     z-index: 2;
+
+                    .stats__content:before {
+                        background-image: var(--grad-pink);
+                    }
                 }
 
                 &:nth-child(3) {
@@ -306,6 +220,14 @@
                     top: 10%;
                     left: 30%;
                     z-index: 3;
+
+                    .stats__number, .stats__desc {
+                        color: var(--clr-earth-deep);
+                    }
+
+                    .stats__content:before {
+                        background-image: var(--grad-yellow);
+                    }
                 }
 
                 &:nth-child(4) {
@@ -313,54 +235,149 @@
                     top: 52.5%;
                     left: 30%;
                     z-index: 4;
+
+                    .stats__number, .stats__desc {
+                        color: var(--neutral-900);
+                    }
+
+                    .stats__content:before {
+                        background-image: var(--grad-gray);
+                    }
                 }
 
                 &:nth-child(5) {
                     top: 30%;
                     right: 0;
                     z-index: 5;
+
+                    .stats__number, .stats__desc {
+                        color: var(--clr-primary-dark);
+                    }
+
+                    .stats__content:before {
+                        background-image: var(--grad-nature);
+                    }
                 }
             }
+
+            &__content {
+                position: relative;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: var(--shadow-sm);
+                transition: all var(--transition);
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    border-radius: 8px;
+                    z-index: 1;
+                    background-size: 300% 100%;
+                    background-position: left center;
+                }
+            }
+
+            &__text {
+                position: relative;
+                border-radius: 8px;
+                /*aspect-ratio: 4 / 3;*/
+                width: 100%;
+                height: 360px;
+                padding: 2rem;
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                z-index: 2; /* ดันเนื้อหาขึ้นมาเหนือพื้นหลัง */
+            }
+
+            &__number {
+                margin-bottom: 1rem;
+                font-size: var(--fs-display-2);
+                line-height: 1.1;
+                font-weight: 600;
+                color: var(--neutral-100);
+            }
+
+            &__counter {
+                display: inline-flex;
+                align-items: flex-start;
+                overflow: hidden;
+                height: 1.2em; /* ปรับให้ครอบคลุมตัวเลข */
+                line-height: 1.2em;
+            }
+
+            &__desc {
+                font-weight: 400;
+                font-size: var(--fs-body);
+                color: var(--neutral-100);
+            }
+
+            .digit-col {
+                display: flex;
+                flex-direction: column;
+                transition: transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+                width: 0.65em; /* กำหนดความกว้างคงที่ต่อหลักเพื่อไม่ให้ตัวเลขส่ายไปมา */
+                text-align: center;
+            }
+
+            .digit-col span,
+            .digit-static {
+                height: 1.2em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .digit-static {
+                width: auto;
+                padding: 0 2px;
+            }
+            /*@media screen and (max-width: 1500px) {
+            &__text {
+                height: 360px;
+            }
+        }*/
 
             @include media.media-down(lg) {
-                aspect-ratio: auto;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                gap: 1.25rem;
-                min-height: 1px;
+                &__grid {
+                    aspect-ratio: auto;
+                    /*display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;*/
+                    display: flex; /* Turns the container into a flex container */
+                    flex-wrap: wrap; /* Allows items to wrap onto new lines */
+                    justify-content: space-around; /* Optional: distributes items evenly with space around them */
+                    gap: 1rem; /* Optional: adds space between items */
+                    min-height: 1px;
+                }
 
-                .stats__card {
+                &__card {
                     position: static;
                     width: auto;
-                    flex: 1 1 calc(50% - 1rem);
+                    flex: 1 1 calc(33.333% - 1rem);
                     box-sizing: border-box;
+                }
+
+                &__text {
+                    height: auto;
                 }
             }
 
-            @include media.media-down(md) {
-                display: block;
+            @include media.media-down(sm) {
+                &__grid {
+                    display: block;
+                }
 
-                .stats__card {
+                &__card {
+                    position: static;
                     width: 100%;
                     margin-bottom: 1rem;
                 }
-
-                .stats__text {
-                    height: 240px;
-                }
-            }
-        }
-
-        .stats--grid {
-            position: relative;
-            overflow: hidden;
-
-            .stats__number {
-                margin-bottom: 1rem;
-                font-size: var(--fs-h2);
-                line-height: 1.1;
-                font-weight: 700;
             }
         }
 
@@ -380,7 +397,7 @@
 
         .home__body {
             margin-bottom: 3rem;
-            font-size: var(--fs-body);
+            font-size: var(--fs-h5);
             color: var(--black);
         }
 
@@ -483,108 +500,6 @@
                     border-radius: var(--radius-sm);
                     box-shadow: var(--shadow-md);
                     background-color: rgba(255, 255, 255, var(--opacity-70));
-                }
-            }
-        }
-
-        .asset-area--template1 {
-            position: relative;
-            overflow: hidden;
-            &__group {
-                padding: 2rem;
-
-                &.bg--grad-gray {
-                    border-start-start-radius: var(--radius-md);
-                    border-end-start-radius: var(--radius-md);
-                    background-image: linear-gradient(120deg, var(--neutral-400), var(--neutral-300));
-
-                    @include media.media-down(md) {
-                        border-radius: var(--radius-md);
-                    }
-                }
-
-                &.bg--grad-green {
-                    border-start-end-radius: var(--radius-md);
-                    border-end-end-radius: var(--radius-md);
-                    background-image: linear-gradient(120deg, var(--clr-primary-dark), var(--clr-primary));
-
-                    @include media.media-down(md) {
-                        border-radius: var(--radius-md);
-                    }
-                }
-            }
-
-            &__title {
-                font-size: var(--fs-h2);
-                font-weight: 600;
-            }
-
-            &__list {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            &__link {
-                display: block;
-                padding: 10px;
-                font-size: var(--fs-body);
-                color: var(--black);
-                text-decoration: none;
-                transition: padding-left var(--transition);
-                background-color: var(--white);
-                border-radius: var(--radius-sm);
-
-                &:hover {
-                    padding-left: 10px;
-                    color: var(--clr-primary-dark);
-                }
-            }
-        }
-
-        .asset-area--template2 {
-            position: relative;
-            border-radius: 0;
-            overflow: hidden;
-            &__group {
-                padding: 2rem;
-                border-radius: var(--radius-md);
-                backdrop-filter: blur(var(--blur-md));
-                -webkit-backdrop-filter: blur(var(--blur-md));
-                background-color: rgba(0, 0, 0, var(--opacity-50));
-            }
-
-            &__title {
-                font-size: var(--fs-h2);
-                font-weight: 600;
-                color: var(--white);
-            }
-
-            &__list {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-
-            &__link {
-                display: block;
-                padding: 10px;
-                font-size: var(--fs-body);
-                color: var(--black);
-                text-decoration: none;
-                transition: padding-left var(--transition);
-                background-color: var(--white);
-                border-radius: var(--radius-sm);
-
-                &:hover {
-                    padding-left: 10px;
-                    color: var(--clr-primary-dark);
                 }
             }
         }
@@ -736,7 +651,7 @@
 
         &__content {
             position: relative;
-            border-radius: var(--radius-sm);
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             transition: all var(--transition);
@@ -748,7 +663,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                border-radius: var(--radius-sm);
+                border-radius: 8px;
                 z-index: 1;
                 background-size: 300% 100%;
                 background-position: left center;
@@ -757,12 +672,12 @@
 
         &__text {
             position: relative;
-            border-radius: var(--radius-sm);
+            border-radius: 8px;
             /*aspect-ratio: 4 / 3;*/
             width: 100%;
             height: 360px;
             padding: 2rem;
-            border-radius: var(--radius-sm);
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -855,9 +770,9 @@
         }
     }
 
-    // .asset-panel {
+    .asset-panel {
         
-    // }
+    }
 
     
 
