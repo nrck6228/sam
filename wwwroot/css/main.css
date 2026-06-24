@@ -7106,7 +7106,9 @@ svg.icon-xl {
 }
 .section__breadcrumb .breadcrumb-item.active {
   color: black;
-  text-transform: uppercase;
+  text-transform: none;
+  font-weight: bold;
+  font-size: 1.125rem;
 }
 @media (max-width: calc(1200px - 0.02px)) {
   .section__breadcrumb {
@@ -9894,6 +9896,7 @@ svg.icon-xl {
 .form.form--filter .select {
   position: relative;
   width: fit-content;
+  max-width: 280px;
 }
 .form.form--filter .select::before {
   position: absolute;
@@ -9918,12 +9921,17 @@ svg.icon-xl {
 .form.form--filter .select__input {
   min-height: 45px;
   min-width: 125px;
-  padding: 0 0.25rem;
+  max-width: 100%;
+  padding: 0 1.25rem 0 0.25rem;
   border-bottom: 1px solid var(--neutral-700);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media (max-width: calc(992px - 0.02px)) {
   .form.form--filter .select {
     width: 100%;
+    max-width: none;
   }
 }
 .form.form--filter .search {
