@@ -1,7 +1,51 @@
 let map;
+
+// Marker ทรัพย์สิน
 let markers = [];
-let searchMarker; // สำหรับโหมดปักหมุดเอง
-let currentMode = 'current'; // 'current' หรือ 'select'
+let assetMarkerMap = new Map();
+
+// Marker สิ่งอำนวยความสะดวก / จุดสนใจ
+let poiMarkers = [];
+
+// Marker ตำแหน่งค้นหา เช่น ตำแหน่งปัจจุบัน หรือจุดที่ user เลือกบนแผนที่
+let searchMarker;
+
+let currentMode = 'current';
+
+// State สำหรับ interactive ระหว่าง marker กับ card
+let activeAssetId = null;
+let assetInfoWindow = null;
+
+// State สำหรับ Places / POI
+let placesService = null;
+let poiInfoWindow = null;
+
+const POI_CONFIG = {
+    school: {
+        label: 'โรงเรียน',
+        icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+    },
+    hospital: {
+        label: 'โรงพยาบาล',
+        icon: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+    },
+    shopping_mall: {
+        label: 'ห้างสรรพสินค้า',
+        icon: 'https://maps.google.com/mapfiles/ms/icons/purple-dot.png'
+    },
+    supermarket: {
+        label: 'ซูเปอร์มาร์เก็ต',
+        icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+    },
+    bank: {
+        label: 'ธนาคาร',
+        icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
+    },
+    transit_station: {
+        label: 'สถานีขนส่ง / รถไฟฟ้า',
+        icon: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
+    }
+};
 
 // ข้อมูลจำลอง (Mock Data)
 const mockAssets = [
@@ -56,6 +100,18 @@ const STATUS_CONFIG = {
     3: { label: 'รอประกาศราคา', class: 'card__badge--waiting' }
 };
 
+function getDefaultAssetIcon() {
+    return {
+        url: '/media/images/sam-marker36.svg'
+    };
+}
+
+function getActiveAssetIcon() {
+    return {
+        url: '/media/images/sam-marker36.svg'
+    };
+}
+
 // 2. ฟังก์ชัน Helper สำหรับจัดการรูปแบบตัวเลขราคา
 function formatPrice(price) {
     if (!price || price === 0) return "รอประกาศราคา";
@@ -64,15 +120,13 @@ function formatPrice(price) {
 
 // 3. ฟังก์ชัน Render Card (ปรับปรุงใหม่)
 function renderCard(asset) {
-    // ดึงค่าสถานะจาก Config
     const status = STATUS_CONFIG[asset.statusId] || STATUS_CONFIG[1];
-    
-    // สร้าง URL โดยใช้ AssetCode (หรือ ID ตามความเหมาะสม)
     const detailUrl = `/asset-detail/${asset.assetCode}`;
 
     const html = `
 
-        <div class="card card--asset-map mb-lg-3">
+        <div class="card card--asset-map mb-lg-3 js-asset-card" data-asset-id="${asset.id}"
+            tabindex="0">
             <div class="card__figure">
                 <img src="${asset.img}" alt="${asset.alt || asset.assetName}" class="card__image" />
                 <div class="card__badge ${status.class}">${status.label}</div>
@@ -89,8 +143,21 @@ function renderCard(asset) {
                     ${formatPrice(asset.totalPrice)} 
                     ${asset.totalPrice > 0 ? 'บาท' : ''}
                 </div>
+                <div class="card__actions mt-2">
+                    <button 
+                        type="button" 
+                        class="btn btn--sam-gray js-focus-marker"
+                        data-asset-id="${asset.id}"
+                        aria-label="ดู ${asset.assetName} บนแผนที่"
+                    >
+                        ดูบนแผนที่
+                    </button>
+                    <a href="${detailUrl}" class="btn btn--sam-green">
+                        <span class="btn__text">รายละเอียด</span>
+                    </a>
+                </div>
             </div>
-            <a href="${detailUrl}" class="stretched-link"></a>
+            <!-- <a href="${detailUrl}" class="stretched-link"></a> -->
         </div>
     `;
     document.getElementById('asset-results').insertAdjacentHTML('beforeend', html);
@@ -104,6 +171,12 @@ function initMap() {
         disableDefaultUI: true,
         styles: [ /* ใส่ Styles แผนที่ของคุณที่นี่ */ ]
     });
+
+    placesService = new google.maps.places.PlacesService(map);
+    poiInfoWindow = new google.maps.InfoWindow();
+    assetInfoWindow = new google.maps.InfoWindow();
+
+    bindAssetCardEvents();
 
     // 2. เมื่อโหลดหน้าเสร็จ ให้เรียกใช้ตำแหน่งปัจจุบันทันที
     handleFirstLoad();
@@ -266,18 +339,25 @@ function startSearch() {
 }
 
 function performFilter(centerPos) {
-    // ดึงค่ารัศมีจาก Dropdown (ถ้ามี) หรือ Default ที่ 3 กม.
     const radiusElement = document.getElementById('radius');
     const radius = radiusElement ? parseFloat(radiusElement.value) : 3;
-    
-    // ล้าง Marker และ List เดิม
+
+    // ล้าง Marker ทรัพย์เดิม
     markers.forEach(m => m.setMap(null));
     markers = [];
+    assetMarkerMap.clear();
+    activeAssetId = null;
+
+    if (assetInfoWindow) {
+        assetInfoWindow.close();
+    }
+
     const resultsContainer = document.getElementById('asset-results');
     resultsContainer.innerHTML = '';
 
+    let foundAssets = 0;
+
     mockAssets.forEach(asset => {
-        // ข้ามรายการที่ไม่มีพิกัด
         if (!asset.lat || !asset.lng) return;
 
         const distance = google.maps.geometry.spherical.computeDistanceBetween(
@@ -285,56 +365,506 @@ function performFilter(centerPos) {
             new google.maps.LatLng(asset.lat, asset.lng)
         );
 
-        // ตรวจสอบระยะทาง (กม.)
         if (distance <= radius * 1000) {
             addAssetMarker(asset);
             renderCard(asset);
+            foundAssets++;
         }
     });
-    
-    if (markers.length === 0) {
-        resultsContainer.innerHTML = '<div class="no-result">ไม่พบทรัพย์ในรัศมีที่กำหนด</div>';
+
+    if (foundAssets === 0) {
+        resultsContainer.innerHTML = '<div class="no-result"><div class="mb-2"><i class="bi bi-house-x"></i></div><div>ไม่พบรายการทรัพย์ภายในรัศมีที่กำหนด</div></div>';
     }
+
+    // เพิ่ม Section แสดงสิ่งอำนวยความสะดวก
+    renderPoiSectionLoading();
+
+    // ค้นหาสิ่งอำนวยความสะดวกรอบตำแหน่งค้นหา
+    searchNearbyAmenities(centerPos, radius);
 }
 
 function addAssetMarker(asset) {
-    // ตรวจสอบว่ามีพิกัดก่อนปักหมุด
     if (!asset.lat || !asset.lng) return;
 
     const marker = new google.maps.Marker({
         position: { lat: asset.lat, lng: asset.lng },
         map: map,
         title: asset.assetName,
-        // คุณสามารถปรับ icon ตาม statusId ได้ที่นี่
+        icon: getDefaultAssetIcon()
     });
 
-    // คลิกที่หมุดแล้วไปหน้ารายละเอียด
+    marker.assetId = asset.id;
+
+    // Hover pin: แสดง InfoWindow + highlight card
+    marker.addListener('mouseover', () => {
+        activateAsset(asset.id, {
+            panTo: false,
+            zoom: false,
+            openInfoWindow: true,
+            scrollToCard: false
+        });
+    });
+
+    // Mouse ออกจาก pin: ปิด InfoWindow + reset active state
+    marker.addListener('mouseout', () => {
+        clearActiveAsset({
+            closeInfoWindow: true
+        });
+    });
+
+    // Click pin: แสดง InfoWindow + scroll ไปยังรายการทรัพย์
     marker.addListener('click', () => {
-        window.location.href = `/asset-detail/${asset.assetCode}`;
+        activateAsset(asset.id, {
+            panTo: false,
+            zoom: false,
+            openInfoWindow: true,
+            scrollToCard: true
+        });
     });
 
     markers.push(marker);
+
+    assetMarkerMap.set(String(asset.id), {
+        marker,
+        asset
+    });
 }
 
 // เพิ่มฟังก์ชันล้างข้อมูล (Clear)
 function clearSearch() {
-    // 1. ล้าง Marker ทรัพย์ทั้งหมด
     markers.forEach(m => m.setMap(null));
     markers = [];
+    assetMarkerMap.clear();
+    activeAssetId = null;
 
-    // 2. ล้างหมุดที่ผู้ใช้ปักไว้ (หมุดสีเขียว/ฟ้า)
-    if (searchMarker) {
-        searchMarker.setMap(null);
-        searchMarker = null; // สำคัญ: ต้องเซตเป็น null เพื่อให้เงื่อนไขใน startSearch ทำงาน
+    if (assetInfoWindow) {
+        assetInfoWindow.close();
     }
 
-    // 3. ล้างผลลัพธ์ใน Sidebar
+    if (typeof clearPoiMarkers === 'function') {
+        clearPoiMarkers();
+    }
+
+    if (searchMarker) {
+        searchMarker.setMap(null);
+        searchMarker = null;
+    }
+
     const resultsContainer = document.getElementById('asset-results');
     if (resultsContainer) {
         resultsContainer.innerHTML = '<div class="no-result">กรุณากดค้นหาเพื่อดูรายการทรัพย์</div>';
     }
-    
-    console.log("Cleared all markers and results");
+
+    console.log("Cleared all markers, active asset and results");
+}
+
+function getSelectedPoiTypes() {
+    return Array.from(document.querySelectorAll('input[name="poi-type"]:checked'))
+        .map(input => input.value);
+}
+
+function clearPoiMarkers() {
+    if (!Array.isArray(poiMarkers)) {
+        poiMarkers = [];
+        return;
+    }
+
+    poiMarkers.forEach(marker => {
+        if (marker && typeof marker.setMap === 'function') {
+            marker.setMap(null);
+        }
+    });
+
+    poiMarkers = [];
+}
+
+function renderPoiSectionLoading() {
+    const resultsContainer = document.getElementById('poi--wrapper');
+
+    const html = `
+        <div class="poi-results" id="poi-results">
+            <div class="poi-results__header">
+                <div class="poi-results__title">สิ่งอำนวยความสะดวกใกล้เคียง</div>
+                <div class="poi-results__subtitle">กำลังค้นหาข้อมูลรอบบริเวณ...</div>
+            </div>
+            <div class="poi-results__list" id="poi-results-list"></div>
+        </div>
+    `;
+
+    resultsContainer.insertAdjacentHTML('beforeend', html);
+}
+
+function searchNearbyAmenities(centerPos, radiusKm) {
+    if (!placesService) return;
+
+    const selectedTypes = getSelectedPoiTypes();
+    const poiList = document.getElementById('poi-results-list');
+    const poiResults = document.getElementById('poi-results');
+
+    if (!poiList || !poiResults) return;
+
+    if (selectedTypes.length === 0) {
+        poiResults.querySelector('.poi-results__subtitle').textContent = 'ไม่ได้เลือกประเภทจุดสนใจ';
+        poiList.innerHTML = '<div class="poi-results__empty">กรุณาเลือกประเภทจุดสนใจอย่างน้อย 1 รายการ</div>';
+        return;
+    }
+
+    poiList.innerHTML = '';
+    poiResults.querySelector('.poi-results__subtitle').textContent = 'กำลังค้นหาข้อมูลรอบบริเวณ...';
+
+    const center = new google.maps.LatLng(centerPos.lat, centerPos.lng);
+    const searchRadius = Math.min(radiusKm * 1000, 5000); // จำกัดไว้ไม่เกิน 5 กม. เพื่อไม่ให้ผลลัพธ์เยอะเกิน
+
+    const allPlaces = new Map();
+    let completedRequests = 0;
+
+    selectedTypes.forEach(type => {
+        const request = {
+            location: center,
+            radius: searchRadius,
+            type: type
+        };
+
+        placesService.nearbySearch(request, (results, status) => {
+            completedRequests++;
+
+            if (status === google.maps.places.PlacesServiceStatus.OK && Array.isArray(results)) {
+                results.slice(0, 5).forEach(place => {
+                    if (!place.place_id || allPlaces.has(place.place_id)) return;
+
+                    allPlaces.set(place.place_id, {
+                        ...place,
+                        poiType: type
+                    });
+                });
+            }
+
+            if (completedRequests === selectedTypes.length) {
+                renderPoiResults(Array.from(allPlaces.values()), center);
+            }
+        });
+    });
+}
+
+function renderPoiResults(places, center) {
+    const poiList = document.getElementById('poi-results-list');
+    const poiResults = document.getElementById('poi-results');
+
+    if (!poiList || !poiResults) return;
+
+    clearPoiMarkers();
+
+    if (places.length === 0) {
+        poiResults.querySelector('.poi-results__subtitle').textContent = 'ไม่พบจุดสนใจในรัศมีที่กำหนด';
+        poiList.innerHTML = '<div class="poi-results__empty">ไม่พบสิ่งอำนวยความสะดวกใกล้เคียง</div>';
+        return;
+    }
+
+    poiResults.querySelector('.poi-results__subtitle').textContent = `พบ ${places.length} รายการใกล้บริเวณที่ค้นหา`;
+
+    const sortedPlaces = places
+        .map(place => {
+            const distance = google.maps.geometry.spherical.computeDistanceBetween(
+                center,
+                place.geometry.location
+            );
+
+            return {
+                ...place,
+                distance
+            };
+        })
+        .sort((a, b) => a.distance - b.distance);
+
+    sortedPlaces.forEach(place => {
+        addPoiMarker(place);
+        renderPoiItem(place);
+    });
+}
+
+function addPoiMarker(place) {
+    if (!place.geometry || !place.geometry.location) return;
+
+    const config = POI_CONFIG[place.poiType] || {
+        label: 'จุดสนใจ',
+        icon: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
+    };
+
+    const marker = new google.maps.Marker({
+        position: place.geometry.location,
+        map: map,
+        title: place.name,
+        icon: config.icon
+    });
+
+    marker.addListener('click', () => {
+        const rating = place.rating ? `<div>คะแนน: ${place.rating}</div>` : '';
+        const vicinity = place.vicinity ? `<div>${place.vicinity}</div>` : '';
+
+        poiInfoWindow.setContent(`
+            <div class="poi-info-window">
+                <strong>${place.name}</strong>
+                <div>${config.label}</div>
+                ${rating}
+                ${vicinity}
+            </div>
+        `);
+
+        poiInfoWindow.open(map, marker);
+    });
+
+    poiMarkers.push(marker);
+}
+
+function renderPoiItem(place) {
+    const poiList = document.getElementById('poi-results-list');
+    if (!poiList) return;
+
+    const config = POI_CONFIG[place.poiType] || { label: 'จุดสนใจ' };
+    const distanceKm = place.distance / 1000;
+    const rating = place.rating ? `<span class="poi-card__rating">★ ${place.rating}</span>` : '';
+
+    const html = `
+        <button type="button" class="poi-card" onclick="focusPoi('${place.place_id}')">
+            <div class="poi-card__body">
+                <div class="poi-card__meta">
+                    <span class="poi-card__type">${config.label}</span>
+                    ${rating}
+                </div>
+                <div class="poi-card__title">${place.name}</div>
+                <div class="poi-card__address">${place.vicinity || ''}</div>
+                <div class="poi-card__distance">ประมาณ ${distanceKm.toFixed(1)} กม.</div>
+            </div>
+        </button>
+    `;
+
+    poiList.insertAdjacentHTML('beforeend', html);
+
+    // เก็บ place_id ไว้กับ marker เพื่อใช้ focus
+    const lastMarker = poiMarkers[poiMarkers.length - 1];
+    if (lastMarker) {
+        lastMarker.placeId = place.place_id;
+    }
+}
+
+function focusPoi(placeId) {
+    const marker = poiMarkers.find(m => m.placeId === placeId);
+
+    if (!marker) return;
+
+    map.setCenter(marker.getPosition());
+    map.setZoom(17);
+
+    google.maps.event.trigger(marker, 'click');
+}
+
+function bindAssetCardEvents() {
+    const resultsContainer = document.getElementById('asset-results');
+    if (!resultsContainer) return;
+
+    resultsContainer.addEventListener('mouseover', (event) => {
+        const card = event.target.closest('.js-asset-card');
+        if (!card) return;
+
+        const assetId = card.dataset.assetId;
+        if (!assetId) return;
+
+        activateAsset(assetId, {
+            panTo: false,
+            zoom: false,
+            openInfoWindow: true,
+            scrollToCard: false,
+            temporary: true
+        });
+    });
+
+    resultsContainer.addEventListener('mouseout', (event) => {
+        const card = event.target.closest('.js-asset-card');
+        if (!card) return;
+
+        const relatedTarget = event.relatedTarget;
+
+        // ถ้า mouse ยังอยู่ภายใน card เดิม ไม่ต้องปิด
+        if (relatedTarget && card.contains(relatedTarget)) return;
+
+        clearActiveAsset({
+            closeInfoWindow: true
+        });
+    });
+
+    resultsContainer.addEventListener('focusin', (event) => {
+        const card = event.target.closest('.js-asset-card');
+        if (!card) return;
+
+        const assetId = card.dataset.assetId;
+        if (!assetId) return;
+
+        activateAsset(assetId, {
+            panTo: false,
+            zoom: false,
+            openInfoWindow: true,
+            scrollToCard: false
+        });
+    });
+
+    resultsContainer.addEventListener('focusout', (event) => {
+        const card = event.target.closest('.js-asset-card');
+        if (!card) return;
+
+        const relatedTarget = event.relatedTarget;
+
+        // ถ้า focus ยังวนอยู่ใน card เดิม ไม่ต้องปิด
+        if (relatedTarget && card.contains(relatedTarget)) return;
+
+        clearActiveAsset({
+            closeInfoWindow: true
+        });
+    });
+
+    resultsContainer.addEventListener('click', (event) => {
+        const focusButton = event.target.closest('.js-focus-marker');
+        if (!focusButton) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        const assetId = focusButton.dataset.assetId;
+        if (!assetId) return;
+
+        activateAsset(assetId, {
+            panTo: true,
+            zoom: true,
+            openInfoWindow: true,
+            scrollToCard: false
+        });
+    });
+}
+
+function activateAsset(assetId, options = {}) {
+    const {
+        panTo = true,
+        zoom = true,
+        openInfoWindow = true,
+        scrollToCard = true
+    } = options;
+
+    const markerData = assetMarkerMap.get(String(assetId));
+    if (!markerData) return;
+
+    const { marker, asset } = markerData;
+
+    clearActiveAsset({
+        closeInfoWindow: false
+    });
+
+    activeAssetId = String(assetId);
+
+    marker.setIcon(getActiveAssetIcon());
+    marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+
+    const card = getAssetCard(assetId);
+    if (card) {
+        card.classList.add('is-active');
+    }
+
+    if (panTo) {
+        map.panTo(marker.getPosition());
+    }
+
+    if (zoom) {
+        map.setZoom(17);
+    }
+
+    if (openInfoWindow) {
+        openAssetInfoWindow(marker, asset);
+    }
+
+    if (scrollToCard) {
+        scrollToAssetCard(assetId);
+    }
+}
+
+function clearActiveAsset(options = {}) {
+    const {
+        closeInfoWindow = false
+    } = options;
+
+    if (activeAssetId) {
+        const previousMarkerData = assetMarkerMap.get(String(activeAssetId));
+
+        if (previousMarkerData) {
+            previousMarkerData.marker.setIcon(getDefaultAssetIcon());
+            previousMarkerData.marker.setZIndex(null);
+        }
+    }
+
+    document.querySelectorAll('.js-asset-card.is-active').forEach(card => {
+        card.classList.remove('is-active');
+    });
+
+    if (closeInfoWindow && assetInfoWindow) {
+        assetInfoWindow.close();
+    }
+
+    activeAssetId = null;
+}
+
+function openAssetInfoWindow(marker, asset) {
+    if (!assetInfoWindow) return;
+
+    const detailUrl = `/asset-detail/${asset.assetCode}`;
+
+    assetInfoWindow.setContent(`
+        <div class="asset-info-window">
+            <a href="${detailUrl}" class="asset-info-window__figure">
+                <img src="${asset.img}" alt="${asset.alt || asset.assetName}" class="asset-info-window__image" />
+            </a>
+            
+            <div class="asset-info-window__title">
+                ${asset.assetName}
+            </div>
+
+            <div class="asset-info-window__location">
+                ${asset.location}
+            </div>
+
+            <!-- <div class="asset-info-window__price">
+                ${formatPrice(asset.totalPrice)} ${asset.totalPrice > 0 ? 'บาท' : ''}
+            </div> -->
+
+            <!-- <a href="${detailUrl}" class="asset-info-window__link">
+                ดูรายละเอียด
+            </a> -->
+        </div>
+    `);
+
+    assetInfoWindow.open(map, marker);
+}
+
+function scrollToAssetCard(assetId) {
+    const card = getAssetCard(assetId);
+    const resultSidebar = document.getElementById('result-sidebar');
+
+    if (!card) return;
+
+    if (resultSidebar) {
+        const sidebarRect = resultSidebar.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
+
+        resultSidebar.scrollTo({
+            top: resultSidebar.scrollTop + cardRect.top - sidebarRect.top - 16,
+            behavior: 'smooth'
+        });
+    } else {
+        card.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }
+}
+
+function getAssetCard(assetId) {
+    return document.querySelector(`.js-asset-card[data-asset-id="${assetId}"]`);
 }
 
 // เพิ่มฟังก์ชันซูมไปที่พิกัดเมื่อคลิก Card

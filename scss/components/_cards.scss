@@ -515,7 +515,7 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
 .card--type {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: auto;
     overflow: hidden;
     border-radius: var(--radius-sm);
     background: none;
@@ -535,11 +535,11 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
     }
 
     .card__wrap {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // width: 100%;
+        // height: 100%;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -551,7 +551,8 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
 
     .card__type {
         margin-top: 10px;
-        font-size: var(--fs-h4);
+        // font-size: var(--fs-h4);
+        font-size: 1.5rem;
         font-weight: 300;
         line-height: 1.4;
         letter-spacing: -0.02em;
@@ -572,7 +573,7 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
     }
 
     .card__count {
-        font-size: var(--fs-h2);
+        font-size: var(--fs-h3);
         font-weight: 600;
         line-height: 1.2;
         letter-spacing: -0.02em;
@@ -581,8 +582,9 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
     }
 
     .card__unit {
-        font-size: var(--fs-body);
-        font-weight: 400;
+        // font-size: var(--fs-body);
+        font-size: 1rem;
+        font-weight: 300;
         line-height: 1.4;
         letter-spacing: -0.02em;
         color: var(--neutral-100);
@@ -609,13 +611,16 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
 .card--type-full {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: auto;
     overflow: hidden;
     border-radius: var(--radius-sm);
     background: none;
     transition: all var(--transition);
 
     .card__figure {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         overflow: hidden;
@@ -624,31 +629,33 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
     .card__image {
         width: 100%;
         height: 100%;
-        aspect-ratio: 1 / 1; /* กำหนดตามค่าที่คำนวณได้ */
+        aspect-ratio: 4 / 3; /* กำหนดตามค่าที่คำนวณได้ */
         object-fit: cover;
     }
 
     .card__wrap {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // width: 100%;
+        // height: 100%;
         display: flex;
         flex-direction: column;
         gap: 10px;
         box-shadow: var(--shadow-sm);
         background-color: rgba(0, 0, 0, var(--opacity-50));
+        z-index: 2;
     }
 
     .card__type {
         margin-top: 10px;
-        font-size: var(--fs-h4);
+        font-size: 1.5rem;
         font-weight: 300;
         line-height: 1.4;
         letter-spacing: -0.02em;
         color: var(--neutral-100);
     }
+
     .card__header {
         position: relative;
         padding: 1.5rem 1rem;
@@ -664,7 +671,7 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
     }
 
     .card__count {
-        font-size: var(--fs-h2);
+        font-size: var(--fs-h3);
         font-weight: 600;
         line-height: 1.2;
         letter-spacing: -0.02em;
@@ -672,8 +679,8 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
     }
 
     .card__unit {
-        font-size: var(--fs-body);
-        font-weight: 400;
+        font-size: 1rem;
+        font-weight: 300;
         line-height: 1.4;
         letter-spacing: -0.02em;
         color: var(--neutral-100);

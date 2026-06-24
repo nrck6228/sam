@@ -9,27 +9,11 @@
     <div class="section__breadcrumb">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
-
-                <li class="breadcrumb-item dropdown">
-                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        เกี่ยวกับเรา
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
-                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
-                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
-                    </ul>
+                <li class="breadcrumb-item">
+                    <span>ทรัพย์สินรอการขาย</span>
                 </li>
-
-                <li class="breadcrumb-item dropdown active" aria-current="page">
-                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        รู้จักเรา
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
-                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
-                    </ul>
+                <li class="breadcrumb-item active">
+                    <span>โปรโมชั่นทรัพย์เด่น</span>
                 </li>
             </ol>
         </nav>
@@ -63,34 +47,34 @@
 @section Styles {
 }
 @section Scripts {
-    <script type ="module" src="~/js/features/content/promotion.js"></script>
+    <script type="module" src="~/js/features/content/promotion.js"></script>
     <script>
         $(document).on('click', '.page-link', function (e) {
-            e.preventDefault();
-            if ($(this).parent().hasClass('disabled') || $(this).parent().hasClass('active')) return;
+        e.preventDefault();
+        if ($(this).parent().hasClass('disabled') || $(this).parent().hasClass('active')) return;
 
-            const href = $(this).attr('href');
-            const segments = href.split('/');
-            const page = parseInt(segments[segments.length - 1]);
+        const href = $(this).attr('href');
+        const segments = href.split('/');
+        const page = parseInt(segments[segments.length - 1]);
 
-            // 1. สั่งจางลง (Opacity -> 0)
-            $('#promotion-container').stop().animate({ opacity: 0 }, 200, function() {
+        // 1. สั่งจางลง (Opacity -> 0)
+        $('#promotion-container').stop().animate({ opacity: 0 }, 200, function () {
 
-                // 2. เรียกฟังก์ชัน Render ใหม่ (ต้องชื่อเดียวกับที่ผูกในไฟล์ JS)
-                if (typeof window.renderContent === 'function') {
-                    window.renderContent(page);
-                }
+        // 2. เรียกฟังก์ชัน Render ใหม่ (ต้องชื่อเดียวกับที่ผูกในไฟล์ JS)
+        if (typeof window.renderContent === 'function') {
+        window.renderContent(page);
+        }
 
-                // 3. สั่งแสดงผลกลับมา (Opacity -> 1)
-                $(this).animate({ opacity: 1 }, 200);
-            });
+        // 3. สั่งแสดงผลกลับมา (Opacity -> 1)
+        $(this).animate({ opacity: 1 }, 200);
+        });
 
-            // เลื่อนหน้าจอกลับขึ้นไปด้านบน
-            $('html, body').stop().animate({
-                scrollTop: $("#promotion-container").offset().top - 120
-            }, 600);
+        // เลื่อนหน้าจอกลับขึ้นไปด้านบน
+        $('html, body').stop().animate({
+        scrollTop: $("#promotion-container").offset().top - 120
+        }, 600);
 
-            window.history.pushState({ page: page }, '', href);
+        window.history.pushState({ page: page }, '', href);
         });
     </script>
 }

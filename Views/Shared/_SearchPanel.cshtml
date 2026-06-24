@@ -1,4 +1,4 @@
-﻿<form action="/npa/search-results" method="GET" class="search search--assets" id="mainSearchForm">
+﻿<form action="/npa/search-results" method="GET" class="search search--assets search--white" id="mainSearchForm">
     <input type="hidden" name="mode" id="searchMode" value="normal">
 
     <ul class="nav nav-pills search__tabs" id="searchTab" role="tablist">
@@ -34,12 +34,11 @@
                     <div class="input-group search__input-group">
                         <input type="text" name="keyword" class="form-control search__input" id="keywordInput"
                                placeholder="คำค้นหาทรัพย์สิน เช่น รหัสทรัพย์, ทำเล...">
-                        <button type="button" class="btn btn--square btn--transparent text-white d-none d-md-block"
+                        <button type="button" class="btn btn--square btn--transparent d-none d-md-block"
                                 id="voice-btn"><svg class="icon">
                             <use xlink:href="#icon-mic"></use>
                         </svg></button>
-                        <button type="button" class="btn btn--square btn--transparent text-white" id="image-btn"><svg
-                            class="icon">
+                        <button type="button" class="btn btn--square btn--transparent" id="image-btn"><svg class="icon">
                             <use xlink:href="#icon-camera"></use>
                         </svg></button>
                     </div>
@@ -52,14 +51,14 @@
                 </div>
 
                 <div class="col-md-4 d-none d-md-block">
-                    <div class="search__select-group">
+                    <div class="select-group search__select-group">
                         <select id="search-property-type" name="types" multiple>
                         </select>
                     </div>
                 </div>
 
                 <div class="col-md-4 d-none d-md-block">
-                    <div class="search__select-group">
+                    <div class="select-group search__select-group">
                         <select id="search-province" name="provinces" multiple>
                             <option value="select-all">-- เลือกทั้งหมด --</option>
                             <option value="bkk">กรุงเทพฯ</option>
@@ -69,7 +68,7 @@
                 </div>
 
                 <div class="col-md-4 d-none d-md-block">
-                    <div class="search__select-group">
+                    <div class="select-group search__select-group">
                         <select id="search-district" name="districts" multiple disabled>
                             <option value="select-all">-- เลือกทั้งหมด --</option>
                         </select>
@@ -105,7 +104,7 @@
         </div>
     </div>
 
-    <div class="search--tags">
+    <div class="search--tags search--tags-white">
         <div class="d-block">ยอดนิยม:</div>
         <div class="tag--cloud">
             <span class="tag--cloud__tag popular-tag" data-query="ขายทอดตลาด">รวมทรัพย์ขายทอดตลาด</span>

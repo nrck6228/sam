@@ -147,12 +147,15 @@ body {
 }
 
 .search {
-    &__tabs.nav-pills {
+    position: relative;
+    overflow: hidden;
+    
+    .nav-pills {
         gap: 0.5rem;
         margin-bottom: 0.5rem;
     }
 
-    &__tab-link.nav-link {
+    .nav-link {
         color: var(--neutral-100);
         border-radius: 0.5rem;
         backdrop-filter: blur(var(--blur-md));
@@ -165,7 +168,7 @@ body {
         }
     }
 
-    &__content {
+    .tab-content {
         position: relative;
         padding: 2rem;
         margin-bottom: 1rem;
@@ -180,12 +183,12 @@ body {
         }
     }
 
-    &__input-group {
+    .input-group {
         margin-bottom: 1rem;
         border-bottom: 1px solid var(--neutral-100);
     }
 
-    &__input.form-control {
+    .form-control {
         width: auto;
         height: 45px;
         color: var(--neutral-100);
@@ -204,7 +207,7 @@ body {
         }
     }
 
-    &__select-group {
+    .select-group {
         position: relative;
         display: flex;
         flex-wrap: wrap;
@@ -248,83 +251,200 @@ body {
         }
     }
 
-    &__custom-select {
-        background: transparent;
-        border: none;
-        color: var(--neutral-100);
-        padding: 10px 0 !important;
-        border-radius: 0 !important;
-
-        &:active {
-            color: var(--neutral-100);
-            box-shadow: none;
-        }
-
-        &:focus, &:focus-visible {
-            color: var(--neutral-100);
-            box-shadow: none;
-        }
-
-        &:hover {
-            color: var(--neutral-100);
-            box-shadow: none;
-        }
-
-        &.show {
-            color: var(--neutral-100);
-            box-shadow: none;
-        }
+    .btn--transparent {
+        color: var(--white);
     }
 
-    &__select-icon {
-        position: absolute;
-        right: 0.5rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: white;
-        transition: all var(--transition);
-    }
+    // &__custom-select {
+    //     background: transparent;
+    //     border: none;
+    //     color: var(--neutral-100);
+    //     padding: 10px 0 !important;
+    //     border-radius: 0 !important;
 
-    &__btn {
-        min-width: 1px;
-        width: 45px;
-        height: 45px;
-        font-size: var(--fs-h4);
-        color: var(--neutral-100);
-        transition: all var(--transition);
+    //     &:active {
+    //         color: var(--neutral-100);
+    //         box-shadow: none;
+    //     }
 
-        &:hover {
-            color: var(--neutral-100);
-            outline: none;
-            box-shadow: none;
-            opacity: var(--opacity-50);
+    //     &:focus, &:focus-visible {
+    //         color: var(--neutral-100);
+    //         box-shadow: none;
+    //     }
+
+    //     &:hover {
+    //         color: var(--neutral-100);
+    //         box-shadow: none;
+    //     }
+
+    //     &.show {
+    //         color: var(--neutral-100);
+    //         box-shadow: none;
+    //     }
+    // }
+
+    // &__select-icon {
+    //     position: absolute;
+    //     right: 0.5rem;
+    //     top: 50%;
+    //     transform: translateY(-50%);
+    //     color: white;
+    //     transition: all var(--transition);
+    // }
+
+    // &__btn {
+    //     min-width: 1px;
+    //     width: 45px;
+    //     height: 45px;
+    //     font-size: var(--fs-h4);
+    //     color: var(--neutral-100);
+    //     transition: all var(--transition);
+
+    //     &:hover {
+    //         color: var(--neutral-100);
+    //         outline: none;
+    //         box-shadow: none;
+    //         opacity: var(--opacity-50);
+    //     }
+
+    //     &-slide {
+    //         min-width: 1px;
+    //         width: 45px;
+    //         height: 45px;
+    //         font-size: var(--fs-h4);
+    //         color: var(--black);
+    //         background-color: var(--neutral-100);
+    //         border-radius: 0.5rem;
+
+    //         &:hover {
+    //             background-color: rgba(255, 255, 255, var(--opacity-50));
+    //         }
+
+    //         &:active, &:focus, &:focus-visible {
+    //             background-color: var(--neutral-100);
+    //             outline: none;
+    //             box-shadow: none;
+
+    //             &:hover {
+    //                 background-color: rgba(255, 255, 255, var(--opacity-50));
+    //             }
+    //         }
+    //     }
+    // }
+
+    &.search--white {
+        .nav-pills {
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        &-slide {
-            min-width: 1px;
-            width: 45px;
-            height: 45px;
-            font-size: var(--fs-h4);
+        .nav-link {
             color: var(--black);
-            background-color: var(--neutral-100);
-            border-radius: 0.5rem;
+            background-color: rgba(255, 255, 255, var(--opacity-50));
 
-            &:hover {
-                background-color: rgba(255, 255, 255, var(--opacity-50));
+            &.active {
+                color: var(--black);
+                background-color: var(--neutral-100); /* สีเขียว SAM */
+            }
+        }
+
+        .tab-content {
+            position: relative;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            backdrop-filter: blur(var(--blur-md));
+            -webkit-backdrop-filter: blur(var(--blur-md));
+            background-color: rgba(255, 255, 255, var(--opacity-50));
+            z-index: 1050;
+
+            @include media.media-down(md) {
+                padding: 1rem;
+            }
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .form-control {
+            width: auto;
+            height: 45px;
+            color: var(--black);
+            padding-left: 0;
+            border: 0;
+            border-radius: 0;
+            background-color: transparent;
+
+            &::placeholder {
+                color: var(--black);
             }
 
-            &:active, &:focus, &:focus-visible {
-                background-color: var(--neutral-100);
+            &:focus {
                 outline: none;
                 box-shadow: none;
-
-                &:hover {
-                    background-color: rgba(255, 255, 255, var(--opacity-50));
-                }
             }
         }
-    }
 
+        .select-group {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--black);
+
+            &.show {
+                z-index: 1050;
+            }
+
+            .dropdown-menu {
+                border: none;
+                border-radius: 0.5rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                margin-top: 8px !important;
+                padding: 8px;
+            }
+
+            .dropdown-item {
+                border-radius: 8px;
+                padding: 10px 15px;
+            }
+
+            .dropdown-item:hover {
+                background-color: var(--neutral-150);
+            }
+            /* หมุนไอคอน */
+            .transition-icon {
+                transition: transform var(--transition);
+            }
+
+            .show .transition-icon {
+                transform: rotate(180deg);
+            }
+
+            .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+                color: var(--black);
+                box-shadow: none;
+            }
+        }
+
+        .btn--transparent {
+            color: var(--black);
+        }
+
+        .select2-container .select2-search--inline .select2-search__field {
+            &::placeholder {
+                color: var(--black);
+            }
+        }
+
+        .select2-container--default .select2-selection--multiple {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3e%3cpath fill='none' stroke='%23000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M0.36 8.349l15.64 15.115 15.64-15.115'/%3e%3c/svg%3e") !important;
+        }
+    }
 }
 
 .search--tags {
@@ -371,6 +491,15 @@ body {
 
     @include media.media-down(sm) {
         display: none;
+    }
+
+    &-white {
+        color: var(--black);
+        background-color: rgba(255, 255, 255, var(--opacity-50));
+
+        @include media.media-down(sm) {
+            display: none;
+        }
     }
 }
 

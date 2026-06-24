@@ -10,15 +10,11 @@
                 <li class="breadcrumb-item">
                     <span>ข่าวสารและประกาศ</span>
                 </li>
-                <li class="breadcrumb-item"><a href="/news">ข่าวสาร</a></li>
+                <li class="breadcrumb-item active">
+                    <span>วิดีโอ / สื่อประชาสัมพันธ์</span>
+                </li>
             </ol>
         </nav>
-    </div>
-
-    <div class="container-fluid">
-        <h1 class="page__title">
-            วิดีโอ / สื่อประชาสัมพันธ์
-        </h1>
     </div>
 </section>
 
@@ -62,18 +58,18 @@
                             <div id="share-popover-content" style="display: none;">
                                 <div class="share-options">
                                     <a href="javascript:void(0)" class="share-btn share-btn--facebook"
-                                           onclick="shareTo('facebook')">
+                                       onclick="shareTo('facebook')">
                                         <img src="~/media/images/social/icon-facebook.png" />
                                     </a>
                                     <a href="javascript:void(0)" class="share-btn share-btn--line"
-                                           onclick="shareTo('line')">
+                                       onclick="shareTo('line')">
                                         <img src="~/media/images/social/icon-line.png" />
                                     </a>
                                     <a href="javascript:void(0)" class="share-btn share-btn--x" onclick="shareTo('x')">
                                         <img src="~/media/images/social/icon-twitter.png" />
                                     </a>
                                     <a href="javascript:void(0)" class="share-btn share-btn--mail"
-                                           onclick="shareTo('email')">
+                                       onclick="shareTo('email')">
                                         <img src="~/media/images/social/icon-mail.png" />
                                     </a>
                                     <div class="share-divider"></div>
@@ -124,14 +120,14 @@
         const init = () => {
         // 1. Fetch & Validate Data
         videoState.current = newsData.media.find(v => v.id === currentId);
-                
+
         if (!videoState.current) {
         toggleError(true);
         return;
         }
 
         videoState.playlist = newsData.media.filter(v => v.groupId === videoState.current.groupId);
-                
+
         // 2. Render UI
         renderMainPlayer();
         renderPlaylist();
@@ -149,14 +145,14 @@
         document.getElementById('video-date').innerHTML = `<i class="bi bi-calendar3 me-1"></i> ${current.displayDate}`;
         document.getElementById('breadcrumb-category').textContent = current.category;
         document.getElementById('video-count-info').textContent = `${playlist.length} ตอนในชุดนี้`;
-                
+
         // Update Page Title
         document.title = `${current.title} - @ViewData["Title"]`;
         };
 
         const renderPlaylist = () => {
         const container = document.getElementById('playlist-container');
-                
+
         container.innerHTML = videoState.playlist.map(item => {
         const isActive = item.id === currentId;
         return `

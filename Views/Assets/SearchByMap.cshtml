@@ -70,6 +70,46 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-12 mb-3">
+                        <p class="mb-2">
+                            สิ่งอำนวยความสะดวก / จุดสนใจรอบบริเวณ
+                        </p>
+                        <div class="form-group">
+                            <div class="poi-filter">
+                                <label class="poi-filter__item">
+                                    <input type="checkbox" name="poi-type" value="school" checked>
+                                    <span>โรงเรียน</span>
+                                </label>
+
+                                <label class="poi-filter__item">
+                                    <input type="checkbox" name="poi-type" value="hospital" checked>
+                                    <span>โรงพยาบาล</span>
+                                </label>
+
+                                <label class="poi-filter__item">
+                                    <input type="checkbox" name="poi-type" value="shopping_mall" checked>
+                                    <span>ห้างสรรพสินค้า</span>
+                                </label>
+
+                                <label class="poi-filter__item">
+                                    <input type="checkbox" name="poi-type" value="supermarket">
+                                    <span>ซูเปอร์มาร์เก็ต</span>
+                                </label>
+
+                                <label class="poi-filter__item">
+                                    <input type="checkbox" name="poi-type" value="bank">
+                                    <span>ธนาคาร</span>
+                                </label>
+
+                                <label class="poi-filter__item">
+                                    <input type="checkbox" name="poi-type" value="transit_station">
+                                    <span>สถานีขนส่ง / รถไฟฟ้า</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-12">
                         <div class="d-flex gap-2">
                             <button class="btn btn--sam-gray btn-clear" id="btn-clear">
@@ -92,6 +132,10 @@
             <div class="result--list" id="asset-results">
             </div>
         </div>
+        
+    </div>
+
+    <div class="poi--wrapper" id="poi--wrapper">
     </div>
 </section>
 
@@ -102,7 +146,7 @@
 @section Scripts {
     <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
     <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJB3L0KXQAKq1S6GFq3ZxmBcyZrUEiG3Q&callback=initMap&libraries=geometry"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJB3L0KXQAKq1S6GFq3ZxmBcyZrUEiG3Q&callback=initMap&libraries=geometry,places&language=th&region=TH"
     async defer></script>
     <script src="~/js/features/search/search-by-map.js"></script>
 }

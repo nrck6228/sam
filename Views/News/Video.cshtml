@@ -10,7 +10,9 @@
                 <li class="breadcrumb-item">
                     <span>ข่าวสารและประกาศ</span>
                 </li>
-                <li class="breadcrumb-item"><a href="/news">ข่าวสาร</a></li>
+                <li class="breadcrumb-item active">
+                    <span>วิดีโอ / สื่อประชาสัมพันธ์</span>
+                </li>
             </ol>
         </nav>
     </div>
@@ -46,7 +48,7 @@
                                 <option value="Ads">วิดีโอโฆษณา</option>
                             </select>
                         </div>
-                        
+
                         <div class="select">
                             <select id="filter-year" class="select__input">
                                 <option value="all">ทุกปี</option>
@@ -56,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -74,13 +76,12 @@
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content bg-dark border-0">
             <div class="modal-header border-0 pb-0">
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
             <div class="modal-body p-0">
                 <div class="ratio ratio-16x9">
-                    <iframe src=""
-                            title="YouTube video player"
-                            frameborder="0"
+                    <iframe src="" title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe>
                 </div>
@@ -96,36 +97,36 @@
 
     <script>
         $(document).on('click', '#video-pagination .page-link', function (e) {
-            e.preventDefault();
+        e.preventDefault();
 
-            const $btn = $(this);
-            const $container = $('#video-container');
+        const $btn = $(this);
+        const $container = $('#video-container');
 
-            if ($btn.parent().hasClass('disabled') || $btn.parent().hasClass('active')) return;
+        if ($btn.parent().hasClass('disabled') || $btn.parent().hasClass('active')) return;
 
-            const href = $btn.attr('href');
-            const page = parseInt(href.split('/').pop());
+        const href = $btn.attr('href');
+        const page = parseInt(href.split('/').pop());
 
-            if (isNaN(page)) return;
+        if (isNaN(page)) return;
 
-            // ทำ Animation
-            $container.stop().animate({ opacity: 0 }, 200, function() {
+        // ทำ Animation
+        $container.stop().animate({ opacity: 0 }, 200, function () {
 
-                // --- แก้ไขจุดนี้: เรียกใช้ videoEngine จากไฟล์ video.js ---
-                if (window.videoEngine) {
-                    // อัปเดต URL บน Browser ก่อนเพื่อให้ getInitialPage อ่านค่าได้ (ถ้าจำเป็น)
-                    window.history.pushState({ page: page }, '', href);
+        // --- แก้ไขจุดนี้: เรียกใช้ videoEngine จากไฟล์ video.js ---
+        if (window.videoEngine) {
+        // อัปเดต URL บน Browser ก่อนเพื่อให้ getInitialPage อ่านค่าได้ (ถ้าจำเป็น)
+        window.history.pushState({ page: page }, '', href);
 
-                    // สั่ง Render ใหม่ผ่าน Engine
-                    window.videoEngine.render(page);
-                }
+        // สั่ง Render ใหม่ผ่าน Engine
+        window.videoEngine.render(page);
+        }
 
-                $(this).animate({ opacity: 1 }, 200);
-            });
+        $(this).animate({ opacity: 1 }, 200);
+        });
 
-            $('html, body').stop().animate({
-                scrollTop: $container.offset().top - 150
-            }, 600);
+        $('html, body').stop().animate({
+        scrollTop: $container.offset().top - 150
+        }, 600);
         });
     </script>
 }

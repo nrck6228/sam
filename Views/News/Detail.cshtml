@@ -8,27 +8,11 @@
     <div class="section__breadcrumb">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
-
-                <li class="breadcrumb-item dropdown">
-                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        เกี่ยวกับเรา
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">รู้จักเรา</a></li>
-                        <li><a class="dropdown-item" href="#">การจัดการองค์กร</a></li>
-                        <li><a class="dropdown-item" href="#">นโยบายดำเนินการ</a></li>
-                    </ul>
+                <li class="breadcrumb-item">
+                    <span>ข่าวสารและประกาศ</span>
                 </li>
-
-                <li class="breadcrumb-item dropdown active" aria-current="page">
-                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        รู้จักเรา
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">วิสัยทัศน์ / พันธกิจ</a></li>
-                        <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
-                    </ul>
+                <li class="breadcrumb-item active">
+                    <span>ข่าวประชาสัมพันธ์</span>
                 </li>
             </ol>
         </nav>
@@ -44,16 +28,20 @@
 
                     <div class="d-flex justify-content-between align-items-center">
                         <time id="news-date" class="news__date mb-3">--/--/----</time>
-                        <button class="btn btn--sam-gray mb-3" id="btn-share-main" style="min-width: 40px; width: 40px; height: 40px;">
+                        <button class="btn btn--sam-gray mb-3" id="btn-share-main"
+                                style="min-width: 40px; width: 40px; height: 40px;">
                             <span class="btn__icon">
-                                <svg class="icon"><use xlink:href="#icon-share"></use></svg>
+                                <svg class="icon">
+                                    <use xlink:href="#icon-share"></use>
+                                </svg>
                             </span>
                         </button>
                     </div>
 
                     <div id="share-popover-content" style="display: none;">
                         <div class="share-options">
-                            <a href="javascript:void(0)" class="share-btn share-btn--facebook" onclick="shareTo('facebook')">
+                            <a href="javascript:void(0)" class="share-btn share-btn--facebook"
+                               onclick="shareTo('facebook')">
                                 <img src="~/media/images/social/icon-facebook.png" />
                             </a>
                             <a href="javascript:void(0)" class="share-btn share-btn--line" onclick="shareTo('line')">
@@ -74,11 +62,12 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <figure class="news__figure">
-                        <img id="news-image" src="/media/images/news/default-thumb.svg" class="news__image" alt="News Image">
+                        <img id="news-image" src="/media/images/news/default-thumb.svg" class="news__image"
+                             alt="News Image">
                     </figure>
                 </div>
                 <div class="col-lg-12">
@@ -89,15 +78,17 @@
                     </div>
                 </div>
             </div>
-            
 
+            
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="news__download">
                         <p class="">ดาวน์โหลดเอกสาร</p>
                         <div class="d-flex flex-wrap align-items-center gap-2">
                             <a href="#" class="btn btn--download btn--green">
-                                <span class="btn__icon"><svg class="icon"><use xlink:href="#icon-download"></use></svg></span>
+                                <span class="btn__icon"><svg class="icon">
+                                    <use xlink:href="#icon-download"></use>
+                                </svg></span>
                                 <span class="btn__text">Save as PDF</span>
                             </a>
                         </div>
@@ -115,11 +106,14 @@
             <a href="/news" title="" id="btn-news-all" class="btn btn--hover btn--gray ms-auto">
                 <span class="btn__text">ดูข่าวสารทั้งหมด</span>
                 <span class="btn__icon">
-                    <svg class="icon"><use xlink:href="#icon-arrow-explore"></use></svg>
+                    <svg class="icon">
+                        <use xlink:href="#icon-arrow-explore"></use>
+                    </svg>
                 </span>
             </a>
         </div>
-        <div id="related-news-container" class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-3"></div>
+        <div id="related-news-container"
+             class="card-deck card-deck--cards-1 card-deck--cards-md-2 card-deck--cards-lg-3"></div>
     </div>
 </section>
 
@@ -151,50 +145,50 @@
         const news = newsData.pressReleases.find(item => item.id.toString() === currentId);
 
         if (news) {
-            // 2. ฉีดข้อมูลเข้าสู่หน้า UI
-            document.getElementById('news-title').innerText = news.title;
-            document.getElementById('news-date').innerText = news.displayDate;
-            document.getElementById('news-image').src = news.imageDetail || news.thumbnail;
+        // 2. ฉีดข้อมูลเข้าสู่หน้า UI
+        document.getElementById('news-title').innerText = news.title;
+        document.getElementById('news-date').innerText = news.displayDate;
+        document.getElementById('news-image').src = news.imageDetail || news.thumbnail;
 
-            // ใช้ .content หรือ .detail ตามโครงสร้างใน data.js ของคุณ
-            document.getElementById('news-content').innerHTML = news.content || news.detail || '<p class="text-muted">ไม่พบรายละเอียดเนื้อหาข่าว</p>';
+        // ใช้ .content หรือ .detail ตามโครงสร้างใน data.js ของคุณ
+        document.getElementById('news-content').innerHTML = news.content || news.detail || '<p class="text-muted">ไม่พบรายละเอียดเนื้อหาข่าว</p>';
 
-            // 3. จัดการส่วน "ข่าวที่น่าสนใจ" (Related News)
-            // กรองเอาข่าวปัจจุบันออก และแสดงข่าวอื่นๆ 3 อันล่าสุด
-            const relatedData = newsData.pressReleases
-                .filter(item => item.id.toString() !== currentId)
-                .slice(0, 3);
+        // 3. จัดการส่วน "ข่าวที่น่าสนใจ" (Related News)
+        // กรองเอาข่าวปัจจุบันออก และแสดงข่าวอื่นๆ 3 อันล่าสุด
+        const relatedData = newsData.pressReleases
+        .filter(item => item.id.toString() !== currentId)
+        .slice(0, 3);
 
-            const engine = initListEngine({
-                data: relatedData,
-                itemsPerPage: 3,
-                containerId: 'related-news-container',
-                paginationId: 'related-pagination', // ใส่ ID หลอกไว้ หรือเว้นว่างถ้าไม่มี
-                urlPath: '/news/page',
-                renderTemplate: (item) => `
-                    <div class="card card--news">
-                        <div class="card__figure">
-                            <img src="${item.thumbnail || '/media/images/news/default-thumb.svg'}" class="card__image" alt="${item.title}">
-                        </div>
-                        <div class="card__body">
-                            <time class="card__date">${item.displayDate}</time>
-                            <h5 class="card__title">${item.title}</h5>
-                        </div>
-                        <a href="/news/${item.id}/${item.slug}" class="stretched-link"></a>
-                    </div>`
-            });
+        const engine = initListEngine({
+        data: relatedData,
+        itemsPerPage: 3,
+        containerId: 'related-news-container',
+        paginationId: 'related-pagination', // ใส่ ID หลอกไว้ หรือเว้นว่างถ้าไม่มี
+        urlPath: '/news/page',
+        renderTemplate: (item) => `
+        <div class="card card--news">
+        <div class="card__figure">
+        <img src="${item.thumbnail || '/media/images/news/default-thumb.svg'}" class="card__image" alt="${item.title}">
+        </div>
+        <div class="card__body">
+        <time class="card__date">${item.displayDate}</time>
+        <h5 class="card__title">${item.title}</h5>
+        </div>
+        <a href="/news/${item.id}/${item.slug}" class="stretched-link"></a>
+        </div>`
+        });
 
-            // สั่ง Render ข่าวที่เกี่ยวข้อง
-            engine.render(1);
+        // สั่ง Render ข่าวที่เกี่ยวข้อง
+        engine.render(1);
 
         } else {
-            // กรณีไม่พบข้อมูล
-            document.getElementById('news-content').innerHTML = `
-                <div class="alert alert-warning text-center">
-                    ไม่พบข้อมูลข่าวที่คุณกำลังค้นหา <br>
-                    <a href="/news" class="btn btn-primary mt-3">กลับไปหน้ารวมข่าว</a>
-                </div>`;
-            console.error("News ID not found in data.js:", currentId);
+        // กรณีไม่พบข้อมูล
+        document.getElementById('news-content').innerHTML = `
+        <div class="alert alert-warning text-center">
+        ไม่พบข้อมูลข่าวที่คุณกำลังค้นหา <br>
+        <a href="/news" class="btn btn-primary mt-3">กลับไปหน้ารวมข่าว</a>
+        </div>`;
+        console.error("News ID not found in data.js:", currentId);
         }
     </script>
 }

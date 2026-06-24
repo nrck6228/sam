@@ -1,5 +1,12 @@
-﻿// Import Data
-import { serviceData, heroBannerData, assetListData, allAssetTypeData, districtData, nearbyData, newsData } from '/js/data/data.js';
+﻿const {
+    serviceData = [],
+    heroBannerData = [],
+    assetListData = [],
+    allAssetTypeData = [],
+    districtData = [],
+    nearbyData = [],
+    newsData = {}
+} = window.AppData || {};
 
 /**
  * 1. UI Components & Templates
