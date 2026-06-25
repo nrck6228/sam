@@ -1,0 +1,648 @@
+﻿@{
+    ViewData["Title"] = "รายละเอียดทรัพย์สิน | SAM";
+}
+
+<section class="section__breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <span>ทรัพย์สินรอการขาย</span>
+            </li>
+            <li class="breadcrumb-item active">
+                <span>คาซ่า พรีเมี่ยม พระราม 2</span>
+            </li>
+        </ol>
+    </nav>
+</section>
+
+<section class="asset-detail asset-detail--first">
+    <div class="container">
+        <div class="asset-gallery">
+            @{
+                // รายการรูปทั้งหมดของทรัพย์สิน (ในงานจริงดึงจาก Model)
+                var galleryImages = new[]
+                {
+                    "/media/images/gallery/sample-01.jpg",
+                    "/media/images/gallery/sample-02.jpg",
+                    "/media/images/gallery/sample-03.jpg",
+                    "/media/images/gallery/sample-04.jpg",
+                    "/media/images/gallery/sample-05.jpg",
+                    "/media/images/gallery/sample-06.jpg",
+                    "/media/images/gallery/sample-07.jpg",
+                };
+                const int visibleCount = 5; // จำนวนช่องที่แสดงในกริด (1 featured + 2x2)
+                var hiddenCount = galleryImages.Length - visibleCount;
+            }
+
+            <div id="lightgallery" class="asset-gallery__grid">
+                @for (var i = 0; i < galleryImages.Length; i++)
+                {
+                    var src = galleryImages[i];
+                    var isFeatured = i == 0;
+                    var isMoreTile = i == visibleCount - 1 && hiddenCount > 0;
+                    var isHidden = i >= visibleCount;
+
+                    var itemClass = "asset-gallery__item";
+                    if (isFeatured) { itemClass += " asset-gallery__item--featured"; }
+                    if (isMoreTile) { itemClass += " asset-gallery__item--more"; }
+                    if (isHidden) { itemClass += " asset-gallery__item--hidden"; }
+
+                    <a href="@src" class="@itemClass" data-sub-html="รูปที่ @(i + 1) / @galleryImages.Length">
+                        <img src="@src" alt="รูปทรัพย์สินที่ @(i + 1)" loading="lazy">
+
+                        @if (isMoreTile)
+                        {
+                            <span class="asset-gallery__overlay">
+                                <span class="asset-gallery__overlay-text">ดูรูปทั้งหมด</span>
+                                <span class="asset-gallery__overlay-count">+@hiddenCount</span>
+                            </span>
+                        }
+                    </a>
+                }
+            </div>
+
+            @* <div class="small mt-2">ภาพใช้เพื่อการโฆษณา กรุณาเข้าดูสภาพทรัพย์จริงก่อนตัดสินใจซื้อ</span>
+            </div> *@
+        </div>
+
+        <div class="asset-action">
+            <a href="/yourdesign" class="btn btn--sam-green">
+                <span class="btn__text">
+                    ออกแบบบ้านด้วยตัวเอง
+                </span>
+                <span class="btn__text">
+                    <span class="btn__icon"><i class="bi bi-vector-pen"></i></span>
+                </span>
+            </a>
+
+            <a href="#booking-section" class="btn btn--sam-pink btn-booking-top">
+                <span class="btn__text">
+                    พิมพ์โบรชัวร์
+                </span>
+                <span class="btn__text">
+                    <span class="btn__icon"><i class="bi bi-printer"></i></span>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <section class="asset-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-lg-8">
+                    <div class="asset-info">
+                        <div class="asset-info__code">
+                            รหัสทรัพย์สิน 14FF7899
+                        </div>
+
+                        <div class="asset-info__title">
+                            คาซ่า พรีเมี่ยม พระราม 2
+                        </div>
+
+                        <div class="asset-info__location">
+                            183/96 ถนนเลียบวงแหวนรอบนอกด้านใต้ แขวงท่าข้าม เขตบางขุนเทียน จังหวัด กรุงเทพมหานคร
+                        </div>
+
+                        <div class="asset-info__stats">
+                            <div class="stat-item">
+                                <span class="stat-item__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-house"></use>
+                                    </svg>
+                                </span>
+                                <span class="stat-item__text">บ้านเดี่ยว</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-item__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-expand"></use>
+                                    </svg>
+                                </span>
+                                <span class="stat-item__text">18.5 ตร.ว.</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-item__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-bed"></use>
+                                    </svg>
+                                </span>
+                                <span class="stat-item__text">3 ห้องนอน</span>
+                            </div>
+
+                            <div class="stat-item">
+                                <span class="stat-item__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-bathtub"></use>
+                                    </svg>
+                                </span>
+                                <span class="stat-item__text">4 ห้องน้ำ</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-item__icon">
+                                    <i class="bi bi-layers"></i>
+                                </span>
+                                <span class="stat-item__text">ชั้น -</span>
+                            </div>
+                        </div>
+
+                        <div class="asset-info__text">
+                            @* <p><strong>ประเภทเอกสารสิทธิ์ / เลขที่ :</strong> <span>โฉนดที่ดิน : 53186</span>
+                            </p>
+                            <p>
+                                <strong>จำนวนเอกสารสิทธิ์ :</strong> <span>1</span>
+                            </p>
+                            <p>
+                                <strong>เขตพื้นที่ (สี) :</strong> <span>เขตสีเขียว</span>
+                            </p>
+                            <p>
+                                <strong>หน้ากว้างติดถนน :</strong> <span>12.5 เมตร ยาว(ลึก)สุด : 18 เมตร </span>
+                            </p> *@
+                            <ul class="asset-info__list">
+                                <li><span class="label">ประเภทเอกสารสิทธิ์ / เลขที่</span><span> โฉนดที่ดิน : 53186</span>
+                                </li>
+                                <li><span class="label">จำนวนเอกสารสิทธิ์</span><span>1</span></li>
+                                <li><span class="label">เขตพื้นที่ (สี)</span><span>เขตสีเขียว</span></li>
+                                <li>
+                                    <span class="label">หน้ากว้างติดถนน</span>
+                                    <span>2.5 เมตร ยาว(ลึก)สุด : 18 เมตร</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="asset-info">
+                        <div class="asset-info__title">
+                            รายละเอียดทรัพย์สิน
+                        </div>
+
+                        <div class="asset-info__text">
+                            ที่ดินเป็นรูปสี่เหลี่ยมผืนผ้า ขนาดแปลงที่ดินด้านทิศเหนือติดถนน กว้างประมาณ 15.5 ม. ลึกประมาณ
+                            13.49 ม.
+                            <br /><br />
+                            บสส. รับโอนกรรมสิทธิ์สิ่งปลูกสร้างระบุเป็นบ้านพักอาศัยตึก 3 ชั้น เลขที่
+                            183/96 ข้อมูลจากการสำรวจสภาพสิ่ง ปลูกสร้างมีลักษณะเป็น บ้านเดี่ยว 3 ชั้น (หลังริม) ติดสวนหย่อม
+                            ใกล้สโมสรและสระว่ายน้ำ
+                            <br /><br />
+                            ถนนผ่านหน้าทรัพย์สิน ได้แก่ ถนนหมู่บ้านคาซ่า พรีเมี่ยม พระราม 2 ซอย 9
+                            เป็นทางในโครงการจัดสรรที่ได้รับ อนุญาตแล้ว ผิวจราจรคอนกรีต กว้างประมาณ 8 ม. เขตทางกว้างประมาณ 10
+                            ม.
+                            <br /><br />
+                            ข้อมูลค่าส่วนกลาง ณ วันที่ 7 พ.ค. 67 ประมาณ 34,518.00 บาท / ปี
+                            <br /><br />
+                            หมายเหตุ :
+                            <ul>
+                                <li>
+                                    ทรัพย์สินตั้งอยู่ในย่านที่อยู่อาศัย
+                                </li>
+                                <li>
+                                    สถานที่สำคัญบริเวณใกล้เคียง ได้แก่ โรงเรียนสวนกุหลาบวิทยาลัย ธนบุรี เป็นต้น
+                                </li>
+                            </ul><br />
+                            ผู้สนใจควรจะต้องตรวจสอบความถูกต้องความครบถ้วนสมบูรณ์ของเอกสารสิทธิ์ หรือสิ่งปลูกสร้าง
+                            หรือประเด็นอื่นใดที่เกี่ยวข้องเพื่อให้ตรงตามความประสงค์ และเป็นที่พึงพอใจก่อนการตัดสินใจ
+                        </div>
+                    </div>
+
+                    <div class="asset-status">
+                        <div class="asset-status__title">
+                            สถานะ
+                        </div>
+
+                        <div class="asset-status__text">
+                            <ul class="asset-status__list">
+                                <li><span class="label">สถานะประกาศขาย</span><span> ประมูล</span></li>
+                                <li><span class="label">วันที่เริ่มประกาศขาย</span><span>14 สิงหาคม 2568</span></li>
+                                <li><span class="label">วันที่เริ่มประกาศขาย</span><span>31 สิงหาคม 2568</span></li>
+                                <li>
+                                    <span class="label">สถานที่ประมูล</span>
+                                    <span> 1. ลงทะเบียนและยื่นซองด้วยตนเอง วันที่ 16 ก.ย. 68 - 15 ต.ค. 68<br>
+                                        2. ลงทะเบียนและยื่นซอง ผ่านไปรษณีย์ด่วนพิเศษ(EMS) วันที่ 16 ก.ย. 68 - 15 ต.ค. 68
+                                        เท่านั้น<br>
+                                        เปิดซองวันที่ 24 ต.ค. 68 เวลา 10.00 น. เป็นต้นไป ณ สำนักงานใหญ่ของ บสส.
+                                        และถ่ายทอดสดการ
+                                        ประกาศผลผ่านสื่ออิเลคทรอนิกส์
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="asset-info">
+                        <div class="asset-info__title">
+                            การเข้าถึง
+                        </div>
+
+                        <div class="asset-info__text">
+                            ถนนเพชรเกษม (ทล.4) จากอำเภออ่าวลึกมุ่งหน้าอำเภอเหนือคลอง ผ่านวัดควนสบาย
+                            ถึงสำนักงานสหกรณ์จังหวัดกระบี่ เลี้ยวซ้ายเข้าถนนตลาดเก่า-น้ำตกหัวยโต้ (ทล.1016) ประมาณ 1.48 กม.
+                            จากนั้น เลี้ยวขวาเข้าหมู่บ้านสวนพฤกษา อีกประมาณ 80 ม. จะพบทรัพย์สินตั้งอยู่ด้านซ้ายมือ
+                        </div>
+                    </div>
+
+                    <div class="asset-document">
+                        <div class="asset-document__title">เอกสารที่เกี่ยวข้อง</div>
+                        <div class="asset-document__grid">
+                            <a href="#" class="asset-document__item">
+                                <span class="asset-document__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-download"></use>
+                                    </svg>
+                                </span>
+                                <span class="asset-document__text">
+                                    หลักเกณฑ์การซื้อทรัพย์
+                                </span>
+                            </a>
+                            <a href="#" class="asset-document__item">
+                                <span class="asset-document__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-download"></use>
+                                    </svg>
+                                </span>
+                                <span class="asset-document__text">
+                                    สรุปภาพรวมวิธีการจำหน่ายทรัพย์สิน (NPA)
+                                </span>
+                            </a>
+                            <a href="#" class="asset-document__item">
+                                <span class="asset-document__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-download"></use>
+                                    </svg>
+                                </span>
+                                <span class="asset-document__text">
+                                    ใบลงทะเบียน (กรณีประมูล)
+                                </span>
+                            </a>
+                            <a href="#" class="asset-document__item">
+                                <span class="asset-document__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-download"></use>
+                                    </svg>
+                                </span>
+                                <span class="asset-document__text">
+                                    แบบฟอร์มเสนอซื้อ
+                                </span>
+                            </a>
+                            <a href="#" class="asset-document__item">
+                                <span class="asset-document__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-download"></use>
+                                    </svg>
+                                </span>
+                                <span class="asset-document__text">
+                                    แบบฟอร์มการแสดงตน นิติบุคคล
+                                </span>
+                            </a>
+                            <a href="#" class="asset-document__item">
+                                <span class="asset-document__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-download"></use>
+                                    </svg>
+                                </span>
+                                <span class="asset-document__text">
+                                    แบบฟอร์มการแสดงตน บุคคลธรรมดา
+                                </span>
+                            </a>
+                            <a href="#" class="asset-document__item">
+                                <span class="asset-document__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-download"></use>
+                                    </svg>
+                                </span>
+                                <span class="asset-document__text">
+                                    หนังสือรับทราบหลักเกณฑ์และคู่มือ(กรณีประมูล)
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="asset-sidebar">
+                        <div class="asset-price">
+                            <div class="asset-price__badge asset-price__badge--direct">
+                                ซื้อตรง
+                            </div>
+                            <div class="asset-price__badge asset-price__badge--waiting">
+                                รอประกาศราคา
+                            </div>
+                            <div class="asset-price__badge asset-price__badge--auction">
+                                ประมูล
+                            </div>
+
+                            <div class="asset-price__value">
+                                8,780,000 บาท
+                            </div>
+                            <div class="asset-price__unit">
+                                (160,000 บาท ต่อ ตรว.)
+                            </div>
+
+                            <div class="asset-price__promotion">
+                                <h3 class="asset-price__title">
+                                    กิจกรรมส่งเสริมการขาย
+                                </h3>
+                                <div class="asset-price__promotion--list">
+                                    <a href="#" title="" class="asset-price__promotion--item">
+                                        <img src="/media/images/promotion/sample-02.jpg" alt="" loading="lazy">
+                                    </a>
+                                    <a href="#" title="" class="asset-price__promotion--item">
+                                        <img src="/media/images/promotion/sample-01.jpg" alt="" loading="lazy">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="asset-interested">
+                            <div class="asset-interested__title">
+                                สนใจทรัพย์นี้?
+                            </div>
+                            <div class="asset-interested__text">
+                                สอบถามข้อมูลเพิ่มเติม หรือลงทะเบียนรับข้อเสนอพิเศษ
+                            </div>
+                            <a href="#" title="" class="asset-interested__banner">
+                                <img src="/media/images/promotion/banner-interested.png" alt="" loading="lazy">
+                            </a>
+                        </div>
+
+                        <div class="asset-appointment">
+                            <div class="asset-appointment__title">
+                                นัดชมทรัพย์สิน
+                            </div>
+                            <div class="asset-appointment__text">
+                                กรุณากรอกข้อมูลเพื่อนัดเข้าชมทรัพย์สิน
+                            </div>
+
+                            <form class="form form--dark" id="appointmentForm">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <input type="text" id="app_name" class="form-control" placeholder="ชื่อ - นามสกุล"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <input type="tel" id="app_phone" class="form-control"
+                                               placeholder="เบอร์โทร 0xx-xxx-xxxx" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <input type="email" id="app_email" class="form-control"
+                                               placeholder="name@example.com" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <input type="text" id="app_date" class="form-control"
+                                               placeholder="เลือกวันที่นัดหมาย" required>
+                                        <span class="date-icon-wrapper">
+                                            <svg class="icon">
+                                                <use xlink:href="#icon-calendar"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3 my-4">
+                                    <button type="reset" class="btn btn--sam-gray">
+                                        <span class="btn__text">
+                                            ล้างข้อมูล
+                                        </span>
+                                    </button>
+                                    <button type="submit" class="btn btn--sam-pink">
+                                        <span class="btn__text">
+                                            ทำรายการนัดชม
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-md-end gap-3">
+                            <button class="btn btn--sam-gray">
+                                <span class="btn__icon">
+                                    <i class="bi bi-printer"></i>
+                                </span>
+                                <span class="btn__text">
+                                    พิมพ์หน้านี้
+                                </span>
+                            </button>
+                            <button class="btn btn--sam-gray" id="btn-share-main"
+                                    style="min-width: 40px; width: 40px; height: 40px;">
+                                <span class="btn__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-share"></use>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+
+                        <div id="share-popover-content" style="display: none;">
+                            <div class="share-options">
+                                <a href="javascript:void(0)" class="share-btn share-btn--facebook"
+                                   onclick="shareTo('facebook')">
+                                    <img src="~/media/images/social/icon-facebook.png" />
+                                </a>
+                                <a href="javascript:void(0)" class="share-btn share-btn--line" onclick="shareTo('line')">
+                                    <img src="~/media/images/social/icon-line.png" />
+                                </a>
+                                <a href="javascript:void(0)" class="share-btn share-btn--x" onclick="shareTo('x')">
+                                    <img src="~/media/images/social/icon-twitter.png" />
+                                </a>
+                                <a href="javascript:void(0)" class="share-btn share-btn--mail" onclick="shareTo('email')">
+                                    <img src="~/media/images/social/icon-mail.png" />
+                                </a>
+                                <div class="share-divider"></div>
+                                <button class="share-copy-link" onclick="copyToClipboard(this)">
+                                    <span class="copy-text">คัดลอกลิงก์</span>
+                                    <i class="bi bi-link-45deg"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="asset-map">
+        <div class="asset-map__container">
+            <iframe id="asset-google-map" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    src="about:blank">
+            </iframe>
+        </div>
+    </section>
+
+    <section id="loan-calculator-section" class="loan-calculator">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title mb-4">คำนวณสินเชื่อโดยประมาณ</h2>
+                </div>
+                <div class="col-lg-6">
+                    <div class="calculator-card shadow-sm h-100">
+                        <div class="form form--dark">
+                            <div class="mb-3">
+                                <label class="text-white-50 small">ราคาทรัพย์สิน (บาท)</label>
+                                <div class="form-group">
+                                    <input type="number" id="loan_asset_price" class="form-control" readonly>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="text-white-50 small">วงเงินกู้ที่ต้องการ (บาท)</label>
+                                <div class="form-group">
+                                    <input type="number" id="loan_amount" class="form-control" placeholder="ระบุจำนวนเงิน">
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <label class="text-white-50 small">อัตราดอกเบี้ย (%)</label>
+                                    <div class="form-group">
+                                        <input type="number" id="loan_interest" class="form-control" value="3.0" step="0.1">
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="text-white-50 small">ระยะเวลากู้ (ปี)</label>
+                                    <div class="form-group">
+                                        <input type="number" id="loan_years" class="form-control" value="30">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 my-4">
+                                    <button type="button" class="btn btn--sam-pink btn-calculate-loan">
+                                        <span class="btn__text">
+                                            คำนวณสินเชื่อ
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <p class="text-white-50 small m-0">
+                                * เป็นการคำนวณเบื้องต้นเท่านั้น เงื่อนไขเป็นไปตามที่ธนาคารกำหนด
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="result-card shadow-sm h-100">
+                        <div class="mb-4">
+                            <h5 class="result-card__title">รายละเอียดสินเชื่อ</h5>
+                            <div class="d-flex justify-content-between align-items-end mt-3">
+                                <span class="result-card__label">ยอดสินเชื่อที่ต้องชำระต่อเดือนโดยประมาณ</span>
+                                <span class="result-card__value"><span id="res_monthly_pay">0</span> บาท / เดือน</span>
+                            </div>
+
+                            <div class="mt-2">
+                                <div class="progress" style="height: 12px; border-radius: 10px; background-color: #286140;">
+                                    <div id="bar_principal" class="progress-bar"
+                                         style="width: 0%; background-color: #df9faa; transition: width 0.5s ease;"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <span class="small"><i class="bi bi-circle-fill me-1" style="color: #df9faa"></i>
+                                        เงินต้น <span id="res_principal_val">0</span> บาท (<span
+                                        id="res_principal_percent">0</span>%)</span>
+                                        <span class="small"><i class="bi bi-circle-fill me-1" style="color: #286140"></i>
+                                            ดอกเบี้ย <span id="res_interest_val">0</span> บาท (<span
+                                            id="res_interest_percent">0</span>%)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="mt-4">
+                                    <h5 class="result-card__title">ค่าใช้จ่ายที่อาจต้องมีเบื้องต้น</h5>
+                                    <div class="d-flex justify-content-between align-items-end mt-3">
+                                        <span class="result-card__label">เงินดาวน์ทั้งหมด</span>
+                                        <span class="result-card__value"><span id="res_down_payment">0</span> บาท</span>
+                                    </div>
+
+                                    <div class="mt-2">
+                                        <div class="progress" style="height: 12px; border-radius: 10px; background-color: #286140;">
+                                            <div id="bar_down" class="progress-bar"
+                                                 style="width: 0%; background-color: #df9faa; transition: width 0.5s ease;"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <span class="small"><i class="bi bi-circle-fill me-1" style="color: #df9faa"></i>
+                                                เงินดาวน์ <span id="res_down_percent">0</span>%</span>
+                                                <span class="small"><i class="bi bi-circle-fill me-1" style="color: #286140"></i>
+                                                    จำนวนสินเชื่อ <span id="res_loan_val">0</span> บาท ในอัตรา <span
+                                                    id="res_loan_percent">0</span>% ของราคาบ้าน</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="related-section">
+                        <div class="container">
+                            <div class="section-header">
+                                <h2 class="text-dark">ทรัพย์สินใกล้เคียงที่น่าสนใจ</h2>
+                                <a href="/npa/search-results" title="" class="btn btn--hover btn--gray">
+                                    <span class="btn__text">ดูทั้งหมด</span>
+                                    <span class="btn__icon"><svg class="icon">
+                                        <use xlink:href="#icon-arrow-explore"></use>
+                                    </svg></span>
+                                </a>
+                            </div>
+
+                            <div class="row g-4" id="related-assets-grid">
+                            </div>
+                        </div>
+                    </section>
+
+                    @section Styles {
+                        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+                        <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.8.3/css/lightgallery-bundle.min.css" />
+
+                        <style>
+                            .swiper-notification {
+                                pointer-events: none;
+                            }
+                        </style>
+                    }
+
+                    @section Scripts {
+                        <script src="https://unpkg.com/@@popperjs/core@@2"></script>
+                        <script src="https://unpkg.com/tippy.js@@6"></script>
+                        <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/th.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.3/lightgallery.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.3/plugins/zoom/lg-zoom.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.3/plugins/thumbnail/lg-thumbnail.min.js"></script>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+
+                            lightGallery(
+                            document.getElementById('lightgallery'),
+                            {
+                            speed: 500,
+                            download: false,
+                            counter: true,
+                            thumbnail: true,
+                            plugins: [
+                            lgZoom,
+                            lgThumbnail
+                            ]
+                            }
+                            );
+
+                            });
+                        </script>
+                        <script>
+                            // รับค่ารหัสทรัพย์สินจาก ViewBag
+                            const SELECTED_ASSET_CODE = "@ViewBag.AssetCode";
+                        </script>
+                        <script type="module" src="~/js/features/assets/asset-detail.js"></script>
+                        <script type="module" src="~/js/shared/share.util.js"></script>
+                    }

@@ -21,73 +21,77 @@ const getStatusText = (statusId) => {
 const renderDetail = (code) => {
     try {
         const asset = assetListData.find(item => item.assetCode?.toUpperCase() === code?.toUpperCase());
-        const infoContainer = document.getElementById('asset-detail-container');
 
-        if (!asset || !infoContainer) return;
+        // ต้องมีข้อมูล asset ก่อนถึงจะทำงานต่อได้
+        if (!asset) return;
 
         const isWaitingPrice = asset.statusId === 3;
-        const typeInfo = assetTypeLookup[asset.typeId] || { icon: 'land', name: 'ไม่ระบุประเภท' };
 
-        // สร้าง HTML สำหรับราคา
-        let priceHTML = isWaitingPrice ? `
-            <div class="price">
-                <div class="price__value price__value--contact">ติดต่อเจ้าหน้าที่</div>
-                <div class="price__unit">เพื่อสอบถามราคาล่าสุด</div>
-            </div>` : `
-            <div class="price">
-                <div class="price__value">${asset.totalPrice?.toLocaleString()} <span class="price__currency">บาท</span></div>
-                <div class="price__unit">${Math.round(asset.totalPrice / (parseFloat(asset.area) || 1)).toLocaleString()} บาท ต่อ ${asset.unit || 'หน่วย'}</div>
-            </div>`;
+        // ส่วนข้อมูลฝั่งซ้ายตอนนี้เป็น static HTML แล้ว
+        // ยังคงรองรับการ render ด้วย JS ไว้เผื่อกรณีมี container (ถ้าไม่มีก็ข้ามไป
+        // ไม่ให้ฟังก์ชันด้านล่าง map/related/form/calculator ตายตามกัน)
+        const infoContainer = document.getElementById('asset-detail-container');
+        if (infoContainer) {
+            const typeInfo = assetTypeLookup[asset.typeId] || { icon: 'land', name: 'ไม่ระบุประเภท' };
 
-        // สถิติห้องนอน/ห้องน้ำ
-        const statsHTML = ['bed', 'bath'].map(type => asset[type] ? `
-            <div class="stat-item">
-                <svg class="icon stat-item__icon"><use xlink:href="#icon-${type === 'bed' ? 'bed' : 'bathtub'}"></use></svg>
-                <span class="stat-item__text">${asset[type]} ห้อง${type === 'bed' ? 'นอน' : 'น้ำ'}</span>
-            </div>` : '').join('');
+            // สร้าง HTML สำหรับราคา
+            let priceHTML = isWaitingPrice ? `
+                <div class="price">
+                    <div class="price__value price__value--contact">ติดต่อเจ้าหน้าที่</div>
+                    <div class="price__unit">เพื่อสอบถามราคาล่าสุด</div>
+                </div>` : `
+                <div class="price">
+                    <div class="price__value">${asset.totalPrice?.toLocaleString()} <span class="price__currency">บาท</span></div>
+                    <div class="price__unit">${Math.round(asset.totalPrice / (parseFloat(asset.area) || 1)).toLocaleString()} บาท ต่อ ${asset.unit || 'หน่วย'}</div>
+                </div>`;
 
-        // Render เนื้อหาหลัก
-        infoContainer.innerHTML = `
-            <div class="asset-info">
-                <h1 class="asset-info__title">${formatValue(asset.assetName)}</h1>
-                <p class="asset-info__address"><i class="bi bi-geo-alt-fill me-1"></i>${formatValue(asset.location)}</p>
-                
-                <div class="asset-info__stats">
-                    <div class="stat-item">
-                        <svg class="icon stat-item__icon"><use xlink:href="#icon-${typeInfo.icon}"></use></svg>
-                        <span class="stat-item__text">${typeInfo.name}</span>
+            // สถิติห้องนอน/ห้องน้ำ
+            const statsHTML = ['bed', 'bath'].map(type => asset[type] ? `
+                <div class="stat-item">
+                    <svg class="icon stat-item__icon"><use xlink:href="#icon-${type === 'bed' ? 'bed' : 'bathtub'}"></use></svg>
+                    <span class="stat-item__text">${asset[type]} ห้อง${type === 'bed' ? 'นอน' : 'น้ำ'}</span>
+                </div>` : '').join('');
+
+            // Render เนื้อหาหลัก
+            infoContainer.innerHTML = `
+                <div class="asset-info">
+                    <h1 class="asset-info__title">${formatValue(asset.assetName)}</h1>
+                    <p class="asset-info__address"><i class="bi bi-geo-alt-fill me-1"></i>${formatValue(asset.location)}</p>
+
+                    <div class="asset-info__stats">
+                        <div class="stat-item">
+                            <svg class="icon stat-item__icon"><use xlink:href="#icon-${typeInfo.icon}"></use></svg>
+                            <span class="stat-item__text">${typeInfo.name}</span>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="icon stat-item__icon"><use xlink:href="#icon-expand"></use></svg>
+                            <span class="stat-item__text">${formatValue(asset.area)} ${asset.unit || ''}</span>
+                        </div>
+                        ${statsHTML}
                     </div>
-                    <div class="stat-item">
-                        <svg class="icon stat-item__icon"><use xlink:href="#icon-expand"></use></svg>
-                        <span class="stat-item__text">${formatValue(asset.area)} ${asset.unit || ''}</span>
-                    </div>
-                    ${statsHTML}
-                </div>
 
-                <ul class="asset-info__details list-unstyled mt-4">
-                    <li><span class="label">รหัสทรัพย์สิน</span> : ${formatValue(asset.assetCode)}</li>
-                    <li><span class="label">เอกสารสิทธิ์</span> : ${formatValue(asset.docType)} ${asset.docNo || ''}</li>
-                    <li><span class="label">เขตพื้นที่</span> : ${formatValue(asset.zoneColor)}</li>
-                    <li><span class="label">หน้ากว้าง</span> : ${formatValue(asset.width)}</li>
-                    <li><span class="label">ยาว (ลึก)</span> : ${formatValue(asset.long)}</li>
-                </ul>
+                    <ul class="asset-info__details list-unstyled mt-4">
+                        <li><span class="label">รหัสทรัพย์สิน</span> : ${formatValue(asset.assetCode)}</li>
+                        <li><span class="label">เอกสารสิทธิ์</span> : ${formatValue(asset.docType)} ${asset.docNo || ''}</li>
+                        <li><span class="label">เขตพื้นที่</span> : ${formatValue(asset.zoneColor)}</li>
+                        <li><span class="label">หน้ากว้าง</span> : ${formatValue(asset.width)}</li>
+                        <li><span class="label">ยาว (ลึก)</span> : ${formatValue(asset.long)}</li>
+                    </ul>
 
-                <div class="asset-info__price-block mt-4">${priceHTML}</div>
-            </div>`;
+                    <div class="asset-info__price-block mt-4">${priceHTML}</div>
+                </div>`;
+        }
 
-        // เรียกฟังก์ชันเสริม
-        renderGallery(asset);
-        renderAssetMap(asset);
-        renderRelatedAssets(asset);
-        initAppointmentForm(asset);
-        setupScrollToBooking();
+        // --- ฟังก์ชันที่ต้องทำงานเสมอ (ไม่ผูกกับ asset-detail-container) ---
+        renderAssetMap(asset);        // แผนที่ + ปุ่มนำทาง/ดูระวาง
+        renderRelatedAssets(asset);   // ทรัพย์สินใกล้เคียง
+        initAppointmentForm(asset);   // ฟอร์มนัดชม + validate
+        setupScrollToBooking();       // เลื่อนไปฟอร์มนัดชม (ถ้ามี target)
 
         // ส่งราคาเข้า Calculator (ถ้ามีราคา)
         if (!isWaitingPrice) {
             setupLoanCalculator(asset.totalPrice);
         }
-
-        setTimeout(() => initAssetGallery(), 100);
 
     } catch (error) {
         console.error("Error in renderDetail:", error);

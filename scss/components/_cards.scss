@@ -82,9 +82,19 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
         }
     }
 
+    // [แก้ไข: แยกเปรียบเทียบ/โบรชัวร์] วาง 2 checkbox (เปรียบเทียบ + โบรชัวร์) ในแถวเดียว
     .card__compare {
         position: relative;
         z-index: 2;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+
+        // checkbox โบรชัวร์ใช้สีชมพูเพื่อแยกจากเปรียบเทียบ (เขียว ตามค่า default)
+        .brochure-input:checked {
+            background-color: var(--clr-accent-pink);
+            border-color: var(--clr-accent-pink);
+        }
     }
 
     .card__body {
@@ -802,13 +812,41 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
 }
 
 .card--compare {
+    position: relative; // ให้ปุ่มลบ (absolute) อ้างอิงการ์ดใบนี้
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    padding: 0;
     padding-right: 20px;
     border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-sm);
-    background-color: var(--clr-accent-pink);
+    border: 0;
+    background-color: var(--neutral-200);
     transition: all var(--transition);
+    overflow: hidden;
+
+    // [แก้ไข: แสดงรูปทรัพย์ใน preview] รูปย่อด้านบนของการ์ดรายการที่เลือก
+    .card__figure {
+        flex: 0 0 82px;
+        width: 82px;
+        height: 82px;
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+
+        .card__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+
+    // [แก้ไข: แยกสีตามประเภทการเลือก] เปรียบเทียบ = เขียว, โบรชัวร์ = ชมพู
+    // &--compare {
+    //     background-color: var(--clr-primary-dark);
+    // }
+
+    // &--brochure {
+    //     background-color: var(--clr-accent-pink);
+    // }
 
     .card__content {
         display: flex;
@@ -825,15 +863,15 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
 
     .card__code {
         font-weight: 700;
-        color: var(--neutral-100);
+        color: var(--neutral-900);
     }
 
     .card__type {
-        color: var(--neutral-100);
+        color: var(--neutral-700);
     }
 
     .card__location {
-        color: var(--neutral-300);
+        color: var(--neutral-700);
     }
 
     .card__remove {
@@ -842,7 +880,7 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
         right: 5px;
         background: none;
         border: none;
-        color: var(--clr-danger);
+        color: var(--neutral-900);
         font-size: var(--fs-body);
         cursor: pointer;
     }

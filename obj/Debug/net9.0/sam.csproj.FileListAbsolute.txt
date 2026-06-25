@@ -45,7 +45,6 @@ C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\jbqn8ojorj-fu6620mxfq.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\4m7ua84fdd-08o63nyleq.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\fh6zcjzzpi-2txjowbtsq.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\ug4fb9ijx4-xfr9wmn9o9.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\9r0jpwly63-x0u78ubeeo.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\s8fi2s1wlk-7mtutvluhc.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\mbsls5uo4x-2blj8xulpo.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\ug372f8bk9-9s7ddrwcj0.gz
@@ -183,8 +182,9 @@ C:\Works\asp.net\sam\obj\Debug\net9.0\refint\sam.dll
 C:\Works\asp.net\sam\obj\Debug\net9.0\sam.pdb
 C:\Works\asp.net\sam\obj\Debug\net9.0\sam.genruntimeconfig.cache
 C:\Works\asp.net\sam\obj\Debug\net9.0\ref\sam.dll
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-vyifd9hsur.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\66leq0x4e4-ptaah741hv.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-2tw0prxqsu.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\i69xsjvrzp-mycp960o9d.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\r9r5izqtnh-q9lei44odw.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-d801lo9fyj.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-x3lzwh061x.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\9r0jpwly63-3r15oxzbth.gz

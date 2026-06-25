@@ -31,11 +31,16 @@
         }
 
         .home__nav {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
             padding: 15px;
 
             .btn {
                 width: 100%;
-                margin-bottom: 15px;
+                margin-bottom: 0;
             }
 
             @include media.media-up(md) {
@@ -44,20 +49,7 @@
                 bottom: 0;
                 width: 100%;
                 height: auto;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-                gap: 1rem;
-                padding: 0;
                 z-index: 9;
-
-                &__group {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    gap: 0.5rem;
-                }
 
                 .btn {
                     width: auto;
