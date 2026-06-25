@@ -1,8 +1,19 @@
 ﻿import { compareList, toggleCompareAsset, updateCompareUI } from '/js/features/compare/compare-service.js';
+import { brochureList, toggleBrochureAsset, updateBrochureUI } from '/js/features/compare/brochure-service.js';
 import { assetListData, allAssetTypeData } from '/js/data/data.js';
 
 // --- Configuration ---
-const ITEMS_PER_PAGE = 6;
+const DEFAULT_ITEMS_PER_PAGE = 20;
+
+// อ่านจำนวนแสดงต่อหน้าจาก URL (?perPage=N) ถ้าไม่มี/ไม่ถูกต้อง ใช้ค่าเริ่มต้น
+// ไม่จำกัดจำนวนสูงสุด ผู้ใช้กรอกได้ตามต้องการ
+const getItemsPerPage = () => {
+    const params = new URLSearchParams(window.location.search);
+    const val = parseInt(params.get('perPage'), 10);
+    if (isNaN(val) || val < 1) return DEFAULT_ITEMS_PER_PAGE;
+    return val;
+};
+
 const STATUS_CONFIG = {
     1: { label: 'ซื้อตรง', class: 'card__badge--direct' },
     2: { label: 'ขายทอดตลาด', class: 'card__badge--auction' },
@@ -36,6 +47,7 @@ const sortAssets = (data, criteria) => {
             case 'size-asc': return getAreaValue(a) - getAreaValue(b);
             case 'size-desc': return getAreaValue(b) - getAreaValue(a);
             case 'code-asc': return a.assetCode.localeCompare(b.assetCode, undefined, { numeric: true });
+            case 'code-desc': return b.assetCode.localeCompare(a.assetCode, undefined, { numeric: true });
             default: return b.id - a.id; // newest
         }
     });
@@ -128,7 +140,10 @@ const renderAssetList = (data) => {
     if (!container) return;
 
     // Apply Sorting
-    const currentSort = sortSelect ? sortSelect.value : 'newest';
+    // อ่านค่าจาก URL ก่อน (กัน select ยังไม่ถูกตั้งค่าตอน render รอบแรก) แล้วค่อย fallback ไป select
+    const sortParam = new URLSearchParams(window.location.search).get('sort');
+    const currentSort = sortParam || (sortSelect ? sortSelect.value : 'newest');
+    if (sortSelect && sortParam) sortSelect.value = sortParam; // sync ให้ select แสดงค่าที่ถูกต้อง
     const sortedData = sortAssets(data, currentSort);
 
     // Update Counter
@@ -154,10 +169,11 @@ const renderAssetList = (data) => {
     }
 
     // Pagination Logic
+    const itemsPerPage = getItemsPerPage();
     const currentPage = getCurrentPage();
-    const totalPages = Math.ceil(sortedData.length / ITEMS_PER_PAGE);
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const paginatedItems = sortedData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const paginatedItems = sortedData.slice(startIndex, startIndex + itemsPerPage);
 
     // Build HTML
     container.innerHTML = paginatedItems.map(asset => {
@@ -166,6 +182,7 @@ const renderAssetList = (data) => {
         const assetType = typeMap[asset.typeId];
         const iconName = assetType?.icon || 'land';
         const isChecked = compareList.includes(asset.id) ? 'checked' : '';
+        const isBrochureChecked = brochureList.includes(asset.id) ? 'checked' : '';
 
         return `
             <div class="card card--asset">
@@ -177,6 +194,10 @@ const renderAssetList = (data) => {
                     <div class="form-check">
                         <input class="form-check-input compare-input" type="checkbox" id="chk-${asset.id}" data-id="${asset.id}" ${isChecked}>
                         <label class="form-check-label" for="chk-${asset.id}">เปรียบเทียบ</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input brochure-input" type="checkbox" id="brc-${asset.id}" data-id="${asset.id}" ${isBrochureChecked}>
+                        <label class="form-check-label" for="brc-${asset.id}">โบรชัวร์</label>
                     </div>
                 </div>
                 <div class="card__body">
@@ -230,21 +251,91 @@ const renderPagination = (totalPages, currentPage, urlPath, paginationEl) => {
 };
 
 // --- Initialization ---
+// แถบล่างจะแสดงเมื่อมีรายการในลิสต์ใดลิสต์หนึ่ง (เปรียบเทียบ หรือ โบรชัวร์)
+const refreshCompareBar = () => {
+    const bar = document.getElementById('compare-sticky-bar');
+    if (bar) bar.classList.toggle('active', compareList.length > 0 || brochureList.length > 0);
+};
+// เปิดให้ service ทั้งสองเรียกใช้ผ่าน window
+window.refreshCompareBar = refreshCompareBar;
+
+// สลับแท็บในแถบล่าง (เปรียบเทียบ / โบรชัวร์)
+const switchBarTab = (tab) => {
+    document.querySelectorAll('.compare--tab').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tab);
+    });
+    document.querySelectorAll('.compare--panel').forEach(panel => {
+        panel.classList.toggle('d-none', panel.dataset.panel !== tab);
+    });
+};
+
 const setupEvents = () => {
     document.addEventListener('change', (e) => {
+        // เลือกเพื่อเปรียบเทียบ
         if (e.target.classList.contains('compare-input')) {
             const assetId = parseInt(e.target.dataset.id);
             if (!toggleCompareAsset(assetId)) e.target.checked = false;
         }
+        // เลือกเพื่อสร้างโบรชัวร์
+        if (e.target.classList.contains('brochure-input')) {
+            const assetId = parseInt(e.target.dataset.id);
+            if (!toggleBrochureAsset(assetId)) e.target.checked = false;
+        }
+    });
+
+    // ปุ่มสลับแท็บในแถบล่าง
+    document.querySelectorAll('.compare--tab').forEach(btn => {
+        btn.addEventListener('click', () => switchBarTab(btn.dataset.tab));
     });
 
     const sortSelect = document.getElementById('sort-criteria');
     if (sortSelect) {
+        // คืนค่าที่เคยเลือกจาก URL (ป้องกัน select รีเซ็ตเป็น newest หลัง reload)
+        const currentSort = new URLSearchParams(window.location.search).get('sort');
+        if (currentSort) sortSelect.value = currentSort;
+
         sortSelect.addEventListener('change', () => {
             const params = new URLSearchParams(window.location.search);
+            // บันทึกค่าจัดเรียงลง URL เพื่อให้คงอยู่หลัง reload
+            params.set('sort', sortSelect.value);
             // เมื่อเปลี่ยน Sort ให้กลับไปหน้า 1 เพื่อป้องกันความสับสน
             window.location.href = window.location.pathname.replace(/\/page\/\d+/, '') + "?" + params.toString();
         });
+    }
+
+    // จำนวนแสดงต่อหน้า (กรอกตัวเลขเอง แล้วกด Enter หรือปุ่ม "ตกลง")
+    const perPageInput = document.getElementById('items-per-page');
+    const perPageApplyBtn = document.getElementById('items-per-page-apply');
+    if (perPageInput) {
+        // ตั้งค่าเริ่มต้นให้ตรงกับค่าใน URL
+        perPageInput.value = getItemsPerPage();
+
+        // อนุญาตเฉพาะตัวเลขขณะพิมพ์
+        perPageInput.addEventListener('input', () => {
+            perPageInput.value = perPageInput.value.replace(/\D/g, '');
+        });
+
+        const applyPerPage = () => {
+            let val = parseInt(perPageInput.value, 10);
+            if (isNaN(val) || val < 1) val = DEFAULT_ITEMS_PER_PAGE;
+            perPageInput.value = val; // sync ค่ากลับไปแสดง
+
+            const params = new URLSearchParams(window.location.search);
+            params.set('perPage', val);
+            // เปลี่ยนจำนวนต่อหน้าแล้วกลับไปหน้า 1 เสมอ ป้องกันหน้าเกินช่วง
+            window.location.href = window.location.pathname.replace(/\/page\/\d+/, '') + "?" + params.toString();
+        };
+
+        // กด Enter ในช่องกรอก
+        perPageInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                applyPerPage();
+            }
+        });
+
+        // กดปุ่มยืนยัน
+        if (perPageApplyBtn) perPageApplyBtn.addEventListener('click', applyPerPage);
     }
 };
 
@@ -308,4 +399,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupEvents();
     updateCompareUI();
+    updateBrochureUI();
+    refreshCompareBar();
 });

@@ -43,16 +43,17 @@ export const updateCompareUI = () => {
 
     if (!compareBar) return;
 
-    // การแสดงผล Sticky Bar
-    compareBar.classList.toggle('active', compareList.length > 0);
     if (countEl) countEl.innerText = compareList.length;
 
-    // การเรนเดอร์รายการย่อย (Mini Preview)
+    // การเรนเดอร์รายการย่อย (Mini Preview) — เพิ่มรูปทรัพย์
     if (previewContainer) {
         const selectedAssets = assetListData.filter(asset => compareList.includes(asset.id));
 
         previewContainer.innerHTML = selectedAssets.map(asset => `
-            <div class="card card--compare">
+            <div class="card card--compare card--compare--compare">
+                <div class="card__figure">
+                    <img src="${asset.img}" alt="${asset.alt}" class="card__image" loading="lazy">
+                </div>
                 <div class="card__content">
                     <span class="card__code">${asset.assetCode}</span>
                     <span class="card__type">${typeMap[asset.typeId]?.typeName || ''}</span>
@@ -69,6 +70,13 @@ export const updateCompareUI = () => {
     document.querySelectorAll('.compare-input').forEach(input => {
         input.checked = compareList.includes(parseInt(input.dataset.id));
     });
+
+    // ให้แถบล่างคำนวณการแสดงผลจากทั้ง 2 ลิสต์ (ถ้ามี orchestrator)
+    if (window.refreshCompareBar) {
+        window.refreshCompareBar();
+    } else {
+        compareBar.classList.toggle('active', compareList.length > 0);
+    }
 };
 
 /**
@@ -147,25 +155,8 @@ export const goToComparePage = () => {
     }
 };
 
-/**
- * เปิดหน้าแสดง e-brochure
- */
-export const createBrochurePage = () => {
-    if (compareList.length < 1) {
-        notify('กรุณาเลือกทรัพย์สินอย่างน้อย 1 รายการเพื่อสร้างโบรชัวร์', 'question');
-        return;
-    }
-
-    const ids = compareList.join(',');
-    const url = `/npa/e-brochure?ids=${ids}`;
-    const newTab = window.open(url, '_blank');
-
-    if (newTab) {
-        newTab.focus();
-    } else {
-        notify('เบราว์เซอร์บล็อกหน้าต่างใหม่', 'กรุณาอนุญาตให้เปิด Pop-up เพื่อดูผลการเปรียบเทียบ', 'info');
-    }
-};
+// หมายเหตุ: ฟังก์ชัน createBrochurePage ถูกย้ายไปไฟล์ brochure-service.js แล้ว
+// เพื่อแยกการเลือก "เปรียบเทียบ" และ "โบรชัวร์" ออกจากกัน
 
 // --- 4. Event Listeners & Window Binding ---
 
@@ -190,5 +181,4 @@ window.removeCompareItem = (id) => {
 // ผูกฟังก์ชันเข้ากับ Global window เพื่อให้ HTML onclick เรียกใช้ได้
 window.clearAllCompare = clearAllCompare;
 window.goToComparePage = goToComparePage;
-window.createBrochurePage = createBrochurePage;
 window.toggleCompareAsset = toggleCompareAsset;
