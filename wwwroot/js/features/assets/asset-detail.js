@@ -190,7 +190,7 @@ const renderRelatedAssets = (currentAsset) => {
             : `${asset.totalPrice?.toLocaleString()} บาท`;
 
         return `
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <div class="card card--asset h-100">
                     <div class="card__figure">
                         <img src="${asset.img}" alt="${asset.alt}" class="card__image" loading="lazy">

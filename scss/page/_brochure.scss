@@ -1,0 +1,423 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as media;
+
+// ===========================================================================
+// E-Brochure — เอกสาร A4 (หน้าปก 3 layers + หน้าเนื้อหาตามทำเล)
+// หน่วย mm เพื่อให้พิมพ์ออกกระดาษ A4 พอดี
+// ===========================================================================
+
+$page-w: 210mm;
+$page-h: 297mm;
+$page-pad: 10mm;
+
+.brochure {
+    background-color: var(--neutral-200);
+    padding: 1.5rem 0;
+
+    // แถบเครื่องมือ (พิมพ์ไม่ออก)
+    &__toolbar {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    // กระดาษ 1 หน้า
+    &__page {
+        position: relative;
+        width: $page-w;
+        min-height: $page-h;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto 1.5rem;
+        background-color: var(--white);
+        background: url('/media/images/brochure/cover-list.jpg') center / 100% 100% no-repeat;
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+    }
+}
+
+// ----- หน้าปก: 3 layers -----
+.brochure__cover {
+    // เลเยอร์ทั้งหมดวางซ้อนเต็มหน้า (inset:0) เรียงตามลำดับ DOM: ภาพ → เขียว → ขาว
+    // ใช้รูป PNG เต็มหน้า A4 (พื้นหลังโปร่งใส) เพื่อคุมรูปทรงตามดีไซน์
+    .brochure-cover__photo {
+        position: absolute;
+        inset: 0;
+        background: url('/media/images/brochure/bg-assets-list.jpg') top / contain no-repeat;
+    }
+
+    // Layer 2: พื้นเขียว (PNG เต็มหน้า)
+    .brochure-cover__green {
+        position: absolute;
+        inset: 0;
+        background: url('/media/images/brochure/cover.png') center / 100% 100% no-repeat;
+    }
+
+    // Layer 3: พื้นขาว (PNG เต็มหน้า — เนื้อหาหลักวางทับ)
+    // .brochure-cover__white {
+    //     position: absolute;
+    //     inset: 0;
+    //     background: url('/media/images/brochure/cover-white.png') center / 100% 100% no-repeat;
+    // }
+
+    .brochure-cover__content {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        padding: 58% $page-pad $page-pad;
+    }
+
+    .brochure-cover__logo {
+        width: 150px;
+        margin-bottom: 1.5rem;
+    }
+
+    .brochure-cover__title {
+        font-size: 3.4rem;
+        font-weight: 700;
+        line-height: 1.1;
+        color: var(--black);
+        margin-bottom: 2.5rem;
+
+        span {
+            color: var(--clr-primary-dark);
+        }
+    }
+
+    .brochure-cover__section {
+        margin-bottom: 1.75rem;
+    }
+
+    .brochure-cover__heading {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 0.75rem;
+    }
+
+    .brochure-cover__list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .brochure-cover__item {
+        position: relative;
+        padding-left: 1rem;
+        font-size: 1.1rem;
+        color: var(--neutral-800);
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--clr-primary-dark);
+        }
+    }
+}
+
+// ----- หน้าเนื้อหา -----
+.brochure__page--content {
+    padding: $page-pad 14mm 0.75rem $page-pad;
+}
+
+.brochure-group__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--neutral-300);
+
+    .brochure-group__logo {
+        width: 120px;
+    }
+
+    .brochure-group__title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--black);
+        margin: 0;
+    }
+
+    .brochure-group__icon {
+        color: var(--clr-primary-dark);
+    }
+}
+
+.brochure-group__list {
+    flex: 1; // ดันเนื้อหาให้เต็มหน้า footer ลงล่างสุด
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+// การ์ดทรัพย์ 1 รายการ (รูปซ้าย + รายละเอียดขวา)
+.brochure-item {
+    display: grid;
+    grid-template-columns: 45% 1fr;
+    gap: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--neutral-300);
+
+    &__figure {
+        height: 42mm; // สูงคงที่เพื่อให้ 4 ใบพอดี 1 หน้า A4
+        overflow: hidden;
+        border-radius: var(--radius-sm);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__code {
+        font-size: 1.05rem;
+        color: var(--neutral-800);
+        margin-bottom: 0.5rem;
+    }
+
+    &__meta {
+        list-style: none;
+        margin: 0 0 0.75rem;
+        padding: 0;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: var(--neutral-700);
+            margin-bottom: 0.35rem;
+
+            .icon {
+                width: 1.1rem;
+                height: 1.1rem;
+                color: var(--clr-primary-dark);
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    &__price {
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: var(--clr-primary-dark);
+        line-height: 1.1;
+        margin-top: auto;
+        // padding-top: 0.5rem;
+        // border-top: 1px solid var(--neutral-300);
+    }
+
+    &__detail {
+        align-self: flex-start;
+        margin-top: 0.75rem;
+        padding: 0.35rem 1.25rem;
+        font-size: 0.95rem;
+        color: var(--white);
+        background-color: var(--clr-accent-pink);
+        border-radius: 20px;
+        text-decoration: none;
+        transition: opacity var(--transition);
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+// ----- แถบ footer ติดต่อ -----
+.brochure-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    // margin-top: 1.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    // border-top: 1px solid var(--neutral-300);
+
+    &--cover {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 3;
+        margin: 0;
+        padding: 0.75rem $page-pad;
+        border-top: none;
+    }
+
+    &__contact {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    &__item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.95rem;
+        color: var(--clr-primary-dark);
+
+        i {
+            color: var(--clr-primary-dark);
+        }
+    }
+
+    &__qr {
+        width: 38px;
+        height: 38px;
+    }
+
+    &__page {
+        font-size: 0.95rem;
+        color: var(--neutral-100);
+    }
+
+    &__note {
+        font-size: 0.85rem;
+        color: var(--neutral-100);
+    }
+}
+
+// ----- การแสดงผลบนจอเล็ก (ดูตัวอย่างก่อนพิมพ์) -----
+@include media.media-down(md) {
+    .brochure__page {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .brochure-item {
+        grid-template-columns: 1fr;
+    }
+}
+
+// ----- โหมดพิมพ์ A4 (ให้พิมพ์ออกมาเหมือนหน้าจอ) -----
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    // ซ่อนเฉพาะส่วนของ layout หลัก ไม่ให้ติดมากับเอกสาร
+    header,
+    footer,
+    nav,
+    .brochure__toolbar {
+        display: none !important;
+    }
+
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+    }
+
+    .brochure {
+        background: none;
+        padding: 0;
+    }
+
+    // บังคับพิมพ์ "ทุกสีพื้นหลัง/รูป/clip" ในทั้งโบรชัวร์ (Chrome/Edge/Firefox)
+    .brochure,
+    .brochure * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    // ล็อกขนาดหน้าให้ "เท่า A4 พอดี" ไม่เกินจนดันเป็นหน้าว่าง
+    // ใช้ height คงที่ (ไม่ใช่ min-height) + box-sizing + overflow:hidden กันเศษ sub-pixel ล้น
+    .brochure__page {
+        box-sizing: border-box;
+        width: $page-w;
+        height: $page-h;
+        min-height: 0;
+        max-height: $page-h;
+        overflow: hidden;
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+    }
+
+    .brochure__page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+    }
+
+    // ล็อก layout การ์ดให้คงรูปแบบ 2 คอลัมน์เหมือนจอใหญ่
+    // (กันเบราว์เซอร์พิมพ์ที่ความกว้างแคบแล้วไปเข้า media query มือถือ)
+    .brochure-item {
+        grid-template-columns: 45% 1fr;
+        gap: 1rem;
+        padding-bottom: 0.8rem;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    // ลดขนาดการ์ดเฉพาะตอนพิมพ์ ให้ 4 ใบพอดี 1 หน้า A4 (หน้าจอคงเดิม)
+    .brochure-group__list {
+        gap: 0.8rem;
+    }
+
+    .brochure-item__figure {
+        height: 34mm;
+    }
+
+    .brochure-item__code {
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .brochure-item__meta li {
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .brochure-item__price {
+        font-size: 1.5rem;
+    }
+
+    .brochure-item__detail {
+        margin-top: 0.4rem;
+        padding: 0.25rem 1rem;
+    }
+
+    .brochure-group__head {
+        padding-bottom: 0.6rem;
+        margin-bottom: 0.8rem;
+    }
+
+    // รูป/พื้นหลังเลเยอร์หน้าปกต้องคงไว้
+    .brochure-cover__photo,
+    .brochure-cover__green,
+    .brochure-cover__white {
+        display: block !important;
+    }
+}

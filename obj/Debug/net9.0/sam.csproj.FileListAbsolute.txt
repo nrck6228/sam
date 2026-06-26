@@ -28,6 +28,10 @@ C:\Works\asp.net\sam\obj\Debug\net9.0\scopedcss\bundle\sam.styles.css
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\fq7g68igvi-4auj6r7g7o.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\swojz3gsq2-wopsamlasg.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\i2mo0fpocg-79l73tsp3y.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-sqlvoodjl7.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\66leq0x4e4-ptaah741hv.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-6ijmm90f3t.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\i69xsjvrzp-mycp960o9d.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\5fgfprthym-4e9jevli9d.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\9nt6b4bghj-qyjiypb3k6.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\2zd27wlf3t-d0n6x8f7bt.gz
@@ -45,13 +49,15 @@ C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\jbqn8ojorj-fu6620mxfq.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\4m7ua84fdd-08o63nyleq.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\fh6zcjzzpi-2txjowbtsq.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\ug4fb9ijx4-xfr9wmn9o9.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\s8fi2s1wlk-7mtutvluhc.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\9r0jpwly63-caoy1xuw8o.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\s8fi2s1wlk-0egicwcbz6.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\mbsls5uo4x-2blj8xulpo.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\ug372f8bk9-9s7ddrwcj0.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\zxlx4iunag-qj1gtojhzi.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\ephsf2q65v-5do95697d9.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\ogia5qao5i-fn8zrne34n.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\w6zysp1ne2-1glqbhve7h.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\evolz6rsg1-4t4mlkvhdx.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\w6zysp1ne2-rfxc42kao3.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\evolz6rsg1-0pqet77u16.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\nkgmpjmegm-3mxc2smpgn.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\5ckypwboxu-uophr3zvxl.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\k14mmbahdl-vipst02maw.gz
@@ -61,6 +67,7 @@ C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\8be6zj47vi-shu4m37yxn.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\id3u63s1iu-94wtviv44v.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\2oabil9sap-0quf0z54jw.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\fhkl7wmlkm-xik1yo7ipu.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\r9r5izqtnh-q9lei44odw.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\0m3smjy2w7-kf1k7kuxia.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\dxotdrq37t-9q18qnq83b.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\559isskx98-r8m2587zm5.gz
@@ -182,9 +189,3 @@ C:\Works\asp.net\sam\obj\Debug\net9.0\refint\sam.dll
 C:\Works\asp.net\sam\obj\Debug\net9.0\sam.pdb
 C:\Works\asp.net\sam\obj\Debug\net9.0\sam.genruntimeconfig.cache
 C:\Works\asp.net\sam\obj\Debug\net9.0\ref\sam.dll
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\66leq0x4e4-ptaah741hv.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\i69xsjvrzp-mycp960o9d.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\r9r5izqtnh-q9lei44odw.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-d801lo9fyj.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-x3lzwh061x.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\9r0jpwly63-3r15oxzbth.gz

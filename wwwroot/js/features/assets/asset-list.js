@@ -201,13 +201,13 @@ const renderAssetList = (data) => {
                     </div>
                 </div>
                 <div class="card__body">
+                    <div class="card__code">
+                        <div class="card__code-text">รหัสทรัพย์สิน</div>
+                        <div class="card__code-text">${asset.assetCode}</div>
+                    </div>
                     <div class="card__type">
                         <div class="card__type-icon"><svg class="icon"><use xlink:href="#icon-${iconName}"></use></svg></div>
                         <div class="card__type-text">${assetType?.typeName || 'ทรัพย์สิน'}</div>
-                    </div>
-                    <div class="card__code">
-                        <div class="card__type-icon"><svg class="icon"><use xlink:href="#icon-search"></use></svg></div>
-                        <div class="card__code-text">${asset.assetCode}</div>
                     </div>
                     <div class="card__location">
                         <div class="card__type-icon"><svg class="icon"><use xlink:href="#icon-placeholder"></use></svg></div>

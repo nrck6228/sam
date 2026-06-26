@@ -1,163 +1,94 @@
 @{
-    ViewData["Title"] = "หน้าหลัก | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
+    ViewData["Title"] = "E-Brochure | บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
     ViewData["MetaDescription"] = "บริษัท บริหารสินทรัพย์สุขุมวิท จำกัด";
 }
 
-<section class="section section--banner">
-    <div class="section__breadcrumb">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <span>ทรัพย์สินรอการขาย</span>
-                </li>
-                <li class="breadcrumb-item"><a href="/npa/search-result">ค้นหาทรัพย์สิน</a></li>
-            </ol>
-        </nav>
+<div class="brochure">
+    @* แถบเครื่องมือ (ไม่พิมพ์ออกกระดาษ) *@
+    <div class="brochure__toolbar">
+        <button class="btn btn--sam-green" onclick="savePdf()">
+            <span class="btn__icon"><i class="bi bi-file-earmark-pdf"></i></span>
+            <span class="btn__text">บันทึก PDF / พิมพ์</span>
+        </button>
     </div>
 
-    <div class="container-fluid">
-        <h1 class="page__title">
-            E-Brochure
-        </h1>
-    </div>
-</section>
+    @* ===== หน้าปก: 3 layers (ภาพตึก + พื้นเขียว + พื้นขาว) ===== *@
+    <section class="brochure__page brochure__cover">
+        <div class="brochure-cover__photo"></div>
+        <div class="brochure-cover__green"></div>
+        @* <div class="brochure-cover__white"></div> *@
 
-<section>
-    <div class="section section--content">
-        <div class="container">
-            <div class="d-flex justify-content-end align-items-center gap-3 mb-4">
-                <button class="btn btn--hover btn--gray" onclick="window.print()">
-                    <span class="btn__text">
-                        พิมพ์เอกสาร
-                    </span>
-                </button>
-                <button class="btn btn--outline-clear" onclick="clearAllCompare()">
-                    <span class="btn__icon">
-                        <i class="bi bi-trash"></i>
-                    </span>
-                    <span class="btn__text">
-                        ล้างทั้งหมด
-                    </span>
-                </button>
+        <div class="brochure-cover__content">
+            <img class="brochure-cover__logo" src="~/media/images/logo/logo-main.webp" alt="SAM" />
+
+            <h1 class="brochure-cover__title">
+                ทรัพย์มือสอง<br>ต้อง <span>SAM</span>
+            </h1>
+
+            <div class="brochure-cover__section">
+                <h3 class="brochure-cover__heading">ประเภททรัพย์</h3>
+                <ul class="brochure-cover__list" id="brochure-types"></ul>
             </div>
-            <div class="print-header">
-                <img src="~/media/images/logo/logo-main.webp" style="width: 120px;" />
-                <h4>E-Brochure</h4>
-                <p>วันที่พิมพ์: @DateTime.Now.ToString("dd/MM/yyyy")</p>
-            </div>
-            <div id="compare-result-wrapper" class="compare--container">
-                <div class="text-center py-5">
-                    <div class="spinner-border text-pink" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <p class="mt-2">กำลังเตรียมข้อมูลการเปรียบเทียบ...</p>
-                </div>
+
+            <div class="brochure-cover__section">
+                <h3 class="brochure-cover__heading">ทำเล</h3>
+                <ul class="brochure-cover__list" id="brochure-locations"></ul>
             </div>
         </div>
+
+        <div class="brochure-foot brochure-foot--cover">
+            <div class="brochure-foot__contact">
+                <span class="brochure-foot__item"><i class="bi bi-telephone-fill"></i> 1443</span>
+                <span class="brochure-foot__item"><i class="bi bi-globe"></i> www.sam.or.th</span>
+                <span class="brochure-foot__item"><i class="bi bi-line"></i> @@samline</span>
+                <img class="brochure-foot__qr" src="~/media/images/sample-qrcode.jpg" alt="QR">
+            </div>
+            <span class="brochure-foot__note">*เงื่อนไขเป็นไปตามที่ บสส. กำหนด</span>
+        </div>
+    </section>
+
+    @* ===== หน้าเนื้อหา: JS เติมตามทำเล/จังหวัด ===== *@
+    <div id="brochure-pages">
+        <div class="text-center py-5">
+            <div class="spinner-border text-pink" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">กำลังเตรียมข้อมูลโบรชัวร์...</p>
+        </div>
     </div>
-</section>
+</div>
 
 @section Styles {
-    <link href="~/vendors/sweetalert/sweetalert2.min.css" rel="stylesheet" />
     <style>
-        .compare-row--images .compare-cell {
-            position: sticky;
-            top: 0;
-            z-index: 11;
-            /* ต้องสูงกว่า Sticky Left */
-            background: #fff;
-            border-bottom: 2px solid #E91E63;
-            /* เส้นใต้เน้นธีม SAM */
-        }
-
-        @@media print {
-
-            /* 1. ซ่อนส่วนที่ไม่ต้องการให้ปรากฏในกระดาษ */
-            header,
-            nav,
-            footer,
-            .btn,
-            .section--banner {
-                display: none !important;
-            }
-
-            /* 2. ยกเลิกการ Scroll และขยายตารางให้เต็มหน้ากระดาษ */
-            body {
-                background-color: white !important;
-                margin: 0;
-                padding: 0;
-            }
-
-            .container {
-                width: 100% !important;
-                max-width: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            .compare-container {
-                overflow: visible !important;
-                /* ปิดการไถข้าง */
-                border: none !important;
-            }
-
-            .compare-grid {
-                display: table !important;
-                width: 100% !important;
-                border-collapse: collapse !important;
-                table-layout: fixed;
-                /* บังคับให้ทุกคอลัมน์เฉลี่ยความกว้างเท่าๆ กัน */
-            }
-
-            /* บังคับให้ "ตัวหุ้มแถว" ทำหน้าที่เป็น Row ของตาราง */
-            .compare-row {
-                display: table-row !important;
-            }
-
-            /* บังคับให้ "ข้อมูลข้างใน" ทำหน้าที่เป็น Cell ของตาราง */
-            .compare-cell,
-            .compare-label {
-                display: table-cell !important;
-                border: 1px solid #ddd !important;
-                padding: 8px !important;
-                vertical-align: top;
-                word-wrap: break-word;
-                /* ป้องกันข้อความยาวทะลุช่อง */
-            }
-
-            /* ล็อกความกว้างคอลัมน์แรก (หัวข้อ) */
-            .compare-label {
-                width: 120px !important;
-                background-color: #f8f9fa !important;
-                font-weight: bold;
-                -webkit-print-color-adjust: exact;
-                /* บังคับให้พิมพ์สีพื้นหลังใน Chrome/Edge */
-            }
-
-            /* จัดการรูปภาพให้พอดีช่อง */
-            .compare-img {
-                width: 100% !important;
-                max-width: 120px !important;
-                height: auto !important;
-            }
-
-            /* เพิ่มหัวกระดาษพิเศษ (Optional) */
-            .print-header {
-                display: block !important;
-                text-align: left;
-                margin-bottom: 20px;
-            }
-        }
-
-        /* ซ่อนหัวกระดาษพิเศษในหน้าจอปกติ */
-        .print-header {
+        .header,
+        .footer {
             display: none;
         }
     </style>
 }
+
 @section Scripts {
     <script src="~/vendors/sweetalert/sweetalert2.all.min.js"></script>
     <script src="~/js/data/data.js" type="module"></script>
-    <script src="~/js/features/compare/compare-service.js" type="module"></script>
+    <script src="~/js/features/compare/brochure-service.js" type="module"></script>
     <script src="~/js/features/compare/e-brochure.js" type="module"></script>
+    <script>
+        // แนะนำผู้ใช้ให้บันทึกเป็น PDF ผ่านหน้าต่างพิมพ์ของเบราว์เซอร์ แล้วค่อยเปิด print dialog
+        function savePdf() {
+            let confirmed = false;
+            Swal.fire({
+                icon: 'info',
+                title: 'บันทึกเป็น PDF',
+                html: 'ในหน้าต่างถัดไป ให้เลือกช่อง <b>ปลายทาง (Destination)</b> เป็น <b>“Save as PDF”</b> แล้วกด <b>Save</b><br><span class="text-muted small">* เปิด “Background graphics” ด้วย เพื่อให้สีและรูปครบ</span>',
+                confirmButtonText: 'ดำเนินการต่อ',
+                confirmButtonColor: '#286140',
+                allowOutsideClick: false,
+                preConfirm: () => { confirmed = true; },
+                // รอให้ modal ปิดสนิทก่อน ค่อยเปิดหน้าต่างพิมพ์ (กัน backdrop ค้างจน print ไม่ทำงาน)
+                didClose: () => {
+                    if (confirmed) setTimeout(() => window.print(), 200);
+                }
+            });
+        }
+    </script>
 }
