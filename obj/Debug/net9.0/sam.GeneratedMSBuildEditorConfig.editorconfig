@@ -168,6 +168,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidFxCZW5lZml0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Works/asp.net/sam/Views/Debt/clinic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidFxjbGluaWMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Works/asp.net/sam/Views/Debt/Download.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidFxEb3dubG9hZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
