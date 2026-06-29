@@ -8555,6 +8555,12 @@ svg.icon-xl {
   line-height: 1.4;
   color: var(--neutral-100);
 }
+.card--mission .card__icon {
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--neutral-100);
+}
 
 .card--annual {
   display: flex;

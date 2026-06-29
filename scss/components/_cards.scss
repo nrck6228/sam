@@ -1036,6 +1036,13 @@ $gradients: ( (var(--clr-nature), var(--clr-nature-light)), // ชุดที�
         line-height: 1.4;
         color: var(--neutral-100);
     }
+
+    .card__icon {
+        font-size: var(--fs-h3);
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--neutral-100);
+    }
 }
 
 .card--annual {
