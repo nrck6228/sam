@@ -28,9 +28,9 @@ C:\Works\asp.net\sam\obj\Debug\net9.0\scopedcss\bundle\sam.styles.css
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\fq7g68igvi-4auj6r7g7o.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\swojz3gsq2-wopsamlasg.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\i2mo0fpocg-79l73tsp3y.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-sqlvoodjl7.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\kzz7qp2ahs-eu7fjx9o7y.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\66leq0x4e4-ptaah741hv.gz
-C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-6ijmm90f3t.gz
+C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\h21vvrf00o-9qu76aea0m.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\i69xsjvrzp-mycp960o9d.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\5fgfprthym-4e9jevli9d.gz
 C:\Works\asp.net\sam\obj\Debug\net9.0\compressed\9nt6b4bghj-qyjiypb3k6.gz

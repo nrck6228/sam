@@ -10472,10 +10472,6 @@ svg.icon-xl {
 }
 
 .modal--cookie .modal-content {
-  backdrop-filter: blur(var(--blur-md));
-  -webkit-backdrop-filter: blur(var(--blur-md));
-  background-color: rgba(0, 0, 0, var(--opacity-50));
-  border-radius: 0;
   box-shadow: var(--shadow-sm);
 }
 .modal--cookie .modal-header {
@@ -10492,10 +10488,10 @@ svg.icon-xl {
   margin-right: 15px;
   font-size: 1.5rem !important;
   font-weight: 700;
-  color: var(--white);
+  color: var(--black);
 }
 .modal--cookie .modal-header .icon-close {
-  color: var(--white);
+  color: var(--black);
   cursor: pointer;
 }
 .modal--cookie .modal-header .icon-close i {
@@ -10541,12 +10537,12 @@ svg.icon-xl {
 }
 .modal--cookie .modal-body .cookie-item .head .head-title {
   font-weight: 700;
-  color: var(--white);
+  color: var(--black);
 }
 .modal--cookie .modal-body .cookie-item .head .head-check p {
   font-size: 1.125rem !important;
   margin-bottom: 0;
-  color: var(--white);
+  color: var(--black);
 }
 .modal--cookie .modal-body .cookie-item .head .head-check .switch {
   position: relative;
@@ -10572,7 +10568,7 @@ svg.icon-xl {
   width: 19px;
   left: 4px;
   bottom: 3px;
-  background-color: white;
+  background-color: var(--white);
   transition: 0.3s;
 }
 .modal--cookie .modal-body .cookie-item .head .head-check .switch .slider.round {
@@ -10587,10 +10583,10 @@ svg.icon-xl {
   height: 0;
 }
 .modal--cookie .modal-body .cookie-item .head .head-check .switch input:checked + .slider {
-  background-color: var(--color-primary);
+  background-color: var(--clr-primary);
 }
 .modal--cookie .modal-body .cookie-item .head .head-check .switch input:focus + .slider {
-  box-shadow: 0 0 1px var(--color-primary);
+  box-shadow: 0 0 1px var(--clr-primary);
 }
 .modal--cookie .modal-body .cookie-item .head .head-check .switch input:checked + .slider:before {
   transform: translateX(23px);
@@ -10598,7 +10594,7 @@ svg.icon-xl {
 .modal--cookie .modal-body .cookie-item .desc {
   font-weight: 300;
   font-size: 1rem;
-  color: var(--white);
+  color: var(--black);
 }
 .modal--cookie .modal-body .cookie-item:last-child {
   border-bottom: none;
